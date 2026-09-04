@@ -102,6 +102,108 @@ def _load_config() -> dict:
         })
     return {"categories": cats}
 
+# ---------------------------------------------------------------
+# Skill 能力墙 — 扫描本机两套 skill 库 (Hermes + Claude skills)
+# ---------------------------------------------------------------
+SKILL_ROOTS = {
+    "hermes": [Path.home() / ".hermes" / "skills"],
+    "claude": [Path.home() / "Downloads" / "笔记" / "笔记" / ".claude" / "skills"],
+}
+
+def _parse_skill_meta(skill_dir: Path) -> dict:
+    """从 SKILL.md frontmatter 提取 name/description/version/category"""
+    md = skill_dir / "SKILL.md"
+    if not md.exists():
+        return None
+    try:
+        text = md.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return None
+    m = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, re.S)
+    meta = {"name": skill_dir.name, "description": "", "version": ""}
+    if m:
+        front = m.group(1)
+        def grab(key):
+            # 管道块:  description: |\n   行
+            blk = re.search(rf"^{key}:\s*\|[ \t]*\n((?:[ \t]+.*\n?)+)", front, re.M)
+            if blk:
+                return " ".join(l.strip() for l in blk.group(1).splitlines() if l.strip())
+            # 单行: description: value
+            mm = re.search(rf"^{key}:\s*(.+)$", front, re.M)
+            if mm:
+                return mm.group(1).strip().strip("\"'")
+            # 引号多行: description: ">... "
+            mm = re.search(rf"^{key}:\s*(\"?[>|]?)\s*\n((?:[ \t]+\S.*\n?)+)", front, re.M)
+            if mm:
+                return " ".join(l.strip() for l in mm.group(2).splitlines() if l.strip())
+            return ""
+        meta["name"] = grab("name") or skill_dir.name
+        meta["description"] = grab("description")
+        meta["version"] = grab("version")
+    return meta
+
+def _scan_skills() -> list:
+    out = []
+    for source, roots in SKILL_ROOTS.items():
+        for root in roots:
+            if not root.exists():
+                continue
+            for skill_dir in sorted(root.iterdir()):
+                if not skill_dir.is_dir() or skill_dir.name in (".archive", ".git", "node_modules"):
+                    continue
+                meta = _parse_skill_meta(skill_dir)
+                if not meta:
+                    continue
+                out.append({
+                    "name": meta["name"],
+                    "slug": skill_dir.name,
+                    "description": meta["description"][:300],
+                    "version": meta["version"],
+                    "source": source,
+                    "path": str(skill_dir),
+                })
+    return out
+
+@app.get("/api/skills")
+def get_skills():
+    return {"skills": _scan_skills()}
+
+
+def _find_skill(slug: str) -> dict | None:
+    for s in _scan_skills():
+        if s["slug"] == slug:
+            return s
+    return None
+
+
+@app.post("/api/skill/run")
+def run_skill(payload: dict):
+    """调用 Hermes chat 执行某个 skill。payload: {slug, query, model?}"""
+    slug = (payload or {}).get("slug", "")
+    query = (payload or {}).get("query", "").strip()
+    if not slug or not query:
+        return {"ok": False, "error": "缺少 slug 或 query"}
+    skill = _find_skill(slug)
+    if not skill:
+        return {"ok": False, "error": "未找到 skill %s" % slug}
+    # 仅 Hermes 源 skill 可直接 --skills 调用; claude 源需桥接
+    hermes_name = slug if skill["source"] == "hermes" else None
+    try:
+        cmd = ["hermes", "chat", "-q", query, "-Q"]
+        if hermes_name:
+            cmd += ["--skills", hermes_name]
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=180, cwd=str(Path.home()))
+        out = (r.stdout or "").strip()
+        if not out and r.stderr:
+            out = r.stderr.strip()
+        return {"ok": r.returncode == 0, "output": out[:4000], "rc": r.returncode,
+                "skill": skill["slug"], "source": skill["source"]}
+    except subprocess.TimeoutExpired:
+        return {"ok": False, "error": "执行超时(180s)"}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
 @app.get("/api/config")
 def get_config():
     return _load_config()

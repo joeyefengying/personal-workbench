@@ -23,3 +23,9 @@ export function projectStatus(id) {
 export function openPath(id) {
   return request(`/api/open/${id}`, { method: 'POST' })
 }
+export function getSkills() {
+  return request('/api/skills')
+}
+export function runSkill(payload) {
+  return request('/api/skill/run', { method: 'POST', body: JSON.stringify(payload) })
+}
