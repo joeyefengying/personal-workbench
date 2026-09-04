@@ -176,32 +176,65 @@ def _find_skill(slug: str) -> dict | None:
     return None
 
 
+# ---------------------------------------------------------------
+# Skill 对话会话 — hermes chat --skills + --resume 实现多轮连续对话
+# ---------------------------------------------------------------
+_skill_sessions = {}   # slug -> session_id
+_skill_lock = threading.Lock()
+
+
+def _extract_session(out: str) -> str | None:
+    """从 hermes chat -Q 输出里抓 session_id，用于后续 --resume 续接"""
+    m = re.search(r"session_id:\s*(\S+)", out or "")
+    return m.group(1) if m else None
+
+
 @app.post("/api/skill/run")
 def run_skill(payload: dict):
-    """调用 Hermes chat 执行某个 skill。payload: {slug, query, model?}"""
+    """调用 Hermes chat 执行某个 skill（支持多轮，用 --resume 续接）。
+    payload: {slug, query, session_id?}
+    - 无 session_id：新会话，先 --skills 加载
+    - 有 session_id：续接已有会话（不再传 --skills）
+    """
     slug = (payload or {}).get("slug", "")
     query = (payload or {}).get("query", "").strip()
+    session_id = (payload or {}).get("session_id") or _skill_sessions.get(slug)
     if not slug or not query:
         return {"ok": False, "error": "缺少 slug 或 query"}
     skill = _find_skill(slug)
     if not skill:
         return {"ok": False, "error": "未找到 skill %s" % slug}
-    # 仅 Hermes 源 skill 可直接 --skills 调用; claude 源需桥接
-    hermes_name = slug if skill["source"] == "hermes" else None
-    try:
-        cmd = ["hermes", "chat", "-q", query, "-Q"]
-        if hermes_name:
-            cmd += ["--skills", hermes_name]
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=180, cwd=str(Path.home()))
+
+    def run(extra: list[str]) -> tuple[int, str, str]:
+        cmd = ["hermes", "chat", "-q", query, "-Q"] + extra
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=240,
+                           cwd=str(Path.home()))
         out = (r.stdout or "").strip()
         if not out and r.stderr:
             out = r.stderr.strip()
-        return {"ok": r.returncode == 0, "output": out[:4000], "rc": r.returncode,
-                "skill": skill["slug"], "source": skill["source"]}
+        # session_id 在 stderr（-Q 模式下 session 信息打到 stderr）
+        sid = _extract_session(r.stderr + "\n" + r.stdout)
+        return r.returncode, out, sid
+
+    try:
+        if session_id:
+            # 续接会话 —— 不放 session_id 当 query 传给模型,避免污染
+            rc, out, _ = run(["--resume", session_id])
+            if rc != 0 and "not found" in out.lower():
+                session_id = None  # 会话失效则重开
+        if not session_id:
+            # 新会话 —— 传 --skills（现在两套 skill 都桥接进 Hermes 了）
+            rc, out, sid = run(["--skills", skill["slug"]])
+            if rc == 0 and sid:
+                with _skill_lock:
+                    _skill_sessions[slug] = sid
+        return {"ok": rc == 0, "output": out[:6000], "rc": rc,
+                "skill": skill["slug"], "source": skill["source"],
+                "session_id": session_id or _skill_sessions.get(slug)}
     except subprocess.TimeoutExpired:
-        return {"ok": False, "error": "执行超时(180s)"}
+        return {"ok": False, "error": "执行超时(240s)", "skill": slug}
     except Exception as e:
-        return {"ok": False, "error": str(e)}
+        return {"ok": False, "error": str(e), "skill": slug}
 
 
 @app.get("/api/config")
