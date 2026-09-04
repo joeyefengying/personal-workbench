@@ -177,62 +177,46 @@ def _find_skill(slug: str) -> dict | None:
 
 
 # ---------------------------------------------------------------
-# Skill 对话会话 — hermes chat --skills + --resume 实现多轮连续对话
+# Skill 启动器 — 点卡片在原生终端/Terminal.app 打开 hermes chat --skills
+# 多轮/记忆/流式/工具全由 Hermes 原生完成，工作台只负责"打开对话"。
+# 优先用 open -a Terminal 触发 macOS 原生终端；失败则 osascript。
 # ---------------------------------------------------------------
-_skill_sessions = {}   # slug -> session_id
-_skill_lock = threading.Lock()
+def _shell_escape(s: str) -> str:
+    return s.replace("\\", "\\\\").replace('"', '\\"')
 
 
-def _extract_session(out: str) -> str | None:
-    """从 hermes chat -Q 输出里抓 session_id，用于后续 --resume 续接"""
-    m = re.search(r"session_id:\s*(\S+)", out or "")
-    return m.group(1) if m else None
-
-
-@app.post("/api/skill/run")
-def run_skill(payload: dict):
-    """调用 Hermes chat 执行某个 skill（支持多轮，用 --resume 续接）。
-    payload: {slug, query, session_id?}
-    - 无 session_id：新会话，先 --skills 加载
-    - 有 session_id：续接已有会话（不再传 --skills）
+@app.post("/api/skill/open")
+def open_skill(payload: dict):
+    """打开一个 skill 的交互式对话。payload: {slug, query?, project_dir?}
+    - 在 macOS Terminal.app 新窗口跑 hermes chat --skills <skill> [可带初句]
     """
     slug = (payload or {}).get("slug", "")
-    query = (payload or {}).get("query", "").strip()
-    session_id = (payload or {}).get("session_id") or _skill_sessions.get(slug)
-    if not slug or not query:
-        return {"ok": False, "error": "缺少 slug 或 query"}
+    if not slug:
+        return {"ok": False, "error": "缺少 slug"}
     skill = _find_skill(slug)
     if not skill:
         return {"ok": False, "error": "未找到 skill %s" % slug}
 
-    def run(extra: list[str]) -> tuple[int, str, str]:
-        cmd = ["hermes", "chat", "-q", query, "-Q"] + extra
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=240,
-                           cwd=str(Path.home()))
-        out = (r.stdout or "").strip()
-        if not out and r.stderr:
-            out = r.stderr.strip()
-        # session_id 在 stderr（-Q 模式下 session 信息打到 stderr）
-        sid = _extract_session(r.stderr + "\n" + r.stdout)
-        return r.returncode, out, sid
+    # hermes chat 交互模式（带 skill 加载）
+    cmd = "hermes chat --skills %s" % _shell_escape(skill["slug"])
+    initial = (payload or {}).get("query", "").strip()
+    if initial:
+        cmd += " '%s'" % _shell_escape(initial)
 
+    # 尝试用 Terminal.app 打开（AppleScript 弹新窗口）
+    apple_script = (
+        'tell application "Terminal"\n'
+        '  activate\n'
+        '  do script "clear; %s; echo; echo \\"[done: EXIT $?]\\", read -p \\"回车关闭窗口...\\""\n'
+        'end tell' % cmd.replace('\\', '\\\\').replace('"', '\\"'))
     try:
-        if session_id:
-            # 续接会话 —— 不放 session_id 当 query 传给模型,避免污染
-            rc, out, _ = run(["--resume", session_id])
-            if rc != 0 and "not found" in out.lower():
-                session_id = None  # 会话失效则重开
-        if not session_id:
-            # 新会话 —— 传 --skills（现在两套 skill 都桥接进 Hermes 了）
-            rc, out, sid = run(["--skills", skill["slug"]])
-            if rc == 0 and sid:
-                with _skill_lock:
-                    _skill_sessions[slug] = sid
-        return {"ok": rc == 0, "output": out[:6000], "rc": rc,
-                "skill": skill["slug"], "source": skill["source"],
-                "session_id": session_id or _skill_sessions.get(slug)}
-    except subprocess.TimeoutExpired:
-        return {"ok": False, "error": "执行超时(240s)", "skill": slug}
+        p = subprocess.run(
+            ["osascript", "-e", apple_script],
+            capture_output=True, text=True, timeout=15)
+        if p.returncode == 0:
+            return {"ok": True, "msg": "已在 Terminal 打开 %s 对话" % skill["name"],
+                    "skill": skill["slug"], "source": skill["source"]}
+        return {"ok": False, "error": "osascript 打开失败: %s" % (p.stderr.strip() or "未知"), "skill": slug}
     except Exception as e:
         return {"ok": False, "error": str(e), "skill": slug}
 

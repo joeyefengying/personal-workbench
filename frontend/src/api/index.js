@@ -26,6 +26,6 @@ export function openPath(id) {
 export function getSkills() {
   return request('/api/skills')
 }
-export function runSkill(payload) {
-  return request('/api/skill/run', { method: 'POST', body: JSON.stringify(payload) })
+export function openSkill(payload) {
+  return request('/api/skill/open', { method: 'POST', body: JSON.stringify(payload) })
 }
