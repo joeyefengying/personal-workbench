@@ -1,10 +1,12 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useWorkbenchStore } from '@/store/workbench'
-import { getSkills } from '@/api'
+import { getSkills, getActivity } from '@/api'
 
 const store = useWorkbenchStore()
 const skills = ref([])
+const activity = ref([])
+const activityLoading = ref(false)
 
 const skillCount = computed(() => skills.value.length || 0)
 const hermesCount = computed(() => skills.value.filter(s => s.source === 'hermes').length)
@@ -21,7 +23,20 @@ onMounted(async () => {
     skills.value = d.skills || []
   }
   catch { /* ignore */ }
+  await loadActivity()
 })
+
+async function loadActivity() {
+  activityLoading.value = true
+  try {
+    const d = await getActivity()
+    activity.value = d.events || []
+  }
+  catch { /* ignore */ }
+  finally {
+    activityLoading.value = false
+  }
+}
 
 const statCards = computed(() => [
   { label: 'Agent 能力', value: skillCount, sub: `${hermesCount.value} H + ${claudeCount.value} C`, icon: '🧩', color: '#1677ff' },
@@ -89,7 +104,33 @@ const statCards = computed(() => [
             <div style="font-size:12px;color:#999">llm-wiki 查询与消化</div>
           </div>
         </a>
+        <a href="/system" style="text-decoration:none;color:inherit">
+          <div class="nav-item">
+            <div style="font-size:22px">⚙️</div>
+            <div style="font-weight:600;margin-top:4px">系统设置</div>
+            <div style="font-size:12px;color:#999">本机环境自检</div>
+          </div>
+        </a>
       </div>
+    </a-card>
+
+    <!-- 最近活动时间线 -->
+    <a-card title="🕐 最近活动" size="small" style="border-radius:8px;margin-top:16px">
+      <template #extra>
+        <a-button size="small" @click="loadActivity">刷新</a-button>
+      </template>
+      <a-skeleton :loading="activityLoading" active>
+        <a-timeline v-if="activity.length" style="margin-top:8px">
+          <a-timeline-item v-for="(e, i) in activity.slice(0, 12)" :key="i" :color="i < 3 ? 'green' : 'blue'">
+            <div style="display:flex;gap:10px;align-items:baseline">
+              <span style="font-family:monospace;font-size:12px;color:#888;white-space:nowrap">{{ e.when }}</span>
+              <a-tag :color="i < 3 ? 'green' : 'default'" style="font-size:11px">{{ e.proj_name }}</a-tag>
+              <span style="font-size:13px;color:#555">{{ e.subject }}</span>
+            </div>
+          </a-timeline-item>
+        </a-timeline>
+        <a-empty v-else-if="!activityLoading" description="暂无活动" style="padding:20px 0" />
+      </a-skeleton>
     </a-card>
   </div>
 </template>

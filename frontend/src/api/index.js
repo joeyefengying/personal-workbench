@@ -41,3 +41,24 @@ export function getSkillFavorites() {
 export function setSkillFavorite(payload) {
   return request('/api/skill/favorite', { method: 'POST', body: JSON.stringify(payload) })
 }
+export function getCronJobs() {
+  return request('/api/system/cron')
+}
+export function toggleCronJob(payload) {
+  return request('/api/system/cron/toggle', { method: 'POST', body: JSON.stringify(payload) })
+}
+export function runCronJob(payload) {
+  return request('/api/system/cron/run', { method: 'POST', body: JSON.stringify(payload) })
+}
+export function getActivity() {
+  return request('/api/activity')
+}
+export function getSystemEnv() {
+  return request('/api/system/env')
+}
+export function getWikiStats() {
+  return request('/api/wiki/stats')
+}
+export function searchWiki(q) {
+  return request(`/api/wiki/search?q=${encodeURIComponent(q)}`)
+}

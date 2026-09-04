@@ -23,19 +23,19 @@ const routes = [
   {
     path: '/automation',
     name: 'automation',
-    component: () => import('@/views/Placeholder.vue'),
+    component: () => import('@/views/Automation.vue'),
     meta: { title: '自动化任务', icon: '🔄' },
   },
   {
     path: '/wiki',
     name: 'wiki',
-    component: () => import('@/views/Placeholder.vue'),
+    component: () => import('@/views/Wiki.vue'),
     meta: { title: '知识库', icon: '📚' },
   },
   {
     path: '/system',
     name: 'system',
-    component: () => import('@/views/Placeholder.vue'),
+    component: () => import('@/views/System.vue'),
     meta: { title: '系统设置', icon: '⚙️' },
   },
 ]

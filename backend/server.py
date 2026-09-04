@@ -384,6 +384,214 @@ def project_sessions():
     return {"sessions": _load_proj_sessions()}
 
 
+# ---------------------------------------------------------------
+# 自动化任务 — 读取 Hermes cron jobs.json + 启停
+# ---------------------------------------------------------------
+CRON_JOBS = Path.home() / ".hermes" / "cron" / "jobs.json"
+CRON_OUT = Path.home() / ".hermes" / "cron" / "output"
+
+
+def _cron_status_tags(j: dict):
+    """根据 last_status/last_error/state 推导状态标签"""
+    if str(j.get("enabled")) != "True":
+        return {"tag": "paused", "color": "default", "text": "已暂停"}
+    st = j.get("last_status")
+    if j.get("last_error") and st != "ok":
+        return {"tag": "error", "color": "red", "text": "运行失败"}
+    if st == "error":
+        return {"tag": "error", "color": "red", "text": "上次失败"}
+    if st == "ok":
+        return {"tag": "ok", "color": "green", "text": "正常"}
+    if j.get("last_run_at") is None:
+        return {"tag": "pending", "color": "orange", "text": "未运行"}
+    return {"tag": "ok", "color": "green", "text": "正常"}
+
+
+@app.get("/api/system/cron")
+def system_cron():
+    """列出所有 Hermes cron 任务 + 状态 + 最近日志"""
+    jobs = []
+    if CRON_JOBS.exists():
+        try:
+            data = json.loads(CRON_JOBS.read_text(encoding="utf-8"))
+            raw = data.get("jobs", [])
+            if isinstance(raw, dict):
+                raw = list(raw.values())
+            for j in raw:
+                status = _cron_status_tags(j)
+                # 读最近一次日志 (output/<id>-<ts>.json 或 <id>.json)
+                log = None
+                if CRON_OUT.is_dir():
+                    cand = sorted(CRON_OUT.glob(f"{j.get('id')}*"))
+                    if cand:
+                        try:
+                            log = cand[-1].read_text(encoding="utf-8")[:600]
+                        except Exception:
+                            pass
+                jobs.append({
+                    "id": j.get("id"),
+                    "name": j.get("name"),
+                    "schedule": j.get("schedule_display") or (j.get("schedule") or {}).get("display"),
+                    "enabled": str(j.get("enabled")) == "True",
+                    "state": j.get("state"),
+                    "last_run": j.get("last_run_at"),
+                    "next_run": j.get("next_run_at"),
+                    "last_status": j.get("last_status"),
+                    "last_error": (j.get("last_error") or "")[:200],
+                    "completed": (j.get("repeat") or {}).get("completed"),
+                    "deliver": j.get("deliver"),
+                    "script": j.get("script"),
+                    "tag": status["tag"], "color": status["color"], "status_text": status["text"],
+                    "recent_log": log,
+                })
+        except Exception as e:
+            return {"ok": False, "error": str(e), "jobs": []}
+    return {"ok": True, "jobs": jobs, "scheduler": _cron_scheduler_status()}
+
+
+def _cron_scheduler_status():
+    """检查 cron scheduler 是否在运行"""
+    try:
+        r = subprocess.run(["hermes", "cron", "status"], capture_output=True, text=True, timeout=20)
+        return r.stdout.strip() or r.stderr.strip()
+    except Exception as e:
+        return str(e)
+
+
+@app.post("/api/system/cron/toggle")
+def cron_toggle(payload: dict):
+    """启用/暂停 cron 任务。payload: {id, enabled: bool}"""
+    cid = (payload or {}).get("id", "")
+    enable = bool((payload or {}).get("enabled", True))
+    if not cid:
+        return {"ok": False, "error": "缺少 task id"}
+    cmd = ["hermes", "cron", "resume" if enable else "pause", cid]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if r.returncode == 0:
+            return {"ok": True, "msg": f"{'已启用' if enable else '已暂停'} {cid}", "out": r.stdout.strip()}
+        return {"ok": False, "error": r.stderr.strip() or r.stdout.strip()}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/system/cron/run")
+def cron_run(payload: dict):
+    """立即运行一次 cron 任务。payload: {id}"""
+    cid = (payload or {}).get("id", "")
+    if not cid:
+        return {"ok": False, "error": "缺少 task id"}
+    try:
+        r = subprocess.run(["hermes", "cron", "run", cid], capture_output=True, text=True, timeout=30)
+        if r.returncode == 0:
+            return {"ok": True, "msg": f"已触发运行 {cid}", "out": r.stdout.strip()}
+        return {"ok": False, "error": r.stderr.strip() or r.stdout.strip()}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+# ---------------------------------------------------------------
+# 活动时间线 — 统计各项目 git 最近提交
+# ---------------------------------------------------------------
+@app.get("/api/activity")
+def activity():
+    """扫描各项目最近的 git 提交, 拼出活动时间线"""
+    events = []
+    cfg = _load_config()
+    for cat in cfg["categories"]:
+        for p in cat["projects"]:
+            if not p.get("git", {}).get("isGit"):
+                continue
+            try:
+                r = subprocess.run(
+                    ["git", "-C", p["path"], "log", "-5", "--pretty=%h|%ad|%s", "--date=format:%m-%d %H:%M"],
+                    capture_output=True, text=True, timeout=8)
+                for line in r.stdout.strip().splitlines():
+                    if "|" not in line:
+                        continue
+                    h, when, subj = line.split("|", 2)
+                    events.append({
+                        "proj_id": p["id"], "proj_name": p["name"], "cat": cat["name"],
+                        "hash": h, "when": when, "subject": subj[:80], "path": p["path"],
+                    })
+            except Exception:
+                continue
+    events.sort(key=lambda e: (e["when"] is None, e["when"]), reverse=True)
+    return {"events": events[:80], "total": len(events)}
+
+
+# ---------------------------------------------------------------
+# 系统设置 — 本机环境自检
+# ---------------------------------------------------------------
+@app.get("/api/system/env")
+def system_env():
+    """检测本机 agent 环境: skill/项目/服务/版本"""
+    import platform
+    skills = len(_scan_skills())
+    cats = _load_config()
+    proj_count = sum(len(c["projects"]) for c in cats["categories"])
+    running = [p["name"] for c in cats["categories"] for p in c["projects"] if p.get("active")]
+    env_info = {
+        "os": f"{platform.system()} {platform.machine()}",
+        "python": sys.version.split()[0],
+        "hermes": _hermes_version(),
+        "skills": skills,
+        "projects": proj_count,
+        "running": running,
+        "sessions": len(_load_proj_sessions()),
+        "favorites": len(_load_skill_favs()),
+    }
+    return env_info
+
+
+def _hermes_version():
+    try:
+        r = subprocess.run(["hermes", "--version"], capture_output=True, text=True, timeout=15)
+        return (r.stdout.strip() or r.stderr.strip()).splitlines()[0][:40]
+    except Exception:
+        return "unknown"
+
+
+# ---------------------------------------------------------------
+# 知识库 — llm-wiki 统计 + 搜索
+# ---------------------------------------------------------------
+LLM_WIKI_SCRIPTS = Path.home() / "Downloads" / "笔记" / "笔记" / ".claude" / "skills" / "llm-wiki" / "scripts"
+WIKI_ROOT = Path.home() / "Downloads" / "笔记" / "笔记" / "wiki"
+
+
+@app.get("/api/wiki/stats")
+def wiki_stats():
+    """llm-wiki 内容统计 (entities/topics/sources/synthesis 计数)"""
+    def count(sub):
+        d = WIKI_ROOT / sub
+        return len([f for f in d.glob("*.md")]) if d.is_dir() else 0
+    return {
+        "entities": count("entities"), "topics": count("topics"),
+        "sources": count("sources"), "synthesis": count("synthesis"),
+        "root": str(WIKI_ROOT),
+    }
+
+
+@app.get("/api/wiki/search")
+def wiki_search(q: str = ""):
+    """调用 llm-wiki search.sh 搜索"""
+    if not q:
+        return {"ok": False, "error": "缺少搜索词 q"}
+    script = LLM_WIKI_SCRIPTS / "search.sh"
+    if not script.exists():
+        return {"ok": False, "error": "llm-wiki search.sh 不存在"}
+    try:
+        r = subprocess.run(["bash", str(script), "search", str(WIKI_ROOT), q, "--max-results", "10"],
+                           capture_output=True, text=True, timeout=60)
+        # search.sh 输出可能是结构化文本, 直接返回原文让前端展示
+        text = (r.stdout or r.stderr)[:4000]
+        return {"ok": r.returncode == 0, "output": text, "query": q}
+    except subprocess.TimeoutExpired:
+        return {"ok": False, "error": "搜索超时(60s)"}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
 @app.get("/api/config")
 def get_config():
     return _load_config()
