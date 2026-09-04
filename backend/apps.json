@@ -1,0 +1,118 @@
+{
+  "categories": [
+    {
+      "key": "workbench",
+      "name": "工作台 / 工具",
+      "icon": "tool",
+      "projects": [
+        {
+          "id": "low-code",
+          "name": "低码工作台",
+          "path": "~/Downloads/project/cisdigital/low-code",
+          "desc": "低代码平台逆向工程: 页面脚本浏览/AI讲解/宏观关联/单据注册表/一键拉取/多应用管理",
+          "runDir": "~/Downloads/project/cisdigital/low-code/workbench/backend",
+          "cmd": "{python} main.py",
+          "url": "http://127.0.0.1:8787",
+          "port": 8787,
+          "type": "web"
+        },
+        {
+          "id": "ones-defect",
+          "name": "ONES 缺陷修复工作台",
+          "path": "~/Downloads/project/cisdigital/_ones-defect-wf",
+          "desc": "ONES 缺陷修复审批台 (FastAPI + Vue3/AntDV), 本地 Web 审批",
+          "runDir": "~/Downloads/project/cisdigital/_ones-defect-wf",
+          "cmd": "{python} server.py",
+          "url": "http://127.0.0.1:8000",
+          "port": 8000,
+          "type": "web"
+        }
+      ]
+    },
+    {
+      "key": "finance",
+      "name": "财务系统",
+      "icon": "money",
+      "projects": [
+        {
+          "id": "fs-front",
+          "name": "财务前端 fs",
+          "path": "~/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+          "desc": "财务系统前端工程 (Vue3 + Vite), 含 docs 详设",
+          "runDir": "~/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+          "cmd": "npm run dev",
+          "url": "http://localhost:5173",
+          "port": 5173,
+          "type": "web"
+        },
+        {
+          "id": "arch-nav",
+          "name": "财务架构图导航",
+          "path": "~/Downloads/笔记/笔记/项目记录/赛迪/19. 五矿统建系统/1. 财务系统/00_架构图导航",
+          "desc": "财务系统架构图导航 (HTML静态入口)", 
+          "cmd": "open {path}",
+          "url": "",
+          "port": 0,
+          "type": "doc"
+        }
+      ]
+    },
+    {
+      "key": "trading",
+      "name": "交易 / AI",
+      "icon": "trend",
+      "projects": [
+        {
+          "id": "trading-strategy",
+          "name": "交易策略系统 v2",
+          "path": "~/Downloads/project/mine/trading-strategy-system",
+          "desc": "Nuxt/Vite + Fastify + freqtrade A股回测",
+          "words": ["web", "api"],
+          "children": [
+            { "id": "tws-web", "name": "web 前端", "dir": "apps/web", "cmd": "npm run dev", "port": 8750, "url": "http://127.0.0.1:8750" },
+            { "id": "tws-api", "name": "api 后端", "dir": "apps/api", "cmd": "npm run dev", "port": 8751, "url": "http://127.0.0.1:8751", "api": true }
+          ]
+        },
+        {
+          "id": "side-hustle",
+          "name": "AI 副业情报",
+          "path": "~/Downloads/project/mine/ai-side-hustle",
+          "desc": "AI 副业情报收集 (报告/脚本/output)",
+          "type": "doc"
+        },
+        {
+          "id": "comic",
+          "name": "AI 漫剧生产线",
+          "path": "~/Downloads/project/mine/ai-comic-drama",
+          "desc": "AI 漫剧全自动生产线",
+          "type": "doc"
+        },
+        {
+          "id": "jw-deep",
+          "name": "五矿一企一屏",
+          "path": "~/Downloads/project/mine/jw-deep-water",
+          "desc": "五矿矿业一企一屏项目",
+          "type": "web"
+        }
+      ]
+    },
+    {
+      "key": "knowledge",
+      "name": "知识库",
+      "icon": "book",
+      "projects": [
+        {
+          "id": "wiki-dashboard",
+          "name": "知识库仪表盘",
+          "path": "~/Downloads/project/mine/wiki-dashboard",
+          "desc": "个人知识库 (llm-wiki) 仪表盘: 知识量统计/素材摄入/近期更新/高频标签/核心概念/孤立页",
+          "runDir": "~/Downloads/project/mine/wiki-dashboard/backend",
+          "cmd": "{python} server.py",
+          "url": "http://127.0.0.1:8895",
+          "port": 8895,
+          "type": "web"
+        }
+      ]
+    }
+  ]
+}
