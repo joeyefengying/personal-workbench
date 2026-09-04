@@ -29,3 +29,9 @@ export function getSkills() {
 export function openSkill(payload) {
   return request('/api/skill/open', { method: 'POST', body: JSON.stringify(payload) })
 }
+export function openProjectChat(payload) {
+  return request('/api/project/open-chat', { method: 'POST', body: JSON.stringify(payload) })
+}
+export function getProjectSessions() {
+  return request('/api/project/sessions')
+}

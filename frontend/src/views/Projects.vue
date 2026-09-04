@@ -2,6 +2,7 @@
 import { ref, computed, watch } from 'vue'
 import { message } from 'ant-design-vue'
 import { useWorkbenchStore } from '@/store/workbench'
+import { openProjectChat } from '@/api'
 
 const store = useWorkbenchStore()
 const activeTab = ref('')
@@ -52,6 +53,15 @@ function openUrl(proj) {
   window.open(proj.url, '_blank')
 }
 
+async function doChat(proj) {
+  const r = await openProjectChat({ proj_id: proj.id })
+  if (r.ok)
+    message.success(r.msg || '已打开对话')
+  else
+    message.error(r.error || '打开对话失败')
+  store.refresh()
+}
+
 function shortPath(p) {
   return p.replace('/Users/zhanghao/', '~/')
 }
@@ -83,9 +93,14 @@ function gitTag(proj) {
               style="border-radius: 8px"
             >
               <template #extra>
-                <a-tag :color="proj.active ? 'success' : 'default'" :style="proj.type === 'doc' ? 'display:none' : ''">
-                  {{ proj.active ? '运行中' : '未启动' }}
-                </a-tag>
+                <span style="display:flex;align-items:center;gap:6px">
+                  <a-tooltip v-if="proj.hasSession" title="已有项目对话，将续接不重复新建">
+                    <a-tag color="cyan" style="margin:0">💬 已建会话</a-tag>
+                  </a-tooltip>
+                  <a-tag :color="proj.active ? 'success' : 'default'" :style="proj.type === 'doc' ? 'display:none' : ''">
+                    {{ proj.active ? '运行中' : '未启动' }}
+                  </a-tag>
+                </span>
               </template>
 
               <p style="min-height: 36px; color: #666; font-size: 13px; margin-bottom: 8px">{{ proj.desc }}</p>
@@ -110,7 +125,10 @@ function gitTag(proj) {
 
               <!-- 操作按钮 -->
               <div style="display: flex; gap: 8px; flex-wrap: wrap">
-                <a-button v-if="proj.type !== 'doc' && proj.cmd" size="small" type="primary" @click="doStart(proj)">
+                <a-button size="small" type="primary" ghost @click="doChat(proj)">
+                  💬 对话
+                </a-button>
+                <a-button v-if="proj.type !== 'doc' && proj.cmd" size="small" @click="doStart(proj)">
                   启动
                 </a-button>
                 <a-button v-if="proj.type !== 'doc' && proj.cmd" size="small" danger :disabled="!proj.active" @click="doStop(proj)">

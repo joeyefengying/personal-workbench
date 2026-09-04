@@ -72,6 +72,7 @@ def _expand_cmd(cmd: str, run_dir: Path, path: Path) -> str:
 def _build_project(proj: dict) -> dict:
     path = _resolve(proj.get("path", ""))
     run_dir = _resolve(proj.get("runDir", proj.get("path", "")))
+    sessions = _load_proj_sessions()
     p = {
         "id": proj["id"],
         "name": proj["name"],
@@ -79,6 +80,7 @@ def _build_project(proj: dict) -> dict:
         "desc": proj.get("desc", ""),
         "type": proj.get("type", "web"),
         "git": _git_info(path),
+        "hasSession": proj["id"] in sessions,
     }
     port = proj.get("port", 0)
     cmd = proj.get("cmd", "")
@@ -221,6 +223,130 @@ def open_skill(payload: dict):
         return {"ok": False, "error": str(e), "skill": slug}
 
 
+@app.post("/api/project/open-chat")
+def open_project_chat(payload: dict):
+    """项目对话启动器: 在项目目录打开 hermes chat, 已有会话则续接不重复新建.
+    - 已有会话: 立即弹 Terminal --resume <id> (快路径)
+    - 首次: 后台线程建会话(拿 session_id 存档), 建好后弹 Terminal --resume
+    payload: {proj_id}
+    """
+    proj_id = (payload or {}).get("proj_id", "")
+    if not proj_id:
+        return {"ok": False, "error": "缺少 proj_id"}
+    cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
+    proj = _find_proj(cfg, proj_id)
+    if not proj:
+        return {"ok": False, "error": "未找到项目 %s" % proj_id}
+    path = _resolve(proj.get("path", ""))
+    if not path.is_dir():
+        return {"ok": False, "error": "目录不存在: %s" % path}
+    run_dir = _resolve(proj.get("runDir", proj.get("path", ""))) or path
+
+    # 并发保护: 同一项目同时只建一个会话
+    with _lock:
+        if proj_id in _sess_building:
+            return {"ok": True, "msg": "正在为该项目的对话会话… 建好后会自动打开", "building": True, "proj": proj_id}
+
+    sessions = _load_proj_sessions()
+    rec = sessions.get(proj_id) or {}
+    sid = rec.get("session_id", "")
+
+    if sid:
+        # 快路径: 已有会话, 立即续接
+        cmd = "hermes chat --resume %s" % _shell_escape(sid)
+        ok, err = _spawn_terminal_run(run_dir, cmd)
+        if not ok:
+            return {"ok": False, "error": err, "proj": proj_id}
+        return {"ok": True, "msg": "已续接 %s 项目对话" % proj["name"],
+                "resumed": True, "session_id": sid, "proj": proj_id}
+
+    # 首次: 后台建会话
+    with _lock:
+        _sess_building.add(proj_id)
+    def _build_later():
+        try:
+            _create_project_session(proj, run_dir)
+        finally:
+            with _lock:
+                _sess_building.discard(proj_id)
+    threading.Thread(target=_build_later, daemon=True).start()
+    return {"ok": True, "msg": "正在为 %s 创建专属对话会话… 建好后自动打开（约 30-60 秒）" % proj["name"],
+            "building": True, "proj": proj_id}
+
+
+_sess_building = set()
+
+
+def _create_project_session(proj: dict, run_dir: Path) -> None:
+    """后台建会话: hermes chat -q -Q 建一条, 拿 session_id 存档, 再弹 Terminal --resume"""
+    proj_id = proj["id"]
+    try:
+        probe = subprocess.run(
+            ["hermes", "chat", "-q", "你好，这是「%s」项目的工作对话，后续我会在这里和你讨论这个项目的开发、调试和迭代。" % proj["name"], "-Q"],
+            cwd=str(run_dir), capture_output=True, text=True, timeout=240)
+    except Exception:
+        return
+    sid = _extract_session(probe.stdout + "\n" + probe.stderr)
+    if not sid:
+        # 建会话失败, 至少打开一个普通对话
+        _spawn_terminal_run(run_dir, "hermes chat")
+        return
+    sessions = _load_proj_sessions()
+    sessions[proj_id] = {"session_id": sid, "name": proj["name"],
+                         "created": time.strftime("%Y-%m-%d %H:%M:%S")}
+    _save_proj_sessions(sessions)
+    cmd = "hermes chat --resume %s" % _shell_escape(sid)
+    _spawn_terminal_run(run_dir, cmd)
+
+
+def _spawn_terminal_run(run_dir: Path, cmd: str):
+    """在 Terminal.app 新窗口: cd 到 run_dir 后运行 cmd"""
+    cd = _shell_escape(str(run_dir))
+    if not cd.startswith("/"):
+        cd = "/" + cd
+    apple_script = (
+        'tell application "Terminal"\n'
+        '  activate\n'
+        '  do script "cd %s && %s; echo; read -p \\"回车关闭窗口...\\""\n'
+        'end tell' % (cd, cmd.replace("\\", "\\\\").replace('"', '\\"')))
+    try:
+        p = subprocess.run(["osascript", "-e", apple_script],
+                           capture_output=True, text=True, timeout=15)
+        if p.returncode != 0:
+            return False, "osascript 打开失败: %s" % (p.stderr.strip() or "未知")
+        return True, None
+    except Exception as e:
+        return False, str(e)
+
+
+def _extract_session(text: str) -> str:
+    """从 hermes chat 输出中提取 session_id (格式 20260904_160314_abc31e, 打在 stderr/含 session_id:)"""
+    # 直接匹配时间戳格式 id, 不依赖前面的 session/session_id 关键词(其前后缀多变)
+    m = re.search(r"([0-9]{8}_[0-9]{6}_[a-f0-9]{6})", text)
+    return m.group(1) if m else ""
+
+
+def _load_proj_sessions() -> dict:
+    f = ROOT / "project_sessions.json"
+    if f.exists():
+        try:
+            return json.loads(f.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+
+def _save_proj_sessions(d: dict) -> None:
+    (ROOT / "project_sessions.json").write_text(
+        json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+@app.get("/api/project/sessions")
+def project_sessions():
+    """列出各项目的已建会话 (proj_id -> {session_id, name, created})"""
+    return {"sessions": _load_proj_sessions()}
+
+
 @app.get("/api/config")
 def get_config():
     return _load_config()
@@ -326,7 +452,26 @@ def health():
 
 # 若前端已 build, 由后端 serve 静态产物(单端口访问)
 if FRONTEND_DIST.is_dir():
+    app.mount("/assets", StaticFiles(directory=str(FRONTEND_DIST / "assets")), name="assets")
     app.mount("/", StaticFiles(directory=str(FRONTEND_DIST), html=True), name="frontend")
+
+    # SPA fallback: 深层路由(如 /projects /skills) 回退到 index.html
+    from starlette.responses import FileResponse
+    index_file = FRONTEND_DIST / "index.html"
+
+    @app.exception_handler(404)
+    async def spa_fallback(request, exc):
+        # 仅对非 API 路径回退, API 404 保持原样
+        if request.url.path.startswith("/api/"):
+            from fastapi.responses import JSONResponse
+            return JSONResponse({"detail": "Not Found"}, status_code=404)
+        if request.url.path.startswith(("/assets/", "/favicon.ico")):
+            from fastapi.responses import JSONResponse
+            return JSONResponse({"detail": "Not Found"}, status_code=404)
+        if index_file.exists():
+            return FileResponse(str(index_file))
+        from fastapi.responses import JSONResponse
+        return JSONResponse({"detail": "Not Found"}, status_code=404)
 
 if __name__ == "__main__":
     import uvicorn
