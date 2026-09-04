@@ -35,3 +35,9 @@ export function openProjectChat(payload) {
 export function getProjectSessions() {
   return request('/api/project/sessions')
 }
+export function getSkillFavorites() {
+  return request('/api/skill/favorites')
+}
+export function setSkillFavorite(payload) {
+  return request('/api/skill/favorite', { method: 'POST', body: JSON.stringify(payload) })
+}

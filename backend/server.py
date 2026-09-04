@@ -341,6 +341,43 @@ def _save_proj_sessions(d: dict) -> None:
         json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+@app.get("/api/skill/favorites")
+def skill_favorites():
+    """返回收藏的 skill key 列表 (key = slug+source), 有序"""
+    return {"favorites": _load_skill_favs()}
+
+
+@app.post("/api/skill/favorite")
+def skill_favorite(payload: dict):
+    """收藏/取消收藏 skill。payload: {key, favorite: bool}"""
+    key = (payload or {}).get("key", "")
+    favorite = bool((payload or {}).get("favorite", True))
+    if not key:
+        return {"ok": False, "error": "缺少 key"}
+    favs = _load_skill_favs()
+    if favorite and key not in favs:
+        favs.append(key)
+    if not favorite and key in favs:
+        favs.remove(key)
+    _save_skill_favs(favs)
+    return {"ok": True, "favorites": favs}
+
+
+def _load_skill_favs() -> list:
+    f = ROOT / "skill_favorites.json"
+    if f.exists():
+        try:
+            return json.loads(f.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return []
+
+
+def _save_skill_favs(d: list) -> None:
+    (ROOT / "skill_favorites.json").write_text(
+        json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
 @app.get("/api/project/sessions")
 def project_sessions():
     """列出各项目的已建会话 (proj_id -> {session_id, name, created})"""
