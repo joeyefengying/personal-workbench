@@ -1,49 +1,13 @@
 <script setup>
-import { ref, computed, h, watch, onMounted } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { message } from 'ant-design-vue'
 import { useWorkbenchStore } from '@/store/workbench'
-import { getSkills } from '@/api'
-import SkillDialog from '@/components/SkillDialog.vue'
 
 const store = useWorkbenchStore()
 const activeTab = ref('')
 
-const skills = ref([])
-const skillsLoading = ref(false)
-const skillFilter = ref('')
-const skillDialog = ref({ visible: false, skill: null })
-
-async function loadSkills() {
-  skillsLoading.value = true
-  try {
-    const d = await getSkills()
-    skills.value = d.skills || []
-  }
-  catch (e) {
-    message.error('加载技能失败: ' + (e?.message || e))
-  }
-  finally {
-    skillsLoading.value = false
-  }
-}
-
-const filteredSkills = computed(() => {
-  const q = skillFilter.value.trim().toLowerCase()
-  if (!q)
-    return skills.value
-  return skills.value.filter(s =>
-    s.name.toLowerCase().includes(q) || s.description.toLowerCase().includes(q) || s.slug.toLowerCase().includes(q))
-})
-
-function openSkill(skill) {
-  skillDialog.value = { visible: true, skill }
-}
-
 const tabs = computed(() => store.categories.map(c => ({ key: c.key, name: c.name })))
 
-onMounted(() => { loadSkills() })
-
-// 数据到达后默认选中第一个分类
 watch(
   () => store.categories,
   (cats) => {
@@ -107,51 +71,6 @@ function gitTag(proj) {
 
 <template>
   <div>
-    <!-- 我的 Skill 能力墙 -->
-    <div style="margin-bottom: 32px">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-        <h2 style="margin:0;font-size:18px">🧪 我的 Skill 能力</h2>
-        <a-tag color="blue">{{ skillsLoading ? '…' : skills.length }}</a-tag>
-        <span style="font-size:12px;color:#999">点开任意能力即可对话调用</span>
-        <div style="flex:1"></div>
-        <a-input
-          v-model:value="skillFilter"
-          placeholder="搜索能力…"
-          allow-clear
-          style="width:220px"
-        />
-        <a-button size="small" @click="loadSkills">刷新</a-button>
-      </div>
-      <a-skeleton :loading="skillsLoading" active>
-        <div
-          v-if="filteredSkills.length"
-          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px"
-        >
-          <a-card
-            v-for="s in filteredSkills"
-            :key="s.slug + s.source"
-            hoverable
-            size="small"
-            style="border-radius:8px;cursor:pointer"
-            @click="openSkill(s)"
-          >
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <b style="font-size:13px">{{ s.name }}</b>
-              <a-tag :color="s.source === 'hermes' ? 'blue' : 'purple'" style="font-size:11px">
-                {{ s.source === 'hermes' ? 'H' : 'C' }}
-              </a-tag>
-            </div>
-            <p style="font-size:12px;color:#888;margin:6px 0 0;min-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">
-              {{ s.description }}
-            </p>
-          </a-card>
-        </div>
-        <a-empty v-else-if="!skillsLoading" description="暂无能力" />
-      </a-skeleton>
-    </div>
-
-    <a-divider style="margin:16px 0 24px">自研项目</a-divider>
-
     <a-skeleton :loading="store.loading" active>
       <a-tabs v-model:activeKey="activeTab" type="card">
         <a-tab-pane v-for="t in tabs" :key="t.key" :tab="`${t.name} (${tabMap[t.key].projects.length})`">
@@ -209,7 +128,5 @@ function gitTag(proj) {
         </a-tab-pane>
       </a-tabs>
     </a-skeleton>
-
-    <SkillDialog v-model:visible="skillDialog.visible" :skill="skillDialog.skill" />
   </div>
 </template>
