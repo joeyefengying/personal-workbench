@@ -592,6 +592,56 @@ def wiki_search(q: str = ""):
         return {"ok": False, "error": str(e)}
 
 
+# ---------------------------------------------------------------
+# 近期活动分析 — 手动运行分析脚本 + 版本记录
+# ---------------------------------------------------------------
+ANALYZE_SCRIPT = ROOT / "analyze_recent.py"
+ANALYZE_REPORTS = ROOT / "reports"
+
+
+@app.post("/api/analyze/run")
+def analyze_run():
+    """手动运行近期活动分析, 生成带版本号的报告文件"""
+    try:
+        r = subprocess.run([sys.executable, str(ANALYZE_SCRIPT), "--days", "7"],
+                           capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+        if r.returncode != 0:
+            return {"ok": False, "error": r.stderr[-500:] or r.stdout[-500:]}
+        d = json.loads(r.stdout)
+        return {"ok": True, "report": d["report"], "version": d["version"]}
+    except subprocess.TimeoutExpired:
+        return {"ok": False, "error": "分析超时(120s)"}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/analyze/latest")
+def analyze_latest():
+    """获取最近一次分析报告"""
+    f = ANALYZE_REPORTS / "latest.json"
+    if not f.exists():
+        return {"ok": False, "error": "尚无分析报告, 请先运行一次"}
+    try:
+        return {"ok": True, "report": json.loads(f.read_text(encoding="utf-8"))}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/analyze/history")
+def analyze_history():
+    """版本历史: 列出所有 analysis_*.json 文件"""
+    versions = []
+    if ANALYZE_REPORTS.is_dir():
+        for v in sorted(ANALYZE_REPORTS.glob("analysis_*.json"), reverse=True):
+            stem = v.stem.replace("analysis_", "")
+            versions.append({
+                "version": stem,
+                "file": v.name,
+                "time": f"{stem[:4]}-{stem[4:6]}-{stem[6:8]} {stem[9:11]}:{stem[11:13]}",
+            })
+    return {"ok": True, "versions": versions}
+
+
 @app.get("/api/config")
 def get_config():
     return _load_config()

@@ -62,3 +62,12 @@ export function getWikiStats() {
 export function searchWiki(q) {
   return request(`/api/wiki/search?q=${encodeURIComponent(q)}`)
 }
+export function runAnalyze() {
+  return request('/api/analyze/run', { method: 'POST' })
+}
+export function getAnalyzeLatest() {
+  return request('/api/analyze/latest')
+}
+export function getAnalyzeHistory() {
+  return request('/api/analyze/history')
+}

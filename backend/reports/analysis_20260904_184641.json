@@ -1,0 +1,306 @@
+{
+  "generated_at": "2026-09-04 18:46:41",
+  "window_days": 7,
+  "stats": {
+    "sessions": 12,
+    "projects": 4,
+    "git_events": 50,
+    "cron_failures": 1
+  },
+  "hot_projects": [
+    {
+      "name": "知识库/llm-wiki",
+      "count": 7
+    },
+    {
+      "name": "个人工作台",
+      "count": 3
+    },
+    {
+      "name": "ONES 缺陷修复",
+      "count": 1
+    },
+    {
+      "name": "交易策略系统",
+      "count": 1
+    }
+  ],
+  "top_topics": [
+    {
+      "word": "https",
+      "count": 4
+    },
+    {
+      "word": "weixin",
+      "count": 4
+    },
+    {
+      "word": "com",
+      "count": 4
+    },
+    {
+      "word": "r4vsumjfuinxfbfjloxng",
+      "count": 4
+    },
+    {
+      "word": "帮我消化",
+      "count": 3
+    },
+    {
+      "word": "你好",
+      "count": 2
+    },
+    {
+      "word": "这是",
+      "count": 2
+    },
+    {
+      "word": "项目的工作对",
+      "count": 2
+    },
+    {
+      "word": "后续我会在这",
+      "count": 2
+    },
+    {
+      "word": "里和你讨论这",
+      "count": 2
+    },
+    {
+      "word": "个项目的开发",
+      "count": 2
+    },
+    {
+      "word": "调试和迭代",
+      "count": 2
+    }
+  ],
+  "recent_sessions": [
+    {
+      "ts": "2026-09-04 17:16",
+      "project": "ONES 缺陷修复",
+      "first": "你好，这是「ONES 缺陷修复工作台」项目的工作对话，后续我会在这里和你讨论这个项目的开发、调试和迭代。"
+    },
+    {
+      "ts": "2026-09-04 16:48",
+      "project": "交易策略系统",
+      "first": "你好，这是「交易策略系统 v2」项目的工作对话，后续我会在这里和你讨论这个项目的开发、调试和迭代。"
+    },
+    {
+      "ts": "2026-09-04 16:24",
+      "project": "知识库/llm-wiki",
+      "first": "帮我消化 https://mp.weixin.qq.com/s/1R4vSUmjFUINxFbfJLOXng"
+    },
+    {
+      "ts": "2026-09-04 16:21",
+      "project": "知识库/llm-wiki",
+      "first": "消化一下 https://mp.weixin.qq.com/s/1R4vSUmjFUINxFbfJLOXng"
+    },
+    {
+      "ts": "2026-09-04 16:12",
+      "project": "知识库/llm-wiki",
+      "first": "列出知识库前3个实体"
+    },
+    {
+      "ts": "2026-09-04 16:02",
+      "project": "知识库/llm-wiki",
+      "first": "列出知识库实体的前5个"
+    },
+    {
+      "ts": "2026-09-04 15:58",
+      "project": "知识库/llm-wiki",
+      "first": "列出知识库 wiki/entities 目录下文件名(只看文件名)"
+    },
+    {
+      "ts": "2026-09-04 15:57",
+      "project": "知识库/llm-wiki",
+      "first": "知识库状态"
+    },
+    {
+      "ts": "2026-09-04 15:33",
+      "project": "知识库/llm-wiki",
+      "first": "帮我消化 https://mp.weixin.qq.com/s/1R4vSUmjFUINxFbfJLOXng"
+    },
+    {
+      "ts": "2026-09-04 15:28",
+      "project": "个人工作台",
+      "first": "简述 personal-workbench 项目是什么"
+    },
+    {
+      "ts": "2026-09-04 15:27",
+      "project": "个人工作台",
+      "first": "简述 personal-workbench 项目是什么,一句话"
+    },
+    {
+      "ts": "2026-09-04 15:14",
+      "project": "个人工作台",
+      "first": "给出个人工作台的快速简介,一句话"
+    }
+  ],
+  "git_activity": [
+    {
+      "proj": "财务前端 fs",
+      "when": "09-04 15:50",
+      "subject": "Merge branch 'hotfix/20260902' into release-1.0.0"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-04 15:45",
+      "subject": "Merge branch 'hotfix/20260902' of https://dq.therogner.com/wk-financia"
+    },
+    {
+      "proj": "AI 漫剧生产线",
+      "when": "09-04 14:41",
+      "subject": "feat: AI漫剧生产线 - run_pipeline + comfyui模板 + dify工作流指南"
+    },
+    {
+      "proj": "知识库仪表盘",
+      "when": "09-04 14:31",
+      "subject": "feat: 个人知识库仪表盘 (macOS) - FastAPI聚合llm-wiki统计 + 静态dashboard页(端口8895)"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-04 11:28",
+      "subject": "upload 修改提示标题信息"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-04 01:14",
+      "subject": "feat(业务讲解): 脚本↔功能点关系图可视化 + 点击跳转代码"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-03 23:36",
+      "subject": "feat(业务讲解): 脚本业务动作归因 + 修复业务讲解宽度不撑满"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-03 23:28",
+      "subject": "refactor(业务讲解): 提升为中栏独立tab, 与事件脚本树/宏观关联图同级, 移除右侧嵌入"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-03 23:23",
+      "subject": "feat(业务讲解): 打通PRD/详设业务层与低开脚本, 新增页面业务讲解tab+应用主线逻辑视图"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 21:21",
+      "subject": "feat: update @fe-minmetals-fm/components to 1.3.77"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 20:53",
+      "subject": "feat: update @fe-minmetals-fm/components to 1.3.76"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 19:56",
+      "subject": "Merge branch 'hotfix/20260902' of https://git.cisdigital.cn/wk-financi"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 19:56",
+      "subject": "新增功能"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 16:30",
+      "subject": "fix: 保持时，删除前端校验逻辑"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 15:51",
+      "subject": "feat: fix DictSelectDialog table stripe style"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 11:30",
+      "subject": "注释删除功能"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 08:33",
+      "subject": "Merge branch 'hotfix/20260902' into 'release-1.0.0'"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 05:53",
+      "subject": "Merge branch 'hotfix/20260902' into 'release-1.0.0'"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 01:26",
+      "subject": "perf(build): @minmetals-ui 组件库升级 0.1.1→0.1.6-g2.rc.44 + 按需导入优化"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-03 01:26",
+      "subject": "perf(build): @minmetals-ui 组件库升级 0.1.1→0.1.6-g2.rc.44 + 按需导入优化"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-03 00:42",
+      "subject": "chore(数据): 将平台拉取数据从 git 跟踪解除(保留本地文件, 由 .gitignore 接管)"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-03 00:32",
+      "subject": "chore(脱敏): 移除代码中本机敏感路径, 为推 GitHub 私有仓库做准备"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-03 00:09",
+      "subject": "docs: 新增《多应用拉取操作手册》——拉取一个应用的完整步骤与价值发掘方向"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-02 23:53",
+      "subject": "fix(多应用拉取): 系统代理坑修复——应用清单/刷新不再 Connection refused"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-02 23:42",
+      "subject": "feat(多应用命名/历史增强): 补齐 pageComponent 组件树+model-details+lang-packages+版本快"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-02 22:45",
+      "subject": "fix(脚本名): 多应用切换后脚本名随机 + 侧栏路径行丢失"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-02 22:14",
+      "subject": "feat(每日分析): 引入 ECharts 报表库——每日变更趋势改分组柱状图 + 脚本类型分布改玫瑰饼图(替换手写CSS), 按需引入e"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-02 21:52",
+      "subject": "Merge branch 'hotfix/20260902' into 'release-1.0.0'"
+    },
+    {
+      "proj": "低码工作台",
+      "when": "09-02 21:51",
+      "subject": "feat(每日分析): 全应用脚本静态质量 + 每日变更趋势日报 第7入口"
+    },
+    {
+      "proj": "财务前端 fs",
+      "when": "09-02 21:50",
+      "subject": "fix(build): 合并 @lingshu 与 @minmetals 分包，修复循环依赖导致线上 Un TDZ 报错"
+    }
+  ],
+  "cron_issues": [
+    {
+      "name": "LCDP版本监控-多应用(9/12/18/22)",
+      "error": "Script not found: /Users/zhanghao/.hermes/scripts/scripts/lcdp_monitor_multi.py",
+      "last_run": "2026-09-04T18:01"
+    }
+  ],
+  "suggestions": [
+    "近期最活跃: 知识库/llm-wiki (7 次会话), 可考虑深入该方向",
+    "近期最活跃: 个人工作台 (3 次会话), 可考虑深入该方向",
+    "近期最活跃: ONES 缺陷修复 (1 次会话), 可考虑深入该方向",
+    "⚠️ 1 个定时任务运行失败: LCDP版本监控-多应用(9/12/18/22) — 建议检查脚本超时/依赖",
+    "[ONES 缺陷修复] 提到待解决事项: 你好，这是「ONES 缺陷修复工作台」项目的工作对话，后续我会在这里和你讨论这个项目的开发、调试和迭代。…"
+  ]
+}

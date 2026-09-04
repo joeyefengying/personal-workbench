@@ -1,0 +1,155 @@
+{
+  "generated_at": "2026-09-04 18:45:36",
+  "window_days": 7,
+  "stats": {
+    "sessions": 12,
+    "projects": 4,
+    "git_events": 0,
+    "cron_failures": 1
+  },
+  "hot_projects": [
+    {
+      "name": "知识库/llm-wiki",
+      "count": 7
+    },
+    {
+      "name": "个人工作台",
+      "count": 3
+    },
+    {
+      "name": "ONES 缺陷修复",
+      "count": 1
+    },
+    {
+      "name": "交易策略系统",
+      "count": 1
+    }
+  ],
+  "top_topics": [
+    {
+      "word": "https",
+      "count": 4
+    },
+    {
+      "word": "weixin",
+      "count": 4
+    },
+    {
+      "word": "com",
+      "count": 4
+    },
+    {
+      "word": "r4vsumjfuinxfbfjloxng",
+      "count": 4
+    },
+    {
+      "word": "帮我消化",
+      "count": 3
+    },
+    {
+      "word": "你好",
+      "count": 2
+    },
+    {
+      "word": "这是",
+      "count": 2
+    },
+    {
+      "word": "项目的工作对",
+      "count": 2
+    },
+    {
+      "word": "后续我会在这",
+      "count": 2
+    },
+    {
+      "word": "里和你讨论这",
+      "count": 2
+    },
+    {
+      "word": "个项目的开发",
+      "count": 2
+    },
+    {
+      "word": "调试和迭代",
+      "count": 2
+    }
+  ],
+  "recent_sessions": [
+    {
+      "ts": "2026-09-04 17:16",
+      "project": "ONES 缺陷修复",
+      "first": "你好，这是「ONES 缺陷修复工作台」项目的工作对话，后续我会在这里和你讨论这个项目的开发、调试和迭代。"
+    },
+    {
+      "ts": "2026-09-04 16:48",
+      "project": "交易策略系统",
+      "first": "你好，这是「交易策略系统 v2」项目的工作对话，后续我会在这里和你讨论这个项目的开发、调试和迭代。"
+    },
+    {
+      "ts": "2026-09-04 16:24",
+      "project": "知识库/llm-wiki",
+      "first": "帮我消化 https://mp.weixin.qq.com/s/1R4vSUmjFUINxFbfJLOXng"
+    },
+    {
+      "ts": "2026-09-04 16:21",
+      "project": "知识库/llm-wiki",
+      "first": "消化一下 https://mp.weixin.qq.com/s/1R4vSUmjFUINxFbfJLOXng"
+    },
+    {
+      "ts": "2026-09-04 16:12",
+      "project": "知识库/llm-wiki",
+      "first": "列出知识库前3个实体"
+    },
+    {
+      "ts": "2026-09-04 16:02",
+      "project": "知识库/llm-wiki",
+      "first": "列出知识库实体的前5个"
+    },
+    {
+      "ts": "2026-09-04 15:58",
+      "project": "知识库/llm-wiki",
+      "first": "列出知识库 wiki/entities 目录下文件名(只看文件名)"
+    },
+    {
+      "ts": "2026-09-04 15:57",
+      "project": "知识库/llm-wiki",
+      "first": "知识库状态"
+    },
+    {
+      "ts": "2026-09-04 15:33",
+      "project": "知识库/llm-wiki",
+      "first": "帮我消化 https://mp.weixin.qq.com/s/1R4vSUmjFUINxFbfJLOXng"
+    },
+    {
+      "ts": "2026-09-04 15:28",
+      "project": "个人工作台",
+      "first": "简述 personal-workbench 项目是什么"
+    },
+    {
+      "ts": "2026-09-04 15:27",
+      "project": "个人工作台",
+      "first": "简述 personal-workbench 项目是什么,一句话"
+    },
+    {
+      "ts": "2026-09-04 15:14",
+      "project": "个人工作台",
+      "first": "给出个人工作台的快速简介,一句话"
+    }
+  ],
+  "git_activity": [],
+  "cron_issues": [
+    {
+      "name": "LCDP版本监控-多应用(9/12/18/22)",
+      "error": "Script not found: /Users/zhanghao/.hermes/scripts/scripts/lcdp_monitor_multi.py",
+      "last_run": "2026-09-04T18:01"
+    }
+  ],
+  "suggestions": [
+    "近期最活跃: 知识库/llm-wiki (7 次会话), 可考虑深入该方向",
+    "近期最活跃: 个人工作台 (3 次会话), 可考虑深入该方向",
+    "近期最活跃: ONES 缺陷修复 (1 次会话), 可考虑深入该方向",
+    "⚠️ 1 个定时任务运行失败: LCDP版本监控-多应用(9/12/18/22) — 建议检查脚本超时/依赖",
+    "[ONES 缺陷修复] 提到待解决事项: 你好，这是「ONES 缺陷修复工作台」项目的工作对话，后续我会在这里和你讨论这个项目的开发、调试和迭代。…"
+  ]
+}

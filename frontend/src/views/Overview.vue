@@ -1,12 +1,17 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useWorkbenchStore } from '@/store/workbench'
-import { getSkills, getActivity } from '@/api'
+import { getSkills, getActivity, runAnalyze, getAnalyzeLatest, getAnalyzeHistory } from '@/api'
+import { message } from 'ant-design-vue'
 
 const store = useWorkbenchStore()
 const skills = ref([])
 const activity = ref([])
 const activityLoading = ref(false)
+const analysis = ref(null)
+const analysisLoading = ref(false)
+const analysisHistory = ref([])
+const running = ref(false)
 
 const skillCount = computed(() => skills.value.length || 0)
 const hermesCount = computed(() => skills.value.filter(s => s.source === 'hermes').length)
@@ -17,13 +22,14 @@ const docCount = computed(() => store.allProjects.filter(p => p.type === 'doc').
 
 onMounted(async () => {
   if (!store.categories.length)
-    store.load()
+    await store.load()
   try {
     const d = await getSkills()
     skills.value = d.skills || []
   }
   catch { /* ignore */ }
   await loadActivity()
+  await loadAnalysis()
 })
 
 async function loadActivity() {
@@ -36,6 +42,47 @@ async function loadActivity() {
   finally {
     activityLoading.value = false
   }
+}
+
+async function loadAnalysis() {
+  analysisLoading.value = true
+  try {
+    const [l, h] = await Promise.all([getAnalyzeLatest(), getAnalyzeHistory()])
+    if (l?.ok)
+      analysis.value = l.report
+    if (h?.ok)
+      analysisHistory.value = h.versions
+  }
+  catch { /* ignore */ }
+  finally {
+    analysisLoading.value = false
+  }
+}
+
+async function doRun() {
+  running.value = true
+  try {
+    const r = await runAnalyze()
+    if (r?.ok) {
+      analysis.value = r.report
+      message.success(`分析完成 · 版本 ${r.version}`)
+      await loadAnalysis()
+    }
+    else {
+      message.error(r?.error || '分析失败')
+    }
+  }
+  catch (e) {
+    message.error('运行分析失败: ' + (e?.message || e))
+  }
+  finally {
+    running.value = false
+  }
+}
+
+function openAnalysis(version) {
+  // 用 /api/analyze/latest 重置标记; 版本历史仅展示 (当前简化: 高亮最近版本)
+  message.info(`版本 ${version} · 详情见报告文件`)
 }
 
 const statCards = computed(() => [
@@ -112,6 +159,79 @@ const statCards = computed(() => [
           </div>
         </a>
       </div>
+    </a-card>
+
+    <!-- 近期活动分析 -->
+    <a-card title="🧠 近期活动分析" size="small" style="border-radius:8px;margin-top:16px">
+      <template #extra>
+        <a-tag v-if="analysis" color="gold" style="margin-right:8px">
+          版本 {{ analysis.generated_at.slice(0, 10) }} {{ analysis.generated_at.slice(11, 16) }}
+        </a-tag>
+        <a-button type="primary" size="small" :loading="running" @click="doRun">
+          ▶ 运行分析
+        </a-button>
+      </template>
+      <a-skeleton :loading="analysisLoading" active>
+        <template v-if="analysis">
+          <!-- 统计 -->
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+            <a-tag color="blue" style="font-size:13px">📝 {{ analysis.stats.sessions }} 次会话</a-tag>
+            <a-tag color="green" style="font-size:13px">🗂️ {{ analysis.stats.projects }} 个方向</a-tag>
+            <a-tag color="cyan" style="font-size:13px">📦 {{ analysis.stats.git_events }} 条提交</a-tag>
+            <a-tag :color="analysis.stats.cron_failures ? 'red' : 'green'" style="font-size:13px">
+              ⏰ {{ analysis.stats.cron_failures }} 个任务异常
+            </a-tag>
+          </div>
+
+          <!-- 热点项目 -->
+          <div style="margin-bottom:10px">
+            <div style="font-size:12px;color:#999;margin-bottom:6px">🔥 近期热点</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <a-tag
+                v-for="(p, i) in analysis.hot_projects"
+                :key="p.name"
+                :color="['volcano', 'orange', 'gold'][i] || 'default'"
+                style="font-size:13px;padding:2px 10px"
+              >
+                {{ p.name }} ×{{ p.count }}
+              </a-tag>
+            </div>
+          </div>
+
+          <!-- 建议 -->
+          <div v-if="analysis.suggestions?.length" style="margin-bottom:10px">
+            <div style="font-size:12px;color:#999;margin-bottom:6px">💡 建议</div>
+            <ul style="margin:0;padding-left:18px">
+              <li v-for="s in analysis.suggestions" :key="s" style="font-size:13px;color:#555;margin-bottom:4px">{{ s }}</li>
+            </ul>
+          </div>
+
+          <!-- cron 异常 -->
+          <div v-if="analysis.cron_issues?.length" style="margin-bottom:10px">
+            <div style="font-size:12px;color:#999;margin-bottom:6px">⚠️ 定时任务异常</div>
+            <div v-for="c in analysis.cron_issues" :key="c.name" style="font-size:13px;color:#cf1322;margin-bottom:2px">
+              {{ c.name }} — {{ c.error }}
+            </div>
+          </div>
+
+          <!-- 版本历史 -->
+          <div v-if="analysisHistory.length">
+            <div style="font-size:12px;color:#999;margin-bottom:6px">📜 版本记录</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <a-tag
+                v-for="v in analysisHistory.slice(0, 8)"
+                :key="v.version"
+                :color="v.version === analysis.generated_at.replace(/[-: ]/g, '').slice(0, 14) ? 'gold' : 'default'"
+                style="font-size:11px;cursor:pointer"
+                @click="openAnalysis(v.version)"
+              >
+                {{ v.time }}
+              </a-tag>
+            </div>
+          </div>
+        </template>
+        <a-empty v-else-if="!analysisLoading" description="尚无分析报告, 点击运行分析生成" style="padding:20px 0" />
+      </a-skeleton>
     </a-card>
 
     <!-- 最近活动时间线 -->
