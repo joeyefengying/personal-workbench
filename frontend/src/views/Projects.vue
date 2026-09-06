@@ -31,6 +31,7 @@ async function doStart(proj) {
   else
     message.error(r.error || '启动失败')
   store.refresh()
+  return r
 }
 
 async function doStop(proj) {
@@ -50,6 +51,25 @@ async function doOpen(proj) {
 function openUrl(proj) {
   if (!proj.url)
     return
+  // 未运行的工具类 Web 应用先启动再打开, 避免打开空白页
+  if (proj.cmd && !proj.active) {
+    message.warning(`${proj.name} 尚未启动，正在帮你启动，就绪后自动打开`)
+    doStart(proj).then(async (r) => {
+      if (!r || !r.ok)
+        return // doStart 已提示错误
+      // 启动成功后轮询 status 直到 active, 再打开
+      for (let i = 0; i < 20; i++) {
+        const st = await store.status(proj.id).catch(() => ({ active: false }))
+        if (st.active) {
+          window.open(proj.url, '_blank')
+          return
+        }
+        await new Promise(r => setTimeout(r, 1200))
+      }
+      message.error(`${proj.name} 启动超时，请查看日志确认`)
+    })
+    return
+  }
   window.open(proj.url, '_blank')
 }
 

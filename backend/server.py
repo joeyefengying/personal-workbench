@@ -20,7 +20,31 @@ from fastapi.staticfiles import StaticFiles
 ROOT = Path(__file__).resolve().parent
 CONFIG = ROOT / "apps.json"
 FRONTEND_DIST = ROOT.parent / "frontend" / "dist"
-PYTHON = shutil.which("python3") or sys.executable
+# 选一个真正装了 fastapi/uvicorn 的 python3, 避免 shutil.which 解析到无依赖的 /usr/bin/python3
+PY_CANDIDATES = [
+    "/usr/local/bin/python3",
+    "/Users/zhanghao/.hermes/hermes-agent/venv/bin/python3",
+    "/usr/bin/python3",
+]
+
+
+def _pick_python() -> str:
+    """探测能 import fastapi+uvicorn 的 python3, 找不到时退回 sys.executable"""
+    probe = "import fastapi, uvicorn"
+    for cand in PY_CANDIDATES:
+        if not os.path.exists(cand):
+            continue
+        try:
+            r = subprocess.run([cand, "-c", probe], capture_output=True,
+                               text=True, timeout=10)
+            if r.returncode == 0:
+                return cand
+        except Exception:
+            continue
+    return sys.executable or "python3"
+
+
+PYTHON = _pick_python()
 
 app = FastAPI(title="Personal Workbench")
 app.add_middleware(
@@ -646,20 +670,38 @@ def analyze_history():
 def get_config():
     return _load_config()
 
+def _wait_port(port: int, timeout: float = 12.0) -> bool:
+    """轮询端口是否已监听(服务真正就绪), 返回是否就绪"""
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        try:
+            s = subprocess.run(["lsof", "-iTCP:%d" % port, "-sTCP:LISTEN", "-t"],
+                               capture_output=True, text=True)
+            if s.stdout.strip():
+                return True
+        except Exception:
+            pass
+        time.sleep(0.6)
+    return False
+
+
 @app.post("/api/start/{proj_id}")
 def start(proj_id: str):
     with _lock:
-        if proj_id in _procs and _procs[proj_id].poll() is None:
-            return {"ok": True, "msg": "已在运行"}
         cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
         proj = _find_proj(cfg, proj_id)
         if not proj:
             return {"ok": False, "error": "未找到项目 %s" % proj_id}
+        if proj_id in _procs and _procs[proj_id].poll() is None:
+            if _is_active(proj.get("port", 0)):
+                return {"ok": True, "msg": "已在运行"}
         cmd = proj.get("cmd", "")
         if not cmd:
             return {"ok": False, "error": "该项目无启动命令"}
         run_dir = _resolve(proj.get("runDir", proj.get("path")))
         cmd = _expand_cmd(cmd, run_dir, _resolve(proj.get("path", "")))
+        log = ROOT / "logs" / f"{proj_id}.log"
+        log.parent.mkdir(exist_ok=True)
         try:
             proc = subprocess.Popen(
                 cmd, shell=True, cwd=str(run_dir),
@@ -668,12 +710,39 @@ def start(proj_id: str):
                 start_new_session=True)
             _procs[proj_id] = proc
             # 后台收集输出到日志文件
-            log = ROOT / "logs" / f"{proj_id}.log"
-            log.parent.mkdir(exist_ok=True)
             threading.Thread(target=_drain, args=(proc, log), daemon=True).start()
-            return {"ok": True, "msg": f"已启动 {proj['name']} (pid {proc.pid})"}
         except Exception as e:
-            return {"ok": False, "error": str(e)}
+            return {"ok": False, "error": "拉起进程失败: %s" % e}
+
+        # ★ 就绪验证: 有端口才等端口就绪, 否则检查进程存活几秒
+        port = proj.get("port", 0)
+        started = time.time()
+        if port:
+            ok = _wait_port(port, timeout=12)
+            if not ok:
+                # 读日志尾部找真实报错, 反馈给前端
+                err_tail = ""
+                if log.exists():
+                    err_tail = "\n".join(log.read_text(encoding="utf-8", errors="ignore")
+                                         .splitlines()[-15:])
+                # 清理失败进程
+                for pid_proc in list(_procs.values()):
+                    if pid_proc.poll() is None:
+                        try: os.killpg(os.getpgid(pid_proc.pid), signal.SIGKILL)
+                        except Exception: pass
+                _procs.pop(proj_id, None)
+                return {"ok": False, "error": "启动失败: 端口 %d %d 秒内未就绪.\n%s"
+                        % (port, int(time.time() - started), err_tail)}
+            return {"ok": True, "msg": f"已启动 {proj['name']} (pid {proc.pid}, {int(time.time()-started)}s 就绪)"}
+        # 无端口: 等它运行几秒确认没立刻崩
+        time.sleep(3)
+        if proc.poll() is not None:
+            err_tail = ""
+            if log.exists():
+                err_tail = "\n".join(log.read_text(encoding="utf-8", errors="ignore")
+                                     .splitlines()[-10:])
+            return {"ok": False, "error": "启动失败: 进程很快退出.\n%s" % err_tail}
+        return {"ok": True, "msg": f"已启动 {proj['name']} (pid {proc.pid})"}
 
 @app.post("/api/stop/{proj_id}")
 def stop(proj_id: str):
