@@ -51,13 +51,11 @@ async function doOpen(proj) {
 function openUrl(proj) {
   if (!proj.url)
     return
-  // 未运行的工具类 Web 应用先启动再打开, 避免打开空白页
   if (proj.cmd && !proj.active) {
     message.warning(`${proj.name} 尚未启动，正在帮你启动，就绪后自动打开`)
     doStart(proj).then(async (r) => {
       if (!r || !r.ok)
-        return // doStart 已提示错误
-      // 启动成功后轮询 status 直到 active, 再打开
+        return
       for (let i = 0; i < 20; i++) {
         const st = await store.status(proj.id).catch(() => ({ active: false }))
         if (st.active) {
@@ -100,51 +98,62 @@ function gitTag(proj) {
 </script>
 
 <template>
-  <div>
+  <div class="wb-projects">
     <a-skeleton :loading="store.loading" active>
-      <a-tabs v-model:activeKey="activeTab" type="card">
+      <a-tabs v-model:activeKey="activeTab" type="card" class="wb-proj-tabs">
         <a-tab-pane v-for="t in tabs" :key="t.key" :tab="`${t.name} (${tabMap[t.key].projects.length})`">
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px">
-            <a-card
+          <div class="wb-proj-grid">
+            <div
               v-for="proj in tabMap[t.key].projects"
               :key="proj.id"
-              hoverable
-              :title="proj.name"
-              style="border-radius: 8px"
+              class="wb-proj-card"
             >
-              <template #extra>
-                <span style="display:flex;align-items:center;gap:6px">
+              <!-- Card Header -->
+              <div class="wb-proj-card-head">
+                <div class="wb-proj-card-title">
+                  <span
+                    v-if="proj.type !== 'doc'"
+                    class="wb-proj-status-dot"
+                    :class="{ active: proj.active }"
+                  ></span>
+                  {{ proj.name }}
+                </div>
+                <div class="wb-proj-card-badges">
                   <a-tooltip v-if="proj.hasSession" title="已有项目对话，将续接不重复新建">
-                    <a-tag color="cyan" style="margin:0">💬 已建会话</a-tag>
+                    <a-tag color="cyan" style="margin: 0; font-size: 11px">💬 已建会话</a-tag>
                   </a-tooltip>
-                  <a-tag :color="proj.active ? 'success' : 'default'" :style="proj.type === 'doc' ? 'display:none' : ''">
+                  <a-tag
+                    v-if="proj.type !== 'doc'"
+                    :color="proj.active ? 'success' : 'default'"
+                    style="margin: 0; font-size: 11px"
+                  >
                     {{ proj.active ? '运行中' : '未启动' }}
                   </a-tag>
-                </span>
-              </template>
-
-              <p style="min-height: 36px; color: #666; font-size: 13px; margin-bottom: 8px">{{ proj.desc }}</p>
-
-              <!-- Git 状态 -->
-              <div v-if="gitTag(proj)" style="font-size: 12px; background: #fafafa; border-radius: 6px; padding: 8px; margin-bottom: 12px">
-                <div><a-tag color="blue">{{ gitTag(proj).branch }}</a-tag>
-                  <a-tag v-if="gitTag(proj).dirty > 0" color="orange">{{ gitTag(proj).dirty }} 改动</a-tag>
-                  <a-tag v-else color="green">干净</a-tag>
-                  <span style="color:#888; float:right">{{ gitTag(proj).remote }}</span>
                 </div>
-                <div v-if="gitTag(proj).last" style="color:#999; margin-top:6px; background:#eee; padding:4px 6px; border-radius:4px; font-family:monospace">
+              </div>
+
+              <!-- Description -->
+              <p class="wb-proj-desc">{{ proj.desc }}</p>
+
+              <!-- Git Info -->
+              <div v-if="gitTag(proj)" class="wb-proj-git">
+                <div class="wb-proj-git-row">
+                  <a-tag color="blue" style="font-size: 11px">{{ gitTag(proj).branch }}</a-tag>
+                  <a-tag v-if="gitTag(proj).dirty > 0" color="orange" style="font-size: 11px">{{ gitTag(proj).dirty }} 改动</a-tag>
+                  <a-tag v-else color="green" style="font-size: 11px">干净</a-tag>
+                  <span class="wb-proj-git-remote">{{ gitTag(proj).remote }}</span>
+                </div>
+                <div v-if="gitTag(proj).last" class="wb-proj-git-last">
                   {{ gitTag(proj).last }}
                 </div>
               </div>
+              <a-tag v-else color="purple" style="font-size: 11px">非 git 项目</a-tag>
 
-              <a-tag v-else color="purple">非 git 项目</a-tag>
+              <!-- Path -->
+              <div class="wb-proj-path">{{ shortPath(proj.path) }}</div>
 
-              <div style="font-size: 12px; color: #aaa; margin-bottom: 12px">
-                {{ shortPath(proj.path) }}
-              </div>
-
-              <!-- 操作按钮 -->
-              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <!-- Actions -->
+              <div class="wb-proj-actions">
                 <a-button size="small" type="primary" ghost @click="doChat(proj)">
                   💬 对话
                 </a-button>
@@ -161,10 +170,119 @@ function gitTag(proj) {
                   打开目录
                 </a-button>
               </div>
-            </a-card>
+            </div>
           </div>
         </a-tab-pane>
       </a-tabs>
     </a-skeleton>
   </div>
 </template>
+
+<style scoped>
+.wb-projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.wb-proj-tabs :deep(.ant-tabs-nav) {
+  margin-bottom: 16px;
+}
+
+.wb-proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.wb-proj-card {
+  background: var(--wb-bg-elevated);
+  border: 1px solid var(--wb-border);
+  border-radius: var(--wb-radius-md);
+  padding: 18px;
+  transition: all var(--wb-transition);
+}
+.wb-proj-card:hover {
+  box-shadow: var(--wb-shadow-md);
+  border-color: var(--wb-border-light);
+}
+
+.wb-proj-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.wb-proj-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wb-proj-card-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wb-proj-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d5db;
+  flex-shrink: 0;
+}
+.wb-proj-status-dot.active {
+  background: #27a644;
+  box-shadow: 0 0 0 3px rgba(39, 166, 68, 0.12);
+}
+
+.wb-proj-desc {
+  min-height: 36px;
+  color: var(--wb-text-secondary);
+  font-size: 13px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.wb-proj-git {
+  font-size: 12px;
+  background: var(--wb-bg);
+  border-radius: var(--wb-radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.wb-proj-git-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.wb-proj-git-remote {
+  color: var(--wb-text-tertiary);
+  margin-left: auto;
+  font-size: 11px;
+}
+.wb-proj-git-last {
+  color: var(--wb-text-tertiary);
+  margin-top: 6px;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: var(--wb-font-mono);
+  font-size: 11px;
+}
+
+.wb-proj-path {
+  font-size: 11px;
+  color: var(--wb-text-tertiary);
+  margin-bottom: 12px;
+  font-family: var(--wb-font-mono);
+}
+
+.wb-proj-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+</style>

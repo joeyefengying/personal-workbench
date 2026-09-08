@@ -29,33 +29,161 @@ onMounted(load)
 </script>
 
 <template>
-  <div>
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-      <h2 style="margin:0;font-size:18px">⚙️ 系统设置</h2>
-      <div style="flex:1"></div>
+  <div class="system-page">
+    <!-- Page header -->
+    <header class="system-header">
+      <h2 class="wb-page-title">⚙️ 系统设置</h2>
+      <div class="system-header-spacer"></div>
       <a-button size="small" :loading="loading" @click="load">重新检测</a-button>
-    </div>
+    </header>
 
-    <a-card size="small" style="border-radius:8px;margin-bottom:16px" title="本机环境自检">
+    <!-- Environment cards -->
+    <section class="env-section">
+      <div class="env-section-title">本机环境自检</div>
       <a-skeleton :loading="loading" active>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
-          <div v-for="it in items" :key="it.key" style="display:flex;align-items:center;gap:12px;border:1px solid #f0f0f0;border-radius:8px;padding:12px">
-            <div style="font-size:24px">{{ it.icon }}</div>
-            <div>
-              <div style="font-size:12px;color:#999">{{ it.label }}</div>
-              <div style="font-weight:600">{{ env?.[it.key] ?? '—' }}</div>
+        <div class="env-grid">
+          <div
+            v-for="it in items"
+            :key="it.key"
+            class="env-card wb-card-elevated"
+          >
+            <div class="env-icon">{{ it.icon }}</div>
+            <div class="env-card-body">
+              <div class="env-label">{{ it.label }}</div>
+              <div class="env-value">{{ env?.[it.key] ?? '—' }}</div>
             </div>
           </div>
         </div>
       </a-skeleton>
-    </a-card>
+    </section>
 
-    <a-card v-if="env?.running?.length" size="small" style="border-radius:8px" title="当前运行中的服务">
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a-tag v-for="r in env.running" :key="r" color="green" style="font-size:13px;padding:2px 10px">
-          🟢 {{ r }}
-        </a-tag>
+    <!-- Running services -->
+    <section v-if="env?.running?.length" class="running-section">
+      <div class="env-section-title">当前运行中的服务</div>
+      <div class="running-list">
+        <span v-for="r in env.running" :key="r" class="running-badge">
+          <span class="running-dot"></span>
+          {{ r }}
+        </span>
       </div>
-    </a-card>
+    </section>
   </div>
 </template>
+
+<style scoped>
+.system-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Page header ── */
+.system-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wb-page-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--wb-text-primary);
+}
+.system-header-spacer {
+  flex: 1;
+}
+
+/* ── Section titles ── */
+.env-section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--wb-text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+}
+
+/* ── Environment cards grid ── */
+.env-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.env-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--wb-radius-md);
+  transition: all var(--wb-transition);
+}
+.env-card:hover {
+  box-shadow: var(--wb-shadow-md);
+  transform: translateY(-1px);
+}
+.env-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  border-radius: var(--wb-radius-sm);
+  background: var(--wb-accent-bg);
+  color: var(--wb-accent);
+}
+.env-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.env-label {
+  font-size: 12px;
+  color: var(--wb-text-tertiary);
+  line-height: 1.4;
+}
+.env-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--wb-text-primary);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Running services badges ── */
+.running-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.running-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--wb-text-secondary);
+  background: var(--wb-bg-elevated);
+  border: 1px solid var(--wb-border);
+  border-radius: var(--wb-radius-lg);
+  transition: all var(--wb-transition);
+}
+.running-badge:hover {
+  border-color: var(--wb-success);
+  box-shadow: var(--wb-shadow-sm);
+}
+.running-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--wb-success);
+  box-shadow: 0 0 0 3px rgba(39, 166, 68, 0.15);
+}
+</style>

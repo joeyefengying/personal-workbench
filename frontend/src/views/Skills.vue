@@ -67,7 +67,6 @@ const countBySource = computed(() => {
 
 const favCount = computed(() => skills.value.filter(s => isFav(s)).length)
 
-// 收藏的置顶, 其余保持原顺序
 const filteredSkills = computed(() => {
   const q = skillFilter.value.trim().toLowerCase()
   let list = skills.value
@@ -91,60 +90,70 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-      <h2 style="margin:0;font-size:18px">🧪 Agent 能力墙</h2>
-      <a-tag color="blue">{{ skillsLoading ? '…' : skills.length }}</a-tag>
-      <a-tag v-if="favCount" color="gold">⭐ {{ favCount }} 收藏</a-tag>
-      <span style="font-size:12px;color:#999">点卡片对话 · ⭐ 收藏常用能力置顶</span>
-      <div style="flex:1"></div>
-      <a-select v-model:value="sourceFilter" style="width:110px" size="small">
-        <a-select-option value="all">全部来源</a-select-option>
-        <a-select-option value="hermes">Hermes ({{ countBySource.hermes }})</a-select-option>
-        <a-select-option value="claude">Claude ({{ countBySource.claude }})</a-select-option>
-      </a-select>
-      <a-input
-        v-model:value="skillFilter"
-        placeholder="搜索能力…"
-        allow-clear
-        style="width:220px"
-      />
-      <a-button size="small" @click="loadSkills">刷新</a-button>
+  <div class="wb-skills">
+    <!-- Header Bar -->
+    <div class="wb-skills-header">
+      <div class="wb-skills-header-left">
+        <h2 class="wb-page-title">Agent 能力墙</h2>
+        <a-tag color="blue">{{ skillsLoading ? '…' : skills.length }}</a-tag>
+        <a-tag v-if="favCount" color="gold">⭐ {{ favCount }} 收藏</a-tag>
+        <span class="wb-page-hint">点卡片对话 · ⭐ 收藏常用能力置顶</span>
+      </div>
+      <div class="wb-skills-header-right">
+        <a-select v-model:value="sourceFilter" style="width: 130px" size="small">
+          <a-select-option value="all">全部来源</a-select-option>
+          <a-select-option value="hermes">Hermes ({{ countBySource.hermes }})</a-select-option>
+          <a-select-option value="claude">Claude ({{ countBySource.claude }})</a-select-option>
+        </a-select>
+        <a-input
+          v-model:value="skillFilter"
+          placeholder="搜索能力…"
+          allow-clear
+          style="width: 220px"
+          size="small"
+        />
+        <a-button size="small" @click="loadSkills">刷新</a-button>
+      </div>
     </div>
 
     <a-skeleton :loading="skillsLoading" active>
-      <div
-        v-if="filteredSkills.length"
-        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px"
-      >
-        <a-card
+      <div v-if="filteredSkills.length" class="wb-skill-grid">
+        <div
           v-for="s in filteredSkills"
           :key="favKey(s)"
-          hoverable
-          size="small"
-          style="border-radius:8px;cursor:pointer"
+          class="wb-skill-card"
+          :class="{ 'wb-skill-card-fav': isFav(s) }"
           @click="openSkill(s)"
         >
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <b style="font-size:13px">{{ s.name }}</b>
-            <span style="display:flex;align-items:center;gap:6px">
-              <a-tag :color="s.source === 'hermes' ? 'blue' : 'purple'" style="font-size:11px;margin:0">
-                {{ s.source === 'hermes' ? 'H' : 'C' }}
-              </a-tag>
-              <span
-                :class="{ 'fav-star': true, active: isFav(s) }"
-                :title="isFav(s) ? '取消收藏' : '收藏置顶'"
-                @click="toggleFav(s, $event)"
-                style="font-size:15px;cursor:pointer;user-select:none"
-              >⭐</span>
-            </span>
+          <!-- Source accent bar -->
+          <div
+            class="wb-skill-accent"
+            :class="s.source === 'hermes' ? 'wb-skill-accent-h' : 'wb-skill-accent-c'"
+          ></div>
+
+          <div class="wb-skill-content">
+            <div class="wb-skill-top">
+              <span class="wb-skill-name">{{ s.name }}</span>
+              <div class="wb-skill-badges">
+                <span
+                  class="wb-skill-source"
+                  :class="s.source === 'hermes' ? 'wb-source-h' : 'wb-source-c'"
+                >
+                  {{ s.source === 'hermes' ? 'H' : 'C' }}
+                </span>
+                <span
+                  class="wb-skill-star"
+                  :class="{ active: isFav(s) }"
+                  :title="isFav(s) ? '取消收藏' : '收藏置顶'"
+                  @click="toggleFav(s, $event)"
+                >⭐</span>
+              </div>
+            </div>
+            <p class="wb-skill-desc">{{ s.description }}</p>
           </div>
-          <p style="font-size:12px;color:#888;margin:6px 0 0;min-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">
-            {{ s.description }}
-          </p>
-        </a-card>
+        </div>
       </div>
-      <a-empty v-else-if="!skillsLoading" description="暂无能力" />
+      <a-empty v-else-if="!skillsLoading" description="暂无能力" style="padding: 60px 0" />
     </a-skeleton>
 
     <SkillDialog v-model:visible="skillDialog.visible" :skill="skillDialog.skill" />
@@ -152,18 +161,138 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.fav-star {
-  opacity: 0.35;
+.wb-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wb-skills-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.wb-skills-header-left,
+.wb-skills-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wb-page-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+.wb-page-hint {
+  font-size: 12px;
+  color: var(--wb-text-tertiary);
+}
+
+.wb-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.wb-skill-card {
+  background: var(--wb-bg-elevated);
+  border: 1px solid var(--wb-border);
+  border-radius: var(--wb-radius-md);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--wb-transition);
+  position: relative;
+}
+.wb-skill-card:hover {
+  box-shadow: var(--wb-shadow-md);
+  border-color: var(--wb-border-light);
+  transform: translateY(-1px);
+}
+.wb-skill-card-fav {
+  border-color: rgba(245, 166, 35, 0.3);
+  box-shadow: 0 0 0 1px rgba(245, 166, 35, 0.12);
+}
+
+.wb-skill-accent {
+  height: 3px;
+  width: 100%;
+}
+.wb-skill-accent-h {
+  background: linear-gradient(90deg, #5e6ad2, #7170ff);
+}
+.wb-skill-accent-c {
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+}
+
+.wb-skill-content {
+  padding: 14px 16px;
+}
+.wb-skill-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.wb-skill-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--wb-text-primary);
+}
+.wb-skill-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.wb-skill-source {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--wb-font-mono);
+}
+.wb-source-h {
+  background: rgba(94, 106, 210, 0.12);
+  color: #5e6ad2;
+}
+.wb-source-c {
+  background: rgba(124, 58, 237, 0.12);
+  color: #7c3aed;
+}
+
+.wb-skill-star {
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.3;
   filter: grayscale(1);
-  transition: all 0.2s;
+  transition: all var(--wb-transition);
 }
-.fav-star.active {
+.wb-skill-star.active {
   opacity: 1;
   filter: none;
 }
-.fav-star:hover {
+.wb-skill-star:hover {
   opacity: 1;
   filter: none;
-  transform: scale(1.15);
+  transform: scale(1.2);
+}
+
+.wb-skill-desc {
+  font-size: 12px;
+  color: var(--wb-text-tertiary);
+  margin: 4px 0 0;
+  min-height: 32px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
 }
 </style>
