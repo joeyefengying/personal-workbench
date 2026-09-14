@@ -2,6 +2,14 @@
 import { ref, computed, onMounted } from 'vue'
 import { getTodayOverview, listDailyDates, getDailyReport, runDailyDigest } from '@/api'
 import { message } from 'ant-design-vue'
+import { marked } from 'marked'
+
+// ── Markdown 渲染 ──
+marked.setOptions({ gfm: true, breaks: true })
+function md(src) {
+  if (!src) return ''
+  return marked.parse(src)
+}
 
 const overview = ref(null)
 const loading = ref(false)
@@ -207,28 +215,27 @@ onMounted(() => {
           ▶ 立即生成
         </a-button>
       </div>
-      <a-skeleton :loading="dailyLoading" active>
-        <!-- 日期选择条 -->
-        <div v-if="dailyDates.length" class="ov-daily-dates">
-          <a-tag
-            v-for="d in dailyDates.slice(0, 10)"
-            :key="d"
-            :color="d === dailyContent?.date ? 'gold' : 'default'"
-            style="font-size: 11px; cursor: pointer"
-            @click="viewDaily(d)"
-          >
-            {{ d.slice(5) }}
-          </a-tag>
-        </div>
-        <!-- AI 回顾内容 -->
-        <template v-if="dailyContent?.ai_review">
-          <div class="ov-daily-content">{{ dailyContent.ai_review }}</div>
-        </template>
-        <template v-else-if="dailyContent && !dailyContent.ai_review">
-          <div class="ov-daily-empty">{{ dailyContent.date }} 的日报暂无 AI 回顾段</div>
-        </template>
-        <a-empty v-else-if="!dailyLoading" description="尚无日结报告" style="padding: 20px 0" />
-      </a-skeleton>
+      <!-- 日期选择条 -->
+      <div v-if="dailyDates.length" class="ov-daily-dates">
+        <a-tag
+          v-for="d in dailyDates.slice(0, 10)"
+          :key="d"
+          :color="d === dailyContent?.date ? 'gold' : 'default'"
+          style="font-size: 11px; cursor: pointer"
+          @click="viewDaily(d)"
+        >
+          {{ d.slice(5) }}
+        </a-tag>
+      </div>
+      <!-- AI 回顾内容 (Markdown 渲染) -->
+      <div v-if="dailyLoading" class="ov-daily-loading">
+        <a-spin size="small" />
+      </div>
+      <div v-else-if="dailyContent?.ai_review" class="ov-daily-content md-body" v-html="md(dailyContent.ai_review)"></div>
+      <div v-else-if="dailyContent && !dailyContent.ai_review" class="ov-daily-empty">
+        {{ dailyContent.date }} 的日报暂无 AI 回顾段
+      </div>
+      <a-empty v-else description="尚无日结报告" style="padding: 20px 0" />
     </div>
 
     <!-- Navigation Grid -->
@@ -397,13 +404,18 @@ onMounted(() => {
   padding-bottom: 10px;
   border-bottom: 1px solid #eef0f3;
 }
+.ov-daily-loading {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
 .ov-daily-content {
   font-size: 13px;
   color: #4b5563;
   line-height: 1.8;
-  white-space: pre-wrap;
   max-height: 400px;
   overflow-y: auto;
+  padding: 4px 0;
 }
 .ov-daily-empty {
   font-size: 13px;
