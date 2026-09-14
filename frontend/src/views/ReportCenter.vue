@@ -181,13 +181,6 @@ function onTabChange(key) {
   else if (key === 'doc' && !docWeeks.value.length) loadDocWeeks()
 }
 
-// render markdown blocks from ai_review (simple: parse ### headings)
-function renderAiReview(text) {
-  if (!text) return ''
-  // strip the "> 自动采集于 ..." prefix
-  return text.replace(/^> .*\n?/, '').trim()
-}
-
 // ========== WEEKLY (same logic as WeeklyReport.vue) ==========
 
 async function loadWeeklyList() {
@@ -918,6 +911,9 @@ async function doDocGenerate() {
 <!-- ── Weekly/Monthly content shared component ── -->
 <script>
 import { defineComponent, h } from 'vue'
+import { marked } from 'marked'
+
+marked.setOptions({ gfm: true, breaks: true })
 
 const WeeklyContent = defineComponent({
   name: 'WeeklyContent',
@@ -947,7 +943,7 @@ const WeeklyContent = defineComponent({
                   h('a-button', { size:'small', type:'primary', loading: props.lifeosWriting, onClick: () => emit('writeLifeos') }, () => '写入 LifeOS'),
                 ])
               ]),
-              h('div', { class: 'wr-ai-body' }, props.aiSummary)
+              h('div', { class: 'wr-ai-body md-body', innerHTML: marked.parse(props.aiSummary || '') })
             )
           : props.aiLoading
             ? h('div', { class: 'rc-card rc-ai-blue' },
@@ -1158,45 +1154,7 @@ export default { components: { WeeklyContent } }
 .wr-ai-body { padding: 14px 18px; font-size: 14px; line-height: 1.8; color: #333; }
 .wr-ai-at { font-size: 11px; color: #aaa; margin-left: 8px; font-weight: 400; }
 
-/* ── Markdown rendered content ── */
-.md-body {
-  font-size: 13px; line-height: 1.85; color: #333;
-}
-.md-body h1, .md-body h2, .md-body h3, .md-body h4 {
-  margin: 14px 0 6px; font-weight: 600; color: #1f2937;
-}
-.md-body h1 { font-size: 17px; }
-.md-body h2 { font-size: 15px; }
-.md-body h3 { font-size: 14px; }
-.md-body h4 { font-size: 13px; }
-.md-body p { margin: 0 0 8px; }
-.md-body ul, .md-body ol { margin: 0 0 8px; padding-left: 20px; }
-.md-body li { margin-bottom: 2px; }
-.md-body a { color: #1677ff; text-decoration: none; }
-.md-body a:hover { text-decoration: underline; }
-.md-body code {
-  font-family: 'SF Mono', Menlo, Monaco, monospace;
-  font-size: 12px; background: #f0f0f0; padding: 1px 5px; border-radius: 3px;
-}
-.md-body pre {
-  background: #f5f6f8; border: 1px solid #eef0f3; border-radius: 6px;
-  padding: 10px 14px; overflow-x: auto; font-size: 12px; line-height: 1.6;
-}
-.md-body pre code { background: none; padding: 0; font-size: 12px; }
-.md-body blockquote {
-  border-left: 3px solid #e0e0e0; margin: 0 0 8px; padding: 4px 12px;
-  color: #666;
-}
-.md-body table {
-  border-collapse: collapse; width: 100%; margin: 8px 0;
-}
-.md-body th, .md-body td {
-  border: 1px solid #eef0f3; padding: 6px 10px; text-align: left; font-size: 12px;
-}
-.md-body th { background: #fafbfc; font-weight: 600; }
-.md-body hr { border: none; border-top: 1px solid #eef0f3; margin: 12px 0; }
-.md-body img { max-width: 100%; }
-.md-body strong { font-weight: 600; }
+/* ── Markdown rendered content → 已提到全局 theme.css ── */
 
 /* ── 日历 hover tooltip（非 scoped, tooltip 由 antdv teleport 到 body）── */
 .ant-tooltip-inner.rc-cal-tip {

@@ -1,12 +1,20 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { message } from 'ant-design-vue'
+import { marked } from 'marked'
 import {
   getTimelineEvents, getTimelineStats, getTimelineDates,
   getTimelineDaily, triggerCollect,
   timelineCollectSync, timelineObsidianProjects, getTimelineChannels,
   triggerLifecycle, previewDailyReport, commitDailyReport,
 } from '@/api'
+
+// ── Markdown 渲染 ──
+marked.setOptions({ gfm: true, breaks: true })
+function md(src) {
+  if (!src) return ''
+  return marked.parse(src)
+}
 
 const dates = ref([])
 const selectedDate = ref(new Date().toISOString().slice(0, 10))
@@ -407,7 +415,7 @@ watch(selectedDate, () => { page.value = 1; refreshAll() })
         <div v-if="!reportHasAi" class="wb-hp-report-banner">
           ⚠️ 未配置 DIANXIN_API_KEY，当前为规则聚合结果（非 AI 总结）
         </div>
-        <pre class="wb-hp-report-md">{{ reportPreview }}</pre>
+        <div v-if="reportPreview" class="wb-hp-report-md md-body" v-html="md(reportPreview)"></div>
       </a-spin>
       <template #footer>
         <a-button @click="reportVisible = false">取消</a-button>
