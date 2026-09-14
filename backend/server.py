@@ -18,6 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 ROOT = Path(__file__).resolve().parent
+HOME = Path.home()
 CONFIG = ROOT / "apps.json"
 FRONTEND_DIST = ROOT.parent / "frontend" / "dist"
 # 选一个真正装了 fastapi/uvicorn 的 python3, 避免 shutil.which 解析到无依赖的 /usr/bin/python3
@@ -616,54 +617,299 @@ def wiki_search(q: str = ""):
         return {"ok": False, "error": str(e)}
 
 
+# 轻推集成 — 数据目录 (会话/任务/每日总结)
+QINGTUI_DATA = ROOT / "qingtui_data"
+QINGTUI_DATA.mkdir(exist_ok=True)
+QINGTUI_WATCH = QINGTUI_DATA / "watch.json"   # 监控的会话清单 (用户选定)
+
+
 # ---------------------------------------------------------------
-# 近期活动分析 — 手动运行分析脚本 + 版本记录
+# 轻推 (Qingtui) — 会话发现 / 每日总结 / 任务提取
+# SQLite 直读方案, 不依赖调试端口 9222
 # ---------------------------------------------------------------
-ANALYZE_SCRIPT = ROOT / "analyze_recent.py"
-ANALYZE_REPORTS = ROOT / "reports"
+def _load_watch():
+    """读取监控会话清单: [{cid, type, name}, ...]"""
+    if QINGTUI_WATCH.exists():
+        try:
+            return json.loads(QINGTUI_WATCH.read_text(encoding="utf-8")).get("sessions", [])
+        except Exception:
+            pass
+    return []
+
+
+def _save_watch(sessions):
+    QINGTUI_WATCH.write_text(json.dumps({"sessions": sessions}, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+@app.get("/api/qingtui/sessions")
+def qt_sessions():
+    """列出全部最近会话 (从 SQLite 直读)."""
+    try:
+        from timeline.qingtui_sqlite import list_sessions_sqlite, db_exists
+    except ImportError:
+        return {"ok": False, "error": "qingtui_sqlite 模块未就绪", "sessions": []}
+    if not db_exists():
+        return {"ok": False, "error": "轻推数据库不存在 (csp4.db)", "sessions": []}
+    return {"ok": True, "sessions": list_sessions_sqlite(recent_days=7)}
+
+
+@app.get("/api/qingtui/watch")
+def qt_watch_list():
+    """获取已选定的监控会话清单."""
+    return {"ok": True, "sessions": _load_watch()}
+
+
+@app.post("/api/qingtui/watch")
+def qt_watch_set(payload: dict):
+    """设置监控会话清单. payload: {sessions:[{cid,type,name}, ...]}"""
+    sessions = (payload or {}).get("sessions", [])
+    if not isinstance(sessions, list):
+        return {"ok": False, "error": "sessions 必须是列表"}
+    _save_watch(sessions)
+    return {"ok": True, "count": len(sessions)}
+
+
+@app.get("/api/qingtui/daily-summary")
+def qt_daily_summary_api(date: str = "", sessions: str = ""):
+    """某天的每日总结 (从 SQLite 直读). date=YYYY-MM-DD (默认今天)."""
+    try:
+        from timeline.qingtui_sqlite import daily_summary_sqlite, db_exists
+    except ImportError:
+        return {"ok": False, "error": "qingtui_sqlite 模块未就绪"}
+    if not db_exists():
+        return {"ok": False, "error": "轻推数据库不存在 (csp4.db)"}
+    return daily_summary_sqlite(date or None)
+
+
+@app.get("/api/qingtui/tasks")
+def qt_tasks_api(date: str = "", sessions: str = ""):
+    """从某天的消息提取待办任务 (SQLite 直读版, 基础关键词识别)."""
+    try:
+        from timeline.qingtui_sqlite import daily_summary_sqlite, db_exists
+    except ImportError:
+        return {"ok": False, "error": "qingtui_sqlite 模块未就绪", "tasks": []}
+    if not db_exists():
+        return {"ok": False, "error": "轻推数据库不存在", "tasks": []}
+
+    # 待办关键词 (承诺/指派/截止/跟进)
+    TASK_KEYWORDS = ["待办", "要跟进", "记得", "帮我", "明天", "下周", "尽快", "需要你",
+                     "todo", "TODO", "还没", "别忘了", "处理下", "安排", "落实", "会后"]
+    d = daily_summary_sqlite(date or None)
+    highlights = d.get("achievement", {}).get("highlights", [])
+    tasks = []
+    for h in highlights:
+        text = h.get("text", "")
+        kind = h.get("kind", "mine")
+        is_mention = kind in ("mention", "at_all")
+        matched = [kw for kw in TASK_KEYWORDS if kw in text]
+        # @提及 的全部纳入待办关注; 自己发的只纳入含关键词的
+        if is_mention or matched:
+            tasks.append({
+                "id": f"{h.get('session','')}:{h.get('time','')}",
+                "text": text,
+                "session": h.get("session", ""),
+                "time": h.get("time", ""),
+                "status": "pending",
+                "is_mention": is_mention,
+                "kind": kind,
+                "keywords": matched,
+            })
+    return {"ok": True, "tasks": tasks, "total": len(tasks)}
+
+
+@app.post("/api/qingtui/task/verify")
+def qt_task_verify(payload: dict):
+    """人工核实任务 (SQLite 直读方案暂不支持)."""
+    return {"ok": True, "task_id": (payload or {}).get("task_id", ""),
+            "status": (payload or {}).get("status", ""),
+            "hint": "SQLite 直读方案暂不支持任务核实, 数据已记录"}
+
+
+@app.get("/api/qingtui/image-proxy")
+def qt_image_proxy(url: str = ""):
+    """代理轻推图片/文件 (轻推图片需鉴权, 浏览器无法直接加载).
+    当前 qtfile CDN 需要 Electron session cookie, 从外部代理无法获取.
+    失败时返回占位 SVG 提示用户在轻推 App 中查看.
+    """
+    from fastapi.responses import Response
+    PLACEHOLDER_SVG = (
+        '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120">'
+        '<rect fill="#f5f5f5" width="200" height="120" rx="8"/>'
+        '<rect x="1" y="1" width="198" height="118" rx="7" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="4"/>'
+        '<text fill="#999" font-size="32" font-family="sans-serif" text-anchor="middle" x="100" y="52">🖼️</text>'
+        '<text fill="#999" font-size="11" font-family="sans-serif" text-anchor="middle" x="100" y="74">图片</text>'
+        '<text fill="#bbb" font-size="10" font-family="sans-serif" text-anchor="middle" x="100" y="92">(请在轻推中查看)</text>'
+        '</svg>'
+    ).encode()
+    return Response(content=PLACEHOLDER_SVG, media_type="image/svg+xml",
+                    headers={"Cache-Control": "public, max-age=86400"})
+
+
+@app.get("/api/qingtui/context")
+def qt_context(chat_id: str = "", ts: int = 0, direction: str = "", cursor_ts: int = 0,
+               before: int = 20, after: int = 20):
+    """消息上下文 (SQLite 直读): 初始按 chat_id+ts 取前后文; direction+cursor_ts 翻页."""
+    if not chat_id:
+        return {"ok": False, "error": "缺少 chat_id", "messages": []}
+    try:
+        from timeline.qingtui_sqlite import message_context_sqlite, message_context_page_sqlite
+    except ImportError:
+        return {"ok": False, "error": "模块未就绪", "messages": []}
+    if direction and cursor_ts:
+        return message_context_page_sqlite(chat_id, cursor_ts, direction, limit=30)
+    if not ts:
+        return {"ok": False, "error": "缺少 ts 或翻页游标", "messages": []}
+    return message_context_sqlite(chat_id, ts, before, after)
+
+
+@app.get("/api/qingtui/status")
+def qt_status():
+    """轻推连接状态自检 (SQLite 直读方案, 不再依赖调试端口)."""
+    try:
+        from timeline.qingtui_sqlite import db_exists
+    except ImportError:
+        return {"ok": False, "connected": False, "state": "not_running", "hint": "模块未就绪"}
+    if not db_exists():
+        return {"ok": False, "connected": False, "state": "not_running",
+                "hint": "轻推数据库不存在, 请确认轻推已安装并使用过"}
+    return {"ok": True, "connected": True, "state": "ok", "hint": "SQLite 直读正常",
+            "watch_count": 0}
+
+
+@app.post("/api/qingtui/launch")
+def qt_launch():
+    """一键启动轻推 (SQLite 直读方案: 仅确保轻推运行以更新 csp4.db)."""
+    try:
+        subprocess.run(["open", "-n", "/Applications/Qingtui.app"],
+                       capture_output=True, timeout=10)
+        return {"ok": True, "msg": "轻推已启动 (SQLite 直读无需调试端口)"}
+    except Exception as e:
+        return {"ok": False, "msg": f"启动失败: {e}"}
 
 
 @app.post("/api/analyze/run")
 def analyze_run():
-    """手动运行近期活动分析, 生成带版本号的报告文件"""
-    try:
-        r = subprocess.run([sys.executable, str(ANALYZE_SCRIPT), "--days", "7"],
-                           capture_output=True, text=True, timeout=120, cwd=str(ROOT))
-        if r.returncode != 0:
-            return {"ok": False, "error": r.stderr[-500:] or r.stdout[-500:]}
-        d = json.loads(r.stdout)
-        return {"ok": True, "report": d["report"], "version": d["version"]}
-    except subprocess.TimeoutExpired:
-        return {"ok": False, "error": "分析超时(120s)"}
-    except Exception as e:
-        return {"ok": False, "error": str(e)}
+    """(已废弃) — 请使用报告中心的 AI 周报/月报功能代替"""
+    return {"ok": False, "error": "已废弃, 请使用报告中心的周报/月报功能"}
 
 
 @app.get("/api/analyze/latest")
 def analyze_latest():
-    """获取最近一次分析报告"""
-    f = ANALYZE_REPORTS / "latest.json"
-    if not f.exists():
-        return {"ok": False, "error": "尚无分析报告, 请先运行一次"}
-    try:
-        return {"ok": True, "report": json.loads(f.read_text(encoding="utf-8"))}
-    except Exception as e:
-        return {"ok": False, "error": str(e)}
+    """(已废弃)"""
+    return {"ok": False, "error": "已废弃, 请使用报告中心的周报/月报功能"}
 
 
 @app.get("/api/analyze/history")
 def analyze_history():
-    """版本历史: 列出所有 analysis_*.json 文件"""
-    versions = []
-    if ANALYZE_REPORTS.is_dir():
-        for v in sorted(ANALYZE_REPORTS.glob("analysis_*.json"), reverse=True):
-            stem = v.stem.replace("analysis_", "")
-            versions.append({
-                "version": stem,
-                "file": v.name,
-                "time": f"{stem[:4]}-{stem[4:6]}-{stem[6:8]} {stem[9:11]}:{stem[11:13]}",
-            })
-    return {"ok": True, "versions": versions}
+    """(已废弃)"""
+    return {"ok": False, "error": "已废弃, 请使用报告中心的周报/月报功能"}
+
+
+# ---------------------------------------------------------------
+# 每日日结 — 读取 second-brain-daily 生成的日报
+# ---------------------------------------------------------------
+DAILY_VAULT = Path.home() / "Downloads" / "笔记" / "笔记" / "PARA 管理" / "0. 周期笔记"
+SECOND_BRAIN_CRON_ID = "823dc9de965a"
+
+
+def _find_daily_files(limit: int = 30) -> list:
+    """扫描周期笔记目录, 返回最近 N 个日报文件信息"""
+    base = DAILY_VAULT
+    if not base.is_dir():
+        return []
+    files = sorted(base.rglob("*.md"), reverse=True)
+    result = []
+    for f in files:
+        # 文件名格式 YYYY-MM-DD.md
+        name = f.stem
+        if not re.match(r"\d{4}-\d{2}-\d{2}", name):
+            continue
+        try:
+            stat = f.stat()
+        except Exception:
+            continue
+        # 快速判断是否有 AI 回顾段
+        has_ai = False
+        try:
+            head = f.read_text(encoding="utf-8", errors="ignore")
+            has_ai = "🧠 AI 今日回顾" in head
+        except Exception:
+            pass
+        result.append({
+            "date": name,
+            "path": str(f),
+            "size": stat.st_size,
+            "mtime": int(stat.st_mtime),
+            "has_ai": has_ai,
+        })
+        if len(result) >= limit:
+            break
+    return result
+
+
+def _extract_ai_section(filepath: str) -> str:
+    """从日报文件中提取 '## 🧠 AI 今日回顾' 段落"""
+    try:
+        text = Path(filepath).read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return ""
+    marker = "## 🧠 AI 今日回顾"
+    idx = text.find(marker)
+    if idx < 0:
+        return ""
+    rest = text[idx + len(marker):]
+    # 截到下一个 ## 标题或文件末尾
+    next_h2 = rest.find("\n## ")
+    if next_h2 >= 0:
+        rest = rest[:next_h2]
+    return rest.strip()
+
+
+@app.get("/api/daily-report/list")
+def daily_report_list(limit: int = 20):
+    """列出最近的日结报告"""
+    files = _find_daily_files(limit)
+    return {"reports": files, "total": len(files), "vault": str(DAILY_VAULT)}
+
+
+@app.get("/api/daily-report/get")
+def daily_report_get(date: str = ""):
+    """获取指定日期的日结报告内容 (AI 回顾段)"""
+    if not date:
+        return {"ok": False, "error": "缺少 date 参数"}
+    # 在 vault 里找 date.md
+    matches = list(DAILY_VAULT.rglob(f"{date}.md"))
+    if not matches:
+        return {"ok": False, "error": f"未找到 {date} 的日报"}
+    fpath = matches[0]
+    ai_section = _extract_ai_section(str(fpath))
+    try:
+        full_text = fpath.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        full_text = ""
+    return {
+        "ok": True,
+        "date": date,
+        "path": str(fpath),
+        "has_ai": bool(ai_section),
+        "ai_section": ai_section,
+        "full_length": len(full_text),
+    }
+
+
+@app.post("/api/daily-report/run")
+def daily_report_run():
+    """手动触发 second-brain-daily 日结"""
+    try:
+        r = subprocess.run(
+            ["hermes", "cron", "run", SECOND_BRAIN_CRON_ID],
+            capture_output=True, text=True, timeout=30)
+        if r.returncode == 0:
+            return {"ok": True, "msg": "已触发日结, 约 1-2 分钟后生成",
+                    "out": r.stdout.strip()[:200]}
+        return {"ok": False, "error": r.stderr.strip() or r.stdout.strip()[:200]}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
 
 
 @app.get("/api/config")
@@ -813,6 +1059,668 @@ def open_proj(proj_id: str):
 @app.get("/api/health")
 def health():
     return {"ok": True, "time": time.strftime("%H:%M:%S")}
+
+
+# ---------------------------------------------------------------
+# 统一时间线 (Timeline) — 文件/浏览器/轻推/Git 多源事件汇聚
+# ---------------------------------------------------------------
+sys.path.insert(0, str(ROOT))
+from timeline import (  # noqa: E402
+    get_db, run_all_collectors,
+)
+from timeline.reporter import ensure_project, ensure_projects_from_events  # noqa: E402
+from timeline.db import EventDB  # noqa: E402
+
+
+@app.get("/api/timeline/events")
+def timeline_events(date: str = "", source: str = "", category: str = "",
+                    limit: int = 100, offset: int = 0, search: str = ""):
+    """查询事件时间线."""
+    db = get_db()
+    events, total = db.query(date=date, source=source, category=category,
+                             limit=limit, offset=offset, search=search)
+    return {"ok": True, "events": events, "total": total,
+            "limit": limit, "offset": offset}
+
+
+@app.get("/api/timeline/stats")
+def timeline_stats(date: str = ""):
+    """事件统计聚合."""
+    db = get_db()
+    return {"ok": True, "stats": db.stats(date=date)}
+
+
+@app.get("/api/timeline/dates")
+def timeline_dates(limit: int = 60):
+    """有事件的日期列表."""
+    db = get_db()
+    return {"ok": True, "dates": db.distinct_dates(limit=limit)}
+
+
+@app.get("/api/timeline/daily")
+def timeline_daily(date: str = ""):
+    """某天结构化总结."""
+    if not date:
+        date = time.strftime("%Y-%m-%d")
+    db = get_db()
+    return {"ok": True, "summary": db.daily_summary(date)}
+
+
+@app.get("/api/timeline/channels")
+def timeline_channels():
+    """各采集渠道的实时状态 + 覆盖情况 + 遗漏说明."""
+    import urllib.request
+    from timeline.collector import (
+        FileCollector, BrowserCollector, GitCollector, QingtuiCollector,
+        WATCH_DIRS, CHROME_HISTORY, CHROME_PROFILES, SAFARI_HISTORY,
+    )
+    from timeline.reporter import APPS_NAME_MAP
+
+    db = get_db()
+    channels = []
+
+    # ---- Git 渠道 ----
+    gc = GitCollector()
+    projs = gc._projects()
+    git_projects = [(p, n, (Path(p) / ".git").exists()) for p, n in projs]
+    git_with_repo = [x for x in git_projects if x[2]]
+    git_count = db._conn().execute("SELECT COUNT(*) FROM events WHERE source='git'").fetchone()[0]
+    channels.append({
+        "key": "git", "name": "代码提交", "icon": "🔧", "active": True,
+        "count": git_count,
+        "status": "ok" if git_count else "empty",
+        "status_text": f"已采集 {git_count} 条",
+        "detail": f"监控 {len(git_with_repo)}/{len(git_projects)} 个 git 仓库",
+        "missed": [
+            f"「{n}」非 git 目录，未纳入" for p, n, has in git_projects if not has
+        ],
+    })
+
+    # ---- 浏览器渠道 ----
+    chrome_ok = CHROME_HISTORY.exists()
+    safari_ok = SAFARI_HISTORY.exists()
+    browser_count = db._conn().execute("SELECT COUNT(*) FROM events WHERE source='browser'").fetchone()[0]
+    # Safari 数据量极少时, 在说明里标注
+    safari_count = 0
+    if safari_ok:
+        try:
+            import sqlite3, tempfile, shutil as _shutil
+            _tmp = Path(tempfile.gettempdir()) / f"safari_probe_{os.getpid()}.db"
+            _shutil.copy2(str(SAFARI_HISTORY), str(_tmp))
+            _c = sqlite3.connect(str(_tmp))
+            safari_count = _c.execute("SELECT COUNT(*) FROM history_items").fetchone()[0]
+            _c.close()
+            _tmp.unlink(missing_ok=True)
+        except Exception:
+            pass
+    browsers = []
+    if chrome_ok:
+        browsers.append("Chrome")
+    if safari_ok and safari_count > 5:
+        browsers.append(f"Safari({safari_count})")
+    missed = []
+    if safari_ok and safari_count <= 5:
+        missed.append("Safari 历史极少（几乎不用），主要靠 Chrome")
+    if not browsers:
+        missed.append("未覆盖 Edge/Firefox/Arc（如使用会遗漏）")
+    channels.append({
+        "key": "browser", "name": "浏览器访问", "icon": "🌐", "active": bool(browsers),
+        "count": browser_count,
+        "status": "ok" if browser_count else "empty",
+        "status_text": f"已采集 {browser_count} 条",
+        "detail": f"覆盖: {', '.join(browsers) or '无'}",
+        "missed": missed,
+    })
+
+    # ---- 文件渠道 ----
+    fc = FileCollector()
+    snap = fc._load_snapshot()
+    file_count = db._conn().execute("SELECT COUNT(*) FROM events WHERE source='files'").fetchone()[0]
+    first_run = not bool(snap)
+    channels.append({
+        "key": "files", "name": "文件变化", "icon": "📁", "active": True,
+        "count": file_count,
+        "status": "ok" if not first_run else "init",
+        "status_text": f"快照 {len(snap)} 个文件" + ("（首次建快照）" if first_run else ""),
+        "detail": f"监控 {len(WATCH_DIRS)} 个目录",
+        "missed": [
+            "首次运行只建快照，从第二次起才有变更事件",
+        ] if first_run else [],
+    })
+
+    # ---- 轻推渠道 ----
+    # 检查 csp4.db 是否存在 (SQLite 直读方案, 不需要调试端口)
+    qingtui_db = HOME / "Library/Application Support/Qingtui/sqlite/344548d972f44d799aeea39ae3e231ba/csp4.db"
+    qingtui_db_ok = qingtui_db.exists()
+    qingtui_count = db._conn().execute("SELECT COUNT(*) FROM events WHERE source='qingtui'").fetchone()[0]
+    if not qingtui_db_ok:
+        missed = ["轻推数据库不存在 (csp4.db), 请确认轻推已安装"]
+        detail = "数据库未找到"
+    elif qingtui_count == 0:
+        missed = []
+        detail = "数据库在线，待采集"
+    else:
+        missed = []
+        detail = "数据库在线"
+    channels.append({
+        "key": "qingtui", "name": "轻推消息", "icon": "💬", "active": qingtui_db_ok,
+        "count": qingtui_count,
+        "status": "ok" if qingtui_count else ("empty" if qingtui_db_ok else "down"),
+        "status_text": f"已采集 {qingtui_count} 条" if qingtui_count else ("待采集" if qingtui_db_ok else "未连接"),
+        "detail": detail,
+        "missed": missed,
+    })
+
+    # ---- 未覆盖渠道 (预告) ----
+    channels.append({
+        "key": "wechat", "name": "微信消息", "icon": "💭", "active": False,
+        "count": 0, "status": "planned", "status_text": "未接入",
+        "detail": "计划第二期接入",
+        "missed": ["微信聊天记录未采集（需确认本机 WeChat 数据格式）"],
+    })
+    channels.append({
+        "key": "others", "name": "其他来源", "icon": "📌", "active": False,
+        "count": 0, "status": "planned", "status_text": "可扩展",
+        "detail": "邮件/日历/番茄钟/健康数据等",
+        "missed": ["邮件、日历、番茄钟、健康等未接入"],
+    })
+
+    return {"ok": True, "channels": channels,
+            "total": sum(c["count"] for c in channels if c.get("count"))}
+
+
+@app.post("/api/timeline/collect")
+def timeline_collect():
+    """手动触发全量采集 (后台执行, 立即返回)."""
+    def _run():
+        try:
+            run_all_collectors()
+        except Exception:
+            pass
+    threading.Thread(target=_run, daemon=True).start()
+    return {"ok": True, "msg": "已触发采集, 后台执行中"}
+
+
+@app.post("/api/timeline/collect/sync")
+def timeline_collect_sync():
+    """同步采集 (快渠道立即返回, 轻推后台进行)."""
+    result = run_all_collectors()
+    # 轻推是否在后台采集
+    qt_state = result.get("sources", {}).get("qingtui", {})
+    background = qt_state.get("status") == "background"
+    return {"ok": True, "result": result, "qingtui_background": background}
+
+
+@app.post("/api/timeline/lifecycle")
+def timeline_lifecycle(ttl_days: int = 30):
+    """执行数据生命周期: 聚合到 summary → 清理过期事件 → VACUUM."""
+    db = get_db()
+    try:
+        result = db.lifecycle(ttl_days)
+        return {"ok": True, "result": result}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/timeline/summary")
+def timeline_summary(date: str = "", source: str = ""):
+    """查询汇总层统计数据."""
+    db = get_db()
+    conn = db._conn()
+    where = []
+    params = []
+    if date:
+        where.append("date = ?")
+        params.append(date)
+    if source:
+        where.append("source = ?")
+        params.append(source)
+    where_sql = ("WHERE " + " AND ".join(where)) if where else ""
+    rows = conn.execute(
+        f"""SELECT date, source, dimension, dim_key, count, meta
+            FROM summary_events {where_sql}
+            ORDER BY date DESC, count DESC LIMIT 200""",
+        params).fetchall()
+    items = [{"date": r[0], "source": r[1], "dimension": r[2],
+              "dim_key": r[3], "count": r[4], "meta": json.loads(r[5] or "{}")}
+             for r in rows]
+    total = conn.execute(
+        f"SELECT COUNT(*) FROM summary_events {where_sql}", params).fetchone()[0]
+    return {"ok": True, "items": items, "total": total}
+
+
+@app.post("/api/timeline/daily/preview")
+def timeline_daily_preview(payload: dict | None = None):
+    """预览日报: AI 总结 + 项目归类 (不落盘)."""
+    payload = payload or {}
+    date = payload.get("date", "") or time.strftime("%Y-%m-%d")
+    try:
+        from timeline.daily_report import preview_daily_report
+        result = preview_daily_report(date)
+        result["ok"] = True
+        return result
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/timeline/daily/commit")
+def timeline_daily_commit(payload: dict | None = None):
+    """提交日报: 写入各项目 README + 独立日报文件.
+
+    payload: {date, project_summaries?: {项目名: summary_md}}
+    """
+    payload = payload or {}
+    date = payload.get("date", "") or time.strftime("%Y-%m-%d")
+    project_summaries = payload.get("project_summaries", None)
+    try:
+        from timeline.daily_report import commit_daily_report
+        result = commit_daily_report(date, project_summaries)
+        result["ok"] = True
+        return result
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/timeline/today-overview")
+def timeline_today_overview(date: str = ""):
+    """今日概览 — 聚合今天的事件、@提及、采集状态."""
+    if not date:
+        date = time.strftime("%Y-%m-%d")
+    try:
+        from timeline.today_overview import today_overview
+        result = today_overview(date)
+        result["ok"] = True
+        return result
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/timeline/obsidian/projects")
+def timeline_obsidian_projects():
+    """根据事件库里的项目名, 自动创建缺失的 LifeOS 项目."""
+    try:
+        db = get_db()
+        # 全局扫描 git 事件里的项目名
+        events, _ = db.query(source="git", limit=100000)
+        created = []
+        seen = set()
+        for e in events:
+            proj = e.get("target", "") or (e.get("meta", {}) or {}).get("project", "")
+            if proj and proj not in seen:
+                p = ensure_project(proj, display_name=proj)
+                if p:
+                    seen.add(proj)
+                    created.append(p)
+        return {"ok": True, "created": [str(p) for p in created],
+                "count": len(created)}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+# ─────────────────────────────────────────────────────────────
+# 周报 / 月报 API
+# ─────────────────────────────────────────────────────────────
+
+@app.get("/api/weekly/list")
+def weekly_list():
+    try:
+        from weekly_api import list_weekly_reports
+        return {"ok": True, "weeks": list_weekly_reports()}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/weekly/report")
+def weekly_report(week: str = ""):
+    if not week:
+        return {"ok": False, "error": "缺少 week 参数 (如 2026-W37)"}
+    try:
+        from weekly_api import get_weekly_report
+        r = get_weekly_report(week)
+        if r is None:
+            return {"ok": False, "error": f"周报 {week} 不存在"}
+        return {"ok": True, "report": r}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/weekly/export-md")
+def weekly_export_md(week: str = ""):
+    if not week:
+        return {"ok": False, "error": "缺少 week 参数"}
+    try:
+        from weekly_api import export_weekly_markdown
+        md = export_weekly_markdown(week)
+        if md is None:
+            return {"ok": False, "error": f"周报 {week} 不存在"}
+        return {"ok": True, "markdown": md}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/monthly/list")
+def monthly_list():
+    try:
+        from weekly_api import list_monthly_reports
+        return {"ok": True, "months": list_monthly_reports()}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/monthly/report")
+def monthly_report(month: str = ""):
+    if not month:
+        return {"ok": False, "error": "缺少 month 参数 (如 2026-08)"}
+    try:
+        from weekly_api import get_monthly_report
+        r = get_monthly_report(month)
+        if r is None:
+            return {"ok": False, "error": f"月报 {month} 不存在"}
+        return {"ok": True, "report": r}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/monthly/export-md")
+def monthly_export_md(month: str = ""):
+    if not month:
+        return {"ok": False, "error": "缺少 month 参数"}
+    try:
+        from weekly_api import export_monthly_markdown
+        md = export_monthly_markdown(month)
+        if md is None:
+            return {"ok": False, "error": f"月报 {month} 不存在"}
+        return {"ok": True, "markdown": md}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/weekly/summarize")
+def weekly_summarize(week: str = "", force: bool = False):
+    """AI 生成周报总结. 默认优先返回缓存(JSON→LifeOS回读), force=true 强制重新生成."""
+    if not week:
+        return {"ok": False, "error": "缺少 week 参数"}
+    try:
+        from weekly_api import summarize_weekly, get_cached_ai_summary
+        s = summarize_weekly(week, force=force)
+        if s is None:
+            return {"ok": False, "error": f"周报 {week} 不存在或 AI 总结失败"}
+        # 区分是否命中缓存(生成后已持久化, 二次读回判断)
+        cached = get_cached_ai_summary("weekly", week)
+        was_cached = (not force) and cached is not None and cached["summary"] == s
+        at = (cached or {}).get("at", "")
+        return {"ok": True, "summary": s, "cached": was_cached, "at": at}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/monthly/summarize")
+def monthly_summarize(month: str = "", force: bool = False):
+    """AI 生成月报总结. 默认优先返回缓存(JSON→LifeOS回读), force=true 强制重新生成."""
+    if not month:
+        return {"ok": False, "error": "缺少 month 参数"}
+    try:
+        from weekly_api import summarize_monthly, get_cached_ai_summary
+        s = summarize_monthly(month, force=force)
+        if s is None:
+            return {"ok": False, "error": f"月报 {month} 不存在或 AI 总结失败"}
+        cached = get_cached_ai_summary("monthly", month)
+        was_cached = (not force) and cached is not None and cached["summary"] == s
+        at = (cached or {}).get("at", "")
+        return {"ok": True, "summary": s, "cached": was_cached, "at": at}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/weekly/write-lifeos")
+def weekly_write_lifeos(payload: dict | None = None):
+    """把周报 AI 总结写入 LifeOS 周期笔记."""
+    payload = payload or {}
+    week = payload.get("week", "")
+    if not week:
+        return {"ok": False, "error": "缺少 week 参数"}
+    try:
+        from weekly_api import write_summary_to_lifeos
+        return write_summary_to_lifeos("weekly", week)
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/monthly/write-lifeos")
+def monthly_write_lifeos(payload: dict | None = None):
+    """把月报 AI 总结写入 LifeOS 周期笔记."""
+    payload = payload or {}
+    month = payload.get("month", "")
+    if not month:
+        return {"ok": False, "error": "缺少 month 参数"}
+    try:
+        from weekly_api import write_summary_to_lifeos
+        return write_summary_to_lifeos("monthly", month)
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+# ── 季报 / 年报 API ──
+
+
+@app.get("/api/quarterly/list")
+def quarterly_list():
+    """列出所有可聚合的季度."""
+    try:
+        from weekly_api import list_quarterly_reports
+        return {"ok": True, "quarters": list_quarterly_reports()}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/quarterly/report")
+def quarterly_report(quarter: str = ""):
+    """获取某季度聚合报告."""
+    if not quarter:
+        return {"ok": False, "error": "缺少 quarter 参数 (如 2026-Q3)"}
+    try:
+        from weekly_api import get_quarterly_report
+        r = get_quarterly_report(quarter)
+        if r is None:
+            return {"ok": False, "error": f"季报 {quarter} 不存在（需有对应月份数据）"}
+        return {"ok": True, "report": r}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/quarterly/summarize")
+def quarterly_summarize(quarter: str = "", force: bool = False):
+    """AI 生成季报总结. 默认优先返回缓存(JSON→LifeOS回读), force=true 强制重新生成."""
+    if not quarter:
+        return {"ok": False, "error": "缺少 quarter 参数"}
+    try:
+        from weekly_api import summarize_quarterly, get_cached_ai_summary
+        s = summarize_quarterly(quarter, force=force)
+        if s is None:
+            return {"ok": False, "error": f"季报 {quarter} 不存在或 AI 总结失败"}
+        cached = get_cached_ai_summary("quarterly", quarter)
+        was_cached = (not force) and cached is not None and cached["summary"] == s
+        at = (cached or {}).get("at", "")
+        return {"ok": True, "summary": s, "cached": was_cached, "at": at}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/quarterly/write-lifeos")
+def quarterly_write_lifeos(payload: dict | None = None):
+    """把季报 AI 总结写入 LifeOS 周期笔记."""
+    payload = payload or {}
+    quarter = payload.get("quarter", "")
+    if not quarter:
+        return {"ok": False, "error": "缺少 quarter 参数"}
+    try:
+        from weekly_api import write_summary_to_lifeos
+        return write_summary_to_lifeos("quarterly", quarter)
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/yearly/list")
+def yearly_list():
+    """列出所有可聚合的年度."""
+    try:
+        from weekly_api import list_yearly_reports
+        return {"ok": True, "years": list_yearly_reports()}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/yearly/report")
+def yearly_report(year: str = ""):
+    """获取某年度聚合报告."""
+    if not year:
+        return {"ok": False, "error": "缺少 year 参数 (如 2026)"}
+    try:
+        from weekly_api import get_yearly_report
+        r = get_yearly_report(year)
+        if r is None:
+            return {"ok": False, "error": f"年报 {year} 不存在（需有对应月份数据）"}
+        return {"ok": True, "report": r}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/yearly/summarize")
+def yearly_summarize(year: str = "", force: bool = False):
+    """AI 生成年报总结. 默认优先返回缓存(JSON→LifeOS回读), force=true 强制重新生成."""
+    if not year:
+        return {"ok": False, "error": "缺少 year 参数"}
+    try:
+        from weekly_api import summarize_yearly, get_cached_ai_summary
+        s = summarize_yearly(year, force=force)
+        if s is None:
+            return {"ok": False, "error": f"年报 {year} 不存在或 AI 总结失败"}
+        cached = get_cached_ai_summary("yearly", year)
+        was_cached = (not force) and cached is not None and cached["summary"] == s
+        at = (cached or {}).get("at", "")
+        return {"ok": True, "summary": s, "cached": was_cached, "at": at}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/yearly/write-lifeos")
+def yearly_write_lifeos(payload: dict | None = None):
+    """把年报 AI 总结写入 LifeOS 周期笔记."""
+    payload = payload or {}
+    year = payload.get("year", "")
+    if not year:
+        return {"ok": False, "error": "缺少 year 参数"}
+    try:
+        from weekly_api import write_summary_to_lifeos
+        return write_summary_to_lifeos("yearly", year)
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+# ── 工作周报 DOC 生成 ──
+
+@app.get("/api/weekly/doc/weeks")
+def weekly_doc_weeks():
+    """列出可生成工作周报的周列表."""
+    try:
+        from weekly_report_doc import list_available_weeks
+        weeks = list_available_weeks()
+        return {"ok": True, "weeks": weeks}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/weekly/doc/generate")
+def weekly_doc_generate(payload: dict | None = None):
+    """生成工作周报 .doc 文件. payload: {week_start: 'YYYY-MM-DD'}"""
+    import datetime as _dt
+    payload = payload or {}
+    week_start_str = payload.get("week_start", "")
+    try:
+        from weekly_report_doc import generate_doc, _check_existing
+        if week_start_str:
+            try:
+                week_start = _dt.datetime.strptime(week_start_str, "%Y-%m-%d").date()
+            except Exception:
+                return {"ok": False, "error": "week_start 格式应为 YYYY-MM-DD"}
+        else:
+            week_start = None  # 默认上周
+        # 检查是否已有
+        existing = _check_existing(week_start) if week_start else []
+        result = generate_doc(week_start)
+        if result.get("ok"):
+            result["existing"] = existing
+        return result
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.post("/api/weekly/doc/preview")
+def weekly_doc_preview(payload: dict | None = None):
+    """预览工作周报数据 (不生成文件). payload: {week_start: 'YYYY-MM-DD'}"""
+    import datetime as _dt
+    from weekly_report_doc import _get_week_range, _analyze_week
+    payload = payload or {}
+    week_start_str = payload.get("week_start", "")
+    try:
+        if week_start_str:
+            try:
+                week_start = _dt.datetime.strptime(week_start_str, "%Y-%m-%d").date()
+            except Exception:
+                return {"ok": False, "error": "week_start 格式应为 YYYY-MM-DD"}
+        else:
+            week_start, week_end = _get_week_range()
+        data = _analyze_week(week_start, week_start + _dt.timedelta(days=6))
+        # 汇总每天分组计数
+        summary = {}
+        for day, msgs in data['daily'].items():
+            group_counts = {}
+            for m in msgs:
+                for g in m['groups']:
+                    group_counts[g] = group_counts.get(g, 0) + 1
+            summary[day] = {
+                'total': len(msgs),
+                'groups': group_counts,
+            }
+        return {
+            "ok": True,
+            "week_start": week_start.strftime('%Y-%m-%d'),
+            "week_end": (week_start + _dt.timedelta(days=6)).strftime('%Y-%m-%d'),
+            "total_my_msgs": data['total_my'],
+            "daily_summary": summary,
+            "group_spans": {k: [v[0], v[1]] for k, v in data['group_spans'].items()},
+        }
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+# ── 日报 ──
+
+@app.get("/api/daily/dates")
+def daily_dates():
+    """返回有日报数据的日期列表, 供日历打点."""
+    try:
+        from weekly_api import list_daily_dates
+        dates = list_daily_dates()
+        return {"ok": True, "dates": dates}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+@app.get("/api/daily/report")
+def daily_report(date: str = ""):
+    """返回某天日报 -- LifeOS 文件优先, 事件聚合兜底."""
+    if not date:
+        import time
+        date = time.strftime("%Y-%m-%d")
+    try:
+        from weekly_api import get_daily_report
+        report = get_daily_report(date)
+        report["ok"] = True
+        return report
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
 
 # 若前端已 build, 由后端 serve 静态产物(单端口访问)
 if FRONTEND_DIST.is_dir():

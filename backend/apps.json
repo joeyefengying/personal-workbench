@@ -49,7 +49,7 @@
           "id": "arch-nav",
           "name": "财务架构图导航",
           "path": "~/Downloads/笔记/笔记/项目记录/赛迪/19. 五矿统建系统/1. 财务系统/00_架构图导航",
-          "desc": "财务系统架构图导航 (HTML静态入口)", 
+          "desc": "财务系统架构图导航 (HTML静态入口)",
           "cmd": "open {path}",
           "url": "",
           "port": 0,
@@ -67,10 +67,28 @@
           "name": "交易策略系统 v2",
           "path": "~/Downloads/project/mine/trading-strategy-system",
           "desc": "Nuxt/Vite + Fastify + freqtrade A股回测",
-          "words": ["web", "api"],
+          "words": [
+            "web",
+            "api"
+          ],
           "children": [
-            { "id": "tws-web", "name": "web 前端", "dir": "apps/web", "cmd": "npm run dev", "port": 8750, "url": "http://127.0.0.1:8750" },
-            { "id": "tws-api", "name": "api 后端", "dir": "apps/api", "cmd": "npm run dev", "port": 8751, "url": "http://127.0.0.1:8751", "api": true }
+            {
+              "id": "tws-web",
+              "name": "web 前端",
+              "dir": "apps/web",
+              "cmd": "npm run dev",
+              "port": 8750,
+              "url": "http://127.0.0.1:8750"
+            },
+            {
+              "id": "tws-api",
+              "name": "api 后端",
+              "dir": "apps/api",
+              "cmd": "npm run dev",
+              "port": 8751,
+              "url": "http://127.0.0.1:8751",
+              "api": true
+            }
           ]
         },
         {
@@ -111,6 +129,24 @@
           "url": "http://127.0.0.1:8895",
           "port": 8895,
           "type": "web"
+        }
+      ]
+    },
+    {
+      "key": "performance",
+      "name": "绩效 / 考核",
+      "icon": "audit",
+      "projects": [
+        {
+          "id": "performance-report",
+          "name": "绩效考核汇报",
+          "path": "~/Downloads/cisdi-work/绩效",
+          "desc": "每周五自动采集工作轨迹(轻推聊天+Git提交+ONES缺陷)→周报归档→月度自动汇总→辅助撰写绩效考核简述",
+          "runDir": "~/Downloads/cisdi-work/绩效",
+          "cmd": "",
+          "url": "",
+          "port": 0,
+          "type": "doc"
         }
       ]
     }

@@ -118,18 +118,20 @@ function gitTag(proj) {
                   ></span>
                   {{ proj.name }}
                 </div>
-                <div class="wb-proj-card-badges">
-                  <a-tooltip v-if="proj.hasSession" title="已有项目对话，将续接不重复新建">
-                    <a-tag color="cyan" style="margin: 0; font-size: 11px">💬 已建会话</a-tag>
-                  </a-tooltip>
-                  <a-tag
-                    v-if="proj.type !== 'doc'"
-                    :color="proj.active ? 'success' : 'default'"
-                    style="margin: 0; font-size: 11px"
-                  >
-                    {{ proj.active ? '运行中' : '未启动' }}
-                  </a-tag>
-                </div>
+              </div>
+
+              <!-- Badges (标题下一行) -->
+              <div class="wb-proj-card-badges">
+                <a-tooltip v-if="proj.hasSession" title="已有项目对话，将续接不重复新建">
+                  <a-tag color="cyan" style="margin: 0; font-size: 11px">💬 已建会话</a-tag>
+                </a-tooltip>
+                <a-tag
+                  v-if="proj.type !== 'doc'"
+                  :color="proj.active ? 'success' : 'default'"
+                  style="margin: 0; font-size: 11px"
+                >
+                  {{ proj.active ? '运行中' : '未启动' }}
+                </a-tag>
               </div>
 
               <!-- Description -->
@@ -141,8 +143,8 @@ function gitTag(proj) {
                   <a-tag color="blue" style="font-size: 11px">{{ gitTag(proj).branch }}</a-tag>
                   <a-tag v-if="gitTag(proj).dirty > 0" color="orange" style="font-size: 11px">{{ gitTag(proj).dirty }} 改动</a-tag>
                   <a-tag v-else color="green" style="font-size: 11px">干净</a-tag>
-                  <span class="wb-proj-git-remote">{{ gitTag(proj).remote }}</span>
                 </div>
+                <div class="wb-proj-git-remote">{{ gitTag(proj).remote }}</div>
                 <div v-if="gitTag(proj).last" class="wb-proj-git-last">
                   {{ gitTag(proj).last }}
                 </div>
@@ -154,9 +156,7 @@ function gitTag(proj) {
 
               <!-- Actions -->
               <div class="wb-proj-actions">
-                <a-button size="small" type="primary" ghost @click="doChat(proj)">
-                  💬 对话
-                </a-button>
+                <a-button size="small" @click="doChat(proj)"> 💬 对话 </a-button>
                 <a-button v-if="proj.type !== 'doc' && proj.cmd" size="small" @click="doStart(proj)">
                   启动
                 </a-button>
@@ -200,6 +200,8 @@ function gitTag(proj) {
   border-radius: var(--wb-radius-md);
   padding: 18px;
   transition: all var(--wb-transition);
+  display: flex;
+  flex-direction: column;
 }
 .wb-proj-card:hover {
   box-shadow: var(--wb-shadow-md);
@@ -208,7 +210,7 @@ function gitTag(proj) {
 
 .wb-proj-card-head {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 8px;
 }
@@ -224,6 +226,8 @@ function gitTag(proj) {
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 
 .wb-proj-status-dot {
@@ -252,16 +256,22 @@ function gitTag(proj) {
   border-radius: var(--wb-radius-sm);
   padding: 10px 12px;
   margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .wb-proj-git-row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 .wb-proj-git-remote {
   color: var(--wb-text-tertiary);
-  margin-left: auto;
   font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .wb-proj-git-last {
   color: var(--wb-text-tertiary);
@@ -284,5 +294,7 @@ function gitTag(proj) {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 12px;
 }
 </style>

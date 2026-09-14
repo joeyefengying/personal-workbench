@@ -1,0 +1,269 @@
+{
+  "url": "http://10.13.253.17:30011/project/#/workspace/home",
+  "title": "概览 | 我的工作台",
+  "captured": [
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/auth/token_info",
+      "post_data": null,
+      "response": "{\"user\":{\"uuid\":\"97XChp6w\",\"email\":\"hao.a.zhang@cisdi.com.cn\",\"name\":\"张浩\",\"name_pinyin\":\"zhang1hao4\",\"title\":\"\",\"avatar\":\"http://10.13.253.17:30011/api/project/file/avatar/FrR7q2Xjy8UzcENZjbStDyj_XsGN\",\"phone\":\"\",\"create_time\":1657725001788039,\"status\":1,\"channel\":\"u97XChp6wuL9Xx0uSehm6oDLpjfI8PsB\",\"token\":\"XXpplUf4fGVsdcZ3teHkF3AU8EpMOvUnlS9qQCThIh6kktQzLzX1oxBSetiPvW1d\",\"license_types\":[\"code_integration\",\"manhour\",\"product\",\"wiki\",\"storage\",\"pipeline_integration\",\"project\",\"testcase\",\"account\",\"plan\"],\"imported_jira_user\":false,\"is_init_password\":false,\"language\":\"zh\",\"timezone\":\"Asia/Shanghai\"},\"teams\":[{\"uuid\":\"SKG3mSQb\",\"status\":1,\"name\":\"CISDI\",\"owner\":\"146fhumA\",\"logo\":\"\",\"cover_url\":\"\",\"domain\":\"\",\"create_time\":1617013275848880,\"expire_time\":4102415999,\"type\":\"pro\",\"config\":{\"sprint\":{\"alias\":\"\"}},\"org_uuid\":\"8xjXcDnk\",\"workdays\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\"],\"workhours\":800000,\"workhours_unit\":\"hour\",\"timezone\":\"Asia/Shanghai\"}],\"org\":{\"org_type\":0,\"uuid\":\"8xjXcDnk\",\"name\":\"CISDI\",\"owner\":\"146fhumA\",\"style_hash\":\"\",\"favicon\":\"\",\"notifications\":[],\"status\":1,\"visibility\":false,\"timezone\":\"Asia/Shanghai\",\"has_certs\":true},\"constraints\":{\"ones:app:account:enable\":true,\"ones:app:code_integration:enable\":true,\"ones:app:manhour:enable\":true,\"ones:app:pipeline_integration:enable\":true,\"ones:app:plan:enable\":true,\"ones:app:product:enable\":true,\"ones:app:project:enable\":true,\"ones:app:storage:enable\":true,\"ones:app:storage:nextEdition\":\"null\",\"ones:app:testcase:custom_report_template\":true,\"ones:app:testcase:enable\":true,\"ones:app:wiki:enable\":true,\"ones:instance:apps\":[\"project\",\"wiki\",\"testcase\",\"pipeline\",\"plan\",\"account\",\"desk\",\"performance\",\"storage\",\"product\",\"version\",\"manhour\",\"automation\",\"office_collaboration\",\"xmind\",\"ones_task\",\"pipeline_integration\",\"code_integration\",\"plugin_MJSp5TuH\",\"plugin_FaJYrScw\",\"plugin_9OSk7Lpw\",\"plugin_R2dSG3FN\",\"plugin_NTkGpRbx\",\"plugin_ohRZ8NIW\",\"plugin_AOfdS-Y2\",\"plugin_cvctatHX\",\"plugin_zDL9QwSQ\",\"plugin_PbDuwdxA\",\"plugin_ZyZmrDLe\",\"plugin_XAjP2W5z\",\"plugin_SBQcxFuP\",\"plugin_Gvmbef2y\",\"open_platform\",\"copilot\",\"plugin_EXeviQzu\"],\"ones:instance:operatingRegion\":\"cn\",\"ones:instance:serveMode\":\"standalone\"},\"license_operation\":{\"expiry_notify\":3},\"license_templates\":{\"enterprise-trial\":{\"edition\":\"enterprise-trial\",\"scale\":50,\"duration\":14},\"team\":{\"edition\":\"team\",\"scale\":50,\"duration\":-1}}}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/plugin/list",
+      "post_data": "{}",
+      "response": "{\"data\":[]}"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/language/list",
+      "post_data": null,
+      "response": "{\"languages\":[{\"lang\":\"zh\",\"desc\":\"简体中文\"},{\"lang\":\"en\",\"desc\":\"English\"}]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/operations/language/project-web/zh",
+      "post_data": null,
+      "response": "{\"useOperations\":false}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/operations/externalLink/project-web/zh",
+      "post_data": null,
+      "response": "{\"useOperations\":false}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/sso/plugin/displays",
+      "post_data": "{\"org_uuid\":\"\"}",
+      "response": "[]\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/auth/token_info",
+      "post_data": null,
+      "response": "{\"user\":{\"uuid\":\"97XChp6w\",\"email\":\"hao.a.zhang@cisdi.com.cn\",\"name\":\"张浩\",\"name_pinyin\":\"zhang1hao4\",\"title\":\"\",\"avatar\":\"http://10.13.253.17:30011/api/project/file/avatar/FrR7q2Xjy8UzcENZjbStDyj_XsGN\",\"phone\":\"\",\"create_time\":1657725001788039,\"status\":1,\"channel\":\"u97XChp6wuL9Xx0uSehm6oDLpjfI8PsB\",\"token\":\"XXpplUf4fGVsdcZ3teHkF3AU8EpMOvUnlS9qQCThIh6kktQzLzX1oxBSetiPvW1d\",\"license_types\":[\"pipeline_integration\",\"wiki\",\"product\",\"plan\",\"testcase\",\"manhour\",\"storage\",\"project\",\"account\",\"code_integration\"],\"imported_jira_user\":false,\"is_init_password\":false,\"language\":\"zh\",\"timezone\":\"Asia/Shanghai\"},\"teams\":[{\"uuid\":\"SKG3mSQb\",\"status\":1,\"name\":\"CISDI\",\"owner\":\"146fhumA\",\"logo\":\"\",\"cover_url\":\"\",\"domain\":\"\",\"create_time\":1617013275848880,\"expire_time\":4102415999,\"type\":\"pro\",\"config\":{\"sprint\":{\"alias\":\"\"}},\"org_uuid\":\"8xjXcDnk\",\"workdays\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\"],\"workhours\":800000,\"workhours_unit\":\"hour\",\"timezone\":\"Asia/Shanghai\"}],\"org\":{\"org_type\":0,\"uuid\":\"8xjXcDnk\",\"name\":\"CISDI\",\"owner\":\"146fhumA\",\"style_hash\":\"\",\"favicon\":\"\",\"notifications\":[],\"status\":1,\"visibility\":false,\"timezone\":\"Asia/Shanghai\",\"has_certs\":true},\"constraints\":{\"ones:app:account:enable\":true,\"ones:app:code_integration:enable\":true,\"ones:app:manhour:enable\":true,\"ones:app:pipeline_integration:enable\":true,\"ones:app:plan:enable\":true,\"ones:app:product:enable\":true,\"ones:app:project:enable\":true,\"ones:app:storage:enable\":true,\"ones:app:storage:nextEdition\":\"null\",\"ones:app:testcase:custom_report_template\":true,\"ones:app:testcase:enable\":true,\"ones:app:wiki:enable\":true,\"ones:instance:apps\":[\"project\",\"wiki\",\"testcase\",\"pipeline\",\"plan\",\"account\",\"desk\",\"performance\",\"storage\",\"product\",\"version\",\"manhour\",\"automation\",\"office_collaboration\",\"xmind\",\"ones_task\",\"pipeline_integration\",\"code_integration\",\"plugin_MJSp5TuH\",\"plugin_FaJYrScw\",\"plugin_9OSk7Lpw\",\"plugin_R2dSG3FN\",\"plugin_NTkGpRbx\",\"plugin_ohRZ8NIW\",\"plugin_AOfdS-Y2\",\"plugin_cvctatHX\",\"plugin_zDL9QwSQ\",\"plugin_PbDuwdxA\",\"plugin_ZyZmrDLe\",\"plugin_XAjP2W5z\",\"plugin_SBQcxFuP\",\"plugin_Gvmbef2y\",\"open_platform\",\"copilot\",\"plugin_EXeviQzu\"],\"ones:instance:operatingRegion\":\"cn\",\"ones:instance:serveMode\":\"standalone\"},\"license_operation\":{\"expiry_notify\":3},\"license_templates\":{\"enterprise-trial\":{\"edition\":\"enterprise-trial\",\"scale\":50,\"duration\":14},\"team\":{\"edition\":\"team\",\"scale\":50,\"duration\":-1}}}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/sso/plugin/displays",
+      "post_data": "{\"org_uuid\":\"\"}",
+      "response": "[]\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/plugin/list",
+      "post_data": "{}",
+      "response": "{\"data\":[]}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/plugin/list",
+      "post_data": "{\"organization_uuid\":\"8xjXcDnk\",\"team_uuid\":\"SKG3mSQb\"}",
+      "response": "{\"data\":[]}"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/pipeline/config",
+      "post_data": null,
+      "response": "{\"teamUUIDWhiteList\":[\"\"]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/queues/list",
+      "post_data": null,
+      "response": "{\"batch_tasks\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/organization/8xjXcDnk/user_list_filter_rules",
+      "post_data": null,
+      "response": "{\"rules\":[{\"uuid\":\"team\",\"name\":\"当前团队的团队成员\"},{\"uuid\":\"project\",\"name\":\"所属项目的项目成员\"}]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/notices/info?type=1",
+      "post_data": null,
+      "response": "{\"login_notices\":[],\"login_notices_count\":0,\"notices_count\":6119,\"latest_notice\":{\"user_uuid\":\"97XChp6w\",\"task_uuid\":\"\",\"is_read\":false,\"server_update_stamp\":1789049898592290,\"message\":{\"uuid\":\"MHJhm867\",\"team_uuid\":\"SKG3mSQb\",\"ref_type\":\"team\",\"ref_id\":\"SKG3mSQb\",\"ref_name\":\"\",\"type\":\"system\",\"from\":\"BOT\",\"to\":\"97XChp6w\",\"send_time\":1789049898592290,\"subject_type\":\"user\",\"subject_id\":\"97XChp6w\",\"action\":\"now\",\"object_type\":\"task\",\"object_id\":\"X6uXmaRWCnG2J1wT\",\"object_number\":1320929,\"object_attr\":\"task_notice\",\"ext\":{\"batch_count\":2,\"distance_time\":{\"day\":0,\"hour\":0,\"minute\":0},\"field_name\":\"更新时间\",\"field_uuid\":\"field010\",\"is_batch_message\":true,\"tasks\":[{\"uuid\":\"X6uXmaRWCnG2J1wT\"},{\"uuid\":\"X6uXmaRWWKhM8YL1\"}]},\"is_can_show_richtext_diff\":false}},\"account_notices_count\":0,\"latest_account_notice\":null,\"migrate_notices_count\":0,\"work_order_notices_count\":0}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/organization/8xjXcDnk/style/list",
+      "post_data": null,
+      "response": "{\"styles\":[{\"key\":\"sidebar\",\"value\":\"#FFFFFF\",\"default_value\":\"#FFFFFF\",\"category\":\"sidebar\"},{\"key\":\"font_icon_default_color\",\"value\":\"#2D2D2E\",\"default_value\":\"#2D2D2E\",\"category\":\"sidebar\"},{\"key\":\"font_icon_selected_color\",\"value\":\"#0064FF\",\"default_value\":\"#0064FF\",\"category\":\"sidebar\"},{\"key\":\"menu_selected_status\",\"value\":\"#F0F6FF\",\"default_value\":\"#F0F6FF\",\"category\":\"sidebar\"}]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/menu/list",
+      "post_data": null,
+      "response": "{\"app_launch\":[{\"uuid\":\"GubZb9Q2\",\"key\":\"project\",\"name\":\"项目管理\",\"pin\":true,\"pin_time\":1703483974810,\"pin_position\":16,\"icon\":\"ones-icon:///project\",\"url\":\"ones-route:///project\",\"target\":\"_self\",\"position\":20,\"parent_uuid\":\"\"},{\"uuid\":\"BN3VcfHB\",\"key\":\"wiki\",\"name\":\"知识库管理\",\"pin\":true,\"pin_time\":1703483974820,\"pin_position\":17,\"icon\":\"ones-icon:///wiki\",\"url\":\"ones-route:///wiki\",\"target\":\"_self\",\"position\":30,\"parent_uuid\":\"\"},{\"uuid\":\"5Cy4sBzy\",\"key\":\"plan\",\"name\":\"项目集管理\",\"pin\":true,\"pin_time\":1703483974830,\"pin_position\":18,\"icon\":\"ones-icon:///plan\",\"url\":\"ones-route:///plan\",\"target\":\"_self\",\"position\":40,\"parent_uuid\":\"\"},{\"uuid\":\"2HsmWp1K\",\"key\":\"testcase\",\"name\":\"测试管理\",\"pin\":true,\"pin_time\":1703483974840,\"pin_position\":19,\"icon\":\"ones-icon:///testcase\",\"url\":\"ones-route:///testcase\",\"target\":\"_self\",\"position\":50,\"parent_uuid\":\"\"},{\"uuid\":\"9CDXjUBQ\",\"key\":\"pipeline_integration\",\"name\":\"流水线集成\",\"pin\":true,\"pin_time\":1703483974850,\"pin_position\":20,\"icon\":\"ones-icon:///pipeline_integration\",\"url\":\"ones-route:///pipeline_integration\",\"target\":\"_self\",\"position\":60,\"parent_uuid\":\"\"},{\"uuid\":\"2EMpeYny\",\"key\":\"product\",\"name\":\"产品管理\",\"pin\":true,\"pin_time\":1703483974891,\"pin_position\":23,\"icon\":\"ones-icon:///product\",\"url\":\"ones-route:///product\",\"target\":\"_self\",\"position\":101,\"parent_uuid\":\"\"},{\"uuid\":\"BLYbe1Fp\",\"key\":\"version\",\"name\":\"版本管理\",\"pin\":true,\"pin_time\":1703483974893,\"pin_position\":25,\"icon\":\"ones-icon:///version\",\"url\":\"ones-route:///version\",\"target\":\"_self\",\"position\":103,\"parent_uuid\":\"\"}],\"avatar\":[{\"uuid\":\"KRsPaZSG\",\"key\":\"download_mobile\",\"name\":\"下载移动端\",\"pin\":false,\"pin_time\":0,\"pin_position\":0,\"icon\":\"\",\"url\":\"ones-action:///qrcode/download_mobile\",\"target\":\"\",\"position\":0,\"parent_uuid\":\"\"}],\"custom\":[{\"uuid\":\"Ao9LRfzQ\",\"key\":\"custom_link:Ao9LRfzQ\",\"name\":\"帮助手册\",\"pin\":false,\"pin_time\":0,\"pin_position\":0,\"icon\":\"\",\"url\":\"https://docs.ones.cn/wiki/#/team/6mRWUuNv/space/VErvnySD/page/T2QYnQ5g\",\"target\":\"_blank\",\"position\":0,\"parent_uuid\":\"\"}],\"functional\":[{\"uuid\":\"2uyQXi92\",\"key\":\"search\",\"name\":\"搜索\",\"pin\":false,\"pin_time\":0,\"pin_position\":0,\"icon\":\"ones-icon:///search\",\"url\":\"ones-action:///search\",\"target\":\"\",\"position\":0,\"parent_uuid\":\"\"},{\"uuid\":\"QNCp2YAz\",\"key\":\"workbench\",\"name\":\"我的工作台\",\"pin\":false,\"pin_time\":0,\"pin_position\":0,\"icon\":\"ones-icon:///workspace\",\"url\":\"ones-route:///workspace\",\"target\":\"_self\",\"position\":1,\"parent_uuid\":\"\"},{\"uuid\":\"5yreAgdg\",\"key\":\"notification\",\"name\":\"通知\",\"pin\":false,\"pin_time\":0,\"pin_position\":0,\"icon\":\"ones-icon:///notification\",\"url\":\"ones-action:///popover/notification\",\"target\":\"\",\"position\":2,\"parent_uuid\":\"\"}]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/users/me",
+      "post_data": null,
+      "response": "{\"uuid\":\"97XChp6w\",\"email\":\"hao.a.zhang@cisdi.com.cn\",\"name\":\"张浩\",\"name_pinyin\":\"zhang1hao4\",\"title\":\"\",\"avatar\":\"http://10.13.253.17:30011/api/project/file/avatar/FrR7q2Xjy8UzcENZjbStDyj_XsGN\",\"phone\":\"\",\"create_time\":1657725001788039,\"access_time\":0,\"status\":1,\"org_uuid\":\"8xjXcDnk\",\"company\":\"\",\"license_types\":[\"account\",\"project\",\"product\",\"testcase\",\"wiki\",\"code_integration\",\"plan\",\"manhour\",\"pipeline_integration\",\"storage\"],\"verify_status\":1,\"sync_types\":[3],\"id_number\":\"\",\"can_modify_avatar\":true,\"can_modify_name\":true,\"can_modify_company\":true,\"can_modify_title\":true,\"language\":\"\",\"mfa_device_status\":0}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/organization/8xjXcDnk/bff/licenses",
+      "post_data": null,
+      "response": "{\"OrgUUID\":\"8xjXcDnk\",\"OrgType\":2,\"expire_date\":4102415999,\"products\":[{\"app_id\":\"account\",\"name\":\"企业级帐号目录\",\"logo\":\"ones-logo:///account\",\"can_trial\":false,\"installed\":true,\"provider\":\"app\",\"isolation_mode\":0,\"license\":{\"app_id\":\"account\",\"edition\":\"enterprise\",\"scale\":20000,\"status\":1,\"usage\":12557,\"expire_time\":1790006399,\"expire_warning_time\":1787327999,\"default_grant\":false,\"can_grant\":false,\"editions\":[\"enterprise\"],\"update_time\":0,\"policy\":{\"type\":\"org_scale\",\"target\":\"\",\"policy\":\"org_scale\"}}},{\"app_id\":\"testcase\",\"name\":\"测试管理\",\"logo\":\"ones-logo:///testcase\",\"can_trial\":false,\"installed\":true,\"provider\":\"app\",\"isolation_mode\":0,\"license\":{\"app_id\":\"testcase\",\"edition\":\"enterprise\",\"scale\":4200,\"status\":1,\"usage\":4086,\"expire_time\":1790006399,\"expire_warning_time\":1787327999,\"default_grant\":false,\"can_grant\":true,\"editions\":[\"enterprise\"],\"update_time\":0,\"policy\":{\"type\":\"standard\",\"target\":\"\",\"policy\":\"standard\"}}},{\"app_id\":\"wiki\",\"name\":\"知识库管理\",\"logo\":\"ones-logo:///wiki\",\"can_trial\":false,\"installed\":true,\"provider\":\"app\",\"isolation_mode\":0,\"license\":{\"app_id\":\"wiki\",\"edition\":\"enterprise\",\"scale\":4200,\"status\":1,\"usage\":4088,\"expire_time\":1790006399,\"expire_warning_time\":1787327999,\"default_grant\":false,\"can_grant\":true,\"editions\":[\"enterprise\"],\"update_time\":0,\"policy\":{\"type\":\"standard\",\"target\":\"\",\"policy\":\"standard\"}}},{\"app_id\":\"project\",\"name\":\"项目管理\",\"logo\":\"ones-logo:///project\",\"can_trial\":false,\"installed\":true,\"provider\":\"app\",\"isolation_mode\":0,\"license\":{\"app_id\":\"project\",\"edition\":\"enterprise\",\"scale\":4200,\"status\":1,\"usage\":4102,\"expire_time\":1790006399,\"expire_warning_time\":1787327999,\"default_grant\":false,\"can_grant\":true,\"editions\":[\"enterprise\"],\"update_time\":0,\"policy\":{\"type\":\"standard\",\"target\":\"\",\"policy\":\"standard\"}}},{\"app_id\":\"plan\",\"name\":\"项目集管理\",\"logo\":\"ones-logo:///plan\",\"can_trial\":false,\"installed\":true,\"provider\":\"app\",\"isolation_mode\":0,\"license\":{\"app_id\":\"plan\",\"edition\":\"enterprise\",\"scale\":4200,\"status\":1,\"usage\":4200,\"expire_time\":1790006399,\"expire_warning_time\":1787327999,\"default_grant\":false,\"can_grant\":true,\"editions\":[\"enterprise\"],\"update_time\":0,\"policy\":{\"type\":\"standard\",\"target\":\"\",\"policy\":\"standard\"}}},{\"app_id\":\"product\",\"name\":\"产品管理\",\"logo\":\"ones-logo:///product\",\"can_trial\":false,\"installed\":true,\"provider\":\"app\",\"isolation_mode\":0,\"license\":{\"app_id\":\"product\",\"edition\":\"enterprise\",\"scale\":4200,\"status\":1,\"usage\":4102,\"expire_time\":4102415999,\"expire_warning_time\":4099737599,\"default_grant\":false,\"can_grant\":false,\"editions\":[\"enterprise\"],\"update_time\":0,\"policy\":{\"type\":\"full_binding\",\"target\":\"project\",\"policy\":\"full_binding\"}}},{\"app_id\":\"code_integration\",\"name\":\"代码集成\",\"logo\":\"ones-logo:///code_integration\",\"can_trial\":false,\"installed\":true,\"provider\":\"app\",\"isolation_mode\":0,\"license\":{\"app_id\":\"code_integration\",\"edition\":\"enterprise\",\"scale\":4200,\"status\":1,\"usage\":4102,\"expire_time\":4102415999,\"expire_warning_time\":4099737599,\"default_grant\":false,\"can_grant\":false,\"editi"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/config",
+      "post_data": null,
+      "response": "{\"settings\":[{\"name\":\"is_search_get_member\",\"value\":\"unlimited\"},{\"name\":\"email_visible\",\"value\":\"public\"}]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/res/attachments/upload_config/attachment",
+      "post_data": null,
+      "response": "{\"size_limit\":314572800}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/app_platform/installed_apps_brief",
+      "post_data": null,
+      "response": "{\"installed_apps\":[{\"id\":\"project\",\"name\":\"项目管理\",\"logo\":\"ones-logo:///project\",\"type\":\"PRODUCT\",\"depend_apps\":[],\"license_type\":\"project\",\"isolation_mode\":\"team\",\"available_editions\":[\"enterprise\"],\"features\":{\"config_menus\":{\"children\":[{\"children\":[{\"path\":\"/team/:teamUUID/do_setting/project_manager\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"}],\"slot\":\"ones:settings:project:self:manage\",\"title\":\"项目管理\"},{\"path\":\"/team/:teamUUID/do_setting/project_field\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"}],\"slot\":\"ones:settings:project:self:field\",\"title\":\"项目属性\"},{\"path\":\"/team/:teamUUID/do_setting/project_status\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"}],\"slot\":\"ones:settings:project:self:status\",\"title\":\"项目状态\"},{\"path\":\"/team/:teamUUID/do_setting/role\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"}],\"slot\":\"ones:settings:project:self:role\",\"title\":\"项目角色\"}],\"slot\":\"ones:settings:project:self\",\"title\":\"项目\"},{\"children\":[{\"path\":\"/team/:teamUUID/do_setting/issue_type\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"},{\"context_type\":\"team\",\"permission\":\"manage_tasks_config\"}],\"slot\":\"ones:settings:project:issue:type\",\"title\":\"工作项类型\"},{\"path\":\"/team/:teamUUID/do_setting/task_field\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"},{\"context_type\":\"team\",\"permission\":\"manage_tasks_config\"}],\"slot\":\"ones:settings:project:issue:field\",\"title\":\"工作项属性\"},{\"path\":\"/team/:teamUUID/do_setting/task_status\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"},{\"context_type\":\"team\",\"permission\":\"manage_tasks_config\"}],\"slot\":\"ones:settings:project:issue:status\",\"title\":\"工作项状态\"},{\"path\":\"/team/:teamUUID/do_setting/priority_config\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"},{\"context_type\":\"team\",\"permission\":\"manage_tasks_config\"}],\"slot\":\"ones:settings:project:issue:priority\",\"title\":\"优先级\"},{\"path\":\"/team/:teamUUID/do_setting/task_related_type_config\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"},{\"context_type\":\"team\",\"permission\":\"manage_tasks_config\"}],\"slot\":\"ones:settings:project:issue:relate\",\"title\":\"关联关系类型\"},{\"path\":\"/team/:teamUUID/do_setting/task_query_limit_config\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"},{\"context_type\":\"team\",\"permission\":\"manage_tasks_config\"}],\"slot\":\"ones:settings:project:issue:query:limit\",\"title\":\"工作项展示上限\"}],\"slot\":\"ones:settings:project:issue\",\"title\":\"工作项\"},{\"children\":[{\"path\":\"/team/:teamUUID/do_setting/product/field_config\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_product\"}],\"slot\":\"ones:settings:project:product:field\",\"title\":\"产品属性\"}],\"slot\":\"ones:settings:project:product\",\"title\":\"产品\"},{\"children\":[{\"path\":\"/team/:teamUUID/do_setting/view_setting\",\"permission_rules\":[{\"context_type\":\"team\",\"permission\":\"administer_do\"}],\"slot\":\"ones:"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/users/all_granted_licenses",
+      "post_data": null,
+      "response": "{\"licenses\":[{\"type\":\"project\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"wiki\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"testcase\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"plan\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"product\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"manhour\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"pipeline_integration\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"account\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"code_integration\",\"edition\":\"enterprise\",\"expired\":false}]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/users/current_org/all_licenses",
+      "post_data": null,
+      "response": "{\"licenses\":[{\"type\":\"plan\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"manhour\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"desk\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"product\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"performance\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"project\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"account\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"code_integration\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"wiki\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"pipeline_integration\",\"edition\":\"enterprise\",\"expired\":false},{\"type\":\"testcase\",\"edition\":\"enterprise\",\"expired\":false}]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/version",
+      "post_data": null,
+      "response": "{\"build_version\":\"48560\",\"release_version\":\"v3.16.37\"}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/check_user_guide",
+      "post_data": "{\"context_types\":[\"new_menu_style_for_old_user\",\"home_sidebar_menu_app_center_tip\"]}",
+      "response": "{\"result\":[{\"context_type\":\"new_menu_style_for_old_user\",\"is_completed\":true,\"can_run\":true},{\"context_type\":\"home_sidebar_menu_app_center_tip\",\"is_completed\":true,\"can_run\":true}]}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/user_guide/batch_get",
+      "post_data": "{\"keys\":[\"access_scene_project_page_visit_status\",\"access_scene_wiki_page_visit_status\",\"access_scene_onboarding_invite_member_dialog\",\"service_terms_and_privacy_policy\"]}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/user_guide/batch_get",
+      "post_data": "{\"keys\":[\"UUID001\"]}",
+      "response": "{\"result\":[{\"key\":\"UUID001\",\"value\":\"\"}]}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/filter_evaluated_permissions",
+      "post_data": "{\"rules\":[{\"context_type\":\"wiki\",\"permission\":\"create_space\"},{\"context_type\":\"wiki\",\"permission\":\"manage_global_template\"},{\"context_type\":\"team\",\"permission\":\"super_administrator\"},{\"context_type\":\"team\",\"permission\":\"administer_wiki\"}]}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/filter_evaluated_permissions",
+      "post_data": "{\"rules\":[{\"context_type\":\"team\",\"context_param\":null,\"permission\":\"invite_member\"},{\"context_type\":\"team\",\"context_param\":null,\"permission\":\"administer_team\"},{\"context_type\":\"team\",\"context_param\":null,\"permission\":\"team_plugin_administrator\"},{\"context_type\":\"team\",\"context_param\":null,\"permission\":\"team_view_audit_log\"},{\"context_type\":\"team\",\"context_param\":null,\"permission\":\"manage_versions\"}]}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/organization/8xjXcDnk/stamps/data?t=org_evaluated_permissions,org_configs,organization,org_permission_rules,org_teams,org_my_team",
+      "post_data": "{\"org_evaluated_permissions\":0,\"org_configs\":0,\"organization\":0,\"org_permission_rules\":0,\"org_teams\":0,\"org_my_team\":0}",
+      "response": "{\"org_configs\":{\"configs\":[{\"type\":\"wps_config\",\"data\":\"{\\\"app_id\\\":\\\"\\\",\\\"app_key\\\":\\\"\\\",\\\"wps_mid_url\\\":\\\"\\\",\\\"preview_url\\\":\\\"\\\",\\\"server_list\\\":null,\\\"enable\\\":false,\\\"wps_mid_url_replace_map\\\":null}\"},{\"type\":\"watermark_config\",\"data\":\"{\\\"enable\\\":false,\\\"display\\\":[\\\"name\\\",\\\"email\\\"],\\\"opacity\\\":8,\\\"custom_content\\\":\\\"\\\"}\"},{\"type\":\"session_invalid_config\",\"data\":\"{\\\"invalid_time\\\":1,\\\"unit\\\":2,\\\"is_open\\\":-1}\"},{\"type\":\"wiz_config\",\"data\":\"{\\\"enable\\\":true,\\\"max_online_users_count\\\":100}\"},{\"type\":\"workorder_portal\",\"data\":\"{\\\"enable\\\":false}\"},{\"type\":\"wiki_config\",\"data\":\"{\\\"enable\\\":false}\"},{\"type\":\"sms_config\",\"data\":\"{\\\"enable_bind\\\":false,\\\"enable_notice\\\":false}\"},{\"type\":\"login_config\",\"data\":\"{\\\"default_login_type\\\":3,\\\"enable_logout_redirect\\\":false,\\\"logout_redirect_url\\\":\\\"\\\",\\\"force_update\\\":true}\"},{\"type\":\"password_rule\",\"data\":\"{\\\"is_open\\\":0,\\\"expire_days\\\":90}\"},{\"type\":\"is_search_get_member\",\"data\":\"{\\\"value\\\":\\\"unlimited\\\"}\"},{\"type\":\"email_visible\",\"data\":\"{\\\"value\\\":\\\"public\\\"}\"},{\"type\":\"leancloud_config\",\"data\":\"{\\\"leancloud_app_id\\\":\\\"\\\",\\\"leancloud_app_key\\\":\\\"\\\",\\\"leancloud_server_url\\\":\\\"\\\"}\"},{\"type\":\"user_list_filter\",\"data\":\"{\\\"value\\\":\\\"team\\\"}\"},{\"type\":\"importer_config\",\"data\":\"{\\\"jira_info\\\":\\\"{\\\\\\\"selected_project_ids\\\\\\\":null}\\\",\\\"force_update\\\":false}\"},{\"type\":\"advanced_config\",\"data\":\"{\\\"requestSize\\\":10073741824,\\\"attachmentSize\\\":314572800,\\\"confluenceBackupSize\\\":1048576000,\\\"baseURL\\\":\\\"https://ones.cisdigital.cn\\\"}\"},{\"type\":\"auditlog_status_config\",\"data\":\"{\\\"auditLogStatus\\\":\\\"open\\\"}\"},{\"type\":\"email_service_config\",\"data\":\"{\\\"status\\\":false,\\\"smtpHost\\\":\\\"\\\",\\\"smtpPort\\\":null,\\\"smtpUsername\\\":\\\"\\\",\\\"smtpPassword\\\":\\\"\\\",\\\"encryptionType\\\":\\\"\\\",\\\"allowPlain\\\":false,\\\"loginType\\\":\\\"\\\"}\"},{\"type\":\"email_template_config\",\"data\":\"{\\\"subject\\\":\\\"ONES 通知\\\",\\\"sender_name\\\":\\\"ONES\\\",\\\"sender_email\\\":\\\"\\\",\\\"logo_url\\\":\\\"https://ones.cn/img/static/email_templates_logo.png\\\",\\\"logo_from\\\":\\\"local\\\",\\\"header_bg_color\\\":\\\"#0064FF\\\",\\\"enable_footer\\\":true,\\\"footer_content\\\":\\\"本邮件由系统自动发出，请勿回复。\\\",\\\"enable_copyright\\\":false,\\\"copyright_content\\\":\\\"\\\"}\"}],\"server_update_stamp\":1784360717055342},\"org_evaluated_permissions\":{\"evaluated_permissions\":[],\"server_update_stamp\":1789032243171142},\"org_my_team\":{\"teams\":[{\"uuid\":\"SKG3mSQb\",\"status\":1,\"name\":\"CISDI\",\"owner\":\"146fhumA\",\"logo\":\"\",\"cover_url\":\"\",\"domain\":\"\",\"create_time\":1617013275848880,\"expire_time\":4102415999,\"type\":\"pro\",\"config\":{\"sprint\":{\"alias\":\"\"}},\"member_count\":12557,\"org_uuid\":\"8xjXcDnk\",\"workdays\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\"],\"workhours\":800000,\"workhours_unit\":\"hour\",\"timezone\":\"Asia/Shanghai\",\"sprint_timeline_visibility\":false,\"testcase_visibility\":true,\"project_panel_visibility\":false,\"support_script_actions\":false,\"server_update_stamp\":1789051395259347,\"configs\":[{\"type\":\"manhour_mode\",\"data\":\"detailed\"},{\"type\":\"manhour_statistic_mode\",\"data\":\"{\\\"3BBNVnye\\\":1,\\\"3eKnpxTZ\\\":1,\\\"5XEZeoc3\\\":0,\\\"B39ChigB\\\":1,\\\"BEfUrFRG\\\":0,\\\"JioQo1P2\\\":1,\\"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/sso/plugin/displays",
+      "post_data": "{\"org_uuid\":\"\"}",
+      "response": "[]\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/api/project/file/avatar/FrR7q2Xjy8UzcENZjbStDyj_XsGN",
+      "post_data": null
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/filter_evaluated_permissions",
+      "post_data": "{\"rules\":[{\"context_type\":\"team\",\"context_param\":null,\"permission\":\"administer_resource\"},{\"context_type\":\"team\",\"context_param\":null,\"permission\":\"manage_versions\"},{\"context_type\":\"team\",\"permission\":\"administer_do\"},{\"context_type\":\"team\",\"permission\":\"manage_tasks_config\"},{\"context_type\":\"team\",\"permission\":\"administer_product\"},{\"context_type\":\"team\",\"permission\":\"administer_wiki\"},{\"context_type\":\"wiki\",\"permission\":\"manage_global_template\"},{\"context_type\":\"team\",\"permission\":\"administer_code\"},{\"context_type\":\"team\",\"permission\":\"administer_pipeline\"},{\"context_type\":\"team\",\"permission\":\"administer_plan\"},{\"context_type\":\"team\",\"permission\":\"administer_testcase\"}]}",
+      "response": "{\"evaluated_permissions\":[{\"key\":\"1--:9\",\"context_type\":\"team\",\"context_param\":{},\"permission\":\"manage_versions\"}],\"server_update_stamp\":0}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/items/graphql?t=fetch_pinned_projects",
+      "post_data": "{\"query\":\"\\n{\\n    buckets(groupBy: $groupBy, orderBy: $orderBy, pagination: {limit: 50, after: \\\"\\\", preciseCount: true}) {\\n      key\\n      projects(limit: 1000, orderBy: $projectOrderBy,filterGroup: $projectFilterGroup) {\\n        key\\n        uuid\\n        name\\n        createTime\\n        type\\n      }\\n      key\\n      pageInfo {\\n        count\\n        totalCount\\n      }\\n    }\\n  }\\n\",\"variables\":{\"projectOrderBy\":{\"isPin\":\"DESC\",\"namePinyin\":\"ASC\",\"createTime\":\"DESC\"},\"projectFilterGroup\":[{\"visibleInProject_equal\":true,\"isArchive_equal\":false,\"isPin_equal\":true}],\"groupBy\":{\"projects\":{}}}}",
+      "response": "{\"data\":{\"buckets\":[{\"key\":\"bucket.0.__all\",\"pageInfo\":{\"count\":5,\"totalCount\":5},\"projects\":[{\"createTime\":1779768035367204,\"key\":\"project-S7Yh8g5xEKBtwPCD\",\"name\":\"财务管理-共享运营\",\"type\":\"waterfall\",\"uuid\":\"S7Yh8g5xEKBtwPCD\"},{\"createTime\":1779767616491673,\"key\":\"project-S7Yh8g5xLvbWNCJF\",\"name\":\"财务管理-会计引擎\",\"type\":\"waterfall\",\"uuid\":\"S7Yh8g5xLvbWNCJF\"},{\"createTime\":1776240298066989,\"key\":\"project-61zmkX1rwHvetawx\",\"name\":\"平台+公共域 需求池\",\"type\":\"agile\",\"uuid\":\"61zmkX1rwHvetawx\"},{\"createTime\":1778666644865882,\"key\":\"project-6pHepsLttuTUt8qT\",\"name\":\"五矿-财务管控-测试\",\"type\":\"waterfall\",\"uuid\":\"6pHepsLttuTUt8qT\"},{\"createTime\":1786004318495369,\"key\":\"project-3UT6VUnpX1CXU8ZR\",\"name\":\"五矿统建项目 - 实施团队测试\",\"type\":\"agile\",\"uuid\":\"3UT6VUnpX1CXU8ZR\"}]}]}}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/wiki/team/SKG3mSQb/items/graphql?t=fetch_pinned_spaces",
+      "post_data": "{\"query\":\"\\n{\\n    buckets(\\n        groupBy: {\\n            spaces: {}\\n        }\\n        pagination: $pagination\\n    ) {\\n    pageInfo {\\n        count\\n        totalCount\\n    }\\n    spaces(\\n      filter: $filter\\n      orderBy: $orderBy\\n      ){\\n        key\\n        uuid\\n        name\\n        path\\n        icon\\n        homePageUUID\\n      }\\n    }\\n}\\n\",\"variables\":{\"filter\":{\"isPin_equal\":true},\"orderBy\":{\"isPin\":\"DESC\",\"name\":\"ASC\"},\"pagination\":{\"limit\":50}}}",
+      "response": "{\"data\":{\"buckets\":[{\"pageInfo\":{\"count\":0,\"totalCount\":0},\"spaces\":[]}]}}"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/projects/recent_projects?size=4",
+      "post_data": null,
+      "response": "{\"projects\":[{\"uuid\":\"3UT6VUnpX1CXU8ZR\",\"name\":\"五矿统建项目 - 实施团队测试\",\"assign\":\"3UT6VUnp\",\"status_uuid\":\"in_progress\",\"status_category\":\"in_progress\",\"announcement\":\"\",\"deadline\":14400,\"deadline_date\":\"1970-01-01\",\"is_pin\":true,\"status\":1,\"is_open_email_notify\":false,\"task_update_time\":1789055095,\"program_uuid\":\"\",\"type\":\"agile\",\"is_sample\":false,\"is_archive\":false,\"archive_user\":\"\",\"archive_time\":0},{\"uuid\":\"6pHepsLttuTUt8qT\",\"name\":\"五矿-财务管控-测试\",\"assign\":\"6pHepsLt\",\"status_uuid\":\"in_progress\",\"status_category\":\"in_progress\",\"announcement\":\"\",\"deadline\":14400,\"deadline_date\":\"1970-01-01\",\"is_pin\":true,\"status\":1,\"is_open_email_notify\":false,\"task_update_time\":1789053979,\"program_uuid\":\"\",\"type\":\"waterfall\",\"is_sample\":false,\"is_archive\":false,\"archive_user\":\"\",\"archive_time\":0},{\"uuid\":\"S7Yh8g5xEKBtwPCD\",\"name\":\"财务管理-共享运营\",\"assign\":\"AurNgYGE\",\"status_uuid\":\"in_progress\",\"status_category\":\"in_progress\",\"announcement\":\"\",\"deadline\":14400,\"deadline_date\":\"1970-01-01\",\"is_pin\":true,\"status\":1,\"is_open_email_notify\":false,\"task_update_time\":1789008544,\"program_uuid\":\"\",\"type\":\"waterfall\",\"is_sample\":false,\"is_archive\":false,\"archive_user\":\"\",\"archive_time\":0},{\"uuid\":\"61zmkX1rwHvetawx\",\"name\":\"平台+公共域 需求池\",\"assign\":\"61zmkX1r\",\"status_uuid\":\"in_progress\",\"status_category\":\"in_progress\",\"announcement\":\"\",\"deadline\":14400,\"deadline_date\":\"1970-01-01\",\"is_pin\":true,\"status\":1,\"is_open_email_notify\":false,\"task_update_time\":1789051431,\"program_uuid\":\"\",\"type\":\"agile\",\"is_sample\":false,\"is_archive\":false,\"archive_user\":\"\",\"archive_time\":0}],\"archive_projects\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "url": "http://10.13.253.17:30011/project/api/wiki/team/SKG3mSQb/recent_spaces?size=4",
+      "post_data": null,
+      "response": "{\"spaces\":[{\"uuid\":\"NBd37Yy2\",\"owner_uuid\":\"AurNgYGE\",\"is_archive\":false,\"title\":\"共享运营开发文档\",\"description\":\"\",\"create_time\":1783154660,\"updated_time\":1786081532,\"admins\":[\"AurNgYGE\"],\"space_category_uuid\":\"\",\"icon\":\"space-icon-0\",\"is_pin\":false,\"is_open_share_page\":false,\"is_sample\":false,\"browse_time\":1788877721,\"home_page_uuid\":\"X2ZKye8Z\",\"is_open_public\":false,\"is_published\":false,\"published_page\":false,\"public_share_uuid\":\"\"},{\"uuid\":\"KZ2uRACu\",\"owner_uuid\":\"AurNgYGE\",\"is_archive\":false,\"title\":\"共享运营通用文档\",\"description\":\"\",\"create_time\":1783149822,\"updated_time\":1787645218,\"admins\":[\"AurNgYGE\"],\"space_category_uuid\":\"\",\"icon\":\"space-icon-0\",\"is_pin\":false,\"is_open_share_page\":true,\"is_sample\":false,\"browse_time\":1787645636,\"home_page_uuid\":\"6REE3HZj\",\"is_open_public\":false,\"is_published\":false,\"published_page\":false,\"public_share_uuid\":\"\"},{\"uuid\":\"7reoAxye\",\"owner_uuid\":\"AurNgYGE\",\"is_archive\":false,\"title\":\"共享运营需求文档\",\"description\":\"\",\"create_time\":1778574648,\"updated_time\":1788832562,\"admins\":[\"AurNgYGE\"],\"space_category_uuid\":\"\",\"icon\":\"space-icon-0\",\"is_pin\":false,\"is_open_share_page\":true,\"is_sample\":false,\"browse_time\":1787044142,\"home_page_uuid\":\"KeA5gjdq\",\"is_open_public\":false,\"is_published\":false,\"published_page\":false,\"public_share_uuid\":\"\"},{\"uuid\":\"5CD1L4Hg\",\"owner_uuid\":\"AurNgYGE\",\"is_archive\":false,\"title\":\"共享运营测试文档\",\"description\":\"\",\"create_time\":1783154512,\"updated_time\":1786775832,\"admins\":[\"AurNgYGE\"],\"space_category_uuid\":\"\",\"icon\":\"space-icon-0\",\"is_pin\":false,\"is_open_share_page\":true,\"is_sample\":false,\"browse_time\":1784266755,\"home_page_uuid\":\"5kZvP3Ft\",\"is_open_public\":false,\"is_published\":false,\"published_page\":false,\"public_share_uuid\":\"\"}]}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/filter_evaluated_permissions",
+      "post_data": "{\"rules\":[{\"context_type\":\"team\",\"context_param\":null,\"permission\":\"invite_member\"},{\"context_type\":\"team\",\"permission\":\"add_project\"},{\"context_type\":\"team\",\"permission\":\"administer_do\"},{\"context_type\":\"team\",\"permission\":\"manage_tasks_config\"},{\"context_type\":\"team\",\"permission\":\"administer_product\"}]}",
+      "response": "{\"evaluated_permissions\":[{\"key\":\"1--:1107\",\"context_type\":\"team\",\"context_param\":{},\"permission\":\"add_project\"}],\"server_update_stamp\":0}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/stamps/data?t=team",
+      "post_data": "{\"team\":0}",
+      "response": "{\"team\":{\"uuid\":\"SKG3mSQb\",\"status\":1,\"name\":\"CISDI\",\"owner\":\"146fhumA\",\"logo\":\"\",\"cover_url\":\"\",\"domain\":\"\",\"create_time\":1617013275848880,\"expire_time\":4102415999,\"type\":\"pro\",\"config\":{\"sprint\":{\"alias\":\"\"}},\"member_count\":12557,\"pending_member_count\":54,\"disable_member_count\":0,\"org_uuid\":\"8xjXcDnk\",\"workdays\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\"],\"workhours\":800000,\"workhours_unit\":\"hour\",\"timezone\":\"Asia/Shanghai\",\"sprint_timeline_visibility\":false,\"testcase_visibility\":true,\"project_panel_visibility\":false,\"support_script_actions\":false,\"server_update_stamp\":1789051395259347,\"configs\":[{\"type\":\"manhour_mode\",\"data\":\"detailed\"},{\"type\":\"manhour_statistic_mode\",\"data\":\"{\\\"3BBNVnye\\\":1,\\\"3eKnpxTZ\\\":1,\\\"5XEZeoc3\\\":0,\\\"B39ChigB\\\":1,\\\"BEfUrFRG\\\":0,\\\"JioQo1P2\\\":1,\\\"LXqcoMPY\\\":1,\\\"MKMBiznK\\\":1,\\\"PwWT2NpZ\\\":0,\\\"TXB4r2W2\\\":1}\"},{\"type\":\"wiki_export_word_watermark\",\"data\":\"{\\\"enable\\\":false}\"},{\"type\":\"wiki_export_pdf_watermark\",\"data\":\"{\\\"enable\\\":false}\"},{\"type\":\"task_graphql_query_limit\",\"data\":\"{\\\"limit\\\":10000}\"}]}}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/stamps/data?t=dashboard",
+      "post_data": "{\"dashboard\":0}",
+      "response": "{\"dashboard\":{\"dashboards\":[{\"uuid\":\"MGWwkxVa\",\"name\":\"缺陷列表\",\"name_pinyin\":\"que1xian4lie4biao3\",\"owner\":\"97XChp6w\",\"shared\":false,\"shared_to\":null,\"cards\":[{\"uuid\":\"QSG33jks\",\"dashboard_uuid\":\"MGWwkxVa\",\"name\":\"我负责的工作项\",\"layout\":{\"x\":0,\"y\":0,\"w\":3,\"h\":4},\"type\":\"task_count\",\"config\":{\"project_uuid\":\"\",\"filter_uuid\":\"ft-t-001\"}},{\"uuid\":\"7pbTXQiJ\",\"dashboard_uuid\":\"MGWwkxVa\",\"name\":\"最近浏览的项目\",\"layout\":{\"x\":0,\"y\":4,\"w\":6,\"h\":3},\"type\":\"recent_projects\",\"config\":{}},{\"uuid\":\"HgwJ6CL9\",\"dashboard_uuid\":\"MGWwkxVa\",\"name\":\"进行中的项目\",\"layout\":{\"x\":0,\"y\":7,\"w\":6,\"h\":4},\"type\":\"project_list\",\"config\":{\"status\":\"in_progress\",\"field_alias\":[{\"alias\":\"name\",\"built_in\":true,\"field_type\":\"text\"},{\"alias\":\"task_count_to_do\",\"built_in\":true,\"field_type\":\"integer\"},{\"alias\":\"task_count_in_progress\",\"built_in\":true,\"field_type\":\"integer\"},{\"alias\":\"task_count_done\",\"built_in\":true,\"field_type\":\"integer\"}]}},{\"uuid\":\"ATFXaaAT\",\"dashboard_uuid\":\"MGWwkxVa\",\"name\":\"我负责的工作项\",\"layout\":{\"x\":3,\"y\":0,\"w\":5,\"h\":4},\"type\":\"task_list\",\"config\":{\"project_uuid\":\"\",\"filter_uuid\":\"ft-t-001\"}},{\"uuid\":\"MSWKHk4B\",\"dashboard_uuid\":\"MGWwkxVa\",\"name\":\"最近浏览的页面组\",\"layout\":{\"x\":6,\"y\":4,\"w\":6,\"h\":3},\"type\":\"recent_spaces\",\"config\":{\"size\":4}},{\"uuid\":\"PeZzqsi5\",\"dashboard_uuid\":\"MGWwkxVa\",\"name\":\"未开始的项目\",\"layout\":{\"x\":6,\"y\":7,\"w\":6,\"h\":4},\"type\":\"project_list\",\"config\":{\"status\":\"to_do\",\"field_alias\":[{\"alias\":\"name\",\"built_in\":true,\"field_type\":\"text\"},{\"alias\":\"task_count_to_do\",\"built_in\":true,\"field_type\":\"integer\"},{\"alias\":\"task_count_in_progress\",\"built_in\":true,\"field_type\":\"integer\"},{\"alias\":\"task_count_done\",\"built_in\":true,\"field_type\":\"integer\"}]}},{\"uuid\":\"91pkQF5m\",\"dashboard_uuid\":\"MGWwkxVa\",\"name\":\"我关注的工作项\",\"layout\":{\"x\":8,\"y\":0,\"w\":4,\"h\":4},\"type\":\"task_list\",\"config\":{\"project_uuid\":\"\",\"filter_uuid\":\"ft-t-002\"}}],\"pinned\":true,\"default\":false},{\"uuid\":\"8r1iyqgV\",\"name\":\"缺陷统计\",\"name_pinyin\":\"que1xian4tong3ji4\",\"owner\":\"97XChp6w\",\"shared\":false,\"shared_to\":null,\"cards\":[{\"uuid\":\"CVtGpS1b\",\"dashboard_uuid\":\"8r1iyqgV\",\"name\":\"最近查看的页面组\",\"layout\":{\"x\":0,\"y\":0,\"w\":5,\"h\":3},\"type\":\"recent_spaces\",\"config\":{\"size\":4}}],\"pinned\":true,\"default\":false}],\"server_update_stamp\":1789043356037316}}\n"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/wiki/team/SKG3mSQb/spaces/card_report_data",
+      "post_data": "{\"ids\":[\"NBd37Yy2\",\"KZ2uRACu\",\"7reoAxye\",\"5CD1L4Hg\"]}",
+      "response": "{\"5CD1L4Hg\":{\"total\":0,\"labels\":[\"2026-08-28\",\"2026-08-29\",\"2026-08-30\",\"2026-08-31\",\"2026-09-01\",\"2026-09-02\",\"2026-09-03\",\"2026-09-04\",\"2026-09-05\",\"2026-09-06\",\"2026-09-07\",\"2026-09-08\",\"2026-09-09\",\"2026-09-10\"],\"datasets\":[{\"label\":\"修改次数\",\"data\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]},\"7reoAxye\":{\"total\":0,\"labels\":[\"2026-08-28\",\"2026-08-29\",\"2026-08-30\",\"2026-08-31\",\"2026-09-01\",\"2026-09-02\",\"2026-09-03\",\"2026-09-04\",\"2026-09-05\",\"2026-09-06\",\"2026-09-07\",\"2026-09-08\",\"2026-09-09\",\"2026-09-10\"],\"datasets\":[{\"label\":\"修改次数\",\"data\":[0,0,0,0,0,4,0,0,0,0,0,1,0,0]}]},\"KZ2uRACu\":{\"total\":0,\"labels\":[\"2026-08-28\",\"2026-08-29\",\"2026-08-30\",\"2026-08-31\",\"2026-09-01\",\"2026-09-02\",\"2026-09-03\",\"2026-09-04\",\"2026-09-05\",\"2026-09-06\",\"2026-09-07\",\"2026-09-08\",\"2026-09-09\",\"2026-09-10\"],\"datasets\":[{\"label\":\"修改次数\",\"data\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]},\"NBd37Yy2\":{\"total\":0,\"labels\":[\"2026-08-28\",\"2026-08-29\",\"2026-08-30\",\"2026-08-31\",\"2026-09-01\",\"2026-09-02\",\"2026-09-03\",\"2026-09-04\",\"2026-09-05\",\"2026-09-06\",\"2026-09-07\",\"2026-09-08\",\"2026-09-09\",\"2026-09-10\"],\"datasets\":[{\"label\":\"修改次数\",\"data\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]}}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/users",
+      "post_data": "{\"uuids\":[\"AurNgYGE\"]}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/projects/card_report_data",
+      "post_data": "{\"ids\":[\"3UT6VUnpX1CXU8ZR\",\"6pHepsLttuTUt8qT\",\"S7Yh8g5xEKBtwPCD\",\"61zmkX1rwHvetawx\"]}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/users",
+      "post_data": "{\"uuids\":[\"3UT6VUnp\",\"6pHepsLt\",\"AurNgYGE\",\"61zmkX1r\"]}"
+    },
+    {
+      "method": "POST",
+      "url": "http://10.13.253.17:30011/project/api/project/team/SKG3mSQb/users",
+      "post_data": "{\"uuids\":[\"97XChp6w\"]}",
+      "response": "{\"users\":[{\"uuid\":\"97XChp6w\",\"email\":\"hao.a.zhang@cisdi.com.cn\",\"name\":\"张浩\",\"name_pinyin\":\"zhang1hao4\",\"title\":\"\",\"avatar\":\"http://10.13.253.17:30011/api/project/file/avatar/FrR7q2Xjy8UzcENZjbStDyj_XsGN\",\"phone\":\"\",\"create_time\":1657725001788039,\"status\":1,\"team_member_status\":1,\"verify_status\":1,\"department_uuids\":[\"NzDRnFeY\"],\"inviter_uuid\":\"\",\"inviter_name\":\"\",\"sync_types\":[3],\"company\":\"\",\"team_uuid\":\"\",\"id_number\":\"\",\"directDepartments\":null,\"userGroups\":null,\"mfa_device_status\":0,\"type\":0}]}\n"
+    }
+  ]
+}

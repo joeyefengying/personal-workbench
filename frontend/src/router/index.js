@@ -27,10 +27,28 @@ const routes = [
     meta: { title: '自动化任务', icon: '🔄' },
   },
   {
+    path: '/qingtui',
+    name: 'qingtui',
+    component: () => import('@/views/Qingtui.vue'),
+    meta: { title: '轻推工作', icon: '💬' },
+  },
+  {
     path: '/wiki',
     name: 'wiki',
     component: () => import('@/views/Wiki.vue'),
     meta: { title: '知识库', icon: '📚' },
+  },
+  {
+    path: '/timeline',
+    name: 'timeline',
+    component: () => import('@/views/Timeline.vue'),
+    meta: { title: '时间线', icon: '🕐' },
+  },
+  {
+    path: '/reports',
+    name: 'reports',
+    component: () => import('@/views/ReportCenter.vue'),
+    meta: { title: '报告中心', icon: '📋' },
   },
   {
     path: '/system',

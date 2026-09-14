@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "轻推监控系统 — 逆向与架构",
+    "visual_preset": "signal-flow",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "browser", "type": "external", "label": "浏览器 UI", "sublabel": "localhost:8899", "pos": [40, 250], "size": [130, 64] },
+    { "id": "qingtui", "type": "external", "label": "轻推桌面端", "sublabel": "Electron :9222", "pos": [40, 430], "size": [130, 64] },
+    { "id": "workbench", "type": "backend", "label": "Personal Workbench", "sublabel": "FastAPI + Vue3", "pos": [260, 250], "size": [150, 64] },
+    { "id": "qtclient", "type": "backend", "label": "QtClient", "sublabel": "签名 + API 调用", "pos": [480, 250], "size": [140, 64] },
+    { "id": "sessions", "type": "backend", "label": "会话发现", "sublabel": "sessions.py", "pos": [260, 110], "size": [140, 56] },
+    { "id": "summary", "type": "backend", "label": "每日总结", "sublabel": "summary.py", "pos": [260, 380], "size": [140, 56] },
+    { "id": "tasks", "type": "backend", "label": "任务提取", "sublabel": "tasks.py", "pos": [690, 250], "size": [140, 56] },
+    { "id": "api", "type": "cloud", "label": "轻推云 API", "sublabel": "web.qingtui.com/api", "pos": [690, 430], "size": [150, 64] },
+    { "id": "cdp", "type": "database", "label": "CDP 通道", "sublabel": "取 JWT Token", "pos": [480, 400], "size": [130, 64] },
+    { "id": "storage", "type": "database", "label": "本地存储", "sublabel": "watch/tasks.json", "pos": [480, 110], "size": [130, 56] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "应用层 (Workbench)", "wraps": ["workbench", "qtclient", "sessions", "summary", "tasks", "storage"] },
+    { "kind": "security-group", "label": "逆向核心", "wraps": ["qtclient", "cdp"] }
+  ],
+  "connections": [
+    { "id": "browser-ui", "from": "browser", "to": "workbench", "label": "HTTP REST", "variant": "emphasis" },
+    { "id": "wb-client", "from": "workbench", "to": "qtclient" },
+    { "id": "wb-sessions", "from": "workbench", "to": "sessions", "fromSide": "top", "toSide": "bottom" },
+    { "id": "wb-summary", "from": "workbench", "to": "summary", "fromSide": "bottom", "toSide": "top" },
+    { "id": "wb-tasks", "from": "qtclient", "to": "tasks" },
+    { "id": "qt-api", "from": "qtclient", "to": "api", "label": "签名+Token", "variant": "emphasis", "fromSide": "bottom", "toSide": "left" },
+    { "id": "cdp-token", "from": "cdp", "to": "qtclient", "label": "JWT", "variant": "dashed", "fromSide": "top", "toSide": "bottom" },
+    { "id": "qt-cdp", "from": "qingtui", "to": "cdp", "label": "9222", "variant": "dashed" },
+    { "id": "qtclient-storage", "from": "qtclient", "to": "storage", "label": "读写", "variant": "dashed", "fromSide": "top", "toSide": "bottom" }
+  ]
+}

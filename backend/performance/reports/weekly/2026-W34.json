@@ -1,0 +1,4232 @@
+{
+  "meta": {
+    "year": 2026,
+    "week": 34,
+    "week_label": "2026-W34",
+    "start": "2026-08-17",
+    "end": "2026-08-23",
+    "collected_at": "2026-09-10 23:47:05"
+  },
+  "summary": {
+    "qingtui_msgs": 66,
+    "git_commits": 79,
+    "ones_bugs": 0,
+    "active_channels": 4,
+    "active_projects": 4
+  },
+  "qingtui": {
+    "total": 66,
+    "total_all": 300,
+    "daily_count": {
+      "2026-08-17": 8,
+      "2026-08-18": 6,
+      "2026-08-19": 11,
+      "2026-08-20": 5,
+      "2026-08-21": 20,
+      "2026-08-22": 16
+    },
+    "by_channel": {
+      "共享运营内部群": {
+        "count": 31,
+        "sample": [
+          "图片",
+          "6",
+          "@朱仙",
+          "[门户平台操作手册 | 知识库管理](http://10.13.253.17:30011/wiki/#/team/SKG3mSQb/space/KZ2uRACu/page/8FboJ572)",
+          "功能和数据权限相关的整理了一下，做个存档"
+        ],
+        "first_ts": "2026-08-18 11:44",
+        "last_ts": "2026-08-22 20:33"
+      },
+      "共享运营开发": {
+        "count": 30,
+        "sample": [
+          "1",
+          "图片",
+          "为啥还是 false 呢",
+          "fetch(\"http://localhost:5173/biz-gateway/fin/fm-fis-fs/api/task-all-rule/get-list\", {\n  \"headers\": {\n    \"accept\": \"appl",
+          "图片"
+        ],
+        "first_ts": "2026-08-17 14:41",
+        "last_ts": "2026-08-22 18:04"
+      },
+      "共享运营联调字段名对齐": {
+        "count": 3,
+        "sample": [
+          "@所有人  按资金 sheet 页的示例单据填写就行",
+          "我们需要的是映射的业务字段名称",
+          "@田奎  @戎群  @张俊博  @杨堃  请跟进下各自的 sheet 表，可以参考费用组的已填写的格式"
+        ],
+        "first_ts": "2026-08-21 18:10",
+        "last_ts": "2026-08-22 15:24"
+      },
+      "00-财务管控-开发经理": {
+        "count": 2,
+        "sample": [
+          "@宋建明  宋老师，我们的账号也没有权限，一个菜单都看不到",
+          "@罗云苛  新准生产环境"
+        ],
+        "first_ts": "2026-08-22 14:40",
+        "last_ts": "2026-08-22 14:41"
+      }
+    },
+    "all_messages": [
+      {
+        "ts": "2026-08-18 20:31",
+        "date": "2026-08-18",
+        "channel_id": "ac65982d31a24d259db5b10f0e383325",
+        "channel_name": "ac65982d31a24d259db5b10f0e383325",
+        "is_work": false,
+        "to": "ac65982d31a24d259db5b10f0e383325",
+        "body": "我们今天还有链路没通的不"
+      },
+      {
+        "ts": "2026-08-18 20:31",
+        "date": "2026-08-18",
+        "channel_id": "ac65982d31a24d259db5b10f0e383325",
+        "channel_name": "ac65982d31a24d259db5b10f0e383325",
+        "is_work": false,
+        "to": "ac65982d31a24d259db5b10f0e383325",
+        "body": "兴总"
+      },
+      {
+        "ts": "2026-08-19 11:43",
+        "date": "2026-08-19",
+        "channel_id": "ac65982d31a24d259db5b10f0e383325",
+        "channel_name": "ac65982d31a24d259db5b10f0e383325",
+        "is_work": false,
+        "to": "ac65982d31a24d259db5b10f0e383325",
+        "body": "😂"
+      },
+      {
+        "ts": "2026-08-19 14:10",
+        "date": "2026-08-19",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "去问一下李建红老师吧"
+      },
+      {
+        "ts": "2026-08-21 14:13",
+        "date": "2026-08-21",
+        "channel_id": "62c4fca5a8fa4a72831475abf8956fd1",
+        "channel_name": "62c4fca5a8fa4a72831475abf8956fd1",
+        "is_work": false,
+        "to": "62c4fca5a8fa4a72831475abf8956fd1",
+        "body": "这个找一下平台的人咨询下呢，王小龙"
+      },
+      {
+        "ts": "2026-08-21 16:29",
+        "date": "2026-08-21",
+        "channel_id": "3cfd8e05c0e74f11b755cb7136bf9a35",
+        "channel_name": "3cfd8e05c0e74f11b755cb7136bf9a35",
+        "is_work": false,
+        "to": "3cfd8e05c0e74f11b755cb7136bf9a35",
+        "body": "奎哥，这个你们组内先完善一下，补充发我一下"
+      },
+      {
+        "ts": "2026-08-21 16:30",
+        "date": "2026-08-21",
+        "channel_id": "3cfd8e05c0e74f11b755cb7136bf9a35",
+        "channel_name": "3cfd8e05c0e74f11b755cb7136bf9a35",
+        "is_work": false,
+        "to": "3cfd8e05c0e74f11b755cb7136bf9a35",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-22 16:03",
+        "date": "2026-08-22",
+        "channel_id": "ac65982d31a24d259db5b10f0e383325",
+        "channel_name": "ac65982d31a24d259db5b10f0e383325",
+        "is_work": false,
+        "to": "ac65982d31a24d259db5b10f0e383325",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-22 16:03",
+        "date": "2026-08-22",
+        "channel_id": "ac65982d31a24d259db5b10f0e383325",
+        "channel_name": "ac65982d31a24d259db5b10f0e383325",
+        "is_work": false,
+        "to": "ac65982d31a24d259db5b10f0e383325",
+        "body": "拉一下吧"
+      },
+      {
+        "ts": "2026-08-22 16:26",
+        "date": "2026-08-22",
+        "channel_id": "ac65982d31a24d259db5b10f0e383325",
+        "channel_name": "ac65982d31a24d259db5b10f0e383325",
+        "is_work": false,
+        "to": "ac65982d31a24d259db5b10f0e383325",
+        "body": "1"
+      },
+      {
+        "ts": "2026-08-22 16:28",
+        "date": "2026-08-22",
+        "channel_id": "ac65982d31a24d259db5b10f0e383325",
+        "channel_name": "ac65982d31a24d259db5b10f0e383325",
+        "is_work": false,
+        "to": "ac65982d31a24d259db5b10f0e383325",
+        "body": "有了"
+      },
+      {
+        "ts": "2026-08-18 11:44",
+        "date": "2026-08-18",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-18 11:50",
+        "date": "2026-08-18",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "6"
+      },
+      {
+        "ts": "2026-08-18 17:25",
+        "date": "2026-08-18",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@朱仙"
+      },
+      {
+        "ts": "2026-08-18 20:23",
+        "date": "2026-08-18",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "[门户平台操作手册 | 知识库管理](http://10.13.253.17:30011/wiki/#/team/SKG3mSQb/space/KZ2uRACu/page/8FboJ572)"
+      },
+      {
+        "ts": "2026-08-18 20:24",
+        "date": "2026-08-18",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "功能和数据权限相关的整理了一下，做个存档"
+      },
+      {
+        "ts": "2026-08-18 20:58",
+        "date": "2026-08-18",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "放在里面了"
+      },
+      {
+        "ts": "2026-08-19 16:16",
+        "date": "2026-08-19",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "缺陷的那个详情描述里能不能和公共域一样里面带上默认格式内容"
+      },
+      {
+        "ts": "2026-08-19 16:16",
+        "date": "2026-08-19",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@李兴"
+      },
+      {
+        "ts": "2026-08-19 17:19",
+        "date": "2026-08-19",
+        "channel_id": "47262fd780a0417691e83d79ffd03629",
+        "channel_name": "47262fd780a0417691e83d79ffd03629",
+        "is_work": false,
+        "to": "47262fd780a0417691e83d79ffd03629",
+        "body": "fin_foc_fdn_org_mgr_entity"
+      },
+      {
+        "ts": "2026-08-19 17:40",
+        "date": "2026-08-19",
+        "channel_id": "47262fd780a0417691e83d79ffd03629",
+        "channel_name": "47262fd780a0417691e83d79ffd03629",
+        "is_work": false,
+        "to": "47262fd780a0417691e83d79ffd03629",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-19 18:21",
+        "date": "2026-08-19",
+        "channel_id": "47262fd780a0417691e83d79ffd03629",
+        "channel_name": "47262fd780a0417691e83d79ffd03629",
+        "is_work": false,
+        "to": "47262fd780a0417691e83d79ffd03629",
+        "body": "行"
+      },
+      {
+        "ts": "2026-08-19 18:21",
+        "date": "2026-08-19",
+        "channel_id": "47262fd780a0417691e83d79ffd03629",
+        "channel_name": "47262fd780a0417691e83d79ffd03629",
+        "is_work": false,
+        "to": "47262fd780a0417691e83d79ffd03629",
+        "body": "那就不管了"
+      },
+      {
+        "ts": "2026-08-19 18:23",
+        "date": "2026-08-19",
+        "channel_id": "47262fd780a0417691e83d79ffd03629",
+        "channel_name": "47262fd780a0417691e83d79ffd03629",
+        "is_work": false,
+        "to": "47262fd780a0417691e83d79ffd03629",
+        "body": "嗯"
+      },
+      {
+        "ts": "2026-08-19 19:43",
+        "date": "2026-08-19",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "唐嘉吾：韦祎总，杨总最新的指示，需要统计各纵820是否可以完成封版。如果无法完成封版的模块需要写明原因和具体封版日期。我这边创建了一个在线表格，辛苦您安排填写。这个信息杨总是用来在周周读上汇报\nhttps://web.qingtui.com/drive/preview/1539681916473434112"
+      },
+      {
+        "ts": "2026-08-19 19:43",
+        "date": "2026-08-19",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@李建红  @陈梓叶  有问问题没"
+      },
+      {
+        "ts": "2026-08-19 19:43",
+        "date": "2026-08-19",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "无异议我就填是了"
+      },
+      {
+        "ts": "2026-08-19 22:55",
+        "date": "2026-08-19",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "个人任务 500 已改"
+      },
+      {
+        "ts": "2026-08-20 22:05",
+        "date": "2026-08-20",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "各位开发测试经理，已和韦总沟通过财务内部业务场景测试计划 ，之后将按如上计划进行每日销项。测试销今天需执行场景项数完成没有，开发销今天需执行场景有无阻塞性bug。"
+      },
+      {
+        "ts": "2026-08-20 22:05",
+        "date": "2026-08-20",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "下个月好日子来了"
+      },
+      {
+        "ts": "2026-08-21 00:28",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-21 00:30",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-21 14:44",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@朱仙 我觉得可以，正常来讲查看才是在外面的"
+      },
+      {
+        "ts": "2026-08-21 15:40",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@李建红  为什么后面会计主体的编码和名称都不一样，字段不符合规范"
+      },
+      {
+        "ts": "2026-08-21 15:40",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "补充一下字段类型"
+      },
+      {
+        "ts": "2026-08-21 15:41",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "这个表"
+      },
+      {
+        "ts": "2026-08-21 15:41",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "我找各组一一对一下"
+      },
+      {
+        "ts": "2026-08-21 17:10",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "我搞成云文档了"
+      },
+      {
+        "ts": "2026-08-21 18:17",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@韩佳睿"
+      },
+      {
+        "ts": "2026-08-21 18:17",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "后续关注下"
+      },
+      {
+        "ts": "2026-08-21 18:18",
+        "date": "2026-08-21",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@陈梓叶 @张自明 @李建红"
+      },
+      {
+        "ts": "2026-08-22 17:44",
+        "date": "2026-08-22",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-22 17:44",
+        "date": "2026-08-22",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@张鹏毅"
+      },
+      {
+        "ts": "2026-08-22 18:07",
+        "date": "2026-08-22",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "现在和明天阻塞性 bug 大家一定要解决，不提新 bug 了，周一之后再提"
+      },
+      {
+        "ts": "2026-08-22 18:07",
+        "date": "2026-08-22",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@所有人"
+      },
+      {
+        "ts": "2026-08-22 20:33",
+        "date": "2026-08-22",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-22 20:33",
+        "date": "2026-08-22",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "重新打开的太多了，注意下修复质量"
+      },
+      {
+        "ts": "2026-08-17 14:41",
+        "date": "2026-08-17",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "1"
+      },
+      {
+        "ts": "2026-08-17 14:42",
+        "date": "2026-08-17",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-17 14:42",
+        "date": "2026-08-17",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "为啥还是 false 呢"
+      },
+      {
+        "ts": "2026-08-17 17:17",
+        "date": "2026-08-17",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "fetch(\"http://localhost:5173/biz-gateway/fin/fm-fis-fs/api/task-all-rule/get-list\", {\n  \"headers\": {\n    \"accept\": \"application/json, text/plain, */*\",\n    \"accept-language\": \"zh-CN\",\n    \"app-id\": \"minmetals-fm-fis-fs\",\n    \"authorization\": \"Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxMDAwMDAwMDM2IiwiZHZ0IjoiVFc5NmFXeHNZUzgxTGpBZ0tFMWhZMmx1ZEc5emFEc2dTVzUwWld3Z1RXRmpJRTlUSUZnZ01UQmZNVFZmTnlrZ1FYQndiR1ZYWldKTGFYUXZOVE0zTGpNMklDaExTRlJOVEN3Z2JHbHJaU0JIWldOcmJ5a2dRMmh5YjIxbEx6RTFNUzR3T"
+      },
+      {
+        "ts": "2026-08-17 17:17",
+        "date": "2026-08-17",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-17 17:17",
+        "date": "2026-08-17",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@郭英杰"
+      },
+      {
+        "ts": "2026-08-17 17:17",
+        "date": "2026-08-17",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-17 19:47",
+        "date": "2026-08-17",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "https://ai.ctaigw.cn/v1"
+      },
+      {
+        "ts": "2026-08-19 11:44",
+        "date": "2026-08-19",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "新准生产环境迁移注意事项\n所有环境部署过程中的步骤必须在部署文档中体现，后续发版员将根据部署文档部署生产环境\n须迁移930上线版本代码，如低开平台无法分版本菜单或者功能必须隐藏\n数据库表和字段必须是设计文档中涉及的表和字段，开发或者测试期间临时使用的表和字段不得迁移\n完成日期2026/8/21 18:00之前"
+      },
+      {
+        "ts": "2026-08-19 11:45",
+        "date": "2026-08-19",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "那得把 uat 的包先存个档呢"
+      },
+      {
+        "ts": "2026-08-19 11:45",
+        "date": "2026-08-19",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红"
+      },
+      {
+        "ts": "2026-08-19 17:08",
+        "date": "2026-08-19",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "老师，现在要统计一下表格中的信息，【共享运营】这块帮忙安排老师补充下信息哈\n【金山文档 | WPS云文档】 stg环境宝兰德中间件统计\nhttps://www.kdocs.cn/l/cgXIqOEmjzS3"
+      },
+      {
+        "ts": "2026-08-19 17:08",
+        "date": "2026-08-19",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红  安排一下"
+      },
+      {
+        "ts": "2026-08-20 11:32",
+        "date": "2026-08-20",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "b3e71d5e8d514fd89c040bce84b864c4：宋建明：\nb3e71d5e8d514fd89c040bce84b864c4：宋建明：请安排相关同事检查一下是否有数据库表没有在数据架构师的物理模型统计中"
+      },
+      {
+        "ts": "2026-08-20 11:33",
+        "date": "2026-08-20",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "👌，估计是复查"
+      },
+      {
+        "ts": "2026-08-20 17:12",
+        "date": "2026-08-20",
+        "channel_id": "8cff0683c44a438c81d4d224990ae6d3",
+        "channel_name": "8cff0683c44a438c81d4d224990ae6d3",
+        "is_work": false,
+        "to": "8cff0683c44a438c81d4d224990ae6d3",
+        "body": "行，你直接转行吗"
+      },
+      {
+        "ts": "2026-08-20 17:12",
+        "date": "2026-08-20",
+        "channel_id": "8cff0683c44a438c81d4d224990ae6d3",
+        "channel_name": "8cff0683c44a438c81d4d224990ae6d3",
+        "is_work": false,
+        "to": "8cff0683c44a438c81d4d224990ae6d3",
+        "body": "省的我在写一遍"
+      },
+      {
+        "ts": "2026-08-20 17:13",
+        "date": "2026-08-20",
+        "channel_id": "8cff0683c44a438c81d4d224990ae6d3",
+        "channel_name": "8cff0683c44a438c81d4d224990ae6d3",
+        "is_work": false,
+        "to": "8cff0683c44a438c81d4d224990ae6d3",
+        "body": "好吧"
+      },
+      {
+        "ts": "2026-08-20 20:05",
+        "date": "2026-08-20",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "宋建明：【腾讯文档】统建系统-平台-中间件信息清单\nhttps://docs.qq.com/sheet/DWEpTZFhkbmpKVmxk?tab=BB08J2\n宋建明：新准生产环境的中间件信息请查看该表格\n宋建明：新准生产的服务器资源已经分配\n宋建明："
+      },
+      {
+        "ts": "2026-08-21 14:36",
+        "date": "2026-08-21",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "【金山文档 | WPS云文档】 新准生产环境部署\nhttps://www.kdocs.cn/l/cvBHPnX3XQDB\n@所有人  根据项目组通知，我们本周将完成新准生产环境(new-stg)环境的部署，请各模块安排相关同事处理，并且在部署过程中对部署步骤和配置步骤进行记录，更新到之前的我们编写的配置文档中，文档路径在轻推网盘。生产环境的部署将由发版员根据大家的文档进行部署，所以请大家必须记录部署的每个步骤。谢谢"
+      },
+      {
+        "ts": "2026-08-21 14:56",
+        "date": "2026-08-21",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "https://web.qingtui.com/drive/preview/1530267851485880320"
+      },
+      {
+        "ts": "2026-08-21 15:08",
+        "date": "2026-08-21",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-21 15:08",
+        "date": "2026-08-21",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红  @郭英杰  @宋晓飞"
+      },
+      {
+        "ts": "2026-08-21 15:10",
+        "date": "2026-08-21",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "[统建系统-平台-中间件信息清单](https://docs.qq.com/sheet/DWEpTZFhkbmpKVmxk?tab=BB08J2)"
+      },
+      {
+        "ts": "2026-08-21 15:14",
+        "date": "2026-08-21",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-21 18:01",
+        "date": "2026-08-21",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-21 18:10",
+        "date": "2026-08-21",
+        "channel_id": "d0a0e9fe53f0496aaa05c2973379e4ff",
+        "channel_name": "共享运营联调字段名对齐",
+        "is_work": true,
+        "to": "d0a0e9fe53f0496aaa05c2973379e4ff",
+        "body": "@所有人  按资金 sheet 页的示例单据填写就行"
+      },
+      {
+        "ts": "2026-08-21 18:11",
+        "date": "2026-08-21",
+        "channel_id": "d0a0e9fe53f0496aaa05c2973379e4ff",
+        "channel_name": "共享运营联调字段名对齐",
+        "is_work": true,
+        "to": "d0a0e9fe53f0496aaa05c2973379e4ff",
+        "body": "我们需要的是映射的业务字段名称"
+      },
+      {
+        "ts": "2026-08-22 15:24",
+        "date": "2026-08-22",
+        "channel_id": "d0a0e9fe53f0496aaa05c2973379e4ff",
+        "channel_name": "共享运营联调字段名对齐",
+        "is_work": true,
+        "to": "d0a0e9fe53f0496aaa05c2973379e4ff",
+        "body": "@田奎  @戎群  @张俊博  @杨堃  请跟进下各自的 sheet 表，可以参考费用组的已填写的格式"
+      },
+      {
+        "ts": "2026-08-22 15:58",
+        "date": "2026-08-22",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "怎么搜出来的"
+      },
+      {
+        "ts": "2026-08-22 15:58",
+        "date": "2026-08-22",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "给个筛选条件"
+      },
+      {
+        "ts": "2026-08-22 16:03",
+        "date": "2026-08-22",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "我没在项目里，找李兴去拉了"
+      },
+      {
+        "ts": "2026-08-22 16:10",
+        "date": "2026-08-22",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "👍，那改下状态"
+      },
+      {
+        "ts": "2026-08-22 16:11",
+        "date": "2026-08-22",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "1"
+      },
+      {
+        "ts": "2026-08-22 18:04",
+        "date": "2026-08-22",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "明天想来的可以来"
+      },
+      {
+        "ts": "2026-08-22 18:04",
+        "date": "2026-08-22",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "阻塞性 bug 不能有"
+      },
+      {
+        "ts": "2026-08-21 22:24",
+        "date": "2026-08-21",
+        "channel_id": "f2e80d3c31874fa5a21108ab705fcfc9",
+        "channel_name": "f2e80d3c31874fa5a21108ab705fcfc9",
+        "is_work": false,
+        "to": "f2e80d3c31874fa5a21108ab705fcfc9",
+        "body": "ZH: 集成 0\nZH: 端到端 0\nZH: 用户 0\nZH: 测试 25\nZH: 权限 0\nZH: 平台 17\nZH: 兼容 0\nZH: 8 0"
+      },
+      {
+        "ts": "2026-08-19 16:55",
+        "date": "2026-08-19",
+        "channel_id": "04fe15c1365546719d58098ce8fdbd8c",
+        "channel_name": "04fe15c1365546719d58098ce8fdbd8c",
+        "is_work": false,
+        "to": "04fe15c1365546719d58098ce8fdbd8c",
+        "body": "哪来的人啊，我好像没有选简历呢"
+      },
+      {
+        "ts": "2026-08-19 16:57",
+        "date": "2026-08-19",
+        "channel_id": "04fe15c1365546719d58098ce8fdbd8c",
+        "channel_name": "04fe15c1365546719d58098ce8fdbd8c",
+        "is_work": false,
+        "to": "04fe15c1365546719d58098ce8fdbd8c",
+        "body": "好吧，几个人呢"
+      },
+      {
+        "ts": "2026-08-19 17:01",
+        "date": "2026-08-19",
+        "channel_id": "04fe15c1365546719d58098ce8fdbd8c",
+        "channel_name": "04fe15c1365546719d58098ce8fdbd8c",
+        "is_work": false,
+        "to": "04fe15c1365546719d58098ce8fdbd8c",
+        "body": "晚点吧，晚上 8 点钟"
+      },
+      {
+        "ts": "2026-08-19 17:05",
+        "date": "2026-08-19",
+        "channel_id": "04fe15c1365546719d58098ce8fdbd8c",
+        "channel_name": "04fe15c1365546719d58098ce8fdbd8c",
+        "is_work": false,
+        "to": "04fe15c1365546719d58098ce8fdbd8c",
+        "body": "腾讯会议吧"
+      },
+      {
+        "ts": "2026-08-19 19:13",
+        "date": "2026-08-19",
+        "channel_id": "04fe15c1365546719d58098ce8fdbd8c",
+        "channel_name": "04fe15c1365546719d58098ce8fdbd8c",
+        "is_work": false,
+        "to": "04fe15c1365546719d58098ce8fdbd8c",
+        "body": "有链接吗"
+      },
+      {
+        "ts": "2026-08-19 19:35",
+        "date": "2026-08-19",
+        "channel_id": "04fe15c1365546719d58098ce8fdbd8c",
+        "channel_name": "04fe15c1365546719d58098ce8fdbd8c",
+        "is_work": false,
+        "to": "04fe15c1365546719d58098ce8fdbd8c",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-22 15:11",
+        "date": "2026-08-22",
+        "channel_id": "511b4f3e4e054e99b1932b4f41fadc17",
+        "channel_name": "511b4f3e4e054e99b1932b4f41fadc17",
+        "is_work": false,
+        "to": "511b4f3e4e054e99b1932b4f41fadc17",
+        "body": "云苛，我的 impl 和 new-stg 都没有号哇"
+      },
+      {
+        "ts": "2026-08-22 15:12",
+        "date": "2026-08-22",
+        "channel_id": "511b4f3e4e054e99b1932b4f41fadc17",
+        "channel_name": "511b4f3e4e054e99b1932b4f41fadc17",
+        "is_work": false,
+        "to": "511b4f3e4e054e99b1932b4f41fadc17",
+        "body": "zhangh333"
+      },
+      {
+        "ts": "2026-08-17 19:28",
+        "date": "2026-08-17",
+        "channel_id": "f52ca6b0cf6a4682a4b5e8c7a9adb69c",
+        "channel_name": "f52ca6b0cf6a4682a4b5e8c7a9adb69c",
+        "is_work": false,
+        "to": "f52ca6b0cf6a4682a4b5e8c7a9adb69c",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-19 17:40",
+        "date": "2026-08-19",
+        "channel_id": "27df35a3963b4a0f8623b6620dcafd4a",
+        "channel_name": "27df35a3963b4a0f8623b6620dcafd4a",
+        "is_work": false,
+        "to": "27df35a3963b4a0f8623b6620dcafd4a",
+        "body": "赵宋晓飞吧"
+      },
+      {
+        "ts": "2026-08-19 18:22",
+        "date": "2026-08-19",
+        "channel_id": "27df35a3963b4a0f8623b6620dcafd4a",
+        "channel_name": "27df35a3963b4a0f8623b6620dcafd4a",
+        "is_work": false,
+        "to": "27df35a3963b4a0f8623b6620dcafd4a",
+        "body": "一样联系吧，我们坐一起的"
+      },
+      {
+        "ts": "2026-08-17 14:41",
+        "date": "2026-08-17",
+        "channel_id": "c8b69e0adb084084be3c49fd8767a524",
+        "channel_name": "c8b69e0adb084084be3c49fd8767a524",
+        "is_work": false,
+        "to": "c8b69e0adb084084be3c49fd8767a524",
+        "body": "要改成什么"
+      },
+      {
+        "ts": "2026-08-19 16:02",
+        "date": "2026-08-19",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-19 16:02",
+        "date": "2026-08-19",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "去看看这些有人员的"
+      },
+      {
+        "ts": "2026-08-19 16:02",
+        "date": "2026-08-19",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "可能那个机构下没数据，测试环境的数据不一定有问题，可以问一下建红"
+      },
+      {
+        "ts": "2026-08-19 20:32",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "刚哥，那些外围的云桌面可以访问 https://ai.ctaigw.cn/v1 不，测试连接都通不过呢"
+      },
+      {
+        "ts": "2026-08-19 20:32",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "找不出问题啊"
+      },
+      {
+        "ts": "2026-08-19 20:39",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "那他们怎么用呢"
+      },
+      {
+        "ts": "2026-08-19 20:39",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "其他组咋用的"
+      },
+      {
+        "ts": "2026-08-19 20:41",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "我用的这个域名的"
+      },
+      {
+        "ts": "2026-08-19 20:47",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-19 20:50",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "换成 ip 这个好像不通"
+      },
+      {
+        "ts": "2026-08-19 20:50",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "我用的还是 ai 的这个"
+      },
+      {
+        "ts": "2026-08-19 20:51",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "他们是得用 ip 这个是这个意思不"
+      },
+      {
+        "ts": "2026-08-19 20:53",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-08-19 20:53",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "我明天让他试试"
+      },
+      {
+        "ts": "2026-08-19 20:54",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "那我为啥 ip 的不通"
+      },
+      {
+        "ts": "2026-08-19 20:54",
+        "date": "2026-08-19",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "共享运营"
+      },
+      {
+        "ts": "2026-08-20 15:06",
+        "date": "2026-08-20",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-20 15:06",
+        "date": "2026-08-20",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "这是什么意思啊"
+      },
+      {
+        "ts": "2026-08-20 15:08",
+        "date": "2026-08-20",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "行"
+      },
+      {
+        "ts": "2026-08-20 15:08",
+        "date": "2026-08-20",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "你下次描述里多说两句"
+      },
+      {
+        "ts": "2026-08-20 17:14",
+        "date": "2026-08-20",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "啥情况，wifi 环境"
+      },
+      {
+        "ts": "2026-08-20 17:15",
+        "date": "2026-08-20",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-21 17:03",
+        "date": "2026-08-21",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "#1217671 【共享运营】【test】【组长管理】点击单据查看按钮，关闭查看页面后，页面没有返回至组长管理页\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/LWTWdcGZRRi9LLmx"
+      },
+      {
+        "ts": "2026-08-21 17:03",
+        "date": "2026-08-21",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "关了吧"
+      },
+      {
+        "ts": "2026-08-21 17:03",
+        "date": "2026-08-21",
+        "channel_id": "65d0a88daf564d268df63503c94a5bfa",
+        "channel_name": "65d0a88daf564d268df63503c94a5bfa",
+        "is_work": false,
+        "to": "65d0a88daf564d268df63503c94a5bfa",
+        "body": "先"
+      },
+      {
+        "ts": "2026-08-21 17:48",
+        "date": "2026-08-21",
+        "channel_id": "2f1cde6509084793baf6775706500ea2",
+        "channel_name": "2f1cde6509084793baf6775706500ea2",
+        "is_work": false,
+        "to": "2f1cde6509084793baf6775706500ea2",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-21 17:48",
+        "date": "2026-08-21",
+        "channel_id": "2f1cde6509084793baf6775706500ea2",
+        "channel_name": "2f1cde6509084793baf6775706500ea2",
+        "is_work": false,
+        "to": "2f1cde6509084793baf6775706500ea2",
+        "body": "自明你看一下这个表格合适不，合适我就转成在线链接了。"
+      },
+      {
+        "ts": "2026-08-21 17:49",
+        "date": "2026-08-21",
+        "channel_id": "2f1cde6509084793baf6775706500ea2",
+        "channel_name": "2f1cde6509084793baf6775706500ea2",
+        "is_work": false,
+        "to": "2f1cde6509084793baf6775706500ea2",
+        "body": "就是我们是只需要填那个业务字段的名称，还是说连那个路径也要填吗？如果是只需要填名称这个表就够了，如果是填路径的话可能。可能针对一个单据来讲，他可能要填两行。"
+      },
+      {
+        "ts": "2026-08-21 18:02",
+        "date": "2026-08-21",
+        "channel_id": "2f1cde6509084793baf6775706500ea2",
+        "channel_name": "2f1cde6509084793baf6775706500ea2",
+        "is_work": false,
+        "to": "2f1cde6509084793baf6775706500ea2",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-21 18:02",
+        "date": "2026-08-21",
+        "channel_id": "2f1cde6509084793baf6775706500ea2",
+        "channel_name": "2f1cde6509084793baf6775706500ea2",
+        "is_work": false,
+        "to": "2f1cde6509084793baf6775706500ea2",
+        "body": "我加个示例发出去"
+      },
+      {
+        "ts": "2026-08-22 14:40",
+        "date": "2026-08-22",
+        "channel_id": "947a6d55c3cc4553a83fa2d42027989e",
+        "channel_name": "00-财务管控-开发经理",
+        "is_work": true,
+        "to": "947a6d55c3cc4553a83fa2d42027989e",
+        "body": "@宋建明  宋老师，我们的账号也没有权限，一个菜单都看不到"
+      },
+      {
+        "ts": "2026-08-22 14:41",
+        "date": "2026-08-22",
+        "channel_id": "947a6d55c3cc4553a83fa2d42027989e",
+        "channel_name": "00-财务管控-开发经理",
+        "is_work": true,
+        "to": "947a6d55c3cc4553a83fa2d42027989e",
+        "body": "@罗云苛  新准生产环境"
+      },
+      {
+        "ts": "2026-08-17 21:04",
+        "date": "2026-08-17",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "你挂起的缺陷的链接还是没有放"
+      },
+      {
+        "ts": "2026-08-17 21:04",
+        "date": "2026-08-17",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "关联的"
+      },
+      {
+        "ts": "2026-08-18 10:35",
+        "date": "2026-08-18",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "都做个记录吧，包括之前平台上有过提交的都贴一下地址"
+      },
+      {
+        "ts": "2026-08-18 17:35",
+        "date": "2026-08-18",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "#1194207 【缺陷转需求】列表左边为分组模型，右边为列表，全部时无法新增下级\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/9arMzQCj46FEecKL"
+      },
+      {
+        "ts": "2026-08-19 11:41",
+        "date": "2026-08-19",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-19 11:42",
+        "date": "2026-08-19",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "这个只能上 930 版本吗"
+      },
+      {
+        "ts": "2026-08-19 14:11",
+        "date": "2026-08-19",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "宋老师，我们 930 不上的话，这个新环境还需要先演练一下不"
+      },
+      {
+        "ts": "2026-08-19 14:14",
+        "date": "2026-08-19",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-19 20:00",
+        "date": "2026-08-19",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "https://ai.ctaigw.cn/v1"
+      },
+      {
+        "ts": "2026-08-19 20:22",
+        "date": "2026-08-19",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "1.访问【https://10.2.9.7:444/】或【https://10.2.9.8:444/】，通过4A账号认证"
+      },
+      {
+        "ts": "2026-08-19 20:43",
+        "date": "2026-08-19",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "@所有人 因近期大模型切换整合，导致原有端点https://wishub-x6.ctyun.cn/v1即将停用。需要将端点全部迁移至http://10.2.134.79:4000/ ；请各产研团队尽快完成配置切换；\n操作步骤：\n1.新增自定义供应商并完成url和apikey配置；其中url为：http://10.2.134.79:4000/ ；apikey需要联系王泽靖进行创建；\n2.点击获取模型列表；\n3.将模型快速配置（下拉框）；\n4.保存；\n5.打开cmd运行claude；发“hello”测试；"
+      },
+      {
+        "ts": "2026-08-19 20:43",
+        "date": "2026-08-19",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "明天试试这个 ip"
+      },
+      {
+        "ts": "2026-08-20 11:24",
+        "date": "2026-08-20",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "不是"
+      },
+      {
+        "ts": "2026-08-20 11:24",
+        "date": "2026-08-20",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "我检查下"
+      },
+      {
+        "ts": "2026-08-20 11:33",
+        "date": "2026-08-20",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "都已经维护过了"
+      },
+      {
+        "ts": "2026-08-20 13:55",
+        "date": "2026-08-20",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-20 14:01",
+        "date": "2026-08-20",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-20 14:17",
+        "date": "2026-08-20",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-20 17:18",
+        "date": "2026-08-20",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "https://ai.ctaigw.cn/v1"
+      },
+      {
+        "ts": "2026-08-20 19:21",
+        "date": "2026-08-20",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-08-20 20:00",
+        "date": "2026-08-20",
+        "channel_id": "496ab39f70a445bbb61e07192785501a",
+        "channel_name": "496ab39f70a445bbb61e07192785501a",
+        "is_work": false,
+        "to": "496ab39f70a445bbb61e07192785501a",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-20 20:01",
+        "date": "2026-08-20",
+        "channel_id": "496ab39f70a445bbb61e07192785501a",
+        "channel_name": "496ab39f70a445bbb61e07192785501a",
+        "is_work": false,
+        "to": "496ab39f70a445bbb61e07192785501a",
+        "body": "能发下标题不"
+      },
+      {
+        "ts": "2026-08-20 20:01",
+        "date": "2026-08-20",
+        "channel_id": "496ab39f70a445bbb61e07192785501a",
+        "channel_name": "496ab39f70a445bbb61e07192785501a",
+        "is_work": false,
+        "to": "496ab39f70a445bbb61e07192785501a",
+        "body": "我这边访问不了这个地址"
+      },
+      {
+        "ts": "2026-08-20 20:01",
+        "date": "2026-08-20",
+        "channel_id": "496ab39f70a445bbb61e07192785501a",
+        "channel_name": "496ab39f70a445bbb61e07192785501a",
+        "is_work": false,
+        "to": "496ab39f70a445bbb61e07192785501a",
+        "body": "是在公共域项目是吧"
+      },
+      {
+        "ts": "2026-08-20 20:02",
+        "date": "2026-08-20",
+        "channel_id": "496ab39f70a445bbb61e07192785501a",
+        "channel_name": "496ab39f70a445bbb61e07192785501a",
+        "is_work": false,
+        "to": "496ab39f70a445bbb61e07192785501a",
+        "body": "已关"
+      },
+      {
+        "ts": "2026-08-21 15:05",
+        "date": "2026-08-21",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "宋老师，这个文档路径在哪"
+      },
+      {
+        "ts": "2026-08-21 15:05",
+        "date": "2026-08-21",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "云盘里"
+      },
+      {
+        "ts": "2026-08-21 15:05",
+        "date": "2026-08-21",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "是的"
+      },
+      {
+        "ts": "2026-08-21 15:06",
+        "date": "2026-08-21",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "嗯嗯，了解"
+      },
+      {
+        "ts": "2026-08-21 15:14",
+        "date": "2026-08-21",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "明天下午 6 点的话，还是得看中间件进度吧"
+      },
+      {
+        "ts": "2026-08-21 19:18",
+        "date": "2026-08-21",
+        "channel_id": "91dc6d980b5a4525aae7d7829151f055",
+        "channel_name": "91dc6d980b5a4525aae7d7829151f055",
+        "is_work": false,
+        "to": "91dc6d980b5a4525aae7d7829151f055",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-19 17:56",
+        "date": "2026-08-19",
+        "channel_id": "9da305ef8621405dae7ef8f901c204f2",
+        "channel_name": "9da305ef8621405dae7ef8f901c204f2",
+        "is_work": false,
+        "to": "9da305ef8621405dae7ef8f901c204f2",
+        "body": "老师按样例写哈，现在填的都不对哈"
+      },
+      {
+        "ts": "2026-08-20 16:16",
+        "date": "2026-08-20",
+        "channel_id": "9da305ef8621405dae7ef8f901c204f2",
+        "channel_name": "9da305ef8621405dae7ef8f901c204f2",
+        "is_work": false,
+        "to": "9da305ef8621405dae7ef8f901c204f2",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-20 16:16",
+        "date": "2026-08-20",
+        "channel_id": "9da305ef8621405dae7ef8f901c204f2",
+        "channel_name": "9da305ef8621405dae7ef8f901c204f2",
+        "is_work": false,
+        "to": "9da305ef8621405dae7ef8f901c204f2",
+        "body": "老师，咱们员工基本信息 md_emp_info这个表的接口对接联调完成了嘛？（有一个环境完成就算的）"
+      },
+      {
+        "ts": "2026-08-20 17:55",
+        "date": "2026-08-20",
+        "channel_id": "9da305ef8621405dae7ef8f901c204f2",
+        "channel_name": "9da305ef8621405dae7ef8f901c204f2",
+        "is_work": false,
+        "to": "9da305ef8621405dae7ef8f901c204f2",
+        "body": "#1218633 【test】【共享工作组】工作组不应可引用任务标签和自定义标签\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/PtY62wUXWb7SqBg7"
+      },
+      {
+        "ts": "2026-08-20 17:55",
+        "date": "2026-08-20",
+        "channel_id": "9da305ef8621405dae7ef8f901c204f2",
+        "channel_name": "9da305ef8621405dae7ef8f901c204f2",
+        "is_work": false,
+        "to": "9da305ef8621405dae7ef8f901c204f2",
+        "body": "看看，我需要穿什么参数来过滤一下"
+      },
+      {
+        "ts": "2026-08-21 15:36",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "收集一下，有差异的就填一下"
+      },
+      {
+        "ts": "2026-08-21 16:09",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "我问一下"
+      },
+      {
+        "ts": "2026-08-21 16:09",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "进共享的单子"
+      },
+      {
+        "ts": "2026-08-21 16:10",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "问一下产品"
+      },
+      {
+        "ts": "2026-08-21 16:10",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "我们这边也不清楚"
+      },
+      {
+        "ts": "2026-08-21 16:10",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-21 16:11",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "发这个吧"
+      },
+      {
+        "ts": "2026-08-21 17:10",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "😂"
+      },
+      {
+        "ts": "2026-08-21 17:10",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "复制上去撒"
+      },
+      {
+        "ts": "2026-08-21 17:26",
+        "date": "2026-08-21",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "那就填备注就行"
+      },
+      {
+        "ts": "2026-08-21 16:11",
+        "date": "2026-08-21",
+        "channel_id": "f09bc53ced054aa9807c85f4aace9e53",
+        "channel_name": "f09bc53ced054aa9807c85f4aace9e53",
+        "is_work": false,
+        "to": "f09bc53ced054aa9807c85f4aace9e53",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-21 16:11",
+        "date": "2026-08-21",
+        "channel_id": "f09bc53ced054aa9807c85f4aace9e53",
+        "channel_name": "f09bc53ced054aa9807c85f4aace9e53",
+        "is_work": false,
+        "to": "f09bc53ced054aa9807c85f4aace9e53",
+        "body": "加上了字段类型"
+      },
+      {
+        "ts": "2026-08-21 17:07",
+        "date": "2026-08-21",
+        "channel_id": "f09bc53ced054aa9807c85f4aace9e53",
+        "channel_name": "f09bc53ced054aa9807c85f4aace9e53",
+        "is_work": false,
+        "to": "f09bc53ced054aa9807c85f4aace9e53",
+        "body": "可以"
+      },
+      {
+        "ts": "2026-08-21 12:20",
+        "date": "2026-08-21",
+        "channel_id": "168fc139d0854de58770a97156bdfa6f",
+        "channel_name": "168fc139d0854de58770a97156bdfa6f",
+        "is_work": false,
+        "to": "168fc139d0854de58770a97156bdfa6f",
+        "body": "可以的，到时候同步下"
+      },
+      {
+        "ts": "2026-08-21 16:24",
+        "date": "2026-08-21",
+        "channel_id": "5307aad1929747179a14b33bac932deb",
+        "channel_name": "5307aad1929747179a14b33bac932deb",
+        "is_work": false,
+        "to": "5307aad1929747179a14b33bac932deb",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-21 16:25",
+        "date": "2026-08-21",
+        "channel_id": "5307aad1929747179a14b33bac932deb",
+        "channel_name": "5307aad1929747179a14b33bac932deb",
+        "is_work": false,
+        "to": "5307aad1929747179a14b33bac932deb",
+        "body": "组内先对一下，后面看梓叶那边怎么协作，目前只能一对一了"
+      },
+      {
+        "ts": "2026-08-21 17:15",
+        "date": "2026-08-21",
+        "channel_id": "6f198147375148278579a0af62255f55",
+        "channel_name": "6f198147375148278579a0af62255f55",
+        "is_work": false,
+        "to": "6f198147375148278579a0af62255f55",
+        "body": "#1057139 【共享运营】【共享机构】共享选用服务实体编辑，共享机构未做64位限制\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/7UnG4BJbcWmWbadX"
+      },
+      {
+        "ts": "2026-08-21 17:15",
+        "date": "2026-08-21",
+        "channel_id": "6f198147375148278579a0af62255f55",
+        "channel_name": "6f198147375148278579a0af62255f55",
+        "is_work": false,
+        "to": "6f198147375148278579a0af62255f55",
+        "body": "这个提错项目了，核实下，已经改了的话就关了"
+      },
+      {
+        "ts": "2026-08-21 17:16",
+        "date": "2026-08-21",
+        "channel_id": "6f198147375148278579a0af62255f55",
+        "channel_name": "6f198147375148278579a0af62255f55",
+        "is_work": false,
+        "to": "6f198147375148278579a0af62255f55",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-22 13:23",
+        "date": "2026-08-22",
+        "channel_id": "5307aad1929747179a14b33bac932deb",
+        "channel_name": "5307aad1929747179a14b33bac932deb",
+        "is_work": false,
+        "to": "5307aad1929747179a14b33bac932deb",
+        "body": "看那个群，梓叶拉了"
+      },
+      {
+        "ts": "2026-08-17 18:37",
+        "date": "2026-08-17",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-19 12:22",
+        "date": "2026-08-19",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "行"
+      },
+      {
+        "ts": "2026-08-19 12:23",
+        "date": "2026-08-19",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "下午看看"
+      },
+      {
+        "ts": "2026-08-19 12:23",
+        "date": "2026-08-19",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "看着是判断 tooltip 那里的问题"
+      },
+      {
+        "ts": "2026-08-20 15:42",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "#1216530 【test】【任务分配配置】新增指定派单规则优先级默认值错误\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/PtY62wUXHMgPZWAi"
+      },
+      {
+        "ts": "2026-08-20 15:42",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "没看懂呢，这个缺陷"
+      },
+      {
+        "ts": "2026-08-20 17:41",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "测试环境这个好像可以呢"
+      },
+      {
+        "ts": "2026-08-20 17:42",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-20 18:23",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "#1217477 【test】【个人任务】原币金额查询条件无效\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/PtY62wUXro3riHMj"
+      },
+      {
+        "ts": "2026-08-20 18:25",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "可以的"
+      },
+      {
+        "ts": "2026-08-20 18:25",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-20 18:25",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "107 就有，106 就没有"
+      },
+      {
+        "ts": "2026-08-20 18:30",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "可以"
+      },
+      {
+        "ts": "2026-08-20 18:30",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "😂"
+      },
+      {
+        "ts": "2026-08-20 18:30",
+        "date": "2026-08-20",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "1"
+      },
+      {
+        "ts": "2026-08-21 14:41",
+        "date": "2026-08-21",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-22 16:39",
+        "date": "2026-08-22",
+        "channel_id": "68b1ac4c61b1449b9a72148c2afb8163",
+        "channel_name": "68b1ac4c61b1449b9a72148c2afb8163",
+        "is_work": false,
+        "to": "68b1ac4c61b1449b9a72148c2afb8163",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-22 16:39",
+        "date": "2026-08-22",
+        "channel_id": "68b1ac4c61b1449b9a72148c2afb8163",
+        "channel_name": "68b1ac4c61b1449b9a72148c2afb8163",
+        "is_work": false,
+        "to": "68b1ac4c61b1449b9a72148c2afb8163",
+        "body": "个人任务这里之前说只能一个主按钮所以改了按钮背景色"
+      },
+      {
+        "ts": "2026-08-22 16:41",
+        "date": "2026-08-22",
+        "channel_id": "68b1ac4c61b1449b9a72148c2afb8163",
+        "channel_name": "68b1ac4c61b1449b9a72148c2afb8163",
+        "is_work": false,
+        "to": "68b1ac4c61b1449b9a72148c2afb8163",
+        "body": "你可以问一下"
+      },
+      {
+        "ts": "2026-08-22 16:41",
+        "date": "2026-08-22",
+        "channel_id": "68b1ac4c61b1449b9a72148c2afb8163",
+        "channel_name": "68b1ac4c61b1449b9a72148c2afb8163",
+        "is_work": false,
+        "to": "68b1ac4c61b1449b9a72148c2afb8163",
+        "body": "之前不是我改的"
+      },
+      {
+        "ts": "2026-08-22 18:02",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "我发给开发经理群都没人回啊"
+      },
+      {
+        "ts": "2026-08-22 18:02",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "是的"
+      },
+      {
+        "ts": "2026-08-22 18:03",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "缺陷差不多了"
+      },
+      {
+        "ts": "2026-08-22 18:03",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "走吧"
+      },
+      {
+        "ts": "2026-08-22 18:03",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "那你这个时候还没定到应付，赶紧溜，明天也别来，你就说不知道，我明天我自己来就行了。"
+      },
+      {
+        "ts": "2026-08-22 18:04",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "你那留的我刚刚让你就是高开那几个缺陷就是留给我明天给他们交代的，就是明天我们改了留5个缺陷就够了，因为大头就不是我们。"
+      },
+      {
+        "ts": "2026-08-22 18:04",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-08-22 18:04",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "现在都不会问这些的"
+      },
+      {
+        "ts": "2026-08-22 19:51",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "现在剔除不了"
+      },
+      {
+        "ts": "2026-08-22 19:51",
+        "date": "2026-08-22",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "都绑在一起"
+      },
+      {
+        "ts": "2026-08-19 11:48",
+        "date": "2026-08-19",
+        "channel_id": "a07acf578287481480251c8bf83245cf",
+        "channel_name": "a07acf578287481480251c8bf83245cf",
+        "is_work": false,
+        "to": "a07acf578287481480251c8bf83245cf",
+        "body": "状态未来要用到，我们怎么获取呢"
+      },
+      {
+        "ts": "2026-08-19 17:08",
+        "date": "2026-08-19",
+        "channel_id": "6b602848539346d39fd28544a7d32226",
+        "channel_name": "6b602848539346d39fd28544a7d32226",
+        "is_work": false,
+        "to": "6b602848539346d39fd28544a7d32226",
+        "body": "好的"
+      },
+      {
+        "ts": "2026-08-19 19:13",
+        "date": "2026-08-19",
+        "channel_id": "6b602848539346d39fd28544a7d32226",
+        "channel_name": "6b602848539346d39fd28544a7d32226",
+        "is_work": false,
+        "to": "6b602848539346d39fd28544a7d32226",
+        "body": "应该可以了，再看看"
+      },
+      {
+        "ts": "2026-08-19 20:00",
+        "date": "2026-08-19",
+        "channel_id": "6b602848539346d39fd28544a7d32226",
+        "channel_name": "6b602848539346d39fd28544a7d32226",
+        "is_work": false,
+        "to": "6b602848539346d39fd28544a7d32226",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-20 14:37",
+        "date": "2026-08-20",
+        "channel_id": "a07acf578287481480251c8bf83245cf",
+        "channel_name": "a07acf578287481480251c8bf83245cf",
+        "is_work": false,
+        "to": "a07acf578287481480251c8bf83245cf",
+        "body": "完成了的"
+      },
+      {
+        "ts": "2026-08-20 14:37",
+        "date": "2026-08-20",
+        "channel_id": "a07acf578287481480251c8bf83245cf",
+        "channel_name": "a07acf578287481480251c8bf83245cf",
+        "is_work": false,
+        "to": "a07acf578287481480251c8bf83245cf",
+        "body": "测试环境就是通的"
+      },
+      {
+        "ts": "2026-08-22 17:32",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "这些 bug 你要提给流程引擎"
+      },
+      {
+        "ts": "2026-08-22 17:32",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-22 17:34",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "这种流程审批页的 bug，你可以根据单据直接提到指定功能组里"
+      },
+      {
+        "ts": "2026-08-22 17:34",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "看你这个就是费报里的缺陷"
+      },
+      {
+        "ts": "2026-08-22 17:34",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "或者你和他们的测试沟通一下"
+      },
+      {
+        "ts": "2026-08-22 17:34",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "不能放在共享里"
+      },
+      {
+        "ts": "2026-08-22 17:35",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "你问李兴"
+      },
+      {
+        "ts": "2026-08-22 17:35",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "我也不清楚"
+      },
+      {
+        "ts": "2026-08-22 17:35",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "现在要销项不是我们的 bug 不要放在我们这里"
+      },
+      {
+        "ts": "2026-08-22 17:36",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "你们有测试群吧"
+      },
+      {
+        "ts": "2026-08-22 17:36",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "费报提给刘冬吧"
+      },
+      {
+        "ts": "2026-08-22 17:36",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-22 17:36",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "可以按这个表提"
+      },
+      {
+        "ts": "2026-08-22 17:37",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "他们自己内部再分"
+      },
+      {
+        "ts": "2026-08-22 17:37",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "你们还是要筛选下单据属于哪个业务组"
+      },
+      {
+        "ts": "2026-08-22 17:52",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-22 17:52",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "我吃完了回来看看"
+      },
+      {
+        "ts": "2026-08-22 17:52",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "这几个都是吗"
+      },
+      {
+        "ts": "2026-08-22 17:55",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "你给个 id"
+      },
+      {
+        "ts": "2026-08-22 18:03",
+        "date": "2026-08-22",
+        "channel_id": "12491c0520bc4e5b96eb3e6ba9170170",
+        "channel_name": "12491c0520bc4e5b96eb3e6ba9170170",
+        "is_work": false,
+        "to": "12491c0520bc4e5b96eb3e6ba9170170",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-08-20 16:14",
+        "date": "2026-08-20",
+        "channel_id": "c8666fbd699646c5bd48798705480c96",
+        "channel_name": "c8666fbd699646c5bd48798705480c96",
+        "is_work": false,
+        "to": "c8666fbd699646c5bd48798705480c96",
+        "body": "通了的"
+      },
+      {
+        "ts": "2026-08-20 16:14",
+        "date": "2026-08-20",
+        "channel_id": "c8666fbd699646c5bd48798705480c96",
+        "channel_name": "c8666fbd699646c5bd48798705480c96",
+        "is_work": false,
+        "to": "c8666fbd699646c5bd48798705480c96",
+        "body": "是只要一个环境通了就行吧"
+      },
+      {
+        "ts": "2026-08-21 21:19",
+        "date": "2026-08-21",
+        "channel_id": "15c3bb3028ec42f0b806461bfbabd68d",
+        "channel_name": "15c3bb3028ec42f0b806461bfbabd68d",
+        "is_work": false,
+        "to": "15c3bb3028ec42f0b806461bfbabd68d",
+        "body": "嗯"
+      },
+      {
+        "ts": "2026-08-21 21:20",
+        "date": "2026-08-21",
+        "channel_id": "15c3bb3028ec42f0b806461bfbabd68d",
+        "channel_name": "15c3bb3028ec42f0b806461bfbabd68d",
+        "is_work": false,
+        "to": "15c3bb3028ec42f0b806461bfbabd68d",
+        "body": "几点"
+      },
+      {
+        "ts": "2026-08-21 21:27",
+        "date": "2026-08-21",
+        "channel_id": "15c3bb3028ec42f0b806461bfbabd68d",
+        "channel_name": "15c3bb3028ec42f0b806461bfbabd68d",
+        "is_work": false,
+        "to": "15c3bb3028ec42f0b806461bfbabd68d",
+        "body": "好，来了喊我"
+      },
+      {
+        "ts": "2026-08-21 21:27",
+        "date": "2026-08-21",
+        "channel_id": "15c3bb3028ec42f0b806461bfbabd68d",
+        "channel_name": "15c3bb3028ec42f0b806461bfbabd68d",
+        "is_work": false,
+        "to": "15c3bb3028ec42f0b806461bfbabd68d",
+        "body": "我 10 分钟到"
+      },
+      {
+        "ts": "2026-08-21 22:03",
+        "date": "2026-08-21",
+        "channel_id": "15c3bb3028ec42f0b806461bfbabd68d",
+        "channel_name": "15c3bb3028ec42f0b806461bfbabd68d",
+        "is_work": false,
+        "to": "15c3bb3028ec42f0b806461bfbabd68d",
+        "body": "来了"
+      },
+      {
+        "ts": "2026-08-18 15:50",
+        "date": "2026-08-18",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "都 9"
+      },
+      {
+        "ts": "2026-08-18 17:02",
+        "date": "2026-08-18",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "我发你"
+      },
+      {
+        "ts": "2026-08-18 17:03",
+        "date": "2026-08-18",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "地址  \nhttps://ai.ctaigw.cn/v1\n\nkey\nd5e45464dc0f4c9393ed5b7e3457b4f9"
+      },
+      {
+        "ts": "2026-08-18 17:03",
+        "date": "2026-08-18",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "点这个获取模型列表，里面有 glm5.2"
+      },
+      {
+        "ts": "2026-08-18 17:03",
+        "date": "2026-08-18",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-18 17:13",
+        "date": "2026-08-18",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "获取就好，你手填容易填错"
+      },
+      {
+        "ts": "2026-08-18 17:18",
+        "date": "2026-08-18",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "😂"
+      },
+      {
+        "ts": "2026-08-20 16:08",
+        "date": "2026-08-20",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-08-20 16:20",
+        "date": "2026-08-20",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-08-20 16:33",
+        "date": "2026-08-20",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "其实过了一下，基本都是平台样式的 bug"
+      },
+      {
+        "ts": "2026-08-20 16:34",
+        "date": "2026-08-20",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "都有提"
+      },
+      {
+        "ts": "2026-08-21 16:16",
+        "date": "2026-08-21",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-08-21 16:16",
+        "date": "2026-08-21",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "后续各单位会陆续成立共享中心，为保证各模块单据进入共享后能统一待办展示，共享已规范字段，现需收集各模块进入共享后待办的字段来源，其中对应业务单据指需进入共享的单据，字段来源指平台业务模型下的字段名称，如各模块有额外字段显示，请单独联系共享运营组韩佳睿"
+      },
+      {
+        "ts": "2026-08-21 17:26",
+        "date": "2026-08-21",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "我说 sheet，自明说不用"
+      },
+      {
+        "ts": "2026-08-21 17:26",
+        "date": "2026-08-21",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "😅"
+      },
+      {
+        "ts": "2026-08-21 17:26",
+        "date": "2026-08-21",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-08-21 17:26",
+        "date": "2026-08-21",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "共享吧"
+      },
+      {
+        "ts": "2026-08-21 17:27",
+        "date": "2026-08-21",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "其他组也好参考"
+      },
+      {
+        "ts": "2026-08-21 17:27",
+        "date": "2026-08-21",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "目前几个组"
+      },
+      {
+        "ts": "2026-08-22 17:03",
+        "date": "2026-08-22",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "嗯，看到了"
+      },
+      {
+        "ts": "2026-08-22 17:03",
+        "date": "2026-08-22",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "已经弄完了这个环境"
+      },
+      {
+        "ts": "2026-08-17 15:36",
+        "date": "2026-08-17",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "建红，在忙吗，数据权限也打开了吗"
+      },
+      {
+        "ts": "2026-08-17 15:36",
+        "date": "2026-08-17",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "现在很多没数据，测试又不知道怎么配"
+      },
+      {
+        "ts": "2026-08-18 15:46",
+        "date": "2026-08-18",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "#1203529 【test】【共享工作组】批量操作部分成功提示文案图标错误\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/PtY62wUXRODSBOcK"
+      },
+      {
+        "ts": "2026-08-18 16:10",
+        "date": "2026-08-18",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-19 11:41",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "a07acf578287481480251c8bf83245cf：史旭昇：员工基本信息中，非两总部的数据大概率拿不到人员状态、岗位状态、人员分类这三个字段的值，麻烦确认下你们的业务场景是否会使用到这三个字段"
+      },
+      {
+        "ts": "2026-08-19 11:41",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "状态有用到吗"
+      },
+      {
+        "ts": "2026-08-19 11:47",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-19 15:27",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-19 17:57",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "汪晓宇：老师按样例写哈，现在填的都不对哈"
+      },
+      {
+        "ts": "2026-08-19 17:57",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "看这个是谁填的"
+      },
+      {
+        "ts": "2026-08-19 19:02",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "老师，现在要统计一下表格中的信息，【共享运营】这块帮忙安排老师补充下信息哈\n【金山文档 | WPS云文档】 stg环境宝兰德中间件统计\nhttps://www.kdocs.cn/l/cgXIqOEmjzS3"
+      },
+      {
+        "ts": "2026-08-19 19:02",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "就这个"
+      },
+      {
+        "ts": "2026-08-19 19:42",
+        "date": "2026-08-19",
+        "channel_id": "eb52df1316be4d488d4dcb8fef702ffd",
+        "channel_name": "eb52df1316be4d488d4dcb8fef702ffd",
+        "is_work": false,
+        "to": "eb52df1316be4d488d4dcb8fef702ffd",
+        "body": "好"
+      },
+      {
+        "ts": "2026-08-19 20:21",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-19 20:22",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "表情"
+      },
+      {
+        "ts": "2026-08-19 21:30",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "{\n    \"code\": \"-1\",\n    \"message\": \"系统未知错误 500\",\n    \"data\": null,\n    \"requestId\": \"0RBQKTR1WM9F6\",\n    \"error\": {\n        \"code\": \"-1\",\n        \"traceId\": \"N/A\",\n        \"path\": \"/fin/fm-fis-fs/api/task-pool/number-count\",\n        \"timestamp\": \"1787146158101\",\n        \"details\": \"MissingServletRequestParameterException: Required request parameter 'funcCode' for method parameter type String is not present\"\n    }\n}"
+      },
+      {
+        "ts": "2026-08-19 21:31",
+        "date": "2026-08-19",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "{\n    \"code\": \"-1\",\n    \"message\": \"系统未知错误 500\",\n    \"data\": null,\n    \"requestId\": \"0RBQKTPX4M9EX\",\n    \"error\": {\n        \"code\": \"-1\",\n        \"traceId\": \"N/A\",\n        \"path\": \"/fin/fm-fis-fs/api/task-unassigned/number-count\",\n        \"timestamp\": \"1787146157807\",\n        \"details\": \"MissingServletRequestParameterException: Required request parameter 'funcCode' for method parameter type String is not present\"\n    }\n}"
+      },
+      {
+        "ts": "2026-08-20 11:33",
+        "date": "2026-08-20",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "这个schema是你们的吗"
+      },
+      {
+        "ts": "2026-08-20 11:33",
+        "date": "2026-08-20",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "过一下有没有我们的"
+      },
+      {
+        "ts": "2026-08-20 20:05",
+        "date": "2026-08-20",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "宋建明：【腾讯文档】统建系统-平台-中间件信息清单\nhttps://docs.qq.com/sheet/DWEpTZFhkbmpKVmxk?tab=BB08J2\n宋建明：新准生产环境的中间件信息请查看该表格\n宋建明：新准生产的服务器资源已经分配\n宋建明："
+      },
+      {
+        "ts": "2026-08-21 17:05",
+        "date": "2026-08-21",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-21 17:07",
+        "date": "2026-08-21",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "#1220719 【test】【组长管理】批量手动分配时部分失败时的提示单据号有误\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/PtY62wUX1CZaAiZs\n#1154048 【共享运营-共享工作组】【UAT环境】工作组包含岗位及服务实体，删除，提示删除成功，实际并没有成功\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/RAJ5YvDQeVdmQZ4W\n#1132958 【任务分配配置】比较值明显异常时规则仍可保存并通过校验\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/PtY62wUXkIORriUO\n#1054792 【节点类型】节点类型增、删、改、启用、停用操作未生成操作日志\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/PtY62wUXvH27I9wM"
+      },
+      {
+        "ts": "2026-08-17 10:27",
+        "date": "2026-08-17",
+        "channel_id": "02ab07992f8442c791fee38ba543e6ad",
+        "channel_name": "02ab07992f8442c791fee38ba543e6ad",
+        "is_work": false,
+        "to": "02ab07992f8442c791fee38ba543e6ad",
+        "body": "他们也没单独部署"
+      },
+      {
+        "ts": "2026-08-17 10:27",
+        "date": "2026-08-17",
+        "channel_id": "02ab07992f8442c791fee38ba543e6ad",
+        "channel_name": "02ab07992f8442c791fee38ba543e6ad",
+        "is_work": false,
+        "to": "02ab07992f8442c791fee38ba543e6ad",
+        "body": "只能点进去看源码"
+      },
+      {
+        "ts": "2026-08-17 10:32",
+        "date": "2026-08-17",
+        "channel_id": "02ab07992f8442c791fee38ba543e6ad",
+        "channel_name": "02ab07992f8442c791fee38ba543e6ad",
+        "is_work": false,
+        "to": "02ab07992f8442c791fee38ba543e6ad",
+        "body": "嗯"
+      },
+      {
+        "ts": "2026-08-17 10:32",
+        "date": "2026-08-17",
+        "channel_id": "02ab07992f8442c791fee38ba543e6ad",
+        "channel_name": "02ab07992f8442c791fee38ba543e6ad",
+        "is_work": false,
+        "to": "02ab07992f8442c791fee38ba543e6ad",
+        "body": "切一下分支"
+      },
+      {
+        "ts": "2026-08-17 10:38",
+        "date": "2026-08-17",
+        "channel_id": "02ab07992f8442c791fee38ba543e6ad",
+        "channel_name": "02ab07992f8442c791fee38ba543e6ad",
+        "is_work": false,
+        "to": "02ab07992f8442c791fee38ba543e6ad",
+        "body": "你问一下呢"
+      },
+      {
+        "ts": "2026-08-17 10:38",
+        "date": "2026-08-17",
+        "channel_id": "02ab07992f8442c791fee38ba543e6ad",
+        "channel_name": "02ab07992f8442c791fee38ba543e6ad",
+        "is_work": false,
+        "to": "02ab07992f8442c791fee38ba543e6ad",
+        "body": "我也忘了"
+      },
+      {
+        "ts": "2026-08-17 09:45",
+        "date": "2026-08-17",
+        "channel_id": "11dfe8c14a9648909683933da8b05aab",
+        "channel_name": "11dfe8c14a9648909683933da8b05aab",
+        "is_work": false,
+        "to": "11dfe8c14a9648909683933da8b05aab",
+        "body": "对的"
+      },
+      {
+        "ts": "2026-08-18 11:43",
+        "date": "2026-08-18",
+        "channel_id": "f02dca64f8084a4c8febfc745d010907",
+        "channel_name": "f02dca64f8084a4c8febfc745d010907",
+        "is_work": false,
+        "to": "f02dca64f8084a4c8febfc745d010907",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-20 22:10",
+        "date": "2026-08-20",
+        "channel_id": "f02dca64f8084a4c8febfc745d010907",
+        "channel_name": "f02dca64f8084a4c8febfc745d010907",
+        "is_work": false,
+        "to": "f02dca64f8084a4c8febfc745d010907",
+        "body": "20260820221012"
+      },
+      {
+        "ts": "2026-08-21 18:10",
+        "date": "2026-08-21",
+        "channel_id": "f02dca64f8084a4c8febfc745d010907",
+        "channel_name": "f02dca64f8084a4c8febfc745d010907",
+        "is_work": false,
+        "to": "f02dca64f8084a4c8febfc745d010907",
+        "body": "文件"
+      }
+    ]
+  },
+  "git": {
+    "total": 79,
+    "by_project": {
+      "共享运营前端": {
+        "count": 57,
+        "commits": [
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "987786d7",
+            "when": "2026-08-24 23:12",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "feat(amount): 全局金额格式化——币种为 CNY 时前置 ￥ 符号"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "0da0c411",
+            "when": "2026-08-24 22:05",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "feat(table): 抽取公共单据编号组件并合并加急标签"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "f4a8bd69",
+            "when": "2026-08-24 20:23",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "1e123023",
+            "when": "2026-08-24 20:23",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "feat: 修复失效颜色"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "853bb587",
+            "when": "2026-08-24 20:19",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "style(status): 表格状态文案“有效/失效”统一为“已生效/已失效”"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "877971af",
+            "when": "2026-08-24 17:51",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "style(personnel-task): 优化任务标签弹窗布局与表格交互"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "7707aa74",
+            "when": "2026-08-24 17:41",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "style(operation): 操作列“详情”按钮文案统一改为“查看”"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "412cd8eb",
+            "when": "2026-08-24 15:12",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "fix: 比较对象选项收敛到 store 并按白名单校验比较值"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "47d3204c",
+            "when": "2026-08-22 20:34",
+            "date": "2026-08-22",
+            "author": "张浩",
+            "subject": "feat: 修复审计信息字段"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "c87c7cbb",
+            "when": "2026-08-22 20:15",
+            "date": "2026-08-22",
+            "author": "张浩",
+            "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "01df5cc4",
+            "when": "2026-08-22 20:14",
+            "date": "2026-08-22",
+            "author": "张浩",
+            "subject": "feat: update dependencies and add loading state to confirm button in ServiceEntityTreeDialog"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "bcd96321",
+            "when": "2026-08-21 16:03",
+            "date": "2026-08-21",
+            "author": "张浩",
+            "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "5a9cd33c",
+            "when": "2026-08-21 15:52",
+            "date": "2026-08-21",
+            "author": "张浩",
+            "subject": "refactor(shared-ops): 三模块 tab schema 改 map + buildTabSchema，废弃 filters"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "a3079ab9",
+            "when": "2026-08-21 00:38",
+            "date": "2026-08-21",
+            "author": "张浩",
+            "subject": "feat(views): 弹窗接入 useDialogLoading（ProcessDialog / SendOrdersRulesTable）"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "a53ec89d",
+            "when": "2026-08-21 00:19",
+            "date": "2026-08-21",
+            "author": "张浩",
+            "subject": "feat: update package.json"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "17066def",
+            "when": "2026-08-21 00:18",
+            "date": "2026-08-21",
+            "author": "张浩",
+            "subject": "feat(hooks): 新增 useDialogLoading 统一弹窗异步 loading 并落地代表性弹窗"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "7902424a",
+            "when": "2026-08-21 00:00",
+            "date": "2026-08-21",
+            "author": "张浩",
+            "subject": "feat: remove tab-pending and tab-rejected"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "69a22ca2",
+            "when": "2026-08-20 23:26",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "fix(workgroup): 服务实体树弹窗多选仅选当前行不再级联带出子节点"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "feea0e44",
+            "when": "2026-08-20 21:58",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "refactor(scripts): scripts 目录按功能重组并新增功能组/菜单清理脚本"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "386ca53e",
+            "when": "2026-08-20 20:17",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "feat(task-rule,workgroup): WORK_TAG 拉取按类型过滤，工作组 help 去除分页"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "e7113afd",
+            "when": "2026-08-20 20:16",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "feat(constants): 新增人员工作标签类型枚举并补充字典 type 参数"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "b98ded78",
+            "when": "2026-08-20 19:38",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "15ea1ebb",
+            "when": "2026-08-20 19:38",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "feat: fix work tag display issue in PositionPersonnelSection"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "a36347f4",
+            "when": "2026-08-20 16:33",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "style(font): 全局字体统一为平台 UX 规范字体栈"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "2a7d2cf7",
+            "when": "2026-08-20 16:26",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "fix(task-rule): 指定派单规则新增行优先级默认值改为 1"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "894e7e58",
+            "when": "2026-08-20 16:10",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "feat: update task rule detail base info form schema"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "1193283d",
+            "when": "2026-08-20 14:55",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "refactor(data-permission): funcCode 改为 api 调用点固定传入，不再从路由 meta 取"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "df58fa44",
+            "when": "2026-08-20 14:27",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "fix(shared-ops): 金额列改用 sortMethod 数值比较，统一三模块排序"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "8ccba3b2",
+            "when": "2026-08-20 14:01",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "fix(personnel-task): 金额列转数字后排序，修复前端字典序乱序"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "564587a3",
+            "when": "2026-08-19 21:55",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "fix(task-pool,team-leader): 任务状态事件仅订阅本模块自身，阻断跨模块错误刷新"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "7a0f7a9a",
+            "when": "2026-08-19 21:46",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "feat: change event bus to mitt"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "bf5d0374",
+            "when": "2026-08-19 21:16",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "feat: update @fe-minmetals-fm/components to 1.3.52"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "9c258de7",
+            "when": "2026-08-19 20:46",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "a66acdc0",
+            "when": "2026-08-19 20:45",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "refactor(task-rule): 批量删除/启停改由事件总线触发列表与树刷新，去除 CurdPage 引用耦合"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "d138a924",
+            "when": "2026-08-19 20:45",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "refactor(task-rule): 详情页拆分 hooks 收敛表单联动，新增配置自动带出默认班次"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "23eed704",
+            "when": "2026-08-19 19:06",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "3f6844d3",
+            "when": "2026-08-19 19:04",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "feat(workgroup): 列表查询新增服务实体筛选，提交 code 数组"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "c5df572f",
+            "when": "2026-08-18 22:29",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: update @fe-minmetals-fm/components to 1.3.49"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "b5b9e3e7",
+            "when": "2026-08-18 22:00",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "chore: 梳理并收敛 agent 相关配置"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "bdba06be",
+            "when": "2026-08-18 21:30",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor(personnel-task): 加急状态改用 StatusTag 组件，消除硬编码中文与手写货币格式"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "2042f2f0",
+            "when": "2026-08-18 21:09",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor(tab-content): 内联竖线分隔 div 替换为 <el-divider direction=\"vertical\" />"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "b0d6267c",
+            "when": "2026-08-18 20:37",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "01fda8a6",
+            "when": "2026-08-18 20:36",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: change ts config"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "73bcb106",
+            "when": "2026-08-18 20:28",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "fix: 修复 tsconfig.app 缺失 module/moduleResolution 导致的类型报错 + RequestUtils 类型"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "51719ca4",
+            "when": "2026-08-18 19:14",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor(workgroup): 启停确认按单条/批量统一，去掉单行启用跳过确认的特判"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "74f99ade",
+            "when": "2026-08-18 16:53",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor(workgroup): 补充批量接口返回类型 + 统一启停/删除提示逻辑"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "6501c5ce",
+            "when": "2026-08-18 15:15",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor: 收敛 getTableRef 裸 as any 为最小 TableSelectionRef + 去除 use-tag-data 的 any"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "b726f26c",
+            "when": "2026-08-18 15:01",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor: 收敛「确认→返回 boolean」为全局 useMessage.confirmAction"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "b7759bac",
+            "when": "2026-08-18 14:31",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "docs: 补全库 hooks 优化计划（P0 四模块 batch 收敛 / P1 any 治理 / P2 计时器）"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "5a6ad15b",
+            "when": "2026-08-18 14:28",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor: use-tag-selection 收敛 custom/system 分支 + 收敛确认/API 副作用"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "95c30450",
+            "when": "2026-08-18 14:20",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor: 建立 hooks 逻辑设计规范并重构 useSign/usePause 样板"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "16c1aba1",
+            "when": "2026-08-18 14:00",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "fix: 打破三个任务模块 events/index 的循环引用（TDZ）"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "22458c6d",
+            "when": "2026-08-18 13:56",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor: 任务数量/枚举统一派生+Tab切换刷新 + 修复 events 导入路径"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "4e7c7e34",
+            "when": "2026-08-18 13:45",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "chore: 移除 koroFileHeader 自动生成的文件头注释"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "fff200f5",
+            "when": "2026-08-18 12:34",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "refactor: 任务状态变更事件按模块定义"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "9ba66834",
+            "when": "2026-08-18 12:18",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: 三个任务模块接入跨模块事件通信"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "0d388e35",
+            "when": "2026-08-18 11:57",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "fix(workgroup): 单行停用提示语改用“停用成功”"
+          }
+        ]
+      },
+      "财务组件库": {
+        "count": 17,
+        "commits": [
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "5f1286e",
+            "when": "2026-08-24 17:35",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "Merge branch 'main' of https://dq.therogner.com/wk-financial-control/ace/fe/fe-minmetals-fm-packages"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "86b1e70",
+            "when": "2026-08-24 17:34",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "feat: 修改 group 组件的样式，增加了 ActionButton 的 type 类型"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "43586e5",
+            "when": "2026-08-22 20:09",
+            "date": "2026-08-22",
+            "author": "张浩",
+            "subject": "feat: update ProForm styles to improve layout and spacing"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "399eec9",
+            "when": "2026-08-22 20:04",
+            "date": "2026-08-22",
+            "author": "张浩",
+            "subject": "feat: update peer dependencies"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "57e979c",
+            "when": "2026-08-22 16:57",
+            "date": "2026-08-22",
+            "author": "张浩",
+            "subject": "feat: update changelogs"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "8542a44",
+            "when": "2026-08-21 17:16",
+            "date": "2026-08-21",
+            "author": "张浩",
+            "subject": "Merge branch 'main' of https://git.cisdigital.cn/wk-financial-control/ace/fe/fe-minmetals-fm-packages"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "34a2abb",
+            "when": "2026-08-20 17:44",
+            "date": "2026-08-20",
+            "author": "张浩",
+            "subject": "fix(EditableTable): disabledAsText 编辑态列仍注册隐藏 Formily 字段"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "da68f58",
+            "when": "2026-08-19 16:27",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "feat: update package version to 1.3.51"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "0a91f17",
+            "when": "2026-08-19 16:18",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "fix: FmFormItem readPrettyLines 栈溢出修复，版本升级至 1.3.50"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "2c71e8e",
+            "when": "2026-08-18 22:21",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: update ProForm styles to improve layout and readability"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "19a3d6a",
+            "when": "2026-08-18 21:48",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: update components version to 1.3.48"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "c5c4052",
+            "when": "2026-08-18 21:42",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "fix: 修复 readPretty render 字段被 displayEffect 误隐藏导致不显示的问题，版本升级至 1.3.47"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "0dd0077",
+            "when": "2026-08-18 21:04",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: change version to 1.3.47"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "4c8ea3d",
+            "when": "2026-08-18 21:04",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "Merge branch 'main' of https://git.cisdigital.cn/wk-financial-control/ace/fe/fe-minmetals-fm-packages"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "b7f3a12",
+            "when": "2026-08-18 21:00",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: update EditableTable component and related files"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "a5dfc79",
+            "when": "2026-08-18 20:36",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: ProForm readPretty 模式下 render 字段值动态设置不生效修复，版本升级至 1.3.46"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "c180218",
+            "when": "2026-08-18 11:50",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: update package version to 1.3.45"
+          }
+        ]
+      },
+      "会计引擎SLA": {
+        "count": 4,
+        "commits": [
+          {
+            "project": "fe-minmetals-fm-fia-sla",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fia-sla",
+            "hash": "f95aa311",
+            "when": "2026-08-19 19:29",
+            "date": "2026-08-19",
+            "author": "张浩",
+            "subject": "refactor(layout): 抽取菜单布局为本地 AppLayout 并启用 ProForm 响应式布局"
+          },
+          {
+            "project": "fe-minmetals-fm-fia-sla",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fia-sla",
+            "hash": "2e98cf27",
+            "when": "2026-08-18 22:03",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/ace/fe/fe-minmetals-fm-fia-sla into nightly"
+          },
+          {
+            "project": "fe-minmetals-fm-fia-sla",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fia-sla",
+            "hash": "c7f89720",
+            "when": "2026-08-18 22:03",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: update @fe-minmetals-fm/components to 1.3.48"
+          },
+          {
+            "project": "fe-minmetals-fm-fia-sla",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fia-sla",
+            "hash": "74938d15",
+            "when": "2026-08-18 19:49",
+            "date": "2026-08-18",
+            "author": "张浩",
+            "subject": "feat: update schema.ts and vite.config.ts"
+          }
+        ]
+      },
+      "AI 副业情报": {
+        "count": 1,
+        "commits": [
+          {
+            "project": "AI 副业情报",
+            "project_path": "/Users/zhanghao/Downloads/project/mine/ai-side-hustle",
+            "hash": "b01eeec",
+            "when": "2026-08-24 09:07",
+            "date": "2026-08-24",
+            "author": "张浩",
+            "subject": "📊 日报 2026-08-24"
+          }
+        ]
+      }
+    },
+    "all_commits": [
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "987786d7",
+        "when": "2026-08-24 23:12",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "feat(amount): 全局金额格式化——币种为 CNY 时前置 ￥ 符号"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "0da0c411",
+        "when": "2026-08-24 22:05",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "feat(table): 抽取公共单据编号组件并合并加急标签"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "f4a8bd69",
+        "when": "2026-08-24 20:23",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "1e123023",
+        "when": "2026-08-24 20:23",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "feat: 修复失效颜色"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "853bb587",
+        "when": "2026-08-24 20:19",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "style(status): 表格状态文案“有效/失效”统一为“已生效/已失效”"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "877971af",
+        "when": "2026-08-24 17:51",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "style(personnel-task): 优化任务标签弹窗布局与表格交互"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "7707aa74",
+        "when": "2026-08-24 17:41",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "style(operation): 操作列“详情”按钮文案统一改为“查看”"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "412cd8eb",
+        "when": "2026-08-24 15:12",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "fix: 比较对象选项收敛到 store 并按白名单校验比较值"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "47d3204c",
+        "when": "2026-08-22 20:34",
+        "date": "2026-08-22",
+        "author": "张浩",
+        "subject": "feat: 修复审计信息字段"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "c87c7cbb",
+        "when": "2026-08-22 20:15",
+        "date": "2026-08-22",
+        "author": "张浩",
+        "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "01df5cc4",
+        "when": "2026-08-22 20:14",
+        "date": "2026-08-22",
+        "author": "张浩",
+        "subject": "feat: update dependencies and add loading state to confirm button in ServiceEntityTreeDialog"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "bcd96321",
+        "when": "2026-08-21 16:03",
+        "date": "2026-08-21",
+        "author": "张浩",
+        "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "5a9cd33c",
+        "when": "2026-08-21 15:52",
+        "date": "2026-08-21",
+        "author": "张浩",
+        "subject": "refactor(shared-ops): 三模块 tab schema 改 map + buildTabSchema，废弃 filters"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "a3079ab9",
+        "when": "2026-08-21 00:38",
+        "date": "2026-08-21",
+        "author": "张浩",
+        "subject": "feat(views): 弹窗接入 useDialogLoading（ProcessDialog / SendOrdersRulesTable）"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "a53ec89d",
+        "when": "2026-08-21 00:19",
+        "date": "2026-08-21",
+        "author": "张浩",
+        "subject": "feat: update package.json"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "17066def",
+        "when": "2026-08-21 00:18",
+        "date": "2026-08-21",
+        "author": "张浩",
+        "subject": "feat(hooks): 新增 useDialogLoading 统一弹窗异步 loading 并落地代表性弹窗"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "7902424a",
+        "when": "2026-08-21 00:00",
+        "date": "2026-08-21",
+        "author": "张浩",
+        "subject": "feat: remove tab-pending and tab-rejected"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "69a22ca2",
+        "when": "2026-08-20 23:26",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "fix(workgroup): 服务实体树弹窗多选仅选当前行不再级联带出子节点"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "feea0e44",
+        "when": "2026-08-20 21:58",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "refactor(scripts): scripts 目录按功能重组并新增功能组/菜单清理脚本"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "386ca53e",
+        "when": "2026-08-20 20:17",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "feat(task-rule,workgroup): WORK_TAG 拉取按类型过滤，工作组 help 去除分页"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "e7113afd",
+        "when": "2026-08-20 20:16",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "feat(constants): 新增人员工作标签类型枚举并补充字典 type 参数"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "b98ded78",
+        "when": "2026-08-20 19:38",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "15ea1ebb",
+        "when": "2026-08-20 19:38",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "feat: fix work tag display issue in PositionPersonnelSection"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "a36347f4",
+        "when": "2026-08-20 16:33",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "style(font): 全局字体统一为平台 UX 规范字体栈"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "2a7d2cf7",
+        "when": "2026-08-20 16:26",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "fix(task-rule): 指定派单规则新增行优先级默认值改为 1"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "894e7e58",
+        "when": "2026-08-20 16:10",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "feat: update task rule detail base info form schema"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "1193283d",
+        "when": "2026-08-20 14:55",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "refactor(data-permission): funcCode 改为 api 调用点固定传入，不再从路由 meta 取"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "df58fa44",
+        "when": "2026-08-20 14:27",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "fix(shared-ops): 金额列改用 sortMethod 数值比较，统一三模块排序"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "8ccba3b2",
+        "when": "2026-08-20 14:01",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "fix(personnel-task): 金额列转数字后排序，修复前端字典序乱序"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "564587a3",
+        "when": "2026-08-19 21:55",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "fix(task-pool,team-leader): 任务状态事件仅订阅本模块自身，阻断跨模块错误刷新"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "7a0f7a9a",
+        "when": "2026-08-19 21:46",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "feat: change event bus to mitt"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "bf5d0374",
+        "when": "2026-08-19 21:16",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "feat: update @fe-minmetals-fm/components to 1.3.52"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "9c258de7",
+        "when": "2026-08-19 20:46",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "a66acdc0",
+        "when": "2026-08-19 20:45",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "refactor(task-rule): 批量删除/启停改由事件总线触发列表与树刷新，去除 CurdPage 引用耦合"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "d138a924",
+        "when": "2026-08-19 20:45",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "refactor(task-rule): 详情页拆分 hooks 收敛表单联动，新增配置自动带出默认班次"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "23eed704",
+        "when": "2026-08-19 19:06",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "3f6844d3",
+        "when": "2026-08-19 19:04",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "feat(workgroup): 列表查询新增服务实体筛选，提交 code 数组"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "c5df572f",
+        "when": "2026-08-18 22:29",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: update @fe-minmetals-fm/components to 1.3.49"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "b5b9e3e7",
+        "when": "2026-08-18 22:00",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "chore: 梳理并收敛 agent 相关配置"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "bdba06be",
+        "when": "2026-08-18 21:30",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor(personnel-task): 加急状态改用 StatusTag 组件，消除硬编码中文与手写货币格式"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "2042f2f0",
+        "when": "2026-08-18 21:09",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor(tab-content): 内联竖线分隔 div 替换为 <el-divider direction=\"vertical\" />"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "b0d6267c",
+        "when": "2026-08-18 20:37",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into nightly"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "01fda8a6",
+        "when": "2026-08-18 20:36",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: change ts config"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "73bcb106",
+        "when": "2026-08-18 20:28",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "fix: 修复 tsconfig.app 缺失 module/moduleResolution 导致的类型报错 + RequestUtils 类型"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "51719ca4",
+        "when": "2026-08-18 19:14",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor(workgroup): 启停确认按单条/批量统一，去掉单行启用跳过确认的特判"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "74f99ade",
+        "when": "2026-08-18 16:53",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor(workgroup): 补充批量接口返回类型 + 统一启停/删除提示逻辑"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "6501c5ce",
+        "when": "2026-08-18 15:15",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor: 收敛 getTableRef 裸 as any 为最小 TableSelectionRef + 去除 use-tag-data 的 any"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "b726f26c",
+        "when": "2026-08-18 15:01",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor: 收敛「确认→返回 boolean」为全局 useMessage.confirmAction"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "b7759bac",
+        "when": "2026-08-18 14:31",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "docs: 补全库 hooks 优化计划（P0 四模块 batch 收敛 / P1 any 治理 / P2 计时器）"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "5a6ad15b",
+        "when": "2026-08-18 14:28",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor: use-tag-selection 收敛 custom/system 分支 + 收敛确认/API 副作用"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "95c30450",
+        "when": "2026-08-18 14:20",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor: 建立 hooks 逻辑设计规范并重构 useSign/usePause 样板"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "16c1aba1",
+        "when": "2026-08-18 14:00",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "fix: 打破三个任务模块 events/index 的循环引用（TDZ）"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "22458c6d",
+        "when": "2026-08-18 13:56",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor: 任务数量/枚举统一派生+Tab切换刷新 + 修复 events 导入路径"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "4e7c7e34",
+        "when": "2026-08-18 13:45",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "chore: 移除 koroFileHeader 自动生成的文件头注释"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "fff200f5",
+        "when": "2026-08-18 12:34",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "refactor: 任务状态变更事件按模块定义"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "9ba66834",
+        "when": "2026-08-18 12:18",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: 三个任务模块接入跨模块事件通信"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "0d388e35",
+        "when": "2026-08-18 11:57",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "fix(workgroup): 单行停用提示语改用“停用成功”"
+      },
+      {
+        "project": "AI 副业情报",
+        "project_path": "/Users/zhanghao/Downloads/project/mine/ai-side-hustle",
+        "hash": "b01eeec",
+        "when": "2026-08-24 09:07",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "📊 日报 2026-08-24"
+      },
+      {
+        "project": "fe-minmetals-fm-fia-sla",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fia-sla",
+        "hash": "f95aa311",
+        "when": "2026-08-19 19:29",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "refactor(layout): 抽取菜单布局为本地 AppLayout 并启用 ProForm 响应式布局"
+      },
+      {
+        "project": "fe-minmetals-fm-fia-sla",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fia-sla",
+        "hash": "2e98cf27",
+        "when": "2026-08-18 22:03",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "Merge branch 'nightly' of https://dq.therogner.com/wk-financial-control/ace/fe/fe-minmetals-fm-fia-sla into nightly"
+      },
+      {
+        "project": "fe-minmetals-fm-fia-sla",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fia-sla",
+        "hash": "c7f89720",
+        "when": "2026-08-18 22:03",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: update @fe-minmetals-fm/components to 1.3.48"
+      },
+      {
+        "project": "fe-minmetals-fm-fia-sla",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fia-sla",
+        "hash": "74938d15",
+        "when": "2026-08-18 19:49",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: update schema.ts and vite.config.ts"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "5f1286e",
+        "when": "2026-08-24 17:35",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "Merge branch 'main' of https://dq.therogner.com/wk-financial-control/ace/fe/fe-minmetals-fm-packages"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "86b1e70",
+        "when": "2026-08-24 17:34",
+        "date": "2026-08-24",
+        "author": "张浩",
+        "subject": "feat: 修改 group 组件的样式，增加了 ActionButton 的 type 类型"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "43586e5",
+        "when": "2026-08-22 20:09",
+        "date": "2026-08-22",
+        "author": "张浩",
+        "subject": "feat: update ProForm styles to improve layout and spacing"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "399eec9",
+        "when": "2026-08-22 20:04",
+        "date": "2026-08-22",
+        "author": "张浩",
+        "subject": "feat: update peer dependencies"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "57e979c",
+        "when": "2026-08-22 16:57",
+        "date": "2026-08-22",
+        "author": "张浩",
+        "subject": "feat: update changelogs"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "8542a44",
+        "when": "2026-08-21 17:16",
+        "date": "2026-08-21",
+        "author": "张浩",
+        "subject": "Merge branch 'main' of https://git.cisdigital.cn/wk-financial-control/ace/fe/fe-minmetals-fm-packages"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "34a2abb",
+        "when": "2026-08-20 17:44",
+        "date": "2026-08-20",
+        "author": "张浩",
+        "subject": "fix(EditableTable): disabledAsText 编辑态列仍注册隐藏 Formily 字段"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "da68f58",
+        "when": "2026-08-19 16:27",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "feat: update package version to 1.3.51"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "0a91f17",
+        "when": "2026-08-19 16:18",
+        "date": "2026-08-19",
+        "author": "张浩",
+        "subject": "fix: FmFormItem readPrettyLines 栈溢出修复，版本升级至 1.3.50"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "2c71e8e",
+        "when": "2026-08-18 22:21",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: update ProForm styles to improve layout and readability"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "19a3d6a",
+        "when": "2026-08-18 21:48",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: update components version to 1.3.48"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "c5c4052",
+        "when": "2026-08-18 21:42",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "fix: 修复 readPretty render 字段被 displayEffect 误隐藏导致不显示的问题，版本升级至 1.3.47"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "0dd0077",
+        "when": "2026-08-18 21:04",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: change version to 1.3.47"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "4c8ea3d",
+        "when": "2026-08-18 21:04",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "Merge branch 'main' of https://git.cisdigital.cn/wk-financial-control/ace/fe/fe-minmetals-fm-packages"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "b7f3a12",
+        "when": "2026-08-18 21:00",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: update EditableTable component and related files"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "a5dfc79",
+        "when": "2026-08-18 20:36",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: ProForm readPretty 模式下 render 字段值动态设置不生效修复，版本升级至 1.3.46"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "c180218",
+        "when": "2026-08-18 11:50",
+        "date": "2026-08-18",
+        "author": "张浩",
+        "subject": "feat: update package version to 1.3.45"
+      }
+    ]
+  },
+  "ones": {
+    "total": 0,
+    "bugs": [],
+    "worklist_snippet": "# ONES 缺陷修复清单\n\n- **数据来源**: 缺陷_20260904.csv (archive/fe-minmetals-fm-fis-fs/缺陷修复阶段/)\n- **导出时间**: 2026-09-04 19:14\n- **筛选条件**: 负责人=['张浩'] | 状态=['待修复', '修复中', '重新打开', '挂起'] | 优先级=全部\n- **匹配缺陷**: 3 条\n\n---\n\n## 待修复清单\n\n> ✅ 勾选后告知我：'修复清单已勾选'，我会逐条修复\n\n\n- [ ] `#1285358` [中] 【性能测试】前端页面性能-共享运营-任务分配规则 — 张浩 (挂起)\n- [ ] `#1285350` [中] 【性能测试】前端页面性能-共享运营-共享工作组 — 张浩 (挂起)\n- [ ] `#1285348` [中] 【性能测试】前端页面性能-共享运营-共享中心机构 — 张浩 (挂起)\n\n---\n\n共 3 条缺陷待选\n"
+  },
+  "ai_summary": "本周主要聚焦共享运营前端的功能完善与体验优化，同时推进财务组件库建设。前端方面完成了全局金额格式化、公共单据编号组件抽取，统一了状态文案、操作按钮命名及标签弹窗交互，并修复了颜色失效和比较对象校验等问题，整体提升了界面一致性与可用性。财务组件库持续迭代，会计引擎 SLA 相关改动亦有少量投入。本周无缺陷记录，整体交付质量稳定。",
+  "ai_summary_at": "2026-09-12 21:03:37"
+}

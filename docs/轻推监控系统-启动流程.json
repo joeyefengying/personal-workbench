@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "轻推监控系统 — 启动与监控流程",
+    "visual_preset": "signal-flow",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    { "id": "user", "label": "用户 / 浏览器" },
+    { "id": "workbench", "label": "Personal Workbench" },
+    { "id": "app", "label": "轻推桌面端" },
+    { "id": "cloud", "label": "轻推云 API" }
+  ],
+  "phases": [
+    { "id": "detect", "label": "状态检测", "fromCol": 0, "toCol": 1 },
+    { "id": "launch", "label": "启动调试模式", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "token", "label": "Token 获取", "fromCol": 4, "toCol": 4 },
+    { "id": "monitor", "label": "监控运行", "fromCol": 5, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [
+    { "id": "startup_group", "label": "冷启动恢复", "lane": "app", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "data_pull", "label": "数据拉取", "lane": "cloud", "fromCol": 5, "toCol": 5, "variant": "dashed" }
+  ],
+  "mainPath": ["browser", "status_check", "need_relaunch", "kill_relaunch", "port_ready", "cdp_token", "client_ready", "api_pull", "summary_tasks"],
+  "nodes": [
+    { "id": "browser", "lane": "user", "col": 0, "type": "frontend", "label": "打开页面", "sublabel": "轻推工作 (8899)", "width": 132 },
+    { "id": "status_check", "lane": "workbench", "col": 1, "type": "backend", "label": "状态检测", "sublabel": "GET /api/qingtui/status", "width": 140 },
+    { "id": "need_relaunch", "lane": "workbench", "col": 2, "type": "security", "label": "端口 9222?", "sublabel": "debug_port == false?", "tag": "升级/重启导致", "width": 140 },
+    { "id": "kill_relaunch", "lane": "app", "col": 3, "type": "messagebus", "label": "重启轻推", "sublabel": "pkill + 重拉起 + 9222", "tag": "登录态不丢", "width": 140 },
+    { "id": "port_ready", "lane": "workbench", "col": 4, "type": "backend", "label": "等待端口就绪", "sublabel": "轮询 json/version 20次", "width": 140 },
+    { "id": "cdp_token", "lane": "app", "col": 4, "type": "database", "label": "CDP 取 Token", "sublabel": "localStorage JWT", "tag": "eyJhbGci", "width": 132 },
+    { "id": "client_ready", "lane": "workbench", "col": 5, "type": "backend", "label": "QtClient 就绪", "sublabel": "会话清单 + 总结 + 任务", "tag": "connected=true", "width": 150 },
+    { "id": "api_pull", "lane": "cloud", "col": 5, "type": "cloud", "label": "拉取历史消息", "sublabel": "session_recent → sync 翻页", "width": 140 },
+    { "id": "summary_tasks", "lane": "user", "col": 5, "type": "frontend", "label": "页面展示", "sublabel": "每日总结+待办+上下文", "tag": "人工核实", "width": 140 }
+  ],
+  "edges": [
+    { "id": "open-page", "from": "browser", "to": "status_check", "variant": "emphasis" },
+    { "id": "check-port", "from": "status_check", "to": "need_relaunch", "label": "检查" },
+    { "id": "need-relaunch", "from": "need_relaunch", "to": "kill_relaunch", "label": "9222不通", "variant": "security" },
+    { "id": "do-relaunch", "from": "kill_relaunch", "to": "port_ready", "variant": "emphasis" },
+    { "id": "port-ok", "from": "port_ready", "to": "cdp_token" },
+    { "id": "cdp-to-client", "from": "cdp_token", "to": "client_ready", "label": "JWT", "variant": "dashed" },
+    { "id": "pull-cloud", "from": "client_ready", "to": "api_pull", "label": "API 调用", "variant": "emphasis" },
+    { "id": "result-back", "from": "api_pull", "to": "summary_tasks", "label": "消息", "variant": "emphasis", "role": "return" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "轻推升级后会掉监控",
+      "items": [
+        "升级覆盖 App → 新进程不带 --debugging-port",
+        "9222 不通 → debug_port_down → 提示用户一键重启",
+        "pkill + 重拉起 → 登录态不丢 → Token 恢复"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Token 获取路径",
+      "items": [
+        "CDP 连接 9222 → 找 /chat/ target",
+        "Runtime.evaluate 读 localStorage → 过滤 eyJhbGci JWT"
+      ]
+    }
+  ]
+}

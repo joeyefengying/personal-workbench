@@ -1,0 +1,4483 @@
+{
+  "meta": {
+    "year": 2026,
+    "week": 36,
+    "week_label": "2026-W36",
+    "start": "2026-08-31",
+    "end": "2026-09-06",
+    "collected_at": "2026-09-10 23:47:07"
+  },
+  "summary": {
+    "qingtui_msgs": 99,
+    "git_commits": 119,
+    "ones_bugs": 0,
+    "active_channels": 4,
+    "active_projects": 5
+  },
+  "qingtui": {
+    "total": 99,
+    "total_all": 247,
+    "daily_count": {
+      "2026-08-31": 8,
+      "2026-09-01": 24,
+      "2026-09-02": 8,
+      "2026-09-03": 14,
+      "2026-09-04": 21,
+      "2026-09-05": 24
+    },
+    "by_channel": {
+      "共享运营开发": {
+        "count": 79,
+        "sample": [
+          "老师麻烦看下这个表呢，数据量差异很大",
+          "@张鹏毅",
+          "为啥一直不对呢，执行了两遍？",
+          "🤔",
+          "@李建红 帮忙看看"
+        ],
+        "first_ts": "2026-08-31 11:59",
+        "last_ts": "2026-09-05 18:31"
+      },
+      "共享运营内部群": {
+        "count": 10,
+        "sample": [
+          "图片",
+          "@王宇-产品",
+          "ux 出了吗",
+          "@王宇-产品",
+          "@王博文"
+        ],
+        "first_ts": "2026-09-01 14:14",
+        "last_ts": "2026-09-02 14:52"
+      },
+      "应付增援突击队": {
+        "count": 7,
+        "sample": [
+          "#1278626 【test】【应付核算】【全局问题】【闭环】 所有的查看页面文字上下左右间距不对\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/JEMG1Bw9xv4KOlF",
+          "http://10.2.190.28:8787/app/800895545233451040/workbench",
+          "@杨堃",
+          "就那个低码工作台",
+          "图片"
+        ],
+        "first_ts": "2026-09-01 19:01",
+        "last_ts": "2026-09-05 14:26"
+      },
+      "财务幂等性问题处理沟通群": {
+        "count": 3,
+        "sample": [
+          "@徐友亮  测试截止日期有要求吗，已开发完，还未测试",
+          "目前没有多的资源来测",
+          "👌"
+        ],
+        "first_ts": "2026-09-04 14:32",
+        "last_ts": "2026-09-04 14:50"
+      }
+    },
+    "all_messages": [
+      {
+        "ts": "2026-09-01 10:33",
+        "date": "2026-09-01",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "好的"
+      },
+      {
+        "ts": "2026-09-01 17:23",
+        "date": "2026-09-01",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "1"
+      },
+      {
+        "ts": "2026-09-01 20:24",
+        "date": "2026-09-01",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "已维护"
+      },
+      {
+        "ts": "2026-09-02 10:37",
+        "date": "2026-09-02",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "都填了的"
+      },
+      {
+        "ts": "2026-09-02 10:39",
+        "date": "2026-09-02",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "好"
+      },
+      {
+        "ts": "2026-09-03 14:11",
+        "date": "2026-09-03",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "昨天好像解决了，我问问"
+      },
+      {
+        "ts": "2026-09-03 14:12",
+        "date": "2026-09-03",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "解决了的"
+      },
+      {
+        "ts": "2026-09-04 16:42",
+        "date": "2026-09-04",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "已转给具体开发"
+      },
+      {
+        "ts": "2026-09-04 16:43",
+        "date": "2026-09-04",
+        "channel_id": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "channel_name": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "is_work": false,
+        "to": "ea194894b77d4a44ba65063f1dfcbbcf",
+        "body": "后续找一下李建宏"
+      },
+      {
+        "ts": "2026-09-01 11:24",
+        "date": "2026-09-01",
+        "channel_id": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "channel_name": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "is_work": false,
+        "to": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "body": "咋分给我了，我问一下"
+      },
+      {
+        "ts": "2026-09-01 11:38",
+        "date": "2026-09-01",
+        "channel_id": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "channel_name": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "is_work": false,
+        "to": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "body": "算是组件库的问题，我改一下之处理下"
+      },
+      {
+        "ts": "2026-09-01 11:47",
+        "date": "2026-09-01",
+        "channel_id": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "channel_name": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "is_work": false,
+        "to": "4afdfae35e624df2bdc0ec1b86ddb517",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-01 14:14",
+        "date": "2026-09-01",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-01 14:14",
+        "date": "2026-09-01",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@王宇-产品"
+      },
+      {
+        "ts": "2026-09-01 15:08",
+        "date": "2026-09-01",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "ux 出了吗"
+      },
+      {
+        "ts": "2026-09-01 15:08",
+        "date": "2026-09-01",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@王宇-产品"
+      },
+      {
+        "ts": "2026-09-01 15:43",
+        "date": "2026-09-01",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@王博文"
+      },
+      {
+        "ts": "2026-09-01 16:46",
+        "date": "2026-09-01",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-01 16:46",
+        "date": "2026-09-01",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@李兴  加的字段看放在哪里"
+      },
+      {
+        "ts": "2026-09-02 14:51",
+        "date": "2026-09-02",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-02 14:51",
+        "date": "2026-09-02",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "@韩佳睿"
+      },
+      {
+        "ts": "2026-09-02 14:52",
+        "date": "2026-09-02",
+        "channel_id": "8b7db6fd705743b5852be636b045ff96",
+        "channel_name": "共享运营内部群",
+        "is_work": true,
+        "to": "8b7db6fd705743b5852be636b045ff96",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-08-31 11:59",
+        "date": "2026-08-31",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "老师麻烦看下这个表呢，数据量差异很大"
+      },
+      {
+        "ts": "2026-08-31 11:59",
+        "date": "2026-08-31",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@张鹏毅"
+      },
+      {
+        "ts": "2026-08-31 12:00",
+        "date": "2026-08-31",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "为啥一直不对呢，执行了两遍？"
+      },
+      {
+        "ts": "2026-08-31 12:00",
+        "date": "2026-08-31",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "🤔"
+      },
+      {
+        "ts": "2026-08-31 12:02",
+        "date": "2026-08-31",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红 帮忙看看"
+      },
+      {
+        "ts": "2026-08-31 14:34",
+        "date": "2026-08-31",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "和杨磊沟通下"
+      },
+      {
+        "ts": "2026-08-31 14:35",
+        "date": "2026-08-31",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@张鹏毅"
+      },
+      {
+        "ts": "2026-08-31 17:08",
+        "date": "2026-08-31",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "⚠️表结构变更提醒：员工基本信息【md_emp_info】去掉岗位排序码字段（emp_position_sorting_code），周一周二抽空调整下。"
+      },
+      {
+        "ts": "2026-09-01 10:26",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "老师您好，我是负责跟进UAT数据异常项的，这个是截止到目前扫描出现的异常数据，最终目的是：需要消除当前数据中的异常，需要相关的研发老师补充跟进解决一下表格中的状态，如果是不处理，那么需要说明不处理原因，数据模块归属可通过B C D列进行筛选，谢谢老师https://www.kdocs.cn/l/ci6iUb4VX6Kp"
+      },
+      {
+        "ts": "2026-09-01 10:27",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "记得抽空调整下，另外员工的人事树代码全路径【hr_full_path_code】字段和人事树名称全路径【hr_full_path_name】字段的分隔符从【-】改成了【/】，和组织基本信息保持一致，如果有涉及到这块儿的业务逻辑，记得更正下相关处理代码。"
+      },
+      {
+        "ts": "2026-09-01 10:30",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "这个筛选下我们的，优化一下，补充状态"
+      },
+      {
+        "ts": "2026-09-01 10:30",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@所有人"
+      },
+      {
+        "ts": "2026-09-01 14:36",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@宋晓飞  @郭英杰  你们谁处理下"
+      },
+      {
+        "ts": "2026-09-01 14:37",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-01 14:39",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "1"
+      },
+      {
+        "ts": "2026-09-01 14:41",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@郭英杰  今天需要处理完"
+      },
+      {
+        "ts": "2026-09-01 14:48",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-01 17:24",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@所有人  缺陷状态改一下，原则上除了挂起的都要清掉"
+      },
+      {
+        "ts": "2026-09-01 17:29",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "老师您好，应负责要求 需要填写一下，930封板版本号，谢谢老师  https://wps.qingtui.com/wps/?requestPermission=write&businessCode=weboffice.drive&fileId=1544306553099681792&fileType=xlsx#/"
+      },
+      {
+        "ts": "2026-09-01 17:29",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红"
+      },
+      {
+        "ts": "2026-09-01 17:52",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "还有两个需求"
+      },
+      {
+        "ts": "2026-09-01 18:46",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-01 19:01",
+        "date": "2026-09-01",
+        "channel_id": "77f7687af1a54964b16d3427c81aa9ac",
+        "channel_name": "应付增援突击队",
+        "is_work": true,
+        "to": "77f7687af1a54964b16d3427c81aa9ac",
+        "body": "#1278626 【test】【应付核算】【全局问题】【闭环】 所有的查看页面文字上下左右间距不对\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/JEMG1Bw9xv4KOlFv\n\n@杨堃  安排人升级下组件库 \"@fe-minmetals-fm/components\": \"^1.3.70\"，问题应该好了"
+      },
+      {
+        "ts": "2026-09-01 20:29",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-01 20:29",
+        "date": "2026-09-01",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-02 15:39",
+        "date": "2026-09-02",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "陈孝珂：[会话记录]\n陈孝珂：SELECT * FROM fin_foc_task_unassigned WHERE biz_status = 'PENDING' AND workgroup_code = '100119' AND tenant_id = '100000' ORDER BY urgent_status DESC, enter_unassigned_time ASC, id ASC LIMIT 20 FOR UPDATE\n \nob_cluster_test:finance_app_test:finance_ops\n陈孝珂：thanks"
+      },
+      {
+        "ts": "2026-09-02 15:39",
+        "date": "2026-09-02",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "陈孝珂：[会话记录]\n陈孝珂：SELECT * FROM fin_foc_task_unassigned WHERE biz_status = 'PENDING' AND workgroup_code = '100119' AND tenant_id = '100000' ORDER BY urgent_status DESC, enter_unassigned_time ASC, id ASC LIMIT 20 FOR UPDATE\n \nob_cluster_test:finance_app_test:finance_ops\n陈孝珂：thanks"
+      },
+      {
+        "ts": "2026-09-02 20:45",
+        "date": "2026-09-02",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-02 20:46",
+        "date": "2026-09-02",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@朱仙  @王博文  每天都在 hotfix 分支上去开发，发版前合到 release-1.0.0 上去"
+      },
+      {
+        "ts": "2026-09-02 20:47",
+        "date": "2026-09-02",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-03 11:25",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红 还是打一个吧"
+      },
+      {
+        "ts": "2026-09-03 11:25",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "按计划来"
+      },
+      {
+        "ts": "2026-09-03 11:25",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "V1.0.1-HFnn、V1.0.2-HFnn"
+      },
+      {
+        "ts": "2026-09-03 11:26",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "hotfix 这样命名"
+      },
+      {
+        "ts": "2026-09-03 11:39",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "对呢"
+      },
+      {
+        "ts": "2026-09-03 11:39",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "啊？"
+      },
+      {
+        "ts": "2026-09-03 11:39",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "你都没权限吗"
+      },
+      {
+        "ts": "2026-09-03 11:40",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "release-1.0.0"
+      },
+      {
+        "ts": "2026-09-03 11:41",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "这种"
+      },
+      {
+        "ts": "2026-09-03 11:44",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "可以"
+      },
+      {
+        "ts": "2026-09-03 19:52",
+        "date": "2026-09-03",
+        "channel_id": "5737eba0a9b64e0cbf5fe2e5bd3c9d30",
+        "channel_name": "5737eba0a9b64e0cbf5fe2e5bd3c9d30",
+        "is_work": false,
+        "to": "5737eba0a9b64e0cbf5fe2e5bd3c9d30",
+        "body": "好"
+      },
+      {
+        "ts": "2026-09-03 19:52",
+        "date": "2026-09-03",
+        "channel_id": "5737eba0a9b64e0cbf5fe2e5bd3c9d30",
+        "channel_name": "5737eba0a9b64e0cbf5fe2e5bd3c9d30",
+        "is_work": false,
+        "to": "5737eba0a9b64e0cbf5fe2e5bd3c9d30",
+        "body": "已经积极处理中"
+      },
+      {
+        "ts": "2026-09-03 21:35",
+        "date": "2026-09-03",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "接最新要求如下：，  UAT/实施定制/生产环境903-916 每天晚上1次hostfix，高开部分在release-1.0.0的分支上拉 release-1.0.0-hot.YYMMDD 分支， 低开部分在原版本号后加 -hot.YYMMDD ，如果是紧急发布在日期后面加.x   譬如 release-1.0.0-hot.260903.1 , 请各位老师知悉，@黄景硕   @史健健    请两位老师发布版本时注意做好审查工作"
+      },
+      {
+        "ts": "2026-09-03 22:07",
+        "date": "2026-09-03",
+        "channel_id": "77f7687af1a54964b16d3427c81aa9ac",
+        "channel_name": "应付增援突击队",
+        "is_work": true,
+        "to": "77f7687af1a54964b16d3427c81aa9ac",
+        "body": "http://10.2.190.28:8787/app/800895545233451040/workbench"
+      },
+      {
+        "ts": "2026-09-03 22:07",
+        "date": "2026-09-03",
+        "channel_id": "77f7687af1a54964b16d3427c81aa9ac",
+        "channel_name": "应付增援突击队",
+        "is_work": true,
+        "to": "77f7687af1a54964b16d3427c81aa9ac",
+        "body": "@杨堃"
+      },
+      {
+        "ts": "2026-09-03 22:09",
+        "date": "2026-09-03",
+        "channel_id": "77f7687af1a54964b16d3427c81aa9ac",
+        "channel_name": "应付增援突击队",
+        "is_work": true,
+        "to": "77f7687af1a54964b16d3427c81aa9ac",
+        "body": "就那个低码工作台"
+      },
+      {
+        "ts": "2026-09-04 14:07",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红  这个还有一个"
+      },
+      {
+        "ts": "2026-09-04 14:37",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-04 14:38",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红  @张鹏毅  @王博文  跟一下"
+      },
+      {
+        "ts": "2026-09-04 16:10",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-04 16:11",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@朱仙  @王博文"
+      },
+      {
+        "ts": "2026-09-04 16:34",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "李杰：老师 在核对这个UAT数据库值异常项中 发现一个问题 您排查一下这个，日期有点超了\n李杰：\n李杰：\n李杰：到12月1号的时间了"
+      },
+      {
+        "ts": "2026-09-04 16:35",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红"
+      },
+      {
+        "ts": "2026-09-04 16:35",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "找李杰沟通下"
+      },
+      {
+        "ts": "2026-09-04 20:18",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "#1282251 【UAT-共享运营】派工池前一个审批撤回后，派工池数据错误\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/H4qkNjhnrYWOUtIH"
+      },
+      {
+        "ts": "2026-09-04 20:18",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@宋晓飞"
+      },
+      {
+        "ts": "2026-09-04 20:18",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-04 20:40",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "改不了"
+      },
+      {
+        "ts": "2026-09-04 20:40",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "我打电话了"
+      },
+      {
+        "ts": "2026-09-04 20:40",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "先挂起吧，需要流程那边支持"
+      },
+      {
+        "ts": "2026-09-04 20:40",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "让亚蒙明天提单子"
+      },
+      {
+        "ts": "2026-09-04 20:44",
+        "date": "2026-09-04",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@陈梓叶  已挂起，原因写上去了"
+      },
+      {
+        "ts": "2026-09-04 22:01",
+        "date": "2026-09-04",
+        "channel_id": "77f7687af1a54964b16d3427c81aa9ac",
+        "channel_name": "应付增援突击队",
+        "is_work": true,
+        "to": "77f7687af1a54964b16d3427c81aa9ac",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-04 22:02",
+        "date": "2026-09-04",
+        "channel_id": "77f7687af1a54964b16d3427c81aa9ac",
+        "channel_name": "应付增援突击队",
+        "is_work": true,
+        "to": "77f7687af1a54964b16d3427c81aa9ac",
+        "body": "确实都有"
+      },
+      {
+        "ts": "2026-09-05 14:26",
+        "date": "2026-09-05",
+        "channel_id": "77f7687af1a54964b16d3427c81aa9ac",
+        "channel_name": "应付增援突击队",
+        "is_work": true,
+        "to": "77f7687af1a54964b16d3427c81aa9ac",
+        "body": "那就是编辑按钮也要做"
+      },
+      {
+        "ts": "2026-09-05 14:28",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "这个没我们的吧"
+      },
+      {
+        "ts": "2026-09-05 14:28",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "我看了一下"
+      },
+      {
+        "ts": "2026-09-05 14:34",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "可以，前端升不"
+      },
+      {
+        "ts": "2026-09-05 15:28",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "高开的发了"
+      },
+      {
+        "ts": "2026-09-05 15:28",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "低开你搞一下？"
+      },
+      {
+        "ts": "2026-09-05 15:35",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "那我就把 dev 的包装一下呗"
+      },
+      {
+        "ts": "2026-09-05 15:51",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "我准备装了？"
+      },
+      {
+        "ts": "2026-09-05 15:51",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红"
+      },
+      {
+        "ts": "2026-09-05 15:52",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "好像有号啊"
+      },
+      {
+        "ts": "2026-09-05 15:55",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "都登不了，之前找云苛开了"
+      },
+      {
+        "ts": "2026-09-05 16:00",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "配菜单和应用是不同的号"
+      },
+      {
+        "ts": "2026-09-05 16:14",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红  发不了现在是专人发，像之前的 uat 一样"
+      },
+      {
+        "ts": "2026-09-05 16:14",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "应付也没有号"
+      },
+      {
+        "ts": "2026-09-05 16:25",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "直接搜升级"
+      },
+      {
+        "ts": "2026-09-05 16:25",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@李建红"
+      },
+      {
+        "ts": "2026-09-05 16:25",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "先分配下角色权限"
+      },
+      {
+        "ts": "2026-09-05 16:27",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "叫啥啊"
+      },
+      {
+        "ts": "2026-09-05 16:28",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "😅"
+      },
+      {
+        "ts": "2026-09-05 17:18",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "这个号是啥"
+      },
+      {
+        "ts": "2026-09-05 18:24",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-05 18:25",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "@张鹏毅  在解决了吗"
+      },
+      {
+        "ts": "2026-09-05 18:27",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "https://apm-stg.minmetals.com.cn\n用户名：apm 密码：apm@123"
+      },
+      {
+        "ts": "2026-09-05 18:31",
+        "date": "2026-09-05",
+        "channel_id": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "channel_name": "共享运营开发",
+        "is_work": true,
+        "to": "8c3a02a0b8f34fa8b38cadfe053bcf3b",
+        "body": "感觉没啥用"
+      },
+      {
+        "ts": "2026-09-01 12:47",
+        "date": "2026-09-01",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "#1273428 【test】【共享运营】【组长管理】【闭环】 样式、icon使用问题\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/JEMG1Bw9ygWXmqHq"
+      },
+      {
+        "ts": "2026-09-01 12:47",
+        "date": "2026-09-01",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "屏幕尺寸给一下呢，我这是好的"
+      },
+      {
+        "ts": "2026-09-01 12:49",
+        "date": "2026-09-01",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "可以的"
+      },
+      {
+        "ts": "2026-09-01 12:49",
+        "date": "2026-09-01",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "不急"
+      },
+      {
+        "ts": "2026-09-01 13:35",
+        "date": "2026-09-01",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "嗯，我知道"
+      },
+      {
+        "ts": "2026-09-01 13:35",
+        "date": "2026-09-01",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "就是没复现出来"
+      },
+      {
+        "ts": "2026-09-01 18:51",
+        "date": "2026-09-01",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "你再看一下呢，临时解决了下"
+      },
+      {
+        "ts": "2026-09-02 16:17",
+        "date": "2026-09-02",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "邮箱这个"
+      },
+      {
+        "ts": "2026-09-02 16:29",
+        "date": "2026-09-02",
+        "channel_id": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "channel_name": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "is_work": false,
+        "to": "f84ddc6921c44c55af756e3a0bcadcb7",
+        "body": "可以 d"
+      },
+      {
+        "ts": "2026-09-04 13:05",
+        "date": "2026-09-04",
+        "channel_id": "21d2ed3f5f8f487aa0d9954712b81611",
+        "channel_name": "21d2ed3f5f8f487aa0d9954712b81611",
+        "is_work": false,
+        "to": "21d2ed3f5f8f487aa0d9954712b81611",
+        "body": "没理解呢，操作流说一下"
+      },
+      {
+        "ts": "2026-09-04 13:44",
+        "date": "2026-09-04",
+        "channel_id": "21d2ed3f5f8f487aa0d9954712b81611",
+        "channel_name": "21d2ed3f5f8f487aa0d9954712b81611",
+        "is_work": false,
+        "to": "21d2ed3f5f8f487aa0d9954712b81611",
+        "body": "首先，我是共享运营这边的开发经理。你这个是咨询一下还是问我啊\n\n我理解的话，是你们的 STG 包是不是最新的？有没有把 DEV 的版本同步过来？这个是低开的功能，按理说包是一致的话都会有的。"
+      },
+      {
+        "ts": "2026-09-04 13:53",
+        "date": "2026-09-04",
+        "channel_id": "21d2ed3f5f8f487aa0d9954712b81611",
+        "channel_name": "21d2ed3f5f8f487aa0d9954712b81611",
+        "is_work": false,
+        "to": "21d2ed3f5f8f487aa0d9954712b81611",
+        "body": "😂应该找错了"
+      },
+      {
+        "ts": "2026-09-04 16:36",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "封了一版，这块有说明没，930 不上线是可以不用封的吗"
+      },
+      {
+        "ts": "2026-09-04 16:37",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "那就改一下表吧"
+      },
+      {
+        "ts": "2026-09-04 16:38",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "嗯嗯"
+      },
+      {
+        "ts": "2026-09-04 16:50",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "我想咨询一下，930 不上线的应用还需要遵守版本管控吗"
+      },
+      {
+        "ts": "2026-09-04 16:50",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-04 16:57",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-04 16:57",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "这个标准在哪能看到吗"
+      },
+      {
+        "ts": "2026-09-04 16:58",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "就这个"
+      },
+      {
+        "ts": "2026-09-04 17:01",
+        "date": "2026-09-04",
+        "channel_id": "17afb3fea2e945de8b9e8273c7da03eb",
+        "channel_name": "17afb3fea2e945de8b9e8273c7da03eb",
+        "is_work": false,
+        "to": "17afb3fea2e945de8b9e8273c7da03eb",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-02 20:25",
+        "date": "2026-09-02",
+        "channel_id": "ed3226d487ee4f7da07019d7286e9036",
+        "channel_name": "ed3226d487ee4f7da07019d7286e9036",
+        "is_work": false,
+        "to": "ed3226d487ee4f7da07019d7286e9036",
+        "body": "韦总有个出差流程要再过下"
+      },
+      {
+        "ts": "2026-09-03 17:21",
+        "date": "2026-09-03",
+        "channel_id": "ed3226d487ee4f7da07019d7286e9036",
+        "channel_name": "ed3226d487ee4f7da07019d7286e9036",
+        "is_work": false,
+        "to": "ed3226d487ee4f7da07019d7286e9036",
+        "body": "韦总，我媳妇亲弟弟国庆 6 号结婚，这个到时候能回吗，轮休之类的"
+      },
+      {
+        "ts": "2026-09-04 14:32",
+        "date": "2026-09-04",
+        "channel_id": "d9aeb1ef23154bdf8981c6cf1af77abc",
+        "channel_name": "财务幂等性问题处理沟通群",
+        "is_work": true,
+        "to": "d9aeb1ef23154bdf8981c6cf1af77abc",
+        "body": "@徐友亮  测试截止日期有要求吗，已开发完，还未测试"
+      },
+      {
+        "ts": "2026-09-04 14:33",
+        "date": "2026-09-04",
+        "channel_id": "d9aeb1ef23154bdf8981c6cf1af77abc",
+        "channel_name": "财务幂等性问题处理沟通群",
+        "is_work": true,
+        "to": "d9aeb1ef23154bdf8981c6cf1af77abc",
+        "body": "目前没有多的资源来测"
+      },
+      {
+        "ts": "2026-09-04 14:50",
+        "date": "2026-09-04",
+        "channel_id": "d9aeb1ef23154bdf8981c6cf1af77abc",
+        "channel_name": "财务幂等性问题处理沟通群",
+        "is_work": true,
+        "to": "d9aeb1ef23154bdf8981c6cf1af77abc",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-01 11:16",
+        "date": "2026-09-01",
+        "channel_id": "c8b69e0adb084084be3c49fd8767a524",
+        "channel_name": "c8b69e0adb084084be3c49fd8767a524",
+        "is_work": false,
+        "to": "c8b69e0adb084084be3c49fd8767a524",
+        "body": "#1220336 【test】【共享运营】【规范共性问题】【闭环】\nhttp://10.13.253.17:30011/project/#/team/SKG3mSQb/task/TbBeZfM4YP2CTr3N"
+      },
+      {
+        "ts": "2026-09-01 11:16",
+        "date": "2026-09-01",
+        "channel_id": "c8b69e0adb084084be3c49fd8767a524",
+        "channel_name": "c8b69e0adb084084be3c49fd8767a524",
+        "is_work": false,
+        "to": "c8b69e0adb084084be3c49fd8767a524",
+        "body": "这里是哪里不对啊"
+      },
+      {
+        "ts": "2026-09-01 11:31",
+        "date": "2026-09-01",
+        "channel_id": "c8b69e0adb084084be3c49fd8767a524",
+        "channel_name": "c8b69e0adb084084be3c49fd8767a524",
+        "is_work": false,
+        "to": "c8b69e0adb084084be3c49fd8767a524",
+        "body": "我截图的就是现在的呢"
+      },
+      {
+        "ts": "2026-09-01 11:33",
+        "date": "2026-09-01",
+        "channel_id": "c8b69e0adb084084be3c49fd8767a524",
+        "channel_name": "c8b69e0adb084084be3c49fd8767a524",
+        "is_work": false,
+        "to": "c8b69e0adb084084be3c49fd8767a524",
+        "body": "?"
+      },
+      {
+        "ts": "2026-09-01 15:46",
+        "date": "2026-09-01",
+        "channel_id": "c8b69e0adb084084be3c49fd8767a524",
+        "channel_name": "c8b69e0adb084084be3c49fd8767a524",
+        "is_work": false,
+        "to": "c8b69e0adb084084be3c49fd8767a524",
+        "body": "我看了下，高开的都改了，低开的需要等平台处理"
+      },
+      {
+        "ts": "2026-09-03 16:42",
+        "date": "2026-09-03",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "http://10.2.134.79:4000/"
+      },
+      {
+        "ts": "2026-09-03 16:42",
+        "date": "2026-09-03",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "这个地址，会计引擎的 key 是啥啊"
+      },
+      {
+        "ts": "2026-09-03 16:42",
+        "date": "2026-09-03",
+        "channel_id": "946e7343ad854e85b2a1021dd585e630",
+        "channel_name": "946e7343ad854e85b2a1021dd585e630",
+        "is_work": false,
+        "to": "946e7343ad854e85b2a1021dd585e630",
+        "body": "1"
+      },
+      {
+        "ts": "2026-08-31 11:51",
+        "date": "2026-08-31",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-01 14:40",
+        "date": "2026-09-01",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "早上已经安排了，今天要处理完吗"
+      },
+      {
+        "ts": "2026-09-01 20:24",
+        "date": "2026-09-01",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "已维护"
+      },
+      {
+        "ts": "2026-09-02 14:59",
+        "date": "2026-09-02",
+        "channel_id": "93b5e4366f4449c38be0d44baef180a8",
+        "channel_name": "93b5e4366f4449c38be0d44baef180a8",
+        "is_work": false,
+        "to": "93b5e4366f4449c38be0d44baef180a8",
+        "body": "胡总有个流程到您这了，麻烦审批一下"
+      },
+      {
+        "ts": "2026-09-03 11:08",
+        "date": "2026-09-03",
+        "channel_id": "496ab39f70a445bbb61e07192785501a",
+        "channel_name": "496ab39f70a445bbb61e07192785501a",
+        "is_work": false,
+        "to": "496ab39f70a445bbb61e07192785501a",
+        "body": "朱仙"
+      },
+      {
+        "ts": "2026-09-03 12:15",
+        "date": "2026-09-03",
+        "channel_id": "93b5e4366f4449c38be0d44baef180a8",
+        "channel_name": "93b5e4366f4449c38be0d44baef180a8",
+        "is_work": false,
+        "to": "93b5e4366f4449c38be0d44baef180a8",
+        "body": "胡总，流程还有一步，麻烦批一下"
+      },
+      {
+        "ts": "2026-09-04 13:06",
+        "date": "2026-09-04",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-04 14:08",
+        "date": "2026-09-04",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "都改了，还有两个还没发，晚上发"
+      },
+      {
+        "ts": "2026-09-04 14:14",
+        "date": "2026-09-04",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "是这个意思，刚刚还没合到 nightly，已经提了"
+      },
+      {
+        "ts": "2026-09-04 14:16",
+        "date": "2026-09-04",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "我理解代码审查是审查的 nightly 分支哈"
+      },
+      {
+        "ts": "2026-09-04 16:09",
+        "date": "2026-09-04",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "👌，正在改了"
+      },
+      {
+        "ts": "2026-09-05 14:21",
+        "date": "2026-09-05",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "没有我们的"
+      },
+      {
+        "ts": "2026-09-05 14:21",
+        "date": "2026-09-05",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "都处理了"
+      },
+      {
+        "ts": "2026-09-05 18:19",
+        "date": "2026-09-05",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "宋老师，听云那个账号是啥啊"
+      },
+      {
+        "ts": "2026-09-05 18:27",
+        "date": "2026-09-05",
+        "channel_id": "b3e71d5e8d514fd89c040bce84b864c4",
+        "channel_name": "b3e71d5e8d514fd89c040bce84b864c4",
+        "is_work": false,
+        "to": "b3e71d5e8d514fd89c040bce84b864c4",
+        "body": "1"
+      },
+      {
+        "ts": "2026-09-05 16:15",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "实施定制环境现在怎么发呢"
+      },
+      {
+        "ts": "2026-09-05 16:15",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "冬子"
+      },
+      {
+        "ts": "2026-09-05 16:17",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "我们 930 不上的嘛"
+      },
+      {
+        "ts": "2026-09-05 16:17",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "没要求发"
+      },
+      {
+        "ts": "2026-09-05 16:19",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "是要填表吗"
+      },
+      {
+        "ts": "2026-09-05 16:19",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "发个地址"
+      },
+      {
+        "ts": "2026-09-05 16:20",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "你有号吗"
+      },
+      {
+        "ts": "2026-09-05 16:20",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "低开部分的"
+      },
+      {
+        "ts": "2026-09-05 16:20",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "不是要按照部署包吗"
+      },
+      {
+        "ts": "2026-09-05 16:23",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "主要部署包管理报错了，很奇怪，这个环境也是叫部署包管理是吧"
+      },
+      {
+        "ts": "2026-09-05 16:24",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-05 16:24",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "我试试"
+      },
+      {
+        "ts": "2026-09-05 16:26",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "知道哪个角色有不"
+      },
+      {
+        "ts": "2026-09-05 16:28",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "找到了"
+      },
+      {
+        "ts": "2026-09-05 16:28",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "有点神"
+      },
+      {
+        "ts": "2026-09-05 16:29",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "改啥子名字"
+      },
+      {
+        "ts": "2026-09-05 16:29",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "后面有需要从你要"
+      },
+      {
+        "ts": "2026-09-05 16:29",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "🤣"
+      },
+      {
+        "ts": "2026-09-05 16:30",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "嗯，找到了"
+      },
+      {
+        "ts": "2026-09-05 16:44",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "嗯，我们表改了，那个宋建明又说啥子实时定制，生产有未删的表"
+      },
+      {
+        "ts": "2026-09-05 16:44",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "结果发了一版部署不了"
+      },
+      {
+        "ts": "2026-09-05 16:44",
+        "date": "2026-09-05",
+        "channel_id": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "channel_name": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "is_work": false,
+        "to": "5adaa01f95be4b7c8bc1227843d9d32f",
+        "body": "想着搞完算了"
+      },
+      {
+        "ts": "2026-09-04 14:04",
+        "date": "2026-09-04",
+        "channel_id": "3922ca52586048629eafbf6667958829",
+        "channel_name": "3922ca52586048629eafbf6667958829",
+        "is_work": false,
+        "to": "3922ca52586048629eafbf6667958829",
+        "body": "需要密码"
+      },
+      {
+        "ts": "2026-09-04 14:04",
+        "date": "2026-09-04",
+        "channel_id": "3922ca52586048629eafbf6667958829",
+        "channel_name": "3922ca52586048629eafbf6667958829",
+        "is_work": false,
+        "to": "3922ca52586048629eafbf6667958829",
+        "body": "你们回了哈"
+      },
+      {
+        "ts": "2026-09-04 17:11",
+        "date": "2026-09-04",
+        "channel_id": "3922ca52586048629eafbf6667958829",
+        "channel_name": "3922ca52586048629eafbf6667958829",
+        "is_work": false,
+        "to": "3922ca52586048629eafbf6667958829",
+        "body": "你是说账号的权限，还是项目的权限啊，账号的要密码"
+      },
+      {
+        "ts": "2026-09-04 17:12",
+        "date": "2026-09-04",
+        "channel_id": "3922ca52586048629eafbf6667958829",
+        "channel_name": "3922ca52586048629eafbf6667958829",
+        "is_work": false,
+        "to": "3922ca52586048629eafbf6667958829",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-02 20:08",
+        "date": "2026-09-02",
+        "channel_id": "3749b14390254a328c74648ac9eb7976",
+        "channel_name": "3749b14390254a328c74648ac9eb7976",
+        "is_work": false,
+        "to": "3749b14390254a328c74648ac9eb7976",
+        "body": "小素这个出差流程咋走到胡总和韦总那去了"
+      },
+      {
+        "ts": "2026-09-02 20:08",
+        "date": "2026-09-02",
+        "channel_id": "3749b14390254a328c74648ac9eb7976",
+        "channel_name": "3749b14390254a328c74648ac9eb7976",
+        "is_work": false,
+        "to": "3749b14390254a328c74648ac9eb7976",
+        "body": "不是直接结束了吗"
+      },
+      {
+        "ts": "2026-09-06 17:04",
+        "date": "2026-09-06",
+        "channel_id": "5307aad1929747179a14b33bac932deb",
+        "channel_name": "5307aad1929747179a14b33bac932deb",
+        "is_work": false,
+        "to": "5307aad1929747179a14b33bac932deb",
+        "body": "文件"
+      },
+      {
+        "ts": "2026-09-01 09:34",
+        "date": "2026-09-01",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "就上次那个哈，你先分给我，我等会看看缺陷数"
+      },
+      {
+        "ts": "2026-09-01 09:35",
+        "date": "2026-09-01",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-03 14:11",
+        "date": "2026-09-03",
+        "channel_id": "50c0c33c27bd4fefbf2025d73eba870e",
+        "channel_name": "50c0c33c27bd4fefbf2025d73eba870e",
+        "is_work": false,
+        "to": "50c0c33c27bd4fefbf2025d73eba870e",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-04 14:05",
+        "date": "2026-09-04",
+        "channel_id": "a6616fa33b6f4b09b173ab790c35e15a",
+        "channel_name": "a6616fa33b6f4b09b173ab790c35e15a",
+        "is_work": false,
+        "to": "a6616fa33b6f4b09b173ab790c35e15a",
+        "body": "齐琪"
+      },
+      {
+        "ts": "2026-09-04 20:41",
+        "date": "2026-09-04",
+        "channel_id": "68b1ac4c61b1449b9a72148c2afb8163",
+        "channel_name": "68b1ac4c61b1449b9a72148c2afb8163",
+        "is_work": false,
+        "to": "68b1ac4c61b1449b9a72148c2afb8163",
+        "body": "可以"
+      },
+      {
+        "ts": "2026-09-01 10:27",
+        "date": "2026-09-01",
+        "channel_id": "a07acf578287481480251c8bf83245cf",
+        "channel_name": "a07acf578287481480251c8bf83245cf",
+        "is_work": false,
+        "to": "a07acf578287481480251c8bf83245cf",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-08-31 12:03",
+        "date": "2026-08-31",
+        "channel_id": "e73668d7e5e949328d513863e839991e",
+        "channel_name": "e73668d7e5e949328d513863e839991e",
+        "is_work": false,
+        "to": "e73668d7e5e949328d513863e839991e",
+        "body": "好像推了两次，这个是什么逻辑呢？设置的定时有问题吗"
+      },
+      {
+        "ts": "2026-08-31 17:09",
+        "date": "2026-08-31",
+        "channel_id": "e73668d7e5e949328d513863e839991e",
+        "channel_name": "e73668d7e5e949328d513863e839991e",
+        "is_work": false,
+        "to": "e73668d7e5e949328d513863e839991e",
+        "body": "我们这边已经安排李建红和杨磊沟通了"
+      },
+      {
+        "ts": "2026-08-31 17:09",
+        "date": "2026-08-31",
+        "channel_id": "e73668d7e5e949328d513863e839991e",
+        "channel_name": "e73668d7e5e949328d513863e839991e",
+        "is_work": false,
+        "to": "e73668d7e5e949328d513863e839991e",
+        "body": "你们是一起的哈"
+      },
+      {
+        "ts": "2026-08-31 20:32",
+        "date": "2026-08-31",
+        "channel_id": "e73668d7e5e949328d513863e839991e",
+        "channel_name": "e73668d7e5e949328d513863e839991e",
+        "is_work": false,
+        "to": "e73668d7e5e949328d513863e839991e",
+        "body": "帮忙更新下吧"
+      },
+      {
+        "ts": "2026-08-31 20:32",
+        "date": "2026-08-31",
+        "channel_id": "e73668d7e5e949328d513863e839991e",
+        "channel_name": "e73668d7e5e949328d513863e839991e",
+        "is_work": false,
+        "to": "e73668d7e5e949328d513863e839991e",
+        "body": "我这会操作不了"
+      },
+      {
+        "ts": "2026-08-31 20:44",
+        "date": "2026-08-31",
+        "channel_id": "e73668d7e5e949328d513863e839991e",
+        "channel_name": "e73668d7e5e949328d513863e839991e",
+        "is_work": false,
+        "to": "e73668d7e5e949328d513863e839991e",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-03 20:03",
+        "date": "2026-09-03",
+        "channel_id": "327aa804f0f04b0891c880814a2f1ed2",
+        "channel_name": "327aa804f0f04b0891c880814a2f1ed2",
+        "is_work": false,
+        "to": "327aa804f0f04b0891c880814a2f1ed2",
+        "body": "提交了"
+      },
+      {
+        "ts": "2026-09-03 20:04",
+        "date": "2026-09-03",
+        "channel_id": "327aa804f0f04b0891c880814a2f1ed2",
+        "channel_name": "327aa804f0f04b0891c880814a2f1ed2",
+        "is_work": false,
+        "to": "327aa804f0f04b0891c880814a2f1ed2",
+        "body": "nightly 分支"
+      },
+      {
+        "ts": "2026-09-02 20:12",
+        "date": "2026-09-02",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "封了"
+      },
+      {
+        "ts": "2026-09-02 20:16",
+        "date": "2026-09-02",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "但好像和我们没关系"
+      },
+      {
+        "ts": "2026-09-03 18:18",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "哪个表发一下"
+      },
+      {
+        "ts": "2026-09-03 18:19",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "咋统计的嘛"
+      },
+      {
+        "ts": "2026-09-03 18:20",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "有"
+      },
+      {
+        "ts": "2026-09-03 18:20",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "昨天提的"
+      },
+      {
+        "ts": "2026-09-03 18:20",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "低开的依赖平台，高开的已经改了部分了"
+      },
+      {
+        "ts": "2026-09-03 18:20",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "也是属于那种不好关的"
+      },
+      {
+        "ts": "2026-09-03 18:20",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "😅"
+      },
+      {
+        "ts": "2026-09-03 18:22",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "改成挂起吧，都提了的，应付也一堆"
+      },
+      {
+        "ts": "2026-09-03 18:23",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "测试他们咋刷这么狠"
+      },
+      {
+        "ts": "2026-09-03 18:23",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "走了多少"
+      },
+      {
+        "ts": "2026-09-03 18:24",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "我滴妈"
+      },
+      {
+        "ts": "2026-09-03 18:24",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "嗯嗯"
+      },
+      {
+        "ts": "2026-09-03 18:24",
+        "date": "2026-09-03",
+        "channel_id": "73577239f0484a9d97976d67552fb406",
+        "channel_name": "73577239f0484a9d97976d67552fb406",
+        "is_work": false,
+        "to": "73577239f0484a9d97976d67552fb406",
+        "body": "就是这个阶段难受了"
+      },
+      {
+        "ts": "2026-08-31 17:05",
+        "date": "2026-08-31",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "老师，应该不是重复推的问题，你们接受的数据还在涨，可能要检查下采集脚本"
+      },
+      {
+        "ts": "2026-08-31 17:05",
+        "date": "2026-08-31",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "采集这里啥情况"
+      },
+      {
+        "ts": "2026-08-31 17:07",
+        "date": "2026-08-31",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "1"
+      },
+      {
+        "ts": "2026-09-02 10:38",
+        "date": "2026-09-02",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "老师您好，按照负责要求 需要各模块填写一下 接口幂等性的实现方式，谢谢老师\nhttps://www.kdocs.cn/l/ckYWMQN2n68V"
+      },
+      {
+        "ts": "2026-09-02 10:38",
+        "date": "2026-09-02",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "安排一个人"
+      },
+      {
+        "ts": "2026-09-03 14:11",
+        "date": "2026-09-03",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "昨天那个 sql 的问题解决了没"
+      },
+      {
+        "ts": "2026-09-03 14:11",
+        "date": "2026-09-03",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "内存吃完了的那个"
+      },
+      {
+        "ts": "2026-09-03 14:12",
+        "date": "2026-09-03",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "👌"
+      },
+      {
+        "ts": "2026-09-05 16:09",
+        "date": "2026-09-05",
+        "channel_id": "ba3f6ff4489a481e8dd75e712fde1121",
+        "channel_name": "ba3f6ff4489a481e8dd75e712fde1121",
+        "is_work": false,
+        "to": "ba3f6ff4489a481e8dd75e712fde1121",
+        "body": "@所有人  实施定制环境组织及用户初始化通知\r\n经总架构组审批同意，实施定制环境已于 9 月 5 日凌晨完成用户数据初始化，所有历史数据已清空。现将环境相关注意事项说明如下：\r\n1、初始化后，全部用户权限已重置，用户均为无权限状态。\r\n2、用户初始密码：账号@1234。 \r\n3、各模块已配置对应安全管理员，管理员清单请查阅文档： https://wps.qingtui.com/wps/?requestPermission=write&businessCode=weboffice.drive&fileId=1531980028507955200&fileType=xlsx\r\n4、实施定制环境禁止手工新增用户；如有新账号需要新增，请正常走入场流程。\r\n5、登录报错说明：若登录提示非 “密码错误” 类报错，均判定为账号不存在。"
+      },
+      {
+        "ts": "2026-09-03 16:43",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "泽靖，能看看会计引擎的 key 是啥不"
+      },
+      {
+        "ts": "2026-09-03 16:43",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "这个地址的"
+      },
+      {
+        "ts": "2026-09-03 16:43",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "http://10.2.134.79:4000/"
+      },
+      {
+        "ts": "2026-09-03 16:43",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "这，。。"
+      },
+      {
+        "ts": "2026-09-03 16:43",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "之前给的谁呢"
+      },
+      {
+        "ts": "2026-09-03 16:46",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "不行的话再给一个吧"
+      },
+      {
+        "ts": "2026-09-03 16:48",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "可以"
+      },
+      {
+        "ts": "2026-09-03 16:48",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "我给他们说"
+      },
+      {
+        "ts": "2026-09-03 16:48",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "这个地址和 https://ai.ctaigw.cn/v1 有什么区别啊"
+      },
+      {
+        "ts": "2026-09-03 16:48",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "key 还不一样"
+      },
+      {
+        "ts": "2026-09-03 16:48",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "ip 的是内网撒"
+      },
+      {
+        "ts": "2026-09-03 16:49",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "我们这边用的是这个 https://ai.ctaigw.cn/v1，他们在云桌面用 ip 的连不通"
+      },
+      {
+        "ts": "2026-09-03 16:49",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "估计之前都没配通过"
+      },
+      {
+        "ts": "2026-09-03 16:50",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "没事，新的就行"
+      },
+      {
+        "ts": "2026-09-03 16:50",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "云桌面能用的就行"
+      },
+      {
+        "ts": "2026-09-03 16:53",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "要得"
+      },
+      {
+        "ts": "2026-09-03 16:54",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "图片"
+      },
+      {
+        "ts": "2026-09-03 16:54",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "有区别没"
+      },
+      {
+        "ts": "2026-09-03 16:54",
+        "date": "2026-09-03",
+        "channel_id": "cc7e4cc66c454604bda919981c7d0200",
+        "channel_name": "cc7e4cc66c454604bda919981c7d0200",
+        "is_work": false,
+        "to": "cc7e4cc66c454604bda919981c7d0200",
+        "body": "1"
+      },
+      {
+        "ts": "2026-08-31 09:02",
+        "date": "2026-08-31",
+        "channel_id": "f02dca64f8084a4c8febfc745d010907",
+        "channel_name": "f02dca64f8084a4c8febfc745d010907",
+        "is_work": false,
+        "to": "f02dca64f8084a4c8febfc745d010907",
+        "body": "http://10.2.190.28:8748/#/hermes/devices?pairing_code=qt5HvxOVrdSjKZMXS-h56A"
+      },
+      {
+        "ts": "2026-09-03 14:50",
+        "date": "2026-09-03",
+        "channel_id": "f02dca64f8084a4c8febfc745d010907",
+        "channel_name": "f02dca64f8084a4c8febfc745d010907",
+        "is_work": false,
+        "to": "f02dca64f8084a4c8febfc745d010907",
+        "body": "文件"
+      }
+    ]
+  },
+  "git": {
+    "total": 119,
+    "by_project": {
+      "低码工作台": {
+        "count": 55,
+        "commits": [
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "90d42272",
+            "when": "2026-09-07 23:45",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix: .gitignore 放开 .defects/ua-context 和 fix-memory 供团队共享"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "b01baae6",
+            "when": "2026-09-07 23:43",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(缺陷修复): 快照diff+UA背景注入+修复记忆系统+定时轮询"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "0370e244",
+            "when": "2026-09-07 23:07",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(终端): 输入重复/删除双发—term.onData 从 connect 移到 initTerminal"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "237415ee",
+            "when": "2026-09-07 23:03",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(终端): 提示词预览面板—查看完整内容+字符数+复制"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "151afcf5",
+            "when": "2026-09-07 22:45",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(终端): 注入提示词按钮 + 返回列表确认弹窗 + 换缺陷自动重建终端"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "44151546",
+            "when": "2026-09-07 22:21",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(缺陷修复): 切换为交互式终端方案(xterm.js+PTY+claude code)"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "e8c46728",
+            "when": "2026-09-07 22:09",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(缺陷修复): claude --print --output-format stream-json 实现真正流式输出"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "60313a64",
+            "when": "2026-09-07 21:57",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "ui(缺陷修复): 全面重构布局—Linear风格设计系统"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "8c701d6e",
+            "when": "2026-09-07 21:49",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(缺陷修复): 工具栏分组布局+面板开关移至顶部右侧+WebSocket连接超时重试+关闭面板自动撑满"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "730c66e4",
+            "when": "2026-09-07 21:26",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(缺陷修复): 对话式UI优化—底部输入条(circle发送按钮) + diff/对话可拖拽分割 + 显隐开关 + 修复os.read流式读取"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "f5749b17",
+            "when": "2026-09-07 21:15",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(缺陷修复): 终端改为对话式UI(消息流+输入框), 类Hermes Studio交互, 提示词只读不可误删, 自动连接无需手动点"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "445c33e7",
+            "when": "2026-09-07 21:04",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(缺陷修复): 导入时自动匹配缺陷关联页面(标题/描述关键词→pageCode), 缺陷卡片显示关联页面标签, 选缺陷无需先选页面模型"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "ac205c36",
+            "when": "2026-09-07 20:58",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(终端): 用fcntl非阻塞I/O替代to_thread, 徹底解决os.read阻塞导致事件循环卡死"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "9882ff34",
+            "when": "2026-09-07 20:56",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(终端): 返回缺陷列表时自动断开终端连接杀掉claude进程"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "0e85d082",
+            "when": "2026-09-07 20:54",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(终端): 点击终端区域自动focus解决无法输入 + 提示词连接后自动执行一次后续为对话追加"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "8efaf45e",
+            "when": "2026-09-07 20:50",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "ui(缺陷修复): 去掉Ollama环境检测项"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "f6aa6f2e",
+            "when": "2026-09-07 20:48",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(缺陷导入): 后端改用UploadFile接收multipart/form-data, 解决前端FormData上传boundary混入文件内容"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "a272ac5a",
+            "when": "2026-09-07 20:44",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(终端): 修复WebSocket断开后claude进程不退出—os.read改非阻塞轮询+ws_closed标志位+finally兜底kill"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "4130293e",
+            "when": "2026-09-07 20:37",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(缺陷导入): 支持CSV格式 + 修复BOM编码检测失败导致CSV被当Excel解析"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "7a9cd31b",
+            "when": "2026-09-07 20:32",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(终端): 改为交互式claude(去掉--print) + 提示词通过stdin注入 + 终端最小高度保障"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "4aabc7b4",
+            "when": "2026-09-07 20:31",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(缺陷修复): 终端移到diff对比下方, 改为上对比下终端上下布局"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "4e259a77",
+            "when": "2026-09-07 20:26",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(缺陷修复): 在线闭环—Excel导入缺陷+AI终端(Claude Code)+Monaco diff对比+测试/确认提交到平台"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "3458e114",
+            "when": "2026-09-07 19:27",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(缺陷修复): v2 基于高开脚本源码逐行分析的缺陷修复方案生成"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "523cf758",
+            "when": "2026-09-07 18:42",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(缺陷修复): 缺陷→页面建模匹配+修复方案自动化生成脚本"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "8f3d3118",
+            "when": "2026-09-07 16:43",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "docs: 新增低开页面脚本系统参考文档(平台手册4篇+项目集成附录)"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "0c0b82f0",
+            "when": "2026-09-07 16:36",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat(登录): 右上角显示当前账号+切换账号按钮"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "d0333220",
+            "when": "2026-09-07 16:23",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat: 登录页+上手文档+工程化改造, 便于团队协作"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "d42c5b69",
+            "when": "2026-09-07 14:37",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(业务全景): L2脚本自动换行+minZoom:1 修复脚本重叠"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "0fc3e973",
+            "when": "2026-09-06 22:29",
+            "date": "2026-09-06",
+            "author": "张浩",
+            "subject": "fix(版本监控): 每轮成功拉取后刷新 apps-meta pulledAt, 让'最近拉取'列反映真实监控时间"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "7f07fd2c",
+            "when": "2026-09-06 22:14",
+            "date": "2026-09-06",
+            "author": "张浩",
+            "subject": "feat(业务全景): 节点中文三段式显示 + 流式分区布局防重叠 + 脚本平台名映射"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "6961068f",
+            "when": "2026-09-04 01:14",
+            "date": "2026-09-04",
+            "author": "张浩",
+            "subject": "feat(业务讲解): 脚本↔功能点关系图可视化 + 点击跳转代码"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "24d9541e",
+            "when": "2026-09-03 23:36",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "feat(业务讲解): 脚本业务动作归因 + 修复业务讲解宽度不撑满"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "dee2772a",
+            "when": "2026-09-03 23:28",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "refactor(业务讲解): 提升为中栏独立tab, 与事件脚本树/宏观关联图同级, 移除右侧嵌入"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "a585e3bf",
+            "when": "2026-09-03 23:23",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "feat(业务讲解): 打通PRD/详设业务层与低开脚本, 新增页面业务讲解tab+应用主线逻辑视图"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "93a370cb",
+            "when": "2026-09-03 00:42",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "chore(数据): 将平台拉取数据从 git 跟踪解除(保留本地文件, 由 .gitignore 接管)"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "c8a97039",
+            "when": "2026-09-03 00:32",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "chore(脱敏): 移除代码中本机敏感路径, 为推 GitHub 私有仓库做准备"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "80f42a3f",
+            "when": "2026-09-03 00:09",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "docs: 新增《多应用拉取操作手册》——拉取一个应用的完整步骤与价值发掘方向"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "22ab9eb1",
+            "when": "2026-09-02 23:53",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "fix(多应用拉取): 系统代理坑修复——应用清单/刷新不再 Connection refused"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "c84e8646",
+            "when": "2026-09-02 23:42",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat(多应用命名/历史增强): 补齐 pageComponent 组件树+model-details+lang-packages+版本快照"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "462e6382",
+            "when": "2026-09-02 22:45",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "fix(脚本名): 多应用切换后脚本名随机 + 侧栏路径行丢失"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "88ee624f",
+            "when": "2026-09-02 22:14",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat(每日分析): 引入 ECharts 报表库——每日变更趋势改分组柱状图 + 脚本类型分布改玫瑰饼图(替换手写CSS), 按需引入echarts/core控制体积"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "74bb6db1",
+            "when": "2026-09-02 21:51",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat(每日分析): 全应用脚本静态质量 + 每日变更趋势日报 第7入口"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "5b8f76fe",
+            "when": "2026-09-02 21:28",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat(页内搜索): 工作台左侧页面树联动搜索——选中页搜脚本代码, 命中一键打开(不跳路由)"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "e60343a5",
+            "when": "2026-09-02 21:16",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat(代码搜索): VSCode式全应用脚本模糊搜索——find代码在哪个文件 + 搜索结果一键跳转工作台定位脚本"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "05e14d02",
+            "when": "2026-09-02 20:21",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "fix(版本历史): project-history 列表接口性能优化——54快照×124页从85s降到5s + mtime缓存 + set_app切应用重置缓存"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "f7f468b6",
+            "when": "2026-09-02 17:35",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "fix(事件树): 页面级脚本消失只剩公共脚本——补全页面索引views字段"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "0bd4f5be",
+            "when": "2026-09-02 17:06",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat(前端工程化): 修复scoped根类冲突布局 + api层收敛axios + 样式变量 + views目录分层"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "3483a68a",
+            "when": "2026-09-02 16:03",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat(登录自愈): 接口过期→refreshToken刷新→仍失败自动登录 三级降级 + dev_login升级(验证码OCR+双token捕获) + 顶栏面包屑"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "d422546d",
+            "when": "2026-09-01 23:58",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "feat(路由化): 应用列表与内页拆分为 vue-router 页面, 应用内4能力共享应用壳"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "068b3bd7",
+            "when": "2026-09-01 23:36",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix(应用列表): 分组改为顶部tabs+单表格布局, 修复整页分组卡片堆叠滚不动; 搜索命中自动跳到所属分组"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "3c2471a8",
+            "when": "2026-09-01 23:24",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "feat(多应用管理): 落地页=应用列表→点击进工作台+顶栏应用切换器, 后端接口按appId动态切数据源"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "4bc8a9d2",
+            "when": "2026-09-01 15:53",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix(全局收敛): .gcv-wrap与GlobalConv内部容器同名冲突, App.vue全局垂直布局污染两栏容器导致内容看不到——外层改名为.gcv-screen, 恢复水平左右两栏"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "f6eea87b",
+            "when": "2026-09-01 15:21",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix(全局收敛): 点击脚本右侧空白——过滤0字节空全局脚本(df.js), 避免空白展示, 清单20→19"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "ac06e3d3",
+            "when": "2026-09-01 15:11",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix(全局收敛): 单版本函数(如 calculateAmountDeduct 5页·1版本)右侧不再空白——显示✅各页实现一致+代表页代码Monaco视图, 隐藏无意义的版本对比选择器"
+          },
+          {
+            "project": "low-code",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+            "hash": "e36d3fa9",
+            "when": "2026-09-01 11:40",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "refactor(全局收敛): ①⑦全局收敛提升为顶层第4个入口(与脚本工作台/版本历史/单据注册表并列)新建GlobalConv.vue, 定义放顶层而非每个脚本内; ②⑥优化建议去掉鸡肋的自动变量提取Diff视图(Diff对比), 只留真建议(API健壮性/性能/可维护性/跨页复用)+顶层收敛入"
+          }
+        ]
+      },
+      "共享运营前端": {
+        "count": 31,
+        "commits": [
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "c4354c7f",
+            "when": "2026-09-07 20:49",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat: update dependencies to fix security vulnerabilities"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "7b44b8d8",
+            "when": "2026-09-05 22:16",
+            "date": "2026-09-05",
+            "author": "张浩",
+            "subject": "chore: 同步 pnpm-lock(@fe-minmetals-fm/components 1.3.73 → 1.3.77)"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "a3818502",
+            "when": "2026-09-05 21:26",
+            "date": "2026-09-05",
+            "author": "张浩",
+            "subject": "Merge branch 'release-1.0.0-hot.260905' into 'release-1.0.0'"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "e759e067",
+            "when": "2026-09-05 21:26",
+            "date": "2026-09-05",
+            "author": "张浩",
+            "subject": "docs: 新增代码图谱(Understand Anything)与新人 Onboarding 指南"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "b41c8d1f",
+            "when": "2026-09-04 15:50",
+            "date": "2026-09-04",
+            "author": "张浩",
+            "subject": "Merge branch 'hotfix/20260902' into release-1.0.0"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "7cae8b8a",
+            "when": "2026-09-04 15:45",
+            "date": "2026-09-04",
+            "author": "张浩",
+            "subject": "Merge branch 'hotfix/20260902' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into hotfix/20260902"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "dc27484f",
+            "when": "2026-09-03 21:21",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "feat: update @fe-minmetals-fm/components to 1.3.77"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "252d0b0f",
+            "when": "2026-09-03 20:53",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "feat: update @fe-minmetals-fm/components to 1.3.76"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "51b7f8d5",
+            "when": "2026-09-03 15:51",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "feat: fix DictSelectDialog table stripe style"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "68d0a5a8",
+            "when": "2026-09-03 01:26",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "perf(build): @minmetals-ui 组件库升级 0.1.1→0.1.6-g2.rc.44 + 按需导入优化"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "ec2d0e5c",
+            "when": "2026-09-03 01:26",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "perf(build): @minmetals-ui 组件库升级 0.1.1→0.1.6-g2.rc.44 + 按需导入优化"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "d715326d",
+            "when": "2026-09-02 21:52",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "Merge branch 'hotfix/20260902' into 'release-1.0.0'"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "f5b64f7a",
+            "when": "2026-09-02 21:50",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "fix(build): 合并 @lingshu 与 @minmetals 分包，修复循环依赖导致线上 Un TDZ 报错"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "e05f5f0e",
+            "when": "2026-09-02 13:27",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "Merge branch 'hotfix/20260902' into 'release-1.0.0'"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "a3533dc3",
+            "when": "2026-09-02 21:18",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "fix(task-rule): 移除 SendOrdersSchema 不存在的 disabledAsText 字段"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "40688716",
+            "when": "2026-09-02 21:18",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "chore(deps): @fe-minmetals-fm/components 升级 1.3.72 → 1.3.73"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "e25dcc67",
+            "when": "2026-09-02 21:16",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "fix(build): 移除不存在的 el-label 标签，修复 unplugin-vue-components 自动导入导致的打包失败"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "17fc59b5",
+            "when": "2026-09-02 20:25",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat: 接入 unplugin-auto-import / unplugin-vue-components 按需自动导入"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "df08c49f",
+            "when": "2026-09-02 20:12",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "fix: 状态枚举 i18n key 回显 — 消费端惰性翻译 + 去重 workgroup 状态定义"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "33970e2c",
+            "when": "2026-09-02 15:46",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "perf: 共享运营前端阶段一优化（CSS 去重 + manualChunks 分包）"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "26b29d96",
+            "when": "2026-09-02 15:18",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "docs: 制定共享运营前端性能优化计划（hotfix/20260902）"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "eae73fc6",
+            "when": "2026-09-01 22:14",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "docs: 优化并分层 agent 配置（.claude 组件补齐 + 精简 CLAUDE.md/AGENTS.md）"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "f524232b",
+            "when": "2026-09-01 21:20",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "refactor: 新增 useCollapseSection hooks，收起折叠时隐藏区块头部操作按钮"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "12ca954e",
+            "when": "2026-09-01 20:53",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "feat: update package.json and pnpm-lock.yaml"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "a8e329db",
+            "when": "2026-09-01 20:49",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "refactor: 批量操作 hook 用 isSuccessCode 统一判断响应码"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "426e53f7",
+            "when": "2026-09-01 19:44",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "refactor: 批量操作部分成功改为 opt-in 模式，新增响应码枚举"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "3705e4d5",
+            "when": "2026-09-01 17:31",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix: 批量删除/启停部分成功(code:-1)后列表不刷新"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "1792784c",
+            "when": "2026-09-01 16:53",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "feat: update @fe-minmetals-fm/components to 1.3.70"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "d47bc496",
+            "when": "2026-09-01 16:43",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "feat: update @fe-minmetals-fm/components to 1.3.70"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "b00125fc",
+            "when": "2026-09-01 16:16",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "chore: 升级 @fe-minmetals-fm/components 1.3.66 -> 1.3.69"
+          },
+          {
+            "project": "fe-minmetals-fm-fis-fs",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+            "hash": "1ffd7984",
+            "when": "2026-09-01 16:13",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix: 字典选择弹窗补搜索图标 & 组长管理操作列表头换行"
+          }
+        ]
+      },
+      "财务组件库": {
+        "count": 31,
+        "commits": [
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "89940e6",
+            "when": "2026-09-07 22:28",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "chore(ua): 更新知识图谱"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "99e36c4",
+            "when": "2026-09-07 22:28",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(EditableTable): 增强新增行白底 CSS 选择器特异性"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "1dfc187",
+            "when": "2026-09-07 20:44",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "chore(ua): 更新知识图谱"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "09428f7",
+            "when": "2026-09-07 20:48",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "feat: update package.json with new version and dependencies"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "10b1db0",
+            "when": "2026-09-07 20:44",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "chore(ua): 更新知识图谱"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "009ad7f",
+            "when": "2026-09-07 20:44",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(EditableTable): 头部前置插槽输入框与按钮间距补齐为 8px"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "c124520",
+            "when": "2026-09-07 15:07",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "chore(ua): 更新知识图谱"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "86744f3",
+            "when": "2026-09-07 15:07",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "chore: 提交 UA 知识图谱基线，新增 post-commit 自动增量更新"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "38bd3e4",
+            "when": "2026-09-07 14:34",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "fix(EditableTable): 新增行保持白底，仅 hover 时变灰"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "a784d87",
+            "when": "2026-09-04 20:53",
+            "date": "2026-09-04",
+            "author": "张浩",
+            "subject": "fix: build:docs now builds components first, fixing CI entry resolution"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "f53bfd5",
+            "when": "2026-09-04 20:30",
+            "date": "2026-09-04",
+            "author": "张浩",
+            "subject": "fix: remove stale pnpm field from package.json, lock pnpm version to 10.6.4"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "2501a21",
+            "when": "2026-09-04 19:41",
+            "date": "2026-09-04",
+            "author": "张浩",
+            "subject": "fix: move onlyBuiltDependencies to pnpm-workspace.yaml for forward-compatibility"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "9b32b45",
+            "when": "2026-09-04 19:24",
+            "date": "2026-09-04",
+            "author": "张浩",
+            "subject": "feat: change package.js"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "5c8910d",
+            "when": "2026-09-04 19:09",
+            "date": "2026-09-04",
+            "author": "张浩",
+            "subject": "fix: add pnpm onlyBuiltDependencies config to fix build-script blocking"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "f2a8cb7",
+            "when": "2026-09-03 21:19",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "feat: update @fe-minmetals-fm/components to v1.3.77"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "b4cc7c3",
+            "when": "2026-09-03 21:17",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "feat: fix ActionGroup divider position and spacing"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "fcf0dd1",
+            "when": "2026-09-03 21:14",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "fix(ActionGroup): 分割线左右间距恢复为各 8px，顶部与行操作统一"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "207b571",
+            "when": "2026-09-03 21:06",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "fix(ActionGroup): 分割线间距由 16px 调为 8px，与按钮内间距一致"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "888446b",
+            "when": "2026-09-03 20:49",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "fix(ActionGroup): 修复 header-actions-prepend 及 button-before 输入框后多余分割线"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "4f69fbf",
+            "when": "2026-09-03 20:11",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "chore: 从 git 版本控制中移除 dist 构建产物"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "1e3119a",
+            "when": "2026-09-03 20:08",
+            "date": "2026-09-03",
+            "author": "张浩",
+            "subject": "fix(ActionGroup): 修复 button-before 插槽输入框后首个按钮多余分割线"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "cb4948c",
+            "when": "2026-09-02 22:05",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "chore: bump version to 1.3.74"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "7c2f2c6",
+            "when": "2026-09-02 22:03",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat: exports 自动生成脚本，拆包子路径入口零维护"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "d465276",
+            "when": "2026-09-02 17:02",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "Merge branch 'main' of https://dq.therogner.com/wk-financial-control/ace/fe/fe-minmetals-fm-packages"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "dbd2b87",
+            "when": "2026-09-02 16:37",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat: @fe-minmetals-fm/components 支持子路径拆包（preserveModules ESM）+ 构建重构"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "ac92cbc",
+            "when": "2026-09-02 16:34",
+            "date": "2026-09-02",
+            "author": "张浩",
+            "subject": "feat: update package.json with new version and dependencies"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "37499e4",
+            "when": "2026-09-01 19:56",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix: FmFormItem 补回 ref 导入，修复 ReadPrettyClamp 运行时报错"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "4a567c2",
+            "when": "2026-09-01 19:37",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "feat: ProForm 禁用态 label 自动置灰，升 element-plus-cisdi 至 RC.46"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "32f2c2d",
+            "when": "2026-09-01 16:38",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix: EditableTable 常驻编辑态不染色背景"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "7f076ea",
+            "when": "2026-09-01 16:00",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "feat: EditableTable 行级背景色通过 CSS 变量暴露，VoucherPreview 选中色调整"
+          },
+          {
+            "project": "fe-minmetals-fm-packages",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+            "hash": "8c2b3af",
+            "when": "2026-09-01 12:52",
+            "date": "2026-09-01",
+            "author": "张浩",
+            "subject": "fix: CollapseSection 折叠图标旋转、ProForm 表格布局网格线修复与样式提取"
+          }
+        ]
+      },
+      "AI 副业情报": {
+        "count": 1,
+        "commits": [
+          {
+            "project": "AI 副业情报",
+            "project_path": "/Users/zhanghao/Downloads/project/mine/ai-side-hustle",
+            "hash": "fe7932a",
+            "when": "2026-09-07 09:02",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "📊 日报 2026-09-07"
+          }
+        ]
+      },
+      "财务模板工程": {
+        "count": 1,
+        "commits": [
+          {
+            "project": "fe-minmetals-template",
+            "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-template",
+            "hash": "eb6261d",
+            "when": "2026-09-07 15:08",
+            "date": "2026-09-07",
+            "author": "张浩",
+            "subject": "chore: initial commit of fe-minmetals-template"
+          }
+        ]
+      }
+    },
+    "all_commits": [
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "90d42272",
+        "when": "2026-09-07 23:45",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix: .gitignore 放开 .defects/ua-context 和 fix-memory 供团队共享"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "b01baae6",
+        "when": "2026-09-07 23:43",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(缺陷修复): 快照diff+UA背景注入+修复记忆系统+定时轮询"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "0370e244",
+        "when": "2026-09-07 23:07",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(终端): 输入重复/删除双发—term.onData 从 connect 移到 initTerminal"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "237415ee",
+        "when": "2026-09-07 23:03",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(终端): 提示词预览面板—查看完整内容+字符数+复制"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "151afcf5",
+        "when": "2026-09-07 22:45",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(终端): 注入提示词按钮 + 返回列表确认弹窗 + 换缺陷自动重建终端"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "44151546",
+        "when": "2026-09-07 22:21",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(缺陷修复): 切换为交互式终端方案(xterm.js+PTY+claude code)"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "e8c46728",
+        "when": "2026-09-07 22:09",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(缺陷修复): claude --print --output-format stream-json 实现真正流式输出"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "60313a64",
+        "when": "2026-09-07 21:57",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "ui(缺陷修复): 全面重构布局—Linear风格设计系统"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "8c701d6e",
+        "when": "2026-09-07 21:49",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(缺陷修复): 工具栏分组布局+面板开关移至顶部右侧+WebSocket连接超时重试+关闭面板自动撑满"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "730c66e4",
+        "when": "2026-09-07 21:26",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(缺陷修复): 对话式UI优化—底部输入条(circle发送按钮) + diff/对话可拖拽分割 + 显隐开关 + 修复os.read流式读取"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "f5749b17",
+        "when": "2026-09-07 21:15",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(缺陷修复): 终端改为对话式UI(消息流+输入框), 类Hermes Studio交互, 提示词只读不可误删, 自动连接无需手动点"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "445c33e7",
+        "when": "2026-09-07 21:04",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(缺陷修复): 导入时自动匹配缺陷关联页面(标题/描述关键词→pageCode), 缺陷卡片显示关联页面标签, 选缺陷无需先选页面模型"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "ac205c36",
+        "when": "2026-09-07 20:58",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(终端): 用fcntl非阻塞I/O替代to_thread, 徹底解决os.read阻塞导致事件循环卡死"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "9882ff34",
+        "when": "2026-09-07 20:56",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(终端): 返回缺陷列表时自动断开终端连接杀掉claude进程"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "0e85d082",
+        "when": "2026-09-07 20:54",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(终端): 点击终端区域自动focus解决无法输入 + 提示词连接后自动执行一次后续为对话追加"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "8efaf45e",
+        "when": "2026-09-07 20:50",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "ui(缺陷修复): 去掉Ollama环境检测项"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "f6aa6f2e",
+        "when": "2026-09-07 20:48",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(缺陷导入): 后端改用UploadFile接收multipart/form-data, 解决前端FormData上传boundary混入文件内容"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "a272ac5a",
+        "when": "2026-09-07 20:44",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(终端): 修复WebSocket断开后claude进程不退出—os.read改非阻塞轮询+ws_closed标志位+finally兜底kill"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "4130293e",
+        "when": "2026-09-07 20:37",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(缺陷导入): 支持CSV格式 + 修复BOM编码检测失败导致CSV被当Excel解析"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "7a9cd31b",
+        "when": "2026-09-07 20:32",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(终端): 改为交互式claude(去掉--print) + 提示词通过stdin注入 + 终端最小高度保障"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "4aabc7b4",
+        "when": "2026-09-07 20:31",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(缺陷修复): 终端移到diff对比下方, 改为上对比下终端上下布局"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "4e259a77",
+        "when": "2026-09-07 20:26",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(缺陷修复): 在线闭环—Excel导入缺陷+AI终端(Claude Code)+Monaco diff对比+测试/确认提交到平台"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "3458e114",
+        "when": "2026-09-07 19:27",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(缺陷修复): v2 基于高开脚本源码逐行分析的缺陷修复方案生成"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "523cf758",
+        "when": "2026-09-07 18:42",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(缺陷修复): 缺陷→页面建模匹配+修复方案自动化生成脚本"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "8f3d3118",
+        "when": "2026-09-07 16:43",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "docs: 新增低开页面脚本系统参考文档(平台手册4篇+项目集成附录)"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "0c0b82f0",
+        "when": "2026-09-07 16:36",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat(登录): 右上角显示当前账号+切换账号按钮"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "d0333220",
+        "when": "2026-09-07 16:23",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat: 登录页+上手文档+工程化改造, 便于团队协作"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "d42c5b69",
+        "when": "2026-09-07 14:37",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(业务全景): L2脚本自动换行+minZoom:1 修复脚本重叠"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "0fc3e973",
+        "when": "2026-09-06 22:29",
+        "date": "2026-09-06",
+        "author": "张浩",
+        "subject": "fix(版本监控): 每轮成功拉取后刷新 apps-meta pulledAt, 让'最近拉取'列反映真实监控时间"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "7f07fd2c",
+        "when": "2026-09-06 22:14",
+        "date": "2026-09-06",
+        "author": "张浩",
+        "subject": "feat(业务全景): 节点中文三段式显示 + 流式分区布局防重叠 + 脚本平台名映射"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "6961068f",
+        "when": "2026-09-04 01:14",
+        "date": "2026-09-04",
+        "author": "张浩",
+        "subject": "feat(业务讲解): 脚本↔功能点关系图可视化 + 点击跳转代码"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "24d9541e",
+        "when": "2026-09-03 23:36",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "feat(业务讲解): 脚本业务动作归因 + 修复业务讲解宽度不撑满"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "dee2772a",
+        "when": "2026-09-03 23:28",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "refactor(业务讲解): 提升为中栏独立tab, 与事件脚本树/宏观关联图同级, 移除右侧嵌入"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "a585e3bf",
+        "when": "2026-09-03 23:23",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "feat(业务讲解): 打通PRD/详设业务层与低开脚本, 新增页面业务讲解tab+应用主线逻辑视图"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "93a370cb",
+        "when": "2026-09-03 00:42",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "chore(数据): 将平台拉取数据从 git 跟踪解除(保留本地文件, 由 .gitignore 接管)"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "c8a97039",
+        "when": "2026-09-03 00:32",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "chore(脱敏): 移除代码中本机敏感路径, 为推 GitHub 私有仓库做准备"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "80f42a3f",
+        "when": "2026-09-03 00:09",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "docs: 新增《多应用拉取操作手册》——拉取一个应用的完整步骤与价值发掘方向"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "22ab9eb1",
+        "when": "2026-09-02 23:53",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "fix(多应用拉取): 系统代理坑修复——应用清单/刷新不再 Connection refused"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "c84e8646",
+        "when": "2026-09-02 23:42",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat(多应用命名/历史增强): 补齐 pageComponent 组件树+model-details+lang-packages+版本快照"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "462e6382",
+        "when": "2026-09-02 22:45",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "fix(脚本名): 多应用切换后脚本名随机 + 侧栏路径行丢失"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "88ee624f",
+        "when": "2026-09-02 22:14",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat(每日分析): 引入 ECharts 报表库——每日变更趋势改分组柱状图 + 脚本类型分布改玫瑰饼图(替换手写CSS), 按需引入echarts/core控制体积"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "74bb6db1",
+        "when": "2026-09-02 21:51",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat(每日分析): 全应用脚本静态质量 + 每日变更趋势日报 第7入口"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "5b8f76fe",
+        "when": "2026-09-02 21:28",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat(页内搜索): 工作台左侧页面树联动搜索——选中页搜脚本代码, 命中一键打开(不跳路由)"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "e60343a5",
+        "when": "2026-09-02 21:16",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat(代码搜索): VSCode式全应用脚本模糊搜索——find代码在哪个文件 + 搜索结果一键跳转工作台定位脚本"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "05e14d02",
+        "when": "2026-09-02 20:21",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "fix(版本历史): project-history 列表接口性能优化——54快照×124页从85s降到5s + mtime缓存 + set_app切应用重置缓存"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "f7f468b6",
+        "when": "2026-09-02 17:35",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "fix(事件树): 页面级脚本消失只剩公共脚本——补全页面索引views字段"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "0bd4f5be",
+        "when": "2026-09-02 17:06",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat(前端工程化): 修复scoped根类冲突布局 + api层收敛axios + 样式变量 + views目录分层"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "3483a68a",
+        "when": "2026-09-02 16:03",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat(登录自愈): 接口过期→refreshToken刷新→仍失败自动登录 三级降级 + dev_login升级(验证码OCR+双token捕获) + 顶栏面包屑"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "d422546d",
+        "when": "2026-09-01 23:58",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "feat(路由化): 应用列表与内页拆分为 vue-router 页面, 应用内4能力共享应用壳"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "068b3bd7",
+        "when": "2026-09-01 23:36",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix(应用列表): 分组改为顶部tabs+单表格布局, 修复整页分组卡片堆叠滚不动; 搜索命中自动跳到所属分组"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "3c2471a8",
+        "when": "2026-09-01 23:24",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "feat(多应用管理): 落地页=应用列表→点击进工作台+顶栏应用切换器, 后端接口按appId动态切数据源"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "4bc8a9d2",
+        "when": "2026-09-01 15:53",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix(全局收敛): .gcv-wrap与GlobalConv内部容器同名冲突, App.vue全局垂直布局污染两栏容器导致内容看不到——外层改名为.gcv-screen, 恢复水平左右两栏"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "f6eea87b",
+        "when": "2026-09-01 15:21",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix(全局收敛): 点击脚本右侧空白——过滤0字节空全局脚本(df.js), 避免空白展示, 清单20→19"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "ac06e3d3",
+        "when": "2026-09-01 15:11",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix(全局收敛): 单版本函数(如 calculateAmountDeduct 5页·1版本)右侧不再空白——显示✅各页实现一致+代表页代码Monaco视图, 隐藏无意义的版本对比选择器"
+      },
+      {
+        "project": "low-code",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/low-code",
+        "hash": "e36d3fa9",
+        "when": "2026-09-01 11:40",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "refactor(全局收敛): ①⑦全局收敛提升为顶层第4个入口(与脚本工作台/版本历史/单据注册表并列)新建GlobalConv.vue, 定义放顶层而非每个脚本内; ②⑥优化建议去掉鸡肋的自动变量提取Diff视图(Diff对比), 只留真建议(API健壮性/性能/可维护性/跨页复用)+顶层收敛入"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "c4354c7f",
+        "when": "2026-09-07 20:49",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat: update dependencies to fix security vulnerabilities"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "7b44b8d8",
+        "when": "2026-09-05 22:16",
+        "date": "2026-09-05",
+        "author": "张浩",
+        "subject": "chore: 同步 pnpm-lock(@fe-minmetals-fm/components 1.3.73 → 1.3.77)"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "a3818502",
+        "when": "2026-09-05 21:26",
+        "date": "2026-09-05",
+        "author": "张浩",
+        "subject": "Merge branch 'release-1.0.0-hot.260905' into 'release-1.0.0'"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "e759e067",
+        "when": "2026-09-05 21:26",
+        "date": "2026-09-05",
+        "author": "张浩",
+        "subject": "docs: 新增代码图谱(Understand Anything)与新人 Onboarding 指南"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "b41c8d1f",
+        "when": "2026-09-04 15:50",
+        "date": "2026-09-04",
+        "author": "张浩",
+        "subject": "Merge branch 'hotfix/20260902' into release-1.0.0"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "7cae8b8a",
+        "when": "2026-09-04 15:45",
+        "date": "2026-09-04",
+        "author": "张浩",
+        "subject": "Merge branch 'hotfix/20260902' of https://dq.therogner.com/wk-financial-control/fin/fe/fe-minmetals-fm-fis-fs into hotfix/20260902"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "dc27484f",
+        "when": "2026-09-03 21:21",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "feat: update @fe-minmetals-fm/components to 1.3.77"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "252d0b0f",
+        "when": "2026-09-03 20:53",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "feat: update @fe-minmetals-fm/components to 1.3.76"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "51b7f8d5",
+        "when": "2026-09-03 15:51",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "feat: fix DictSelectDialog table stripe style"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "68d0a5a8",
+        "when": "2026-09-03 01:26",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "perf(build): @minmetals-ui 组件库升级 0.1.1→0.1.6-g2.rc.44 + 按需导入优化"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "ec2d0e5c",
+        "when": "2026-09-03 01:26",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "perf(build): @minmetals-ui 组件库升级 0.1.1→0.1.6-g2.rc.44 + 按需导入优化"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "d715326d",
+        "when": "2026-09-02 21:52",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "Merge branch 'hotfix/20260902' into 'release-1.0.0'"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "f5b64f7a",
+        "when": "2026-09-02 21:50",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "fix(build): 合并 @lingshu 与 @minmetals 分包，修复循环依赖导致线上 Un TDZ 报错"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "e05f5f0e",
+        "when": "2026-09-02 13:27",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "Merge branch 'hotfix/20260902' into 'release-1.0.0'"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "a3533dc3",
+        "when": "2026-09-02 21:18",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "fix(task-rule): 移除 SendOrdersSchema 不存在的 disabledAsText 字段"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "40688716",
+        "when": "2026-09-02 21:18",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "chore(deps): @fe-minmetals-fm/components 升级 1.3.72 → 1.3.73"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "e25dcc67",
+        "when": "2026-09-02 21:16",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "fix(build): 移除不存在的 el-label 标签，修复 unplugin-vue-components 自动导入导致的打包失败"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "17fc59b5",
+        "when": "2026-09-02 20:25",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat: 接入 unplugin-auto-import / unplugin-vue-components 按需自动导入"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "df08c49f",
+        "when": "2026-09-02 20:12",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "fix: 状态枚举 i18n key 回显 — 消费端惰性翻译 + 去重 workgroup 状态定义"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "33970e2c",
+        "when": "2026-09-02 15:46",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "perf: 共享运营前端阶段一优化（CSS 去重 + manualChunks 分包）"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "26b29d96",
+        "when": "2026-09-02 15:18",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "docs: 制定共享运营前端性能优化计划（hotfix/20260902）"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "eae73fc6",
+        "when": "2026-09-01 22:14",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "docs: 优化并分层 agent 配置（.claude 组件补齐 + 精简 CLAUDE.md/AGENTS.md）"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "f524232b",
+        "when": "2026-09-01 21:20",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "refactor: 新增 useCollapseSection hooks，收起折叠时隐藏区块头部操作按钮"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "12ca954e",
+        "when": "2026-09-01 20:53",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "feat: update package.json and pnpm-lock.yaml"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "a8e329db",
+        "when": "2026-09-01 20:49",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "refactor: 批量操作 hook 用 isSuccessCode 统一判断响应码"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "426e53f7",
+        "when": "2026-09-01 19:44",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "refactor: 批量操作部分成功改为 opt-in 模式，新增响应码枚举"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "3705e4d5",
+        "when": "2026-09-01 17:31",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix: 批量删除/启停部分成功(code:-1)后列表不刷新"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "1792784c",
+        "when": "2026-09-01 16:53",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "feat: update @fe-minmetals-fm/components to 1.3.70"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "d47bc496",
+        "when": "2026-09-01 16:43",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "feat: update @fe-minmetals-fm/components to 1.3.70"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "b00125fc",
+        "when": "2026-09-01 16:16",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "chore: 升级 @fe-minmetals-fm/components 1.3.66 -> 1.3.69"
+      },
+      {
+        "project": "fe-minmetals-fm-fis-fs",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-fis-fs",
+        "hash": "1ffd7984",
+        "when": "2026-09-01 16:13",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix: 字典选择弹窗补搜索图标 & 组长管理操作列表头换行"
+      },
+      {
+        "project": "AI 副业情报",
+        "project_path": "/Users/zhanghao/Downloads/project/mine/ai-side-hustle",
+        "hash": "fe7932a",
+        "when": "2026-09-07 09:02",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "📊 日报 2026-09-07"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "89940e6",
+        "when": "2026-09-07 22:28",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "chore(ua): 更新知识图谱"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "99e36c4",
+        "when": "2026-09-07 22:28",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(EditableTable): 增强新增行白底 CSS 选择器特异性"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "1dfc187",
+        "when": "2026-09-07 20:44",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "chore(ua): 更新知识图谱"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "09428f7",
+        "when": "2026-09-07 20:48",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "feat: update package.json with new version and dependencies"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "10b1db0",
+        "when": "2026-09-07 20:44",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "chore(ua): 更新知识图谱"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "009ad7f",
+        "when": "2026-09-07 20:44",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(EditableTable): 头部前置插槽输入框与按钮间距补齐为 8px"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "c124520",
+        "when": "2026-09-07 15:07",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "chore(ua): 更新知识图谱"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "86744f3",
+        "when": "2026-09-07 15:07",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "chore: 提交 UA 知识图谱基线，新增 post-commit 自动增量更新"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "38bd3e4",
+        "when": "2026-09-07 14:34",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "fix(EditableTable): 新增行保持白底，仅 hover 时变灰"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "a784d87",
+        "when": "2026-09-04 20:53",
+        "date": "2026-09-04",
+        "author": "张浩",
+        "subject": "fix: build:docs now builds components first, fixing CI entry resolution"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "f53bfd5",
+        "when": "2026-09-04 20:30",
+        "date": "2026-09-04",
+        "author": "张浩",
+        "subject": "fix: remove stale pnpm field from package.json, lock pnpm version to 10.6.4"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "2501a21",
+        "when": "2026-09-04 19:41",
+        "date": "2026-09-04",
+        "author": "张浩",
+        "subject": "fix: move onlyBuiltDependencies to pnpm-workspace.yaml for forward-compatibility"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "9b32b45",
+        "when": "2026-09-04 19:24",
+        "date": "2026-09-04",
+        "author": "张浩",
+        "subject": "feat: change package.js"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "5c8910d",
+        "when": "2026-09-04 19:09",
+        "date": "2026-09-04",
+        "author": "张浩",
+        "subject": "fix: add pnpm onlyBuiltDependencies config to fix build-script blocking"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "f2a8cb7",
+        "when": "2026-09-03 21:19",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "feat: update @fe-minmetals-fm/components to v1.3.77"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "b4cc7c3",
+        "when": "2026-09-03 21:17",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "feat: fix ActionGroup divider position and spacing"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "fcf0dd1",
+        "when": "2026-09-03 21:14",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "fix(ActionGroup): 分割线左右间距恢复为各 8px，顶部与行操作统一"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "207b571",
+        "when": "2026-09-03 21:06",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "fix(ActionGroup): 分割线间距由 16px 调为 8px，与按钮内间距一致"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "888446b",
+        "when": "2026-09-03 20:49",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "fix(ActionGroup): 修复 header-actions-prepend 及 button-before 输入框后多余分割线"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "4f69fbf",
+        "when": "2026-09-03 20:11",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "chore: 从 git 版本控制中移除 dist 构建产物"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "1e3119a",
+        "when": "2026-09-03 20:08",
+        "date": "2026-09-03",
+        "author": "张浩",
+        "subject": "fix(ActionGroup): 修复 button-before 插槽输入框后首个按钮多余分割线"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "cb4948c",
+        "when": "2026-09-02 22:05",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "chore: bump version to 1.3.74"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "7c2f2c6",
+        "when": "2026-09-02 22:03",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat: exports 自动生成脚本，拆包子路径入口零维护"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "d465276",
+        "when": "2026-09-02 17:02",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "Merge branch 'main' of https://dq.therogner.com/wk-financial-control/ace/fe/fe-minmetals-fm-packages"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "dbd2b87",
+        "when": "2026-09-02 16:37",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat: @fe-minmetals-fm/components 支持子路径拆包（preserveModules ESM）+ 构建重构"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "ac92cbc",
+        "when": "2026-09-02 16:34",
+        "date": "2026-09-02",
+        "author": "张浩",
+        "subject": "feat: update package.json with new version and dependencies"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "37499e4",
+        "when": "2026-09-01 19:56",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix: FmFormItem 补回 ref 导入，修复 ReadPrettyClamp 运行时报错"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "4a567c2",
+        "when": "2026-09-01 19:37",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "feat: ProForm 禁用态 label 自动置灰，升 element-plus-cisdi 至 RC.46"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "32f2c2d",
+        "when": "2026-09-01 16:38",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix: EditableTable 常驻编辑态不染色背景"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "7f076ea",
+        "when": "2026-09-01 16:00",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "feat: EditableTable 行级背景色通过 CSS 变量暴露，VoucherPreview 选中色调整"
+      },
+      {
+        "project": "fe-minmetals-fm-packages",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-fm-packages",
+        "hash": "8c2b3af",
+        "when": "2026-09-01 12:52",
+        "date": "2026-09-01",
+        "author": "张浩",
+        "subject": "fix: CollapseSection 折叠图标旋转、ProForm 表格布局网格线修复与样式提取"
+      },
+      {
+        "project": "fe-minmetals-template",
+        "project_path": "/Users/zhanghao/Downloads/project/cisdigital/fe-minmetals-template",
+        "hash": "eb6261d",
+        "when": "2026-09-07 15:08",
+        "date": "2026-09-07",
+        "author": "张浩",
+        "subject": "chore: initial commit of fe-minmetals-template"
+      }
+    ]
+  },
+  "ones": {
+    "total": 0,
+    "bugs": [],
+    "worklist_snippet": "# ONES 缺陷修复清单\n\n- **数据来源**: 缺陷_20260904.csv (archive/fe-minmetals-fm-fis-fs/缺陷修复阶段/)\n- **导出时间**: 2026-09-04 19:14\n- **筛选条件**: 负责人=['张浩'] | 状态=['待修复', '修复中', '重新打开', '挂起'] | 优先级=全部\n- **匹配缺陷**: 3 条\n\n---\n\n## 待修复清单\n\n> ✅ 勾选后告知我：'修复清单已勾选'，我会逐条修复\n\n\n- [ ] `#1285358` [中] 【性能测试】前端页面性能-共享运营-任务分配规则 — 张浩 (挂起)\n- [ ] `#1285350` [中] 【性能测试】前端页面性能-共享运营-共享工作组 — 张浩 (挂起)\n- [ ] `#1285348` [中] 【性能测试】前端页面性能-共享运营-共享中心机构 — 张浩 (挂起)\n\n---\n\n共 3 条缺陷待选\n"
+  },
+  "ai_summary": "本周主要聚焦低码工作台与共享运营前端的迭代，重点推进了缺陷修复模块的终端交互重构。通过引入 xterm.js + PTY 方案，实现了真正的流式输出与交互式终端体验，并围绕提示词注入、记忆系统修复、快照 diff 及 UA 背景注入等关键能力进行了多项优化，同时完成了基于 Linear 风格的整体 UI 重构。财务组件库方面也保持了持续投入。本周沟通高度集中在共享运营开发群，整体推进节奏紧凑，未产生缺陷。",
+  "ai_summary_at": "2026-09-12 21:02:30"
+}
