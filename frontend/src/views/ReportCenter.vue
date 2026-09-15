@@ -1099,43 +1099,6 @@ export default { components: { WeeklyContent } }
 
 .rc-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 
-/* ── 周报/月报/季报/年报: 右侧整体容器 (与日报统一) ── */
-.rc-content > * { border-radius: 10px; }
-.rc-ai-empty .rc-card-bd { background: var(--wb-accent-bg, #eef4ff); }
-
-/* ── shared cards ── */
-.rc-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.rc-header-title { font-size: 15px; font-weight: 600; color: #1f2937; }
-
-.rc-card { background: #fff; border: 1px solid #eef0f3; border-radius: 10px; overflow: hidden; }
-.rc-card-hd {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 16px; font-size: 13px; font-weight: 600; color: #1f2937;
-  background: #fafbfc; border-bottom: 1px solid #f0f0f0;
-}
-.rc-card-bd { padding: 10px 16px 12px; }
-
-.rc-stats { display: flex; gap: 0; }
-.rc-stat { flex: 1; text-align: center; padding: 6px 0; border-right: 1px solid #f0f0f0; }
-.rc-stat:last-child { border-right: none; }
-.rc-stat-v { display: block; font-size: 22px; font-weight: 700; color: #1f2937; }
-.rc-stat-l { display: block; font-size: 12px; color: #888; margin-top: 2px; }
-
-.rc-ch-row { display: flex; justify-content: space-between; padding: 4px 6px; font-size: 13px; border-radius: 4px; }
-.rc-ch-row:hover { background: rgba(0,0,0,.02); }
-.rc-ch-name { color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.rc-ch-cnt { color: #888; flex-shrink: 0; margin-left: 8px; }
-
-.rc-git-proj { margin-bottom: 10px; }
-.rc-git-name { font-size: 12px; font-weight: 600; color: #1f2937; margin-bottom: 4px; padding: 2px 6px; }
-.rc-line { display: flex; gap: 8px; padding: 2px 6px; font-size: 12px; border-radius: 4px; }
-.rc-line:hover { background: rgba(0,0,0,.02); }
-.rc-line-t { color: #aaa; font-size: 11px; white-space: nowrap; }
-.rc-line-txt { flex: 1; color: #444; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.rc-more { font-size: 11px; color: #1677ff; padding: 2px 6px; }
-
-.rc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
 /* ── daily sections ── */
 .rc-detail-hd { cursor: pointer; user-select: none; }
 .rc-detail-hd:hover { background: #f0f2f5; }
@@ -1157,7 +1120,7 @@ export default { components: { WeeklyContent } }
 }
 </style>
 
-<!-- non-scoped: portal Modal & AI card header, and Markdown rendered body -->
+<!-- non-scoped: portal Modal & AI card header, Markdown rendered body -->
 <style>
 .wr-ai-hd {
   display: flex; align-items: center; justify-content: space-between;

@@ -537,3 +537,41 @@ body {
 .md-body hr { border: none; border-top: 1px solid var(--wb-border); margin: 12px 0; }
 .md-body img { max-width: 100%; border-radius: var(--wb-radius-md); }
 .md-body strong { font-weight: var(--wb-font-semibold); }
+
+/* ═══════════════════════════════════════════════════════════
+   Report Center · Shared Card Styles (全局, 日报/周报/月报/季报/年报共用)
+   — 必须非 scoped: WeeklyContent 组件 h() 元素无 data-v-xxx 属性
+   ═══════════════════════════════════════════════════════════ */
+.rc-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.rc-header-title { font-size: 15px; font-weight: 600; color: #1f2937; }
+
+.rc-card { background: #fff; border: 1px solid #eef0f3; border-radius: 10px; overflow: hidden; }
+.rc-card-hd {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; font-size: 13px; font-weight: 600; color: #1f2937;
+  background: #fafbfc; border-bottom: 1px solid #f0f0f0;
+}
+.rc-card-bd { padding: 10px 16px 12px; }
+
+.rc-ai-empty .rc-card-bd { background: var(--wb-accent-bg, #eef4ff); }
+
+.rc-stats { display: flex; gap: 0; }
+.rc-stat { flex: 1; text-align: center; padding: 6px 0; border-right: 1px solid #f0f0f0; }
+.rc-stat:last-child { border-right: none; }
+.rc-stat-v { display: block; font-size: 22px; font-weight: 700; color: #1f2937; }
+.rc-stat-l { display: block; font-size: 12px; color: #888; margin-top: 2px; }
+
+.rc-ch-row { display: flex; justify-content: space-between; padding: 4px 6px; font-size: 13px; border-radius: 4px; }
+.rc-ch-row:hover { background: rgba(0,0,0,.02); }
+.rc-ch-name { color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rc-ch-cnt { color: #888; flex-shrink: 0; margin-left: 8px; }
+
+.rc-git-proj { margin-bottom: 10px; }
+.rc-git-name { font-size: 12px; font-weight: 600; color: #1f2937; margin-bottom: 4px; padding: 2px 6px; }
+.rc-line { display: flex; gap: 8px; padding: 2px 6px; font-size: 12px; border-radius: 4px; }
+.rc-line:hover { background: rgba(0,0,0,.02); }
+.rc-line-t { color: #aaa; font-size: 11px; white-space: nowrap; }
+.rc-line-txt { flex: 1; color: #444; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rc-more { font-size: 11px; color: #1677ff; padding: 2px 6px; }
+
+.rc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
