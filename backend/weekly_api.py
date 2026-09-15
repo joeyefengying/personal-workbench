@@ -795,7 +795,8 @@ def list_daily_dates() -> list[dict]:
 
     def _new_entry(d: str) -> dict:
         return {"date": d, "has_lifeos": False, "event_count": 0,
-                "by_source": {"git": 0, "files": 0, "browser": 0, "qingtui": 0}}
+                "by_source": {"git": 0, "files": 0, "browser": 0, "qingtui": 0},
+                "ai_preview": ""}
 
     # 1) LifeOS Daily 文件
     if _DAILY_ROOT.is_dir():
@@ -808,6 +809,18 @@ def list_daily_dates() -> list[dict]:
                     if re.match(r"^\d{4}-\d{2}-\d{2}$", d):
                         dates.setdefault(d, _new_entry(d))
                         dates[d]["has_lifeos"] = True
+                        # 提取 AI 回顾前 120 字做 tooltip 预览
+                        try:
+                            parsed = _parse_daily_markdown(f.read_text(encoding="utf-8"))
+                            ai = parsed.get("ai_review", "")
+                            if ai:
+                                # 去掉 markdown 标记, 取纯文本前 120 字
+                                import re as _re
+                                clean = _re.sub(r'[#>*`~\-\[\]()]', '', ai).strip()
+                                clean = _re.sub(r'\s+', ' ', clean)
+                                dates[d]["ai_preview"] = clean[:120]
+                        except Exception:
+                            pass
 
     # 2) timeline 事件库中的日期 + 按源聚合 (一次 SQL 聚合, 避免逐日 full query)
     try:

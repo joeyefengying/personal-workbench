@@ -41,24 +41,28 @@ const eventsDateSet = computed(() => new Set(dailyDates.value.map(d => d.date)))
 const dailyStatsMap = computed(() => {
   const m = {}
   for (const d of dailyDates.value) {
-    m[d.date] = { has_lifeos: d.has_lifeos, event_count: d.event_count || 0, by_source: d.by_source || {} }
+    m[d.date] = { has_lifeos: d.has_lifeos, event_count: d.event_count || 0, by_source: d.by_source || {}, ai_preview: d.ai_preview || '' }
   }
   return m
 })
 
-function calTooltip(ds) {
+function calTooltipStats(ds) {
   const s = dailyStatsMap.value[ds]
   if (!s) return ''
-  if (s.has_lifeos) return `${ds} · 日报已生成`
   const b = s.by_source || {}
-  const parts = [
-    `事件 ${s.event_count || 0} 条`,
-    `提交 ${b.git || 0}`,
-    `文件 ${b.files || 0}`,
-    `浏览 ${b.browser || 0}`,
-    `轻推 ${b.qingtui || 0}`,
-  ]
+  const parts = []
+  if (s.event_count) parts.push(`事件 ${s.event_count} 条`)
+  if (b.git) parts.push(`提交 ${b.git}`)
+  if (b.files) parts.push(`文件 ${b.files}`)
+  if (b.browser) parts.push(`浏览 ${b.browser}`)
+  if (b.qingtui) parts.push(`轻推 ${b.qingtui}`)
   return parts.join(' · ')
+}
+
+function calTooltipAi(ds) {
+  const s = dailyStatsMap.value[ds]
+  if (!s || !s.ai_preview) return ''
+  return s.ai_preview
 }
 
 const calendarCells = computed(() => {
@@ -577,11 +581,21 @@ async function doDocGenerate() {
             <template v-if="c">
               <a-tooltip
                 v-if="c.hasLifeos || c.hasEvents"
-                :title="calTooltip(c.date)"
                 placement="top"
                 overlay-class-name="rc-cal-tip"
                 color="#fff"
               >
+                <template #title>
+                  <div class="rc-tip">
+                    <div class="rc-tip-date">{{ c.date }}</div>
+                    <div class="rc-tip-stats" v-if="calTooltipStats(c.date)">
+                      {{ calTooltipStats(c.date) }}
+                    </div>
+                    <div class="rc-tip-ai" v-if="calTooltipAi(c.date)">
+                      🧠 {{ calTooltipAi(c.date) }}
+                    </div>
+                  </div>
+                </template>
                 <span class="rc-cal-num">{{ c.day }}</span>
               </a-tooltip>
               <span v-else class="rc-cal-num">{{ c.day }}</span>
@@ -1135,6 +1149,10 @@ export default { components: { WeeklyContent } }
 /* ── 日历 hover tooltip（非 scoped, tooltip 由 antdv teleport 到 body）── */
 .ant-tooltip-inner.rc-cal-tip {
   background: #fff; color: #1f2937; font-size: 12px;
-  padding: 6px 10px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  padding: 8px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  max-width: 320px;
 }
+.rc-tip-date { font-weight: 600; color: #1f2937; margin-bottom: 4px; }
+.rc-tip-stats { color: #666; font-size: 11px; margin-bottom: 4px; }
+.rc-tip-ai { color: #5e6ad2; font-size: 11px; line-height: 1.5; }
 </style>
