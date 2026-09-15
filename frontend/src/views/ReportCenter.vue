@@ -912,11 +912,13 @@ async function doDocGenerate() {
 <script>
 import { defineComponent, h } from 'vue'
 import { marked } from 'marked'
+import { Button as AButton, Tag as ATag } from 'ant-design-vue'
 
 marked.setOptions({ gfm: true, breaks: true })
 
 const WeeklyContent = defineComponent({
   name: 'WeeklyContent',
+  components: { AButton, ATag },
   props: ['report','aiSummary','aiLoading','aiFailed','aiCached','aiAt','topChannels','topProjects','lifeosWriting'],
   emits: ['regenerate','writeLifeos','export'],
   setup(props, { emit }) {
@@ -927,21 +929,21 @@ const WeeklyContent = defineComponent({
         // header
         h('div', { class: 'rc-header' },
           h('span', { class: 'rc-header-title' }, s.week_label || ''),
-          h('a-button', { size:'small', onClick: () => emit('export') }, () => '导出 Markdown')
+          h(AButton, { size:'small', onClick: () => emit('export') }, () => '导出 Markdown')
         ),
         // AI summary
         props.aiSummary
           ? h('div', { class: 'rc-card' },
               h('div', { class: 'rc-card-hd' }, [
-                h('span', { }, [
-                  '🤖 AI 总结',
-                  props.aiCached ? h('a-tag', { color:'blue', style:'margin-left:6px' }, () => '已缓存') : null,
-                  props.aiAt ? h('span', { class:'wr-ai-at' }, props.aiAt) : null,
-                ]),
-                h('span', { }, [
-                  h('a-button', { size:'small', type:'text', loading: props.aiLoading, onClick: () => emit('regenerate') }, () => '重新生成'),
-                  h('a-button', { size:'small', type:'primary', loading: props.lifeosWriting, onClick: () => emit('writeLifeos') }, () => '写入 LifeOS'),
-                ])
+                  h('span', { }, [
+                    '🤖 AI 总结',
+                    props.aiCached ? h(ATag, { color:'blue', style:'margin-left:6px' }, () => '已缓存') : null,
+                    props.aiAt ? h('span', { class:'wr-ai-at' }, props.aiAt) : null,
+                  ]),
+                  h('span', { }, [
+                    h(AButton, { size:'small', type:'text', loading: props.aiLoading, onClick: () => emit('regenerate') }, () => '重新生成'),
+                    h(AButton, { size:'small', type:'primary', loading: props.lifeosWriting, onClick: () => emit('writeLifeos') }, () => '写入 LifeOS'),
+                  ])
               ]),
               h('div', { class: 'rc-card-bd md-body', innerHTML: marked.parse(props.aiSummary || '') })
             )
@@ -951,18 +953,18 @@ const WeeklyContent = defineComponent({
                 h('div', { class: 'rc-card-bd', style: 'color:#aaa' }, '正在生成总结…')
               )
             : props.aiFailed
-              ? h('div', { class: 'rc-card' },
+              ? h('div', { class: 'rc-card rc-ai-empty' },
                   h('div', { class: 'rc-card-hd' }, h('span', '🤖 AI 总结')),
-                  h('div', { class: 'rc-card-bd', style: 'color:#999' }, [
-                    'AI 总结生成失败',
-                    h('a-button', { size:'small', type:'link', style:'margin-left:8px', onClick: () => emit('regenerate') }, () => '重试'),
+                  h('div', { class: 'rc-card-bd', style: 'display:flex;align-items:center;justify-content:space-between' }, [
+                    h('span', { style: 'color:#e5484d;font-size:13px' }, 'AI 总结生成失败，可点击重试'),
+                    h(AButton, { size:'small', type:'primary', loading: props.aiLoading, onClick: () => emit('regenerate') }, () => '🤖 重新生成'),
                   ])
                 )
               : h('div', { class: 'rc-card rc-ai-empty' },
                   h('div', { class: 'rc-card-hd' }, h('span', '🤖 AI 总结')),
                   h('div', { class: 'rc-card-bd', style: 'display:flex;align-items:center;justify-content:space-between' }, [
                     h('span', { style: 'color:#999;font-size:13px' }, '尚未生成 AI 总结，点击右侧按钮一键生成'),
-                    h('a-button', { size:'small', type:'primary', loading: props.aiLoading, onClick: () => emit('regenerate') }, () => '🤖 生成 AI 总结'),
+                    h(AButton, { size:'small', type:'primary', loading: props.aiLoading, onClick: () => emit('regenerate') }, () => '🤖 生成 AI 总结'),
                   ])
                 ),
         // stats
