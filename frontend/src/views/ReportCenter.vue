@@ -931,8 +931,8 @@ const WeeklyContent = defineComponent({
         ),
         // AI summary
         props.aiSummary
-          ? h('div', { class: 'rc-card rc-ai-blue' },
-              h('div', { class: 'wr-ai-hd' }, [
+          ? h('div', { class: 'rc-card' },
+              h('div', { class: 'rc-card-hd' }, [
                 h('span', { }, [
                   '🤖 AI 总结',
                   props.aiCached ? h('a-tag', { color:'blue', style:'margin-left:6px' }, () => '已缓存') : null,
@@ -943,22 +943,28 @@ const WeeklyContent = defineComponent({
                   h('a-button', { size:'small', type:'primary', loading: props.lifeosWriting, onClick: () => emit('writeLifeos') }, () => '写入 LifeOS'),
                 ])
               ]),
-              h('div', { class: 'wr-ai-body md-body', innerHTML: marked.parse(props.aiSummary || '') })
+              h('div', { class: 'rc-card-bd md-body', innerHTML: marked.parse(props.aiSummary || '') })
             )
           : props.aiLoading
-            ? h('div', { class: 'rc-card rc-ai-blue' },
-                h('div', { class: 'wr-ai-hd' }, h('span', '🤖 AI 总结')),
-                h('div', { class: 'wr-ai-body', style: 'color:#aaa' }, '正在生成总结…')
+            ? h('div', { class: 'rc-card' },
+                h('div', { class: 'rc-card-hd' }, h('span', '🤖 AI 总结')),
+                h('div', { class: 'rc-card-bd', style: 'color:#aaa' }, '正在生成总结…')
               )
             : props.aiFailed
-              ? h('div', { class: 'rc-card rc-ai-blue' },
-                  h('div', { class: 'wr-ai-hd' }, h('span', '🤖 AI 总结')),
-                  h('div', { class: 'wr-ai-body', style: 'color:#999' }, [
+              ? h('div', { class: 'rc-card' },
+                  h('div', { class: 'rc-card-hd' }, h('span', '🤖 AI 总结')),
+                  h('div', { class: 'rc-card-bd', style: 'color:#999' }, [
                     'AI 总结生成失败',
                     h('a-button', { size:'small', type:'link', style:'margin-left:8px', onClick: () => emit('regenerate') }, () => '重试'),
                   ])
                 )
-              : null,
+              : h('div', { class: 'rc-card rc-ai-empty' },
+                  h('div', { class: 'rc-card-hd' }, h('span', '🤖 AI 总结')),
+                  h('div', { class: 'rc-card-bd', style: 'display:flex;align-items:center;justify-content:space-between' }, [
+                    h('span', { style: 'color:#999;font-size:13px' }, '尚未生成 AI 总结，点击右侧按钮一键生成'),
+                    h('a-button', { size:'small', type:'primary', loading: props.aiLoading, onClick: () => emit('regenerate') }, () => '🤖 生成 AI 总结'),
+                  ])
+                ),
         // stats
         h('div', { class: 'rc-card' }, [
           h('div', { class: 'rc-card-hd' }, '📊 概览'),
@@ -1089,7 +1095,11 @@ export default { components: { WeeklyContent } }
 .rc-nav-item.active { background: #eef4ff; border-left: 3px solid #1677ff; font-weight: 500; }
 .rc-nav-sub { font-size: 11px; color: #aaa; }
 
-.rc-content { flex: 1; min-width: 0; }
+.rc-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+
+/* ── 周报/月报/季报/年报: 右侧整体容器 (与日报统一) ── */
+.rc-content > * { border-radius: 10px; }
+.rc-ai-empty .rc-card-bd { background: var(--wb-accent-bg, #eef4ff); }
 
 /* ── shared cards ── */
 .rc-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
@@ -1097,6 +1107,7 @@ export default { components: { WeeklyContent } }
 
 .rc-card { background: #fff; border: 1px solid #eef0f3; border-radius: 10px; overflow: hidden; }
 .rc-card-hd {
+  display: flex; align-items: center; justify-content: space-between;
   padding: 10px 16px; font-size: 13px; font-weight: 600; color: #1f2937;
   background: #fafbfc; border-bottom: 1px solid #f0f0f0;
 }
