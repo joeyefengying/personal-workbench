@@ -391,6 +391,7 @@ def generate_doc(week_start: datetime.date = None) -> dict:
     # ────── 保存 ──────
     _ensure_dirs()
     ws_short = week_start.strftime('%Y%m%d')
+    ws_fmt = week_start.strftime('%m月%d日')
     basename = f'五矿财务管控产研_工作周报_张浩（共享运营）_{ws_short}'
     saved = []
     for out_dir in OUTPUT_DIRS:
