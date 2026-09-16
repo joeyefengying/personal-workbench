@@ -172,10 +172,10 @@ export function exportMonthlyMarkdown(month) {
   return request(`/api/monthly/export-md?month=${encodeURIComponent(month)}`)
 }
 export function summarizeWeekly(week, force = false) {
-  return request(`/api/weekly/summarize?week=${encodeURIComponent(week)}&force=${force ? 'true' : ''}`)
+  return request(`/api/weekly/summarize?week=${encodeURIComponent(week)}${force ? '&force=true' : ''}`)
 }
 export function summarizeMonthly(month, force = false) {
-  return request(`/api/monthly/summarize?month=${encodeURIComponent(month)}&force=${force ? 'true' : ''}`)
+  return request(`/api/monthly/summarize?month=${encodeURIComponent(month)}${force ? '&force=true' : ''}`)
 }
 export function writeWeeklyToLifeOS(week) {
   return request('/api/weekly/write-lifeos', { method: 'POST', body: JSON.stringify({ week }) })
@@ -192,7 +192,7 @@ export function getQuarterlyReport(quarter) {
   return request(`/api/quarterly/report?quarter=${encodeURIComponent(quarter)}`)
 }
 export function summarizeQuarterly(quarter, force = false) {
-  return request(`/api/quarterly/summarize?quarter=${encodeURIComponent(quarter)}&force=${force ? 'true' : ''}`)
+  return request(`/api/quarterly/summarize?quarter=${encodeURIComponent(quarter)}${force ? '&force=true' : ''}`)
 }
 export function writeQuarterlyToLifeOS(quarter) {
   return request('/api/quarterly/write-lifeos', { method: 'POST', body: JSON.stringify({ quarter }) })
@@ -204,7 +204,7 @@ export function getYearlyReport(year) {
   return request(`/api/yearly/report?year=${encodeURIComponent(year)}`)
 }
 export function summarizeYearly(year, force = false) {
-  return request(`/api/yearly/summarize?year=${encodeURIComponent(year)}&force=${force ? 'true' : ''}`)
+  return request(`/api/yearly/summarize?year=${encodeURIComponent(year)}${force ? '&force=true' : ''}`)
 }
 export function writeYearlyToLifeOS(year) {
   return request('/api/yearly/write-lifeos', { method: 'POST', body: JSON.stringify({ year }) })

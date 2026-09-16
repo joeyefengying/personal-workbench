@@ -16,6 +16,7 @@ from docx.oxml import OxmlElement
 
 TEMPLATE_NAME = "五矿财务管控产研_工作周报_（组别） 模板.doc"
 TEMPLATE_PATHS = [
+    Path(__file__).parent / "templates" / "weekly_report_template.doc",
     Path.home() / "Downloads" / "我的项目" / "2026 年 1 月 7 日集团统建项目"
     / "财务系统" / "04. 应付" / "周报" / TEMPLATE_NAME,
     Path.home() / "Downloads" / "我的项目" / "2026 年 1 月 7 日集团统建项目"
@@ -162,6 +163,122 @@ def _set_cell(cell, text, bold=False, align='left', size=10.5):
     tcPr.append(vAlign)
 
 
+def _fetch_weekly_report_data(week_start: datetime.date) -> dict:
+    """从 weekly_api 获取周报数据, 供工作周报 doc 生成使用."""
+    try:
+        from weekly_api import get_weekly_report
+        # week_label 格式: 2026-W37
+        iso_year, iso_week, _ = week_start.isocalendar()
+        week_label = f"{iso_year}-W{iso_week:02d}"
+        report = get_weekly_report(week_label)
+        return report or {}
+    except Exception:
+        return {}
+
+
+def _build_work_items_from_data(week_start: datetime.date, data: dict, group_spans: dict) -> list:
+    """从周报数据动态生成工作内容条目.
+
+    优先用 git.by_project 的项目分组 + commit 主题汇总,
+    结合 qingtui 的 group_spans 填充日期范围.
+    """
+    ws_fmt = week_start.strftime('%m月%d日')
+    we_fmt = (week_start + datetime.timedelta(days=6)).strftime('%m月%d日')
+
+    git_by_project = (data.get('git') or {}).get('by_project', {})
+    ai_summary = data.get('ai_summary', '')
+
+    work_items = []
+    idx = 1
+
+    # 按项目分组生成工作项
+    for proj_name, proj_data in git_by_project.items():
+        commits = proj_data.get('commits', [])
+        if not commits:
+            continue
+
+        # 汇总 commit 主题, 去重前缀
+        subjects = []
+        seen_prefix = set()
+        for c in commits:
+            s = c.get('subject', '')
+            # 取前 8 字做去重前缀
+            prefix = s[:8]
+            if prefix not in seen_prefix:
+                seen_prefix.add(prefix)
+                # 清理 subject 中的特殊字符
+                clean = s.replace('\n', ' ').strip()
+                if len(clean) > 80:
+                    clean = clean[:77] + '...'
+                subjects.append(clean)
+
+        # 组装描述: 项目名 + N 条 commit 概要
+        desc_parts = [f"{proj_name}（{proj_data.get('count', len(commits))} 次提交）："]
+        for s in subjects[:5]:
+            desc_parts.append(f"  · {s}")
+        if len(subjects) > 5:
+            desc_parts.append(f"  · ...等 {len(subjects)} 项")
+        desc = '\n'.join(desc_parts)
+
+        # 日期范围: 从 commits 的 date 字段提取
+        dates = sorted(set(c.get('date', '') for c in commits if c.get('date')))
+        start_date = dates[0][5:].replace('-', '/') if dates else ws_fmt.replace('月', '/').replace('日', '')
+        end_date = dates[-1][5:].replace('-', '/') if dates else we_fmt.replace('月', '/').replace('日', '')
+
+        work_items.append((
+            str(idx), desc, '张浩', '已完成' if len(commits) > 2 else '进行中',
+            start_date, '', end_date
+        ))
+        idx += 1
+
+    # 如果没有 git 数据, 用 AI 总结生成兜底条目
+    if not work_items and ai_summary:
+        work_items.append((
+            '1', ai_summary[:200], '张浩', '进行中',
+            ws_fmt.replace('月', '/').replace('日', ''), '', we_fmt.replace('月', '/').replace('日', '')
+        ))
+
+    # 确保至少有 1 条
+    if not work_items:
+        work_items.append((
+            '1', '本周工作内容待补充。', '张浩', '进行中',
+            ws_fmt.replace('月', '/').replace('日', ''), '', we_fmt.replace('月', '/').replace('日', '')
+        ))
+
+    return work_items
+
+
+def _build_next_week_plans(ai_summary: str) -> list:
+    """从 AI 总结提取下周计划, 或用默认计划."""
+    # 尝试从 AI 总结中提取关键方向
+    plans = []
+    if ai_summary:
+        # 按句号分割, 取关键句
+        sentences = [s.strip() for s in ai_summary.replace('；', '。').split('。') if len(s.strip()) > 10]
+        for s in sentences[:5]:
+            # 去掉过多细节, 只取方向性描述
+            if len(s) > 60:
+                s = s[:57] + '...'
+            plans.append(s)
+
+    # 兜底默认计划
+    defaults = [
+        '推进共享运营闭环问题收敛与解决，保障系统稳定运行。',
+        '持续推进缺陷动态清零，跟踪并修复遗留缺陷。',
+        '跟进代码安全扫描整改，推动安全合规达标。',
+        '完成 UX 改造收口，跟进各单据设计页面调整确认。',
+        '配合应付报账模块实施，推进相关功能落地与联调测试。',
+    ]
+    while len(plans) < 3:
+        idx = len(plans)
+        if idx < len(defaults):
+            plans.append(defaults[idx])
+        else:
+            break
+
+    return plans[:5] if plans else defaults
+
+
 def generate_doc(week_start: datetime.date = None) -> dict:
     """生成工作周报 doc. 返回 {ok, path, filename, week_label}."""
     if week_start is None:
@@ -174,9 +291,16 @@ def generate_doc(week_start: datetime.date = None) -> dict:
     if not tpl:
         return {"ok": False, "error": f"模板文件未找到。请确认 {TEMPLATE_NAME} 存在。"}
 
-    # 提取数据
-    data = _analyze_week(week_start, week_end)
-    group_spans = data['group_spans']
+    # 提取轻推数据 (用于 group_spans)
+    qt_data = _analyze_week(week_start, week_end)
+    group_spans = qt_data['group_spans']
+
+    # 获取周报 AI 总结 + git/qingtui 结构化数据
+    weekly_data = _fetch_weekly_report_data(week_start)
+    ai_summary = weekly_data.get('ai_summary', '')
+
+    # 动态生成工作项 (替换硬编码)
+    work_items = _build_work_items_from_data(week_start, weekly_data, group_spans)
 
     # 生成文档
     doc = Document()
@@ -209,37 +333,10 @@ def generate_doc(week_start: datetime.date = None) -> dict:
         if v2: p.add_run('    ' + v2)
     doc.add_paragraph()
 
-    # ────── 1 工作内容 ──────
+    # ────── 1 工作内容 (动态生成) ──────
     p = doc.add_paragraph()
     r = p.add_run('1     工作内容'); r.font.bold = True; r.font.size = Pt(12)
     doc.add_paragraph()
-
-    ws_fmt = week_start.strftime('%m月%d日')
-    we_fmt = week_end.strftime('%m月%d日')
-
-    work_items = [
-        ('1', '共享运营环境部署与发版管控：负责共享运营各环境（test/UAT/准生产/stg压测）版本发布与分支管理，每日新建 hotfix 分支，跟进准生产环境 k8s 命名空间（app-finance-pre）整改及服务重启，保障环境发版规范与稳定。',
-         '张浩', '已完成',
-         group_spans.get('环境部署/发版', (ws_fmt, ''))[0], '',
-         group_spans.get('环境部署/发版', ('', we_fmt))[1]),
-        ('2', '主数据一致性问题排查：定位并修复主数据同步 18 万条数据一次性请求导致服务器卡死的问题，改为分流策略并重新优化同步逻辑，测试环境已验证；建立数据一致性验证工具流程，纳入发版工作流。',
-         '张浩', '已完成',
-         group_spans.get('主数据/一致性', (ws_fmt, ''))[0], '',
-         group_spans.get('主数据/一致性', ('', we_fmt))[1]),
-        ('3', '代码安全扫描：申请云堡垒机账号，使用安恒 SAST 静态代码审计平台与奇安信 SCA 开源组件扫描工具，对共享运营前端/后端代码进行初测扫描，识别超危/高危开源组件漏洞（lodash-es、axios 等）并推动整改。',
-         '张浩', '进行中',
-         group_spans.get('代码安全扫描', (ws_fmt, ''))[0], '', ''),
-        ('4', 'UX 改造推进：统筹共享运营组 UX 改造进度（9月15日收口），跟进各单据设计页面调整与冲突协调，跟踪 ONES 进度看板，推动平台问题挂起标注。',
-         '张浩', '进行中',
-         group_spans.get('UX 改造', (ws_fmt, ''))[0], '', ''),
-        ('5', '应付报账合并支撑：协助应付组排查 bug，处理应付报账单"联查凭证"按钮不显示问题（全局 isShow 显影逻辑排查并修复），协助排查支付申请池支付状态更新问题，配合共享报账与应付报账合并上线前的联调与测试。',
-         '张浩', '进行中',
-         group_spans.get('应付/报账支撑', (ws_fmt, ''))[0], '', ''),
-        ('6', '权限与账号管理：收集并配置实施定制环境测试人员账号权限（4A 账号、平台使用权限），跟进堡垒机账号申请流程与 mac 输入异常排查，协调中冶集团网络权限信息收集。',
-         '张浩', '已完成',
-         group_spans.get('权限/账号', (ws_fmt, ''))[0], '',
-         group_spans.get('权限/账号', ('', we_fmt))[1]),
-    ]
 
     table = doc.add_table(rows=1, cols=7)
     table.style = 'Table Grid'
@@ -266,7 +363,7 @@ def generate_doc(week_start: datetime.date = None) -> dict:
     t2 = doc.add_table(rows=2, cols=5); t2.style = 'Table Grid'
     for i, h in enumerate(['项目', '上周遗留的突出问题', '本周已结束的问题', '本周新增问题', '突出问题累计']):
         _set_cell(t2.rows[0].cells[i], h, bold=True, align='center')
-    for i, v in enumerate(['数量', '0', '0', '1', '1']):
+    for i, v in enumerate(['数量', '0', '0', '0', '0']):
         _set_cell(t2.rows[1].cells[i], v, align='center')
     doc.add_paragraph()
     p = doc.add_paragraph(); r = p.add_run('2.2 突出问题综述'); r.font.bold = True
@@ -275,22 +372,14 @@ def generate_doc(week_start: datetime.date = None) -> dict:
     _set_cell(t3.rows[0].cells[0], '编号', bold=True, align='center')
     _set_cell(t3.rows[0].cells[1], '描述', bold=True, align='center')
     _set_cell(t3.rows[1].cells[0], '1', align='center')
-    _set_cell(t3.rows[1].cells[1],
-              '共享运营前端代码扫描发现 lodash-es、axios 等超危/高危开源组件漏洞，存在安全合规风险（930 上线前需整改），需升级组件版本或采取缓解措施后方可上线。',
-              align='left')
+    _set_cell(t3.rows[1].cells[1], '本周无突出问题。' if not ai_summary else ai_summary[:150], align='left')
     doc.add_paragraph()
 
-    # ────── 3 下周计划 ──────
+    # ────── 3 下周计划 (动态生成) ──────
     p = doc.add_paragraph(); r = p.add_run('3   下周工作计划'); r.font.bold = True; r.font.size = Pt(12)
     doc.add_paragraph()
 
-    plans = [
-        '推进共享运营闭环问题收敛与解决，保障系统稳定运行。',
-        '持续推进缺陷动态清零，跟踪并修复遗留缺陷，配合 930 上线冲刺。',
-        '完成代码安全扫描整改，升级超危/高危开源组件版本，推动安全合规达标。',
-        '完成 UX 改造收口，跟进各单据设计页面调整确认。',
-        '配合应付报账模块实施，推进应付相关功能落地与联调测试。',
-    ]
+    plans = _build_next_week_plans(ai_summary)
     t4 = doc.add_table(rows=1, cols=2); t4.style = 'Table Grid'
     _set_cell(t4.rows[0].cells[0], '编号', bold=True, align='center')
     _set_cell(t4.rows[0].cells[1], '工作内容', bold=True, align='center')
@@ -320,7 +409,9 @@ def generate_doc(week_start: datetime.date = None) -> dict:
         "paths": saved,
         "week_label": f"{ws_str} ~ {we_str}",
         "week_start": ws_fmt.replace('月', '/').replace('日', ''),
-        "msg_count": data['total_my'],
+        "msg_count": qt_data['total_my'],
+        "work_items_count": len(work_items),
+        "ai_summary": ai_summary[:200],
     }
 
 

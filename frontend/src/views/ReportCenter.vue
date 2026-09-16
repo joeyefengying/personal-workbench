@@ -476,6 +476,8 @@ const docWeekStart = ref('')          // 选中的周一 'YYYY-MM-DD'
 const docPreview = ref(null)          // 预览数据
 const docPreviewLoading = ref(false)
 const docGenerating = ref(false)
+const docAiSummary = ref('')          // 周报 AI 总结
+const docAiLoading = ref(false)
 
 function _fmtDateCn(d) {
   if (!d) return ''
@@ -495,11 +497,12 @@ function _lastMonday() {
 async function loadDocWeeks() {
   try {
     const d = await listDocWeeks()
-    docWeeks.value = d.weeks || []
+    docWeeks.value = (d.weeks || []).slice(0, 20)  // 只显示最近 20 周
     if (!docWeekStart.value && docWeeks.value.length) {
       // 默认选上周一（最近的过去周一）
       const lastMon = _lastMonday()
       docWeekStart.value = docWeeks.value.includes(lastMon) ? lastMon : docWeeks.value[0]
+      doDocPreview()
     }
   } catch { }
 }
@@ -508,12 +511,33 @@ async function doDocPreview() {
   if (!docWeekStart.value) return
   docPreviewLoading.value = true
   docPreview.value = null
+  docAiSummary.value = ''
+  docAiLoading.value = true
   try {
     const d = await previewWeeklyDoc(docWeekStart.value)
     if (d.ok) docPreview.value = d
     else message.error(d.error || '预览失败')
   } catch (e) { message.error('预览失败: ' + (e?.message || e)) }
   finally { docPreviewLoading.value = false }
+
+  // 同时加载周报 AI 总结
+  try {
+    const ws = new Date(docWeekStart.value)
+    const iso = _isoWeek(ws)
+    const r = await summarizeWeekly(iso.weekLabel, false)
+    if (r.ok && r.summary) docAiSummary.value = r.summary
+  } catch (e) { console.warn('[docAi] load failed:', e?.message || e) }
+  finally { docAiLoading.value = false }
+}
+
+function _isoWeek(d) {
+  const date = new Date(d)
+  const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
+  const dayNum = tmp.getUTCDay() || 7
+  tmp.setUTCDate(tmp.getUTCDate() + 4 - dayNum)
+  const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(), 0, 1))
+  const week = Math.ceil(((tmp - yearStart) / 86400000 + 1) / 7)
+  return { year: tmp.getUTCFullYear(), week, weekLabel: `${tmp.getUTCFullYear()}-W${String(week).padStart(2, '0')}` }
 }
 
 async function doDocGenerate() {
@@ -881,6 +905,17 @@ async function doDocGenerate() {
                   <span class="rc-stat-v" style="font-size:14px">{{ span[0] }}</span>
                   <span class="rc-stat-l">{{ gname }}</span>
                 </div>
+              </div>
+            </div>
+
+            <!-- 周报 AI 总结 -->
+            <div class="rc-card" v-if="docPreview">
+              <div class="rc-card-hd">🧠 周报 AI 总结</div>
+              <div class="rc-card-bd">
+                <a-spin :spinning="docAiLoading" size="small">
+                  <div class="md-body" v-if="docAiSummary" v-html="md(docAiSummary)" />
+                  <span v-else style="color:#888;font-size:13px">暂无 AI 总结</span>
+                </a-spin>
               </div>
             </div>
 
