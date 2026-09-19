@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { getTodayOverview, listDailyDates, getDailyReport, runDailyDigest } from '@/api'
+import { getTodayOverview, listDailyDates, getDailyReport, runDailyDigest, getQtDocs } from '@/api'
 import { message } from 'ant-design-vue'
 import { marked } from 'marked'
 
@@ -17,6 +17,10 @@ const dailyDates = ref([])
 const dailyContent = ref(null)
 const dailyLoading = ref(false)
 const dailyRunning = ref(false)
+
+// ── 今日群文档 ──
+const todayDocs = ref([])
+const todayDocsLoading = ref(false)
 
 const WEEKDAYS = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 
@@ -135,9 +139,24 @@ async function doRunDigest() {
   }
 }
 
+async function loadTodayDocs() {
+  todayDocsLoading.value = true
+  try {
+    const today = new Date().toISOString().slice(0, 10)
+    const d = await getQtDocs(1, today)
+    todayDocs.value = d.ok ? (d.docs || []) : []
+  } catch (e) { todayDocs.value = [] }
+  finally { todayDocsLoading.value = false }
+}
+
+function openDoc(url) {
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
+
 onMounted(() => {
   load()
   loadDaily()
+  loadTodayDocs()
 })
 </script>
 
@@ -236,6 +255,34 @@ onMounted(() => {
         {{ dailyContent.date }} 的日报暂无 AI 回顾段
       </div>
       <a-empty v-else description="尚无日结报告" style="padding: 20px 0" />
+    </div>
+
+    <!-- 今日群文档 -->
+    <div class="ov-card">
+      <div class="ov-card-title-row">
+        <span class="ov-card-title">📄 今日群文档</span>
+        <a-tag v-if="todayDocs.length" color="blue" style="font-size: 11px">{{ todayDocs.length }} 个</a-tag>
+        <div style="flex: 1"></div>
+        <a href="/qingtui" class="ov-doc-more">查看全部 →</a>
+      </div>
+      <a-spin :spinning="todayDocsLoading" size="small">
+        <div v-if="todayDocs.length" class="ov-doc-list">
+          <div
+            v-for="(doc, i) in todayDocs.slice(0, 8)"
+            :key="i"
+            class="ov-doc-item"
+            @click="openDoc(doc.url)"
+          >
+            <a-tag :color="doc.type === 'drive' ? 'cyan' : doc.type === 'article' ? 'blue' : doc.type === 'minmetals' ? 'magenta' : 'default'" size="small">{{ doc.type_label }}</a-tag>
+            <span class="ov-doc-title">{{ doc.title || doc.url.slice(0, 40) }}</span>
+            <span class="ov-doc-chat">{{ doc.chat_name }}</span>
+          </div>
+          <div v-if="todayDocs.length > 8" class="ov-doc-extra">
+            还有 {{ todayDocs.length - 8 }} 个文档…
+          </div>
+        </div>
+        <a-empty v-else-if="!todayDocsLoading" description="今日暂无群文档" style="padding: 16px 0" />
+      </a-spin>
     </div>
 
     <!-- Navigation Grid -->
@@ -423,4 +470,20 @@ onMounted(() => {
   padding: 20px 0;
   text-align: center;
 }
+
+/* 今日群文档 */
+.ov-doc-more { font-size: 12px; color: #5e6ad2; text-decoration: none; }
+.ov-doc-more:hover { text-decoration: underline; }
+.ov-doc-list { display: flex; flex-direction: column; gap: 6px; }
+.ov-doc-item {
+  display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+  border-radius: 8px; cursor: pointer; transition: background .12s;
+}
+.ov-doc-item:hover { background: #f5f7fa; }
+.ov-doc-title {
+  flex: 1; font-size: 13px; color: #333;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ov-doc-chat { font-size: 11px; color: #999; flex-shrink: 0; }
+.ov-doc-extra { font-size: 12px; color: #aaa; text-align: center; padding: 6px 0; }
 </style>

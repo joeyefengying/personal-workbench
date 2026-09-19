@@ -787,6 +787,18 @@ def qt_launch():
         return {"ok": False, "msg": f"启动失败: {e}"}
 
 
+# ── 轻推群文档 ──
+
+@app.get("/api/qingtui/docs")
+def qt_docs(days: int = 7, date: str = "", type: str = "", chat_id: str = ""):
+    """提取轻推消息中的在线文档/文件/链接, 按天聚合按群分类."""
+    try:
+        from qingtui_docs import extract_docs
+    except ImportError:
+        return {"ok": False, "error": "qingtui_docs 模块未就绪"}
+    return extract_docs(days=days, date=date, doc_type=type, chat_id=chat_id)
+
+
 @app.post("/api/analyze/run")
 def analyze_run():
     """(已废弃) — 请使用报告中心的 AI 周报/月报功能代替"""

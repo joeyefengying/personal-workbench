@@ -1,14 +1,50 @@
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { message } from 'ant-design-vue'
-import { getQtStatus, getQtDailySummary, getQtTasks, getQtContext } from '@/api'
+import { getQtStatus, getQtDailySummary, getQtTasks, getQtContext, getQtDocs } from '@/api'
 
 const status = ref({ connected: false, state: 'unknown', hint: '' })
 const date = ref(new Date().toISOString().slice(0, 10))
+const activeTab = ref('messages')
 
 const summary = ref(null)
 const summaryLoading = ref(false)
 const tasks = ref([])
+
+// ── 群文档 ──
+const docsData = ref(null)
+const docsLoading = ref(false)
+const docsDays = ref(7)
+const docsTypeFilter = ref('')
+const docsDate = ref(new Date().toISOString().slice(0, 10))
+
+// 文档按日期分组 (computed)
+const docsGrouped = computed(() => {
+  if (!docsData.value?.docs) return []
+  const grouped = {}
+  for (const d of docsData.value.docs) {
+    if (!grouped[d.date]) grouped[d.date] = []
+    grouped[d.date].push(d)
+  }
+  return Object.entries(grouped)
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([date, docs]) => ({ date, docs }))
+})
+
+const docTypeColors = {
+  article: 'blue',
+  drive: 'cyan',
+  excel: 'green',
+  pdf: 'red',
+  word: 'geekblue',
+  markdown: 'purple',
+  tencent_doc: 'orange',
+  ones: 'volcano',
+  oa: 'gold',
+  minmetals: 'magenta',
+  link: 'default',
+  file: 'default',
+}
 
 // 左侧群列表选中项
 const activeCid = ref(null)
@@ -79,19 +115,16 @@ async function loadMoreContext(direction) {
     const d = await getQtContextPage(ctx.value.chatId, cursor, direction)
     if (d.ok && d.messages?.length) {
       if (direction === 'before') {
-        // 向上翻: 插到最前
         ctx.value.messages = [...d.messages, ...ctx.value.messages]
         ctx.value.hasMoreBefore = d.has_more_before
         ctx.value.beforeCursor = d.before_cursor
       } else {
-        // 向下翻: 追加到末尾
         ctx.value.messages = [...ctx.value.messages, ...d.messages]
         ctx.value.hasMoreAfter = d.has_more_after
         ctx.value.afterCursor = d.after_cursor
       }
     }
-  }
-  catch (e) { /* ignore */ }
+  } catch (e) { message.error('加载更多失败') }
   finally { ctx.value.loadingMore = false }
 }
 
@@ -133,16 +166,42 @@ async function loadTasks() {
   catch (e) { tasks.value = [] }
 }
 
+async function loadDocs() {
+  docsLoading.value = true
+  try {
+    const d = await getQtDocs(docsDays.value, '', docsTypeFilter.value)
+    if (d.ok) {
+      docsData.value = d
+    } else {
+      docsData.value = null
+    }
+  } catch (e) { docsData.value = null }
+  finally { docsLoading.value = false }
+}
+
 async function refreshAll() {
   await Promise.all([loadSummary(), loadTasks()])
+}
+
+function openDocUrl(url) {
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
+
+function shortUrl(url) {
+  if (!url) return ''
+  if (url.length <= 60) return url
+  return url.slice(0, 30) + '...' + url.slice(-20)
 }
 
 onMounted(async () => {
   await loadStatus()
   refreshAll()
+  loadDocs()
 })
 
 watch(date, () => { refreshAll() })
+watch(docsDays, () => { loadDocs() })
+watch(docsTypeFilter, () => { loadDocs() })
 </script>
 
 <template>
@@ -154,84 +213,142 @@ watch(date, () => { refreshAll() })
         {{ status.connected ? '已就绪' : '不可用' }}
       </a-tag>
       <div class="qt-header-spacer" />
-      <a-date-picker v-model:value="date" value-format="YYYY-MM-DD" size="small" :allow-clear="false" />
-      <a-button class="wb-btn" size="small" :loading="summaryLoading" @click="refreshAll">刷新</a-button>
+      <a-date-picker v-if="activeTab === 'messages'" v-model:value="date" value-format="YYYY-MM-DD" size="small" :allow-clear="false" />
+      <a-select v-else-if="activeTab === 'docs'" v-model:value="docsDays" size="small" style="width:100px">
+        <a-select-option :value="1">今天</a-select-option>
+        <a-select-option :value="3">3天</a-select-option>
+        <a-select-option :value="7">7天</a-select-option>
+        <a-select-option :value="14">14天</a-select-option>
+      </a-select>
+      <a-button class="wb-btn" size="small" :loading="activeTab === 'messages' ? summaryLoading : docsLoading" @click="activeTab === 'messages' ? refreshAll() : loadDocs()">刷新</a-button>
     </div>
 
-    <!-- 指标条 -->
-    <div class="qt-metrics" v-if="summary">
-      <div class="qt-metric">
-        <span class="qt-metric-num">{{ summary.my_total }}</span>
-        <span class="qt-metric-lbl">我发言</span>
-      </div>
-      <div class="qt-metric qt-metric--warn">
-        <span class="qt-metric-num">@{{ summary.mention_total || 0 }}</span>
-        <span class="qt-metric-lbl">@提及</span>
-      </div>
-      <div class="qt-metric">
-        <span class="qt-metric-num">{{ summary.group_count || 0 }}</span>
-        <span class="qt-metric-lbl">工作群</span>
-      </div>
-      <div class="qt-metric">
-        <span class="qt-metric-num">{{ tasks.length }}</span>
-        <span class="qt-metric-lbl">待办关注</span>
-      </div>
-    </div>
-
-    <!-- 主体: 左右分栏 -->
-    <a-spin :spinning="summaryLoading">
-      <div class="qt-body" v-if="summary && summary.groups">
-        <!-- 左栏: 群列表 -->
-        <div class="qt-side">
-          <div class="qt-side-head">工作群 ({{ summary.groups.length }})</div>
-          <div
-            v-for="g in summary.groups"
-            :key="g.cid"
-            class="qt-side-item"
-            :class="{ active: g.cid === activeCid }"
-            @click="activeCid = g.cid"
-          >
-            <div class="qt-side-name">{{ g.session }}</div>
-            <div class="qt-side-counts">
-              <span v-if="g.mention_count" class="qt-cnt qt-cnt--red">{{ g.mention_count }}</span>
-              <span v-if="g.at_all_count" class="qt-cnt qt-cnt--orange">{{ g.at_all_count }}</span>
-              <span v-if="g.mine_count" class="qt-cnt qt-cnt--green">{{ g.mine_count }}</span>
-            </div>
+    <!-- Tab 切换 -->
+    <a-tabs v-model:activeKey="activeTab" size="small" class="qt-tabs">
+      <a-tab-pane key="messages" tab="📋 消息概览">
+        <!-- 指标条 -->
+        <div class="qt-metrics" v-if="summary">
+          <div class="qt-metric">
+            <span class="qt-metric-num">{{ summary.my_total }}</span>
+            <span class="qt-metric-lbl">我发言</span>
+          </div>
+          <div class="qt-metric qt-metric--warn">
+            <span class="qt-metric-num">@{{ summary.mention_total || 0 }}</span>
+            <span class="qt-metric-lbl">@提及</span>
+          </div>
+          <div class="qt-metric">
+            <span class="qt-metric-num">{{ summary.group_count || 0 }}</span>
+            <span class="qt-metric-lbl">工作群</span>
+          </div>
+          <div class="qt-metric">
+            <span class="qt-metric-num">{{ tasks.length }}</span>
+            <span class="qt-metric-lbl">待办关注</span>
           </div>
         </div>
 
-        <!-- 右栏: 消息流 -->
-        <div class="qt-main">
-          <div class="qt-main-head">
-            {{ summary.groups.find(g => g.cid === activeCid)?.session || '请选择群' }}
-            <span class="qt-main-legend">
-              <span class="qt-lg qt-lg--red">@我</span>
-              <span class="qt-lg qt-lg--orange">@所有人</span>
-              <span class="qt-lg qt-lg--green">我</span>
+        <!-- 主体: 左右分栏 -->
+        <a-spin :spinning="summaryLoading">
+          <div class="qt-body" v-if="summary && summary.groups">
+            <!-- 左栏: 群列表 -->
+            <div class="qt-side">
+              <div class="qt-side-head">工作群 ({{ summary.groups.length }})</div>
+              <div
+                v-for="g in summary.groups"
+                :key="g.cid"
+                class="qt-side-item"
+                :class="{ active: g.cid === activeCid }"
+                @click="activeCid = g.cid"
+              >
+                <div class="qt-side-name">{{ g.session }}</div>
+                <div class="qt-side-counts">
+                  <span v-if="g.mention_count" class="qt-cnt qt-cnt--red">{{ g.mention_count }}</span>
+                  <span v-if="g.at_all_count" class="qt-cnt qt-cnt--orange">{{ g.at_all_count }}</span>
+                  <span v-if="g.mine_count" class="qt-cnt qt-cnt--green">{{ g.mine_count }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右栏: 消息流 -->
+            <div class="qt-main">
+              <div class="qt-main-head">
+                {{ summary.groups.find(g => g.cid === activeCid)?.session || '请选择群' }}
+                <span class="qt-main-legend">
+                  <span class="qt-lg qt-lg--red">@我</span>
+                  <span class="qt-lg qt-lg--orange">@所有人</span>
+                  <span class="qt-lg qt-lg--green">我</span>
+                </span>
+              </div>
+              <div class="qt-msgs">
+                <div
+                  v-for="(h, i) in activeMessages"
+                  :key="i"
+                  class="qt-msg"
+                  :class="'qt-msg--' + h.kind"
+                  @click="openContext(h)"
+                  :title="'点击查看上下文'"
+                >
+                  <span class="qt-msg-time">{{ h.time }}</span>
+                  <span class="qt-msg-badge">
+                    <span v-if="h.kind === 'mention'" class="qt-badge qt-badge--red">@我</span>
+                    <span v-else-if="h.kind === 'at_all'" class="qt-badge qt-badge--orange">@所有人</span>
+                    <span v-else class="qt-badge qt-badge--green">我</span>
+                  </span>
+                  <span class="qt-msg-text">{{ h.text }}</span>
+                </div>
+                <a-empty v-if="!activeMessages.length" description="该群当日无消息" />
+              </div>
+            </div>
+          </div>
+        </a-spin>
+      </a-tab-pane>
+
+      <a-tab-pane key="docs" :tab="`📄 群文档${docsData?.total ? ' (' + docsData.total + ')' : ''}`">
+        <!-- 文档统计 + 筛选 -->
+        <div class="qt-docs-bar" v-if="docsData">
+          <div class="qt-docs-stats">
+            <span class="qt-doc-stat" v-for="(count, type) in docsData.by_type" :key="type">
+              <a-tag :color="docTypeColors[type] || 'default'" size="small">{{ docsData.type_labels[type] || type }} {{ count }}</a-tag>
             </span>
           </div>
-          <div class="qt-msgs">
-            <div
-              v-for="(h, i) in activeMessages"
-              :key="i"
-              class="qt-msg"
-              :class="'qt-msg--' + h.kind"
-              @click="openContext(h)"
-              :title="'点击查看上下文'"
-            >
-              <span class="qt-msg-time">{{ h.time }}</span>
-              <span class="qt-msg-badge">
-                <span v-if="h.kind === 'mention'" class="qt-badge qt-badge--red">@我</span>
-                <span v-else-if="h.kind === 'at_all'" class="qt-badge qt-badge--orange">@所有人</span>
-                <span v-else class="qt-badge qt-badge--green">我</span>
-              </span>
-              <span class="qt-msg-text">{{ h.text }}</span>
-            </div>
-            <a-empty v-if="!activeMessages.length" description="该群当日无消息" />
-          </div>
+          <a-select v-model:value="docsTypeFilter" size="small" style="width:120px" placeholder="全部类型" allow-clear>
+            <a-select-option value="">全部类型</a-select-option>
+            <a-select-option v-for="(label, type) in docsData.type_labels" :key="type" :value="type">{{ label }}</a-select-option>
+          </a-select>
         </div>
-      </div>
-    </a-spin>
+
+        <!-- 文档列表 (按天分组) -->
+        <a-spin :spinning="docsLoading">
+          <div class="qt-docs-list" v-if="docsGrouped.length">
+            <div v-for="group in docsGrouped" :key="group.date" class="qt-doc-day">
+              <div class="qt-doc-day-head">
+                <span class="qt-doc-day-date">{{ group.date }}</span>
+                <span class="qt-doc-day-count">{{ group.docs.length }} 个文档</span>
+              </div>
+              <div
+                v-for="(doc, i) in group.docs"
+                :key="i"
+                class="qt-doc-item"
+                @click="openDocUrl(doc.url)"
+              >
+                <div class="qt-doc-icon">
+                  <a-tag :color="docTypeColors[doc.type] || 'default'" size="small">{{ doc.type_label }}</a-tag>
+                </div>
+                <div class="qt-doc-content">
+                  <div class="qt-doc-title">{{ doc.title || shortUrl(doc.url) }}</div>
+                  <div class="qt-doc-meta">
+                    <span class="qt-doc-chat">{{ doc.chat_name }}</span>
+                    <span class="qt-doc-time">{{ doc.time_str }}</span>
+                    <span v-if="doc.is_me" class="qt-doc-me">我发的</span>
+                  </div>
+                </div>
+                <div class="qt-doc-arrow">↗</div>
+              </div>
+            </div>
+          </div>
+          <a-empty v-else-if="!docsLoading" description="暂无群文档" />
+        </a-spin>
+      </a-tab-pane>
+    </a-tabs>
 
     <!-- 上下文抽屉 -->
     <a-drawer v-model:open="ctx.visible" placement="right" :width="520" title="📎 消息上下文">
@@ -275,6 +392,7 @@ watch(date, () => { refreshAll() })
 .qt-page { max-width: 1080px; margin: 0 auto; padding: 0; }
 .qt-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .qt-header-spacer { flex: 1; }
+.qt-tabs :deep(.ant-tabs-nav) { margin-bottom: 14px; }
 
 /* 指标条 */
 .qt-metrics {
@@ -352,6 +470,48 @@ watch(date, () => { refreshAll() })
 .qt-badge--orange { background: #fa8c16; color: #fff; }
 .qt-badge--green { background: #52c41a; color: #fff; }
 .qt-msg-text { flex: 1; font-size: 13px; line-height: 1.55; color: #333; word-break: break-word; }
+
+/* ── 群文档 ── */
+.qt-docs-bar {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+  background: #fff; border: 1px solid #eef0f3; border-radius: 10px; padding: 10px 14px;
+}
+.qt-docs-stats { flex: 1; display: flex; flex-wrap: wrap; gap: 4px; }
+
+.qt-docs-list { display: flex; flex-direction: column; gap: 16px; }
+.qt-doc-day {
+  background: #fff; border: 1px solid #eef0f3; border-radius: 10px; overflow: hidden;
+}
+.qt-doc-day-head {
+  display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+  background: #f8f9fb; border-bottom: 1px solid #f0f0f0;
+  font-size: 13px; font-weight: 600; color: #555;
+}
+.qt-doc-day-count { font-size: 12px; font-weight: 400; color: #999; }
+
+.qt-doc-item {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+  cursor: pointer; border-bottom: 1px solid #f7f7f7; transition: background .12s;
+}
+.qt-doc-item:last-child { border-bottom: none; }
+.qt-doc-item:hover { background: #f5f7fa; }
+.qt-doc-icon { flex-shrink: 0; }
+.qt-doc-content { flex: 1; min-width: 0; }
+.qt-doc-title {
+  font-size: 14px; color: #1f2937; font-weight: 500;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.qt-doc-meta {
+  display: flex; align-items: center; gap: 8px; margin-top: 3px;
+  font-size: 12px; color: #999;
+}
+.qt-doc-chat { color: #666; }
+.qt-doc-time { font-variant-numeric: tabular-nums; }
+.qt-doc-me {
+  background: #f6ffed; color: #52c41a; font-size: 10px; padding: 0 6px;
+  border-radius: 4px; font-weight: 500;
+}
+.qt-doc-arrow { flex-shrink: 0; color: #ccc; font-size: 14px; }
 
 /* 上下文抽屉 */
 .ctx-target {

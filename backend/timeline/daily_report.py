@@ -456,66 +456,56 @@ def _strip_legacy_event_sections(text: str) -> str:
 def commit_standalone_daily(date: str, content_md: str) -> Path | None:
     """写入独立的日报文件到 0. 周期笔记/{year}/Daily/{MM}/{date}.md
 
-    如果已有 LifeOS 模板格式文件 (frontmatter 开头):
-      1. 清除旧版原始事件章节 (## 🔧 代码提交 等)
-      2. 替换/插入「## 🧠 AI 今日回顾」章节
-    如果无则基于 Templates/Daily.md 新建.
+    始终从 Templates/Daily.md 取出模板体，确保结构一致：
+      frontmatter (保留已有 tags) + 标题 + AI 回顾 + 模板章节
     """
+    import copy as _copy
     dt = datetime.strptime(date, "%Y-%m-%d")
     daily_dir = PERIODIC_DIR / str(dt.year) / "Daily" / f"{dt.month:02d}"
     daily_dir.mkdir(parents=True, exist_ok=True)
     file_path = daily_dir / f"{date}.md"
 
-    try:
-        existing = file_path.read_text(encoding="utf-8") if file_path.is_file() else ""
-    except OSError:
-        existing = ""
-
-    # 判断是否 LifeOS 模板格式 (frontmatter 开头)
-    if existing.strip().startswith("---"):
-        # 1. 清除旧事件章节
-        cleaned = _strip_legacy_event_sections(existing)
-
-        # 2. 替换或插入 ## 🧠 AI 今日回顾
-        if DAILY_AI_REVIEW_PATTERN.search(cleaned):
-            new_content = DAILY_AI_REVIEW_PATTERN.sub(
-                "## 🧠 AI 今日回顾\n\n" + content_md.strip(),
-                cleaned,
-            )
-        else:
-            # 无 AI 回顾章节 → 插入在 ## 习惯打卡 之前
-            insert_point = len(cleaned)
-            for pattern_str in [r"\n## 习惯打卡", r"\n## 精力分配", r"\n## 项目列表"]:
-                m = re.search(pattern_str, cleaned)
-                if m:
-                    insert_point = m.start()
-                    break
-            new_content = (
-                cleaned[:insert_point].rstrip()
-                + "\n\n## 🧠 AI 今日回顾\n\n"
-                + content_md.strip()
-                + "\n\n"
-                + cleaned[insert_point:].lstrip()
-            )
-
+    # 读已有文件 → 提取 frontmatter tags (保留 LifeOS 项目关联)
+    existing_tags = ["时间线"]
+    if file_path.is_file():
         try:
-            file_path.write_text(new_content, encoding="utf-8")
+            raw = file_path.read_text(encoding="utf-8")
         except OSError:
-            return None
-        return file_path
+            raw = ""
+        if raw.strip().startswith("---"):
+            m = re.search(r"---\n(.*?)---", raw, re.DOTALL)
+            if m:
+                fm_text = m.group(1)
+                tags = re.findall(r'^\s*tags:\s*\n((?:\s+-\s*.+\n?)+)', fm_text, re.MULTILINE)
+                if tags:
+                    tag_items = re.findall(r'^\s*-\s*(?:["\'])(.*?)(?:["\'])\s*$', tags[0], re.MULTILINE)
+                    if tag_items:
+                        existing_tags = tag_items
 
-    # 新建: 基于 Templates/Daily.md 模板骨架 (含 frontmatter)
-    skeleton = _get_daily_base_template(date)
-    # skeleton 可能已含 AI 回顾 (从无frontmatter的旧文件提取) → 先替换, 避免重复
-    if DAILY_AI_REVIEW_PATTERN.search(skeleton):
-        new_full = DAILY_AI_REVIEW_PATTERN.sub(
-            "## 🧠 AI 今日回顾\n\n" + content_md.strip(),
-            skeleton,
-        )
-    else:
-        new_full = skeleton.strip() + "\n\n## 🧠 AI 今日回顾\n\n" + content_md.strip() + "\n"
+    # 模板体
+    from .reporter import _daily_template_text
+    tpl_body = _daily_template_text().strip()
+
+    weekday_names = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+    title = f"# {date} {weekday_names[dt.weekday()]}"
+
+    tags_yaml = "\n".join(f'  - "{tag}"' if isinstance(tag, str) else f"  - {tag}" for tag in existing_tags)
+
+    new_content = (
+        "---\n"
+        f"date: {date}\n"
+        "type: daily\n"
+        "tags:\n"
+        f"{tags_yaml}\n"
+        "---\n\n"
+        f"{title}\n\n"
+        "## 🧠 AI 今日回顾\n\n"
+        f"{content_md.strip()}\n\n"
+        f"{tpl_body}\n"
+    )
+
     try:
-        file_path.write_text(new_full, encoding="utf-8")
+        file_path.write_text(new_content, encoding="utf-8")
         return file_path
     except OSError:
         return None

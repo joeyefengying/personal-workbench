@@ -106,6 +106,15 @@ export function verifyQtTask(taskId, status) {
   return request('/api/qingtui/task/verify', { method: 'POST', body: JSON.stringify({ task_id: taskId, status }) })
 }
 
+export function getQtDocs(days = 7, date = '', type = '', chatId = '') {
+  const q = new URLSearchParams()
+  if (days) q.set('days', days)
+  if (date) q.set('date', date)
+  if (type) q.set('type', type)
+  if (chatId) q.set('chat_id', chatId)
+  return request(`/api/qingtui/docs?${q}`)
+}
+
 // ---------- 统一时间线 ----------
 export function getTimelineEvents(p = {}) {
   const qs = new URLSearchParams()
