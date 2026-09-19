@@ -8,3 +8,14 @@ frontend/dist/
 .venv/
 __pycache__/
 *.pyc
+
+# SQLite databases (runtime data, 96MB+)
+backend/timeline/events.db
+backend/timeline/events.db-shm
+backend/timeline/events.db-wal
+
+# File snapshot cache (13MB)
+backend/timeline/file_snapshot.json
+
+# Performance reports (generated data)
+backend/performance/reports/
