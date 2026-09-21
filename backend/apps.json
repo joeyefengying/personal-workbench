@@ -149,6 +149,57 @@
           "type": "doc"
         }
       ]
+    },
+    {
+      "key": "agent",
+      "name": "Agent 自动化",
+      "icon": "robot",
+      "projects": [
+        {
+          "id": "evolve-system",
+          "name": "自我进化系统",
+          "path": "~/.hermes/scripts/evolve",
+          "desc": "Hermes 自主进化循环: 微信发「开始自我进化」启动→扫描项目/cron/skill→发现并修复问题→沉淀学习→推送报告",
+          "runDir": "~/.hermes/scripts/evolve",
+          "cmd": "",
+          "url": "",
+          "port": 0,
+          "type": "doc"
+        },
+        {
+          "id": "second-brain",
+          "name": "Second Brain 日结",
+          "path": "~/.hermes/scripts",
+          "desc": "每日23:50自动采集本机文件活动(mdfind)→AI回顾生成日记→扫描笔记/项目/cisdi-work/mine",
+          "runDir": "~/.hermes/scripts",
+          "cmd": "",
+          "url": "",
+          "port": 0,
+          "type": "doc"
+        },
+        {
+          "id": "lcdp-monitor",
+          "name": "LCDP 版本监控",
+          "path": "~/Downloads/project/cisdigital/low-code/scripts",
+          "desc": "低代码平台版本监控: 每日9点汇总+多应用拉取(9/12/18/22点)+平台健康巡检(8:30)",
+          "runDir": "~/Downloads/project/cisdigital/low-code/scripts",
+          "cmd": "",
+          "url": "",
+          "port": 0,
+          "type": "doc"
+        },
+        {
+          "id": "qingtui-capture",
+          "name": "轻推 API 抓取",
+          "path": "~/Downloads/project/mine/qingtui-api-capture",
+          "desc": "轻推Electron CDP网络抓包+app.asar逆向签名算法+API client(独立调用不需要轻推App)",
+          "runDir": "~/Downloads/project/mine/qingtui-api-capture",
+          "cmd": "",
+          "url": "",
+          "port": 0,
+          "type": "doc"
+        }
+      ]
     }
   ]
 }
