@@ -275,7 +275,7 @@ onMounted(() => {
           >
             <a-tag :color="doc.type === 'drive' ? 'cyan' : doc.type === 'article' ? 'blue' : doc.type === 'minmetals' ? 'magenta' : 'default'" size="small">{{ doc.type_label }}</a-tag>
             <span class="ov-doc-title">{{ doc.title || doc.url.slice(0, 40) }}</span>
-            <span class="ov-doc-chat">{{ doc.chat_name }}</span>
+            <span class="ov-doc-chat">{{ (doc.chat_names || []).join('、') }}</span>
           </div>
           <div v-if="todayDocs.length > 8" class="ov-doc-extra">
             还有 {{ todayDocs.length - 8 }} 个文档…

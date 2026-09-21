@@ -790,13 +790,76 @@ def qt_launch():
 # ── 轻推群文档 ──
 
 @app.get("/api/qingtui/docs")
-def qt_docs(days: int = 7, date: str = "", type: str = "", chat_id: str = ""):
-    """提取轻推消息中的在线文档/文件/链接, 按天聚合按群分类."""
+def qt_docs(days: int = 7, date: str = "", type: str = "", chat_id: str = "",
+            exclude_types: str = "article"):
+    """提取轻推消息中的在线文档/文件/链接, 按权重排序, URL去重聚合."""
     try:
         from qingtui_docs import extract_docs
     except ImportError:
         return {"ok": False, "error": "qingtui_docs 模块未就绪"}
-    return extract_docs(days=days, date=date, doc_type=type, chat_id=chat_id)
+    return extract_docs(days=days, date=date, doc_type=type, chat_id=chat_id,
+                        exclude_types=exclude_types)
+
+
+# ---------- 智能待办 ----------
+@app.get("/api/qingtui/todos")
+def qt_todos(status: str = "pending", limit: int = 50):
+    """获取待办列表 (pending/confirmed/ignored/all)."""
+    try:
+        from smart_todo import list_todos
+    except ImportError:
+        return {"ok": False, "error": "smart_todo 模块未就绪"}
+    return list_todos(status=status, limit=limit)
+
+
+@app.post("/api/qingtui/todos/analyze")
+def qt_todos_analyze(payload: dict):
+    """触发 AI 分析: 扫描消息 → 评分 → 聚类 → 存储."""
+    try:
+        from smart_todo import analyze_todos
+    except ImportError:
+        return {"ok": False, "error": "smart_todo 模块未就绪"}
+    days = (payload or {}).get("days", 3)
+    min_score = (payload or {}).get("min_score", 20)
+    return analyze_todos(days=days, min_score=min_score)
+
+
+@app.post("/api/qingtui/todos/operate")
+def qt_todos_operate(payload: dict):
+    """操作待办: confirm/ignore/reopen/delete."""
+    try:
+        from smart_todo import operate_todo
+    except ImportError:
+        return {"ok": False, "error": "smart_todo 模块未就绪"}
+    todo_id = (payload or {}).get("todo_id")
+    action = (payload or {}).get("action")
+    if not todo_id or not action:
+        return {"ok": False, "error": "缺少 todo_id 或 action"}
+    return operate_todo(int(todo_id), action)
+
+
+@app.post("/api/qingtui/todos/add")
+def qt_todos_add(payload: dict):
+    """手动添加待办."""
+    try:
+        from smart_todo import add_manual_todo
+    except ImportError:
+        return {"ok": False, "error": "smart_todo 模块未就绪"}
+    p = payload or {}
+    title = p.get("title", "").strip()
+    if not title:
+        return {"ok": False, "error": "标题不能为空"}
+    return add_manual_todo(title, p.get("chat_name", ""), p.get("body", ""))
+
+
+@app.get("/api/qingtui/todos/learning")
+def qt_todos_learning():
+    """获取学习模式 (关键词权重 + 群权重)."""
+    try:
+        from smart_todo import get_learning
+    except ImportError:
+        return {"ok": False, "error": "smart_todo 模块未就绪"}
+    return get_learning()
 
 
 @app.post("/api/analyze/run")

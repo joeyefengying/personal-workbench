@@ -19,3 +19,5 @@ backend/timeline/file_snapshot.json
 
 # Performance reports (generated data)
 backend/performance/reports/
+# Smart todo runtime database
+backend/qingtui_data/todo_db.sqlite3

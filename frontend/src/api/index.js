@@ -106,13 +106,41 @@ export function verifyQtTask(taskId, status) {
   return request('/api/qingtui/task/verify', { method: 'POST', body: JSON.stringify({ task_id: taskId, status }) })
 }
 
-export function getQtDocs(days = 7, date = '', type = '', chatId = '') {
+export function getQtDocs(days = 7, date = '', type = '', chatId = '', excludeTypes = '') {
   const q = new URLSearchParams()
   if (days) q.set('days', days)
   if (date) q.set('date', date)
   if (type) q.set('type', type)
   if (chatId) q.set('chat_id', chatId)
+  if (excludeTypes) q.set('exclude_types', excludeTypes)
   return request(`/api/qingtui/docs?${q}`)
+}
+
+// ---------- 轻推智能待办 ----------
+export function getQtTodos(status = 'pending', limit = 50) {
+  return request(`/api/qingtui/todos?status=${status}&limit=${limit}`)
+}
+
+export function analyzeQtTodos(days = 3, minScore = 20) {
+  return request('/api/qingtui/todos/analyze', {
+    method: 'POST', body: JSON.stringify({ days, min_score: minScore })
+  })
+}
+
+export function operateQtTodo(todoId, action) {
+  return request('/api/qingtui/todos/operate', {
+    method: 'POST', body: JSON.stringify({ todo_id: todoId, action })
+  })
+}
+
+export function addQtTodo(title, chatName = '', body = '') {
+  return request('/api/qingtui/todos/add', {
+    method: 'POST', body: JSON.stringify({ title, chat_name: chatName, body })
+  })
+}
+
+export function getQtTodoLearning() {
+  return request('/api/qingtui/todos/learning')
 }
 
 // ---------- 统一时间线 ----------
