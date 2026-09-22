@@ -26,8 +26,10 @@ const docsShowArticle = ref(false)
 const docsSorted = computed(() => docsData.value?.docs || [])
 const docsFiltered = computed(() => {
   if (!docsSorted.value.length) return []
-  if (docsShowArticle.value) return docsSorted.value
-  return docsSorted.value.filter(d => d.type !== 'article')
+  let list = docsSorted.value
+  if (!docsShowArticle.value) list = list.filter(d => d.type !== 'article')
+  if (docsTypeFilter.value) list = list.filter(d => d.type === docsTypeFilter.value)
+  return list
 })
 
 const docTypeColors = {
@@ -551,15 +553,14 @@ watch(todoFilter, () => { loadTodos() })
         <a-alert v-if="docsData?.total" type="info" show-icon banner style="margin-bottom:8px;font-size:12px" message="🚀 直开需要安装 Tampermonkey 脚本 (WPS编辑器需要Authorization头注入)" />
         <div class="qt-docs-bar" v-if="docsData">
           <div class="qt-docs-stats">
-            <span class="qt-doc-stat" v-for="(count, type) in docsData.by_type" :key="type">
-              <a-tag :color="docTypeColors[type] || 'default'" size="small">{{ docsData.type_labels[type] || type }} {{ count }}</a-tag>
+            <span class="qt-doc-stat" :class="{ 'qt-stat-active': docsTypeFilter === '' }" @click="docsTypeFilter = ''">
+              <a-tag :color="docsTypeFilter === '' ? 'blue' : 'default'" size="small">全部 {{ docsData.total }}</a-tag>
+            </span>
+            <span class="qt-doc-stat" :class="{ 'qt-stat-active': docsTypeFilter === type }" v-for="(count, type) in docsData.by_type" :key="type" @click="docsTypeFilter = docsTypeFilter === type ? '' : type">
+              <a-tag :color="docsTypeFilter === type ? docTypeColors[type] || 'blue' : 'default'" size="small">{{ docsData.type_labels[type] || type }} {{ count }}</a-tag>
             </span>
           </div>
           <a-checkbox v-model:checked="docsShowArticle" size="small">显示企业号文章</a-checkbox>
-          <a-select v-model:value="docsTypeFilter" size="small" style="width:120px" placeholder="全部类型" allow-clear>
-            <a-select-option value="">全部类型</a-select-option>
-            <a-select-option v-for="(label, type) in docsData.type_labels" :key="type" :value="type">{{ label }}</a-select-option>
-          </a-select>
         </div>
         <a-spin :spinning="docsLoading">
           <div class="qt-docs-list" v-if="docsFiltered.length">
@@ -701,7 +702,11 @@ watch(todoFilter, () => { loadTodos() })
 
 /* ── 群文档 ── */
 .qt-docs-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; background: #fff; border: 1px solid #eef0f3; border-radius: 10px; padding: 10px 14px; }
-.qt-docs-stats { flex: 1; display: flex; flex-wrap: wrap; gap: 4px; }
+.qt-docs-stats { flex: 1; display: flex; flex-wrap: wrap; gap: 6px; }
+.qt-doc-stat { cursor: pointer; user-select: none; }
+.qt-doc-stat .ant-tag { cursor: pointer; transition: all .12s; margin: 0; }
+.qt-doc-stat .ant-tag:hover { transform: scale(1.05); }
+.qt-stat-active .ant-tag { font-weight: 600; box-shadow: 0 0 0 2px rgba(94,106,210,.15); }
 .qt-docs-list { display: flex; flex-direction: column; gap: 4px; }
 .qt-doc-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; cursor: pointer; border: 1px solid #eef0f3; border-radius: 8px; background: #fff; transition: background .12s; }
 .qt-doc-item:hover { background: #f5f7fa; }
