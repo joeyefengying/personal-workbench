@@ -550,7 +550,14 @@ watch(todoFilter, () => { loadTodos() })
 
       <!-- ── 群文档 ── -->
       <a-tab-pane key="docs" :tab="`📄 群文档${docsData?.total ? ' (' + docsData.total + ')' : ''}`">
-        <a-alert v-if="docsData?.total" type="info" show-icon banner style="margin-bottom:8px;font-size:12px" message="🚀 直开需要安装 Tampermonkey 脚本 (WPS编辑器需要Authorization头注入)" />
+        <a-alert v-if="docsData?.total" type="info" show-icon banner style="margin-bottom:8px;font-size:12px" message="🚀 直开需要安装 Tampermonkey 脚本 (WPS编辑器iframe需要Authorization头注入)">
+          <template #action>
+            <a-space size="small">
+              <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" style="font-size:12px">装 Tampermonkey</a>
+              <a :href="`/api/qingtui/wps-auth-script/download`" download="qingtui-wps-auth.user.js" style="font-size:12px">下载脚本</a>
+            </a-space>
+          </template>
+        </a-alert>
         <div class="qt-docs-bar" v-if="docsData">
           <div class="qt-docs-stats">
             <span class="qt-doc-stat" :class="{ 'qt-stat-active': docsTypeFilter === '' }" @click="docsTypeFilter = ''">

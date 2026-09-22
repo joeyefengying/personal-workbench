@@ -857,6 +857,24 @@ def qt_wps_auth_script():
         return {"ok": False, "error": str(e)}
 
 
+@app.get("/api/qingtui/wps-auth-script/download")
+def qt_wps_auth_script_download():
+    """下载 Tampermonkey 脚本文件。"""
+    import os
+    from fastapi.responses import Response
+    script_path = os.path.join(os.path.dirname(__file__), "qingtui-wps-auth.user.js")
+    try:
+        with open(script_path, "r") as f:
+            content = f.read()
+        return Response(
+            content=content,
+            media_type="application/javascript",
+            headers={"Content-Disposition": "attachment; filename=qingtui-wps-auth.user.js"},
+        )
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
 # ---------- 智能待办 ----------
 @app.get("/api/qingtui/todos")
 def qt_todos(status: str = "pending", limit: int = 50):

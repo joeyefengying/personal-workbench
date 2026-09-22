@@ -1,36 +1,71 @@
 // ==UserScript==
 // @name         轻推WPS文档Chrome直开
 // @namespace    https://wps.qingtui.com
-// @version      1.0
+// @version      1.2
 // @description  拦截WPS编辑器iframe的API请求，注入Authorization头，实现Chrome直接打开轻推文档
 // @match        https://wps.qingtui.com/*
 // @run-at       document-start
+// @all-frames   true
 // @grant        none
 // ==/UserScript==
 
 (function() {
   'use strict';
 
+  // 从 URL 参数或路径提取 fileId
+  function getFileId() {
+    const params = new URLSearchParams(window.location.search);
+    let fileId = params.get('fileId');
+    if (fileId) return fileId;
+    // iframe URL: /weboffice/office/s/{fileId}
+    const pathMatch = window.location.pathname.match(/\/s\/(\d{10,20})/);
+    if (pathMatch) return pathMatch[1];
+    // /drive/preview/{fileId}
+    const pathMatch2 = window.location.pathname.match(/\/drive\/preview\/(\d{10,20})/);
+    if (pathMatch2) return pathMatch2[1];
+    return null;
+  }
+
   // 从 localStorage 或 URL 参数获取 token
   function getAccessToken() {
-    // 1. 尝试从 URL 参数获取
+    // 1. URL 参数 webofficeAccessToken (父页面)
     const params = new URLSearchParams(window.location.search);
     let token = params.get('webofficeAccessToken');
     if (token) return token;
 
-    // 2. 尝试从 localStorage 获取 (按 fileId)
-    const fileId = params.get('fileId');
+    // 2. 按 fileId 从 localStorage 读
+    const fileId = getFileId();
     if (fileId) {
       token = localStorage.getItem(fileId + '-wbo_accessToken');
       if (token) return token;
     }
 
-    // 3. 遍历 localStorage 找任意有效的 wbo_accessToken
+    // 3. 遍历 localStorage 找任意 wbo_accessToken
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key && key.endsWith('-wbo_accessToken')) {
         token = localStorage.getItem(key);
         if (token) return token;
+      }
+    }
+    return null;
+  }
+
+  // 同步获取 refreshToken
+  function getRefreshToken() {
+    const params = new URLSearchParams(window.location.search);
+    let rt = params.get('webofficeRefreshToken');
+    if (rt) return rt;
+    const fileId = getFileId();
+    if (fileId) {
+      rt = localStorage.getItem(fileId + '-wbo_refreshToken');
+      if (rt) return rt;
+    }
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.endsWith('-wbo_refreshToken')) {
+        rt = localStorage.getItem(key);
+        if (rt) return rt;
       }
     }
     return null;
@@ -48,56 +83,64 @@
     }
   }
 
-  // 刷新 token
-  async function refreshToken(oldToken, refreshTokenValue) {
+  // 异步刷新 token (不阻塞 XHR 拦截)
+  let refreshing = false;
+  let cachedToken = null;
+  let cachedTokenTime = 0;
+
+  async function refreshTokenIfNeeded() {
+    if (refreshing) return;
+    refreshing = true;
     try {
+      let token = getAccessToken();
+      if (!token || !isTokenExpired(token)) {
+        refreshing = false;
+        return;
+      }
+      const rt = getRefreshToken();
+      if (!rt) {
+        refreshing = false;
+        return;
+      }
       const resp = await fetch(
-        'https://wps.qingtui.com/wps/api/drive/token/refresh?refreshToken=' + refreshTokenValue,
-        {
-          headers: { 'Authorization': 'Bearer ' + oldToken },
-        }
+        'https://wps.qingtui.com/wps/api/drive/token/refresh?refreshToken=' + rt,
+        { headers: { 'Authorization': 'Bearer ' + token } }
       );
       const text = await resp.text();
       const atMatch = text.match(/<accessToken>([^<]+)<\/accessToken>/);
       const rtMatch = text.match(/<refreshToken>([^<]+)<\/refreshToken>/);
       if (atMatch && rtMatch) {
-        // 更新 localStorage
-        const params = new URLSearchParams(window.location.search);
-        const fileId = params.get('fileId');
+        const fileId = getFileId();
         if (fileId) {
           localStorage.setItem(fileId + '-wbo_accessToken', atMatch[1]);
           localStorage.setItem(fileId + '-wbo_refreshToken', rtMatch[1]);
         }
-        return atMatch[1];
+        cachedToken = atMatch[1];
+        cachedTokenTime = Date.now();
+        console.log('[QT-Auth] Token refreshed');
       }
     } catch (e) {
       console.warn('[QT-Auth] Token refresh failed:', e);
+    } finally {
+      refreshing = false;
+    }
+  }
+
+  // 获取有效 token (同步, 用于 XHR 拦截)
+  function getValidTokenSync() {
+    // 用缓存的刷新结果 (5分钟内)
+    if (cachedToken && Date.now() - cachedTokenTime < 5 * 60 * 1000) {
+      return cachedToken;
+    }
+    const token = getAccessToken();
+    if (token) {
+      // 如果过期, 异步刷新 (不阻塞当前请求, 下次请求会用新 token)
+      if (isTokenExpired(token)) {
+        refreshTokenIfNeeded();
+      }
+      return token; // 返回可能过期的 token, 总比没有好
     }
     return null;
-  }
-
-  // 获取有效 token (必要时刷新)
-  async function getValidToken() {
-    let token = getAccessToken();
-    if (!token) return null;
-    if (!isTokenExpired(token)) return token;
-
-    // Token 过期，尝试刷新
-    const params = new URLSearchParams(window.location.search);
-    const fileId = params.get('fileId');
-    if (fileId) {
-      const rt = localStorage.getItem(fileId + '-wbo_refreshToken');
-      if (rt) {
-        const newToken = await refreshToken(token, rt);
-        if (newToken) return newToken;
-      }
-    }
-    return token; // 返回过期 token (可能仍然部分可用)
-  }
-
-  // 同步获取 token (用于拦截, 不等待刷新)
-  function getTokenSync() {
-    return getAccessToken();
   }
 
   // === 拦截 XMLHttpRequest ===
@@ -120,7 +163,7 @@
     const url = this.__qt_url || '';
     // 对 WPS API 调用注入 Authorization
     if (url.indexOf('/api/') >= 0 || url.indexOf('/v3/') >= 0) {
-      const token = getTokenSync();
+      const token = getValidTokenSync();
       if (token && !this.__qt_headers['Authorization']) {
         origXHRSetHeader.call(this, 'Authorization', 'Bearer ' + token);
       }
@@ -134,7 +177,7 @@
     init = init || {};
     const url = typeof input === 'string' ? input : (input && input.url) || '';
     if (url.indexOf('/api/') >= 0 || url.indexOf('/v3/') >= 0) {
-      const token = getTokenSync();
+      const token = getValidTokenSync();
       if (token) {
         init.headers = init.headers || {};
         if (init.headers instanceof Headers) {
@@ -151,5 +194,10 @@
     return origFetch.call(this, input, init);
   };
 
-  console.log('[QT-Auth] WPS Authorization interceptor installed');
+  // 标记脚本已运行 (供前端检测)
+  try {
+    sessionStorage.setItem('qt_wps_auth_active', '1');
+  } catch(e) {}
+
+  console.log('[QT-Auth] WPS Authorization interceptor installed in', window.location.pathname);
 })();
