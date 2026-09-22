@@ -1,0 +1,8 @@
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAAXNSR0IArs4c6QAAAPNJREFUKFONUD9LwmEYvDPJobI/XyWJkAbD6AMIGtRiOrsE9R3sK5TWmC6taWPQ0BA4CEFjEISIBA1NnZc/tRTTXjh43ve5e957jvjPyWuNX7gSUeBM/r5WGcGteevG3XRBVitkjxwzXvxD4m9BWstcQB3EhsmvEhK45HMgOFQcF7wf2jtQlPOo+b5pvPXJT999mlz0t0cCMijzGjktUbhxL260FMY2ztgcDAsEwIkfPu1xz+Rj11tG2/ekhzR+B9OzFMrq3M38sEF0bGPHNh/HUwx2SGuOi6i6ShnvCmEXJT5MivwnpYIi/EDFu5yOBDCm6gL9OUc5cFiISAAAAABJRU5ErkJggg=="
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/components/Share/img/tick.png
+// module id = 673
+// module chunks = 0

@@ -116,6 +116,17 @@ export function getQtDocs(days = 7, date = '', type = '', chatId = '', excludeTy
   return request(`/api/qingtui/docs?${q}`)
 }
 
+// ---------- 轻推文档直开 ----------
+export function getCachedDocs() {
+  return request('/api/qingtui/cached-docs')
+}
+
+export function openDocInChrome(fileId) {
+  return request('/api/qingtui/open-doc', {
+    method: 'POST', body: JSON.stringify({ file_id: fileId })
+  })
+}
+
 // ---------- 轻推智能待办 ----------
 export function getQtTodos(status = 'pending', limit = 50) {
   return request(`/api/qingtui/todos?status=${status}&limit=${limit}`)

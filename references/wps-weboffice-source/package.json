@@ -1,0 +1,16 @@
+{
+  "name": "wps-weboffice-source",
+  "version": "1.0.0",
+  "description": "轻推 app 内嵌的 WPS 在线编辑器（`wps.qingtui.com/weboffice/office/s/<fileId>`）在构建时未移除 source map， 通过 `main.6d44a6dc.js.map` 可直接还原完整 TypeScript 源码。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "lodash": "^4.18.1"
+  }
+}

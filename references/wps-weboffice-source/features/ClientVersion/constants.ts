@@ -1,0 +1,22 @@
+/**
+ * 请求获取版本
+ */
+export const FETCH_CLIENT_VERSION_REQUEST = 'FETCH_CLIENT_VERSION_REQUEST';
+export type FETCH_CLIENT_VERSION_REQUEST = typeof FETCH_CLIENT_VERSION_REQUEST;
+
+/**
+ * 获取版本失败
+ */
+export const FETCH_CLIENT_VERSION_FAIL = 'FETCH_CLIENT_VERSION_FAIL';
+export type FETCH_CLIENT_VERSION_FAIL = typeof FETCH_CLIENT_VERSION_FAIL;
+
+/**
+ * 获取版本成功
+ */
+export const FETCH_CLIENT_VERSION_SUCCESS = 'FETCH_CLIENT_VERSION_SUCCESS';
+export type FETCH_CLIENT_VERSION_SUCCESS = typeof FETCH_CLIENT_VERSION_SUCCESS;
+
+
+
+// WEBPACK FOOTER //
+// ./src/features/ClientVersion/constants.ts

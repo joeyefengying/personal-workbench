@@ -801,6 +801,31 @@ def qt_docs(days: int = 7, date: str = "", type: str = "", chat_id: str = "",
                         exclude_types=exclude_types)
 
 
+# ── 轻推文档直开 (从 localStorage LevelDB 提取 webofficeUrl) ──
+
+@app.get("/api/qingtui/cached-docs")
+def qt_cached_docs():
+    """列出轻推 app 缓存的所有文档 webofficeUrl (可在 Chrome 直开)."""
+    try:
+        from qt_doc_opener import list_cached_docs
+    except ImportError:
+        return {"ok": False, "error": "qt_doc_opener 模块未就绪"}
+    return list_cached_docs()
+
+
+@app.post("/api/qingtui/open-doc")
+def qt_open_doc(payload: dict):
+    """用 Chrome 打开指定文档 (从 localStorage 缓存提取 URL)."""
+    try:
+        from qt_doc_opener import open_doc_in_chrome
+    except ImportError:
+        return {"ok": False, "error": "qt_doc_opener 模块未就绪"}
+    file_id = (payload or {}).get("file_id", "")
+    if not file_id:
+        return {"ok": False, "error": "缺少 file_id"}
+    return open_doc_in_chrome(file_id)
+
+
 # ---------- 智能待办 ----------
 @app.get("/api/qingtui/todos")
 def qt_todos(status: str = "pending", limit: int = 50):

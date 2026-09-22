@@ -3,7 +3,8 @@ import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { message } from 'ant-design-vue'
 import {
   getQtStatus, getQtDailySummary, getQtTasks, getQtContext, getQtContextPage,
-  getQtDocs, getQtTodos, analyzeQtTodos, operateQtTodo, addQtTodo, getQtTodoLearning
+  getQtDocs, getQtTodos, analyzeQtTodos, operateQtTodo, addQtTodo, getQtTodoLearning,
+  getCachedDocs, openDocInChrome,
 } from '@/api'
 
 const status = ref({ connected: false, state: 'unknown', hint: '' })
@@ -33,6 +34,33 @@ const docTypeColors = {
   article: 'blue', drive: 'cyan', excel: 'green', pdf: 'red',
   word: 'geekblue', markdown: 'purple', tencent_doc: 'orange',
   ones: 'volcano', oa: 'gold', minmetals: 'magenta', link: 'default', file: 'default',
+}
+
+// ── Chrome 直开文档 (从轻推 localStorage 缓存) ──
+const cachedDocs = ref([])
+const cachedDocsLoading = ref(false)
+const openingDoc = ref(false)
+
+async function loadCachedDocs() {
+  cachedDocsLoading.value = true
+  try {
+    const d = await getCachedDocs()
+    cachedDocs.value = d.ok ? (d.docs || []) : []
+  } catch (e) { cachedDocs.value = [] }
+  finally { cachedDocsLoading.value = false }
+}
+
+async function openCachedDoc(fileId) {
+  openingDoc.value = true
+  try {
+    const d = await openDocInChrome(fileId)
+    if (d.ok) {
+      message.success(`已在 Chrome 打开: ${d.name}`)
+    } else {
+      message.error(d.error || '打开失败')
+    }
+  } catch (e) { message.error('打开失败') }
+  finally { openingDoc.value = false }
 }
 
 // ── 智能待办 ──
@@ -293,6 +321,7 @@ onMounted(async () => {
   loadDocs()
   loadTodos()
   loadLearning()
+  loadCachedDocs()
 })
 
 watch(date, () => { refreshAll() })
@@ -500,6 +529,32 @@ watch(todoFilter, () => { loadTodos() })
           <a-empty v-else-if="!docsLoading" description="暂无群文档" />
         </a-spin>
       </a-tab-pane>
+
+      <!-- ── Chrome 直开 ── -->
+      <a-tab-pane key="cached" :tab="`🔗 Chrome直开${cachedDocs.length ? ' (' + cachedDocs.length + ')' : ''}`">
+        <div class="qt-cached-bar">
+          <span class="qt-cached-hint">💡 从轻推 app 缓存提取 webofficeUrl，直接在 Chrome 打开，无需扫码</span>
+          <a-button size="small" @click="loadCachedDocs" :loading="cachedDocsLoading">刷新</a-button>
+        </div>
+        <a-spin :spinning="cachedDocsLoading">
+          <div class="qt-cached-list" v-if="cachedDocs.length">
+            <div v-for="doc in cachedDocs" :key="doc.file_id" class="qt-cached-item" @click="openCachedDoc(doc.file_id)">
+              <div class="qt-cached-icon">
+                <a-tag :color="doc.type === 'xlsx' ? 'green' : 'blue'" size="small">{{ doc.type || 'doc' }}</a-tag>
+              </div>
+              <div class="qt-cached-content">
+                <div class="qt-cached-title">{{ doc.name || doc.file_id }}</div>
+                <div class="qt-cached-meta">
+                  <span v-if="doc.permission" class="qt-cached-perm">{{ doc.permission === 'write' ? '✏️ 可编辑' : '👀 只读' }}</span>
+                  <span class="qt-cached-id">{{ doc.file_id }}</span>
+                </div>
+              </div>
+              <div class="qt-cached-arrow">🚀</div>
+            </div>
+          </div>
+          <a-empty v-else-if="!cachedDocsLoading" description="暂无缓存文档，请先在轻推 app 中打开文档" />
+        </a-spin>
+      </a-tab-pane>
     </a-tabs>
 
     <!-- 上下文抽屉 -->
@@ -634,6 +689,20 @@ watch(todoFilter, () => { loadTodos() })
 .qt-doc-time { font-variant-numeric: tabular-nums; }
 .qt-doc-me { background: #f6ffed; color: #52c41a; font-size: 10px; padding: 0 6px; border-radius: 4px; font-weight: 500; }
 .qt-doc-arrow { flex-shrink: 0; color: #ccc; font-size: 14px; }
+
+/* ── Chrome 直开 ── */
+.qt-cached-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; background: #fff; border: 1px solid #eef0f3; border-radius: 10px; padding: 10px 14px; }
+.qt-cached-hint { flex: 1; font-size: 12px; color: #888; }
+.qt-cached-list { display: flex; flex-direction: column; gap: 4px; }
+.qt-cached-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; cursor: pointer; border: 1px solid #eef0f3; border-radius: 8px; background: #fff; transition: background .12s; }
+.qt-cached-item:hover { background: #f0f5ff; border-color: #5e6ad2; }
+.qt-cached-icon { flex-shrink: 0; }
+.qt-cached-content { flex: 1; min-width: 0; }
+.qt-cached-title { font-size: 14px; color: #1f2937; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qt-cached-meta { display: flex; align-items: center; gap: 8px; margin-top: 3px; font-size: 12px; color: #999; }
+.qt-cached-perm { color: #52c41a; }
+.qt-cached-id { font-variant-numeric: tabular-nums; color: #ccc; font-size: 11px; }
+.qt-cached-arrow { flex-shrink: 0; font-size: 16px; }
 
 /* 上下文抽屉 */
 .ctx-target { background: #f0f7ff; border: 1px solid #bae0ff; border-radius: 8px; padding: 10px 12px; }
