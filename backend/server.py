@@ -828,16 +828,33 @@ def qt_open_doc(payload: dict):
 
 @app.post("/api/qingtui/open-or-generate")
 def qt_open_or_generate(payload: dict):
-    """优先用缓存 URL 直开，无缓存则用 API 生成新 URL 再打开。"""
+    """打开文档 (刷新 token + 构造 WPS 页面 URL + Chrome 打开)。
+
+    需要配合 Tampermonkey 脚本使用 (拦截 iframe XHR 注入 Authorization 头)。
+    脚本: backend/qingtui-wps-auth.user.js
+    """
     try:
-        from qt_doc_opener import open_or_generate
+        from qt_doc_opener import open_doc_with_token
     except ImportError:
         return {"ok": False, "error": "qt_doc_opener 模块未就绪"}
     p = payload or {}
     file_id = p.get("file_id", "")
     if not file_id:
         return {"ok": False, "error": "缺少 file_id"}
-    return open_or_generate(file_id, p.get("file_name", ""), p.get("file_type", ""))
+    return open_doc_with_token(file_id)
+
+
+@app.get("/api/qingtui/wps-auth-script")
+def qt_wps_auth_script():
+    """返回 Tampermonkey 脚本内容 (供前端安装提示)。"""
+    import os
+    script_path = os.path.join(os.path.dirname(__file__), "qingtui-wps-auth.user.js")
+    try:
+        with open(script_path, "r") as f:
+            content = f.read()
+        return {"ok": True, "script": content}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
 
 
 # ---------- 智能待办 ----------

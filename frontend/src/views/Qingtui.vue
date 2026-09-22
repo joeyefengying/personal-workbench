@@ -548,6 +548,7 @@ watch(todoFilter, () => { loadTodos() })
 
       <!-- ── 群文档 ── -->
       <a-tab-pane key="docs" :tab="`📄 群文档${docsData?.total ? ' (' + docsData.total + ')' : ''}`">
+        <a-alert v-if="docsData?.total" type="info" show-icon banner style="margin-bottom:8px;font-size:12px" message="🚀 直开需要安装 Tampermonkey 脚本 (WPS编辑器需要Authorization头注入)" />
         <div class="qt-docs-bar" v-if="docsData">
           <div class="qt-docs-stats">
             <span class="qt-doc-stat" v-for="(count, type) in docsData.by_type" :key="type">
