@@ -127,6 +127,12 @@ export function openDocInChrome(fileId) {
   })
 }
 
+export function openOrGenerateDoc(fileId, fileName = '', fileType = '') {
+  return request('/api/qingtui/open-or-generate', {
+    method: 'POST', body: JSON.stringify({ file_id: fileId, file_name: fileName, file_type: fileType })
+  })
+}
+
 // ---------- 轻推智能待办 ----------
 export function getQtTodos(status = 'pending', limit = 50) {
   return request(`/api/qingtui/todos?status=${status}&limit=${limit}`)

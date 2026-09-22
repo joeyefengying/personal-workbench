@@ -826,6 +826,20 @@ def qt_open_doc(payload: dict):
     return open_doc_in_chrome(file_id)
 
 
+@app.post("/api/qingtui/open-or-generate")
+def qt_open_or_generate(payload: dict):
+    """优先用缓存 URL 直开，无缓存则用 API 生成新 URL 再打开。"""
+    try:
+        from qt_doc_opener import open_or_generate
+    except ImportError:
+        return {"ok": False, "error": "qt_doc_opener 模块未就绪"}
+    p = payload or {}
+    file_id = p.get("file_id", "")
+    if not file_id:
+        return {"ok": False, "error": "缺少 file_id"}
+    return open_or_generate(file_id, p.get("file_name", ""), p.get("file_type", ""))
+
+
 # ---------- 智能待办 ----------
 @app.get("/api/qingtui/todos")
 def qt_todos(status: str = "pending", limit: int = 50):

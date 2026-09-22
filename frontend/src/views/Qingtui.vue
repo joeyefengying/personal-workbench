@@ -4,7 +4,7 @@ import { message } from 'ant-design-vue'
 import {
   getQtStatus, getQtDailySummary, getQtTasks, getQtContext, getQtContextPage,
   getQtDocs, getQtTodos, analyzeQtTodos, operateQtTodo, addQtTodo, getQtTodoLearning,
-  getCachedDocs, openDocInChrome,
+  getCachedDocs, openDocInChrome, openOrGenerateDoc,
 } from '@/api'
 
 const status = ref({ connected: false, state: 'unknown', hint: '' })
@@ -51,16 +51,22 @@ async function loadCachedDocs() {
   } catch (e) { cachedDocMap.value = {} }
 }
 
-// 从群文档 URL 提取 fileId
+// 从群文档 URL 或 title 提取 fileId
 function docFileId(url) {
   if (!url) return ''
-  const m = url.match(/\/(\d{10,20})(?:\?|$|\/)/)
+  // 匹配 /xxx 或 fileId=xxx 格式的 10-20 位数字
+  const m = url.match(/(?:\/|fileId=)(\d{10,20})(?=\D|$)/)
   return m ? m[1] : ''
 }
 
-// 判断群文档是否有 Chrome 直开缓存
+// 判断群文档是否可直开 (有 fileId 即可: 有缓存用缓存, 无缓存用 API 生成)
+function canDirectOpen(doc) {
+  return !!(docFileId(doc.url) || docFileId(doc.title))
+}
+
+// 判断群文档是否有缓存 (有缓存的直开更可靠)
 function cachedFileId(doc) {
-  const fid = docFileId(doc.url)
+  const fid = docFileId(doc.url) || docFileId(doc.title)
   return fid && cachedDocMap.value[fid] ? fid : ''
 }
 
@@ -75,6 +81,39 @@ async function openCachedDoc(fileId) {
     }
   } catch (e) { message.error('打开失败') }
   finally { openingDoc.value = false }
+}
+
+// 对无缓存的文档, 用 API 生成新 URL 再打开
+async function openGeneratedDoc(doc) {
+  const fid = docFileId(doc.url) || docFileId(doc.title)
+  if (!fid) return
+  openingDoc.value = true
+  try {
+    // 从 URL 或标题推断文件名和类型
+    let fileName = doc.title || fid
+    let fileType = 'xlsx'
+    if (fileName.endsWith('.docx') || fileName.endsWith('.doc')) fileType = 'docx'
+    else if (fileName.endsWith('.pptx') || fileName.endsWith('.ppt')) fileType = 'pptx'
+    else if (fileName.endsWith('.xls')) fileType = 'xls'
+
+    const d = await openOrGenerateDoc(fid, fileName, fileType)
+    if (d.ok) {
+      message.success(`已在 Chrome 打开: ${fileName}`)
+    } else {
+      message.error(d.error || '生成 URL 失败')
+    }
+  } catch (e) { message.error('打开失败') }
+  finally { openingDoc.value = false }
+}
+
+// 统一入口: 有缓存用缓存, 无缓存用 API 生成
+async function openDocDirect(doc) {
+  const fid = cachedFileId(doc)
+  if (fid) {
+    await openCachedDoc(fid)
+  } else {
+    await openGeneratedDoc(doc)
+  }
 }
 
 // ── 智能待办 ──
@@ -535,7 +574,7 @@ watch(todoFilter, () => { loadTodos() })
                   <span class="qt-doc-chat" :title="doc.chat_names.join(', ')">{{ doc.chat_names.length > 2 ? doc.chat_names.slice(0, 2).join('、') + '等' : doc.chat_names.join('、') }}</span>
                   <span class="qt-doc-time">{{ doc.time_str }}</span>
                   <span v-if="doc.has_me" class="qt-doc-me">我发过</span>
-                  <span v-if="cachedFileId(doc)" class="qt-doc-chrome" @click.stop="openCachedDoc(cachedFileId(doc))" :title="`Chrome 直开 (缓存${cachedDocMap[cachedFileId(doc)]?.permission === 'write' ? '·可编辑' : '·只读'})`">🚀 直开</span>
+                  <span v-if="canDirectOpen(doc)" class="qt-doc-chrome" :class="{ 'qt-doc-cached': cachedFileId(doc) }" @click.stop="openDocDirect(doc)" :title="cachedFileId(doc) ? `Chrome 直开 (缓存${cachedDocMap[cachedFileId(doc)]?.permission === 'write' ? '·可编辑' : '·只读'})` : 'Chrome 直开 (API 生成·可能报24002)'">🚀 直开</span>
                 </div>
               </div>
               <div class="qt-doc-arrow">↗</div>
@@ -678,8 +717,10 @@ watch(todoFilter, () => { loadTodos() })
 .qt-doc-time { font-variant-numeric: tabular-nums; }
 .qt-doc-me { background: #f6ffed; color: #52c41a; font-size: 10px; padding: 0 6px; border-radius: 4px; font-weight: 500; }
 .qt-doc-arrow { flex-shrink: 0; color: #ccc; font-size: 14px; }
-.qt-doc-chrome { cursor: pointer; background: #f0f5ff; color: #5e6ad2; font-size: 11px; padding: 1px 8px; border-radius: 4px; font-weight: 500; transition: all .12s; user-select: none; }
-.qt-doc-chrome:hover { background: #5e6ad2; color: #fff; }
+.qt-doc-chrome { cursor: pointer; background: #f0f0f0; color: #888; font-size: 11px; padding: 1px 8px; border-radius: 4px; font-weight: 500; transition: all .12s; user-select: none; }
+.qt-doc-chrome:hover { background: #999; color: #fff; }
+.qt-doc-chrome.qt-doc-cached { background: #f0f5ff; color: #5e6ad2; }
+.qt-doc-chrome.qt-doc-cached:hover { background: #5e6ad2; color: #fff; }
 
 /* 上下文抽屉 */
 .ctx-target { background: #f0f7ff; border: 1px solid #bae0ff; border-radius: 8px; padding: 10px 12px; }
