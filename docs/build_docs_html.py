@@ -256,7 +256,7 @@ a{color:#1d4ed8;text-decoration:none}
 [data-theme="dark"] a{color:#7dd3fc}
 a:hover{text-decoration:underline}
 .layout{display:flex;min-height:100vh}
-aside{width:272px;flex:0 0 272px;background:var(--nav-bg);border-right:1px solid var(--line);
+aside{width:300px;flex:0 0 300px;background:var(--nav-bg);border-right:1px solid var(--line);
   position:sticky;top:0;height:100vh;overflow:auto;padding:16px 12px 24px}
 aside .brand{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-weight:700;font-size:16px}
 aside .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--brand)}
@@ -265,12 +265,33 @@ aside .sub{color:var(--muted);font-size:11.5px;margin:0 0 10px;line-height:1.5}
 .nav a{display:block;padding:4px 10px;border-radius:7px;font-size:12.8px;color:var(--text);line-height:1.3}
 .nav a:hover{background:var(--brand-soft);text-decoration:none}
 .nav a.active{background:var(--brand);color:#fff}
+.nav .nav-cat{margin:14px 0 4px;padding:0 10px;color:var(--muted);font-size:10.5px;
+  letter-spacing:.12em;font-weight:700;text-transform:uppercase}
+.nav .nav-group{margin:1px 0}
+.nav .nav-doc{font-weight:600;display:flex;gap:6px;align-items:baseline}
+.nav .nav-doc .chip{flex:none;font-size:10px;color:var(--muted);background:var(--code-bg);
+  border-radius:4px;padding:0 5px;line-height:1.5;font-weight:400}
+.nav .nav-doc .txt{flex:1;min-width:0}
+.nav-group.open .nav-doc{background:var(--brand);color:#fff}
+.nav-group.open .nav-doc .chip{background:rgba(255,255,255,.22);color:#fff}
+.nav a.nav-sec,.nav a.nav-sub3{display:none;color:var(--muted);white-space:normal;
+  overflow-wrap:anywhere}
+.nav a.nav-sec{padding:4px 10px 4px 16px;font-size:12.4px;line-height:1.42;
+  border-left:2px solid var(--line);margin-left:10px;border-radius:0 6px 6px 0}
+.nav a.nav-sub3{padding:2px 10px 2px 22px;font-size:11.6px;line-height:1.38;
+  border-left:1px solid var(--line);margin-left:20px;border-radius:0 6px 6px 0;opacity:.92}
+.nav a.nav-sub3::before{content:"";display:inline-block;width:3.5px;height:3.5px;border-radius:50%;background:currentColor;opacity:.5;margin-right:7px;vertical-align:2.5px}
+.nav-group.open a.nav-sec{display:block}
+.nav-group.open a.nav-sub3{display:block}
+.nav a.nav-sec:hover,.nav a.nav-sub3:hover{color:var(--brand);background:var(--brand-soft);text-decoration:none}
+.nav a.nav-sec.active{color:var(--brand);font-weight:700;background:var(--brand-soft);border-left-color:var(--brand)}
+.nav a.nav-sub3.active{color:var(--brand);font-weight:700;border-left-color:var(--brand)}
 main{flex:1;min-width:0;padding:28px 40px 80px;max-width:1080px;margin:0 auto}
 .doc{display:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:30px 38px;box-shadow:var(--shadow)}
 .doc.active{display:block}
 h1{font-size:27px;margin:0 0 18px;padding-bottom:12px;border-bottom:2px solid var(--brand-soft)}
-h2{font-size:20px;margin:34px 0 12px;padding-left:10px;border-left:4px solid var(--brand)}
-h3{font-size:16.5px;margin:24px 0 8px;color:var(--text)}
+h2{font-size:20px;margin:34px 0 12px;padding-left:10px;border-left:4px solid var(--brand);scroll-margin-top:16px}
+h3{font-size:16.5px;margin:24px 0 8px;color:var(--text);scroll-margin-top:16px}
 h4{font-size:15px;margin:18px 0 6px;color:var(--muted)}
 p{margin:10px 0}
 ul,ol{margin:10px 0;padding-left:24px}
@@ -337,17 +358,30 @@ abbr.term{border-bottom:1px dotted var(--brand);text-decoration:none;cursor:help
 </div>
 <script type="module">
   const navLinks = [...document.querySelectorAll('#nav a')];
+  const navGroups = [...document.querySelectorAll('.nav-group')];
   const docs = [...document.querySelectorAll('.doc')];
-  function show(slug, push){
+  function show(slug, push, secId){
     docs.forEach(d => d.classList.toggle('active', d.dataset.slug === slug));
-    navLinks.forEach(a => a.classList.toggle('active', a.dataset.slug === slug));
-    if (push) history.replaceState(null, '', '#' + slug);
+    navGroups.forEach(g => g.classList.toggle('open', g.dataset.slug === slug));
+    navLinks.forEach(a => {
+      const sameDoc = a.dataset.slug === slug;
+      a.classList.toggle('active', sameDoc && (a.dataset.sec ? a.dataset.sec === secId : !secId));
+    });
+    if (push) history.replaceState(null, '', '#' + (secId || slug));
+    if (secId){
+      const el = document.getElementById(secId);
+      if (el){ el.scrollIntoView({block:'start'}); return; }
+    }
     window.scrollTo({top:0, behavior:'instant'});
     document.querySelector('main').scrollIntoView({block:'start'});
   }
-  navLinks.forEach(a => a.addEventListener('click', e => { e.preventDefault(); show(a.dataset.slug, true); }));
+  navLinks.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    show(a.dataset.slug, true, a.dataset.sec || null);
+  }));
   const initial = location.hash.slice(1);
-  show(docs.some(d => d.dataset.slug === initial) ? initial : docs[0].dataset.slug, false);
+  const initSlug = (initial.match(/^(doc-[0-9]+)/) || [])[1];
+  show(docs.some(d => d.dataset.slug === initSlug) ? initSlug : docs[0].dataset.slug, false, initial || null);
   // 主题
   const tBtn = document.getElementById('themeBtn');
   const saved = localStorage.getItem('tz-theme');
@@ -383,7 +417,7 @@ def main():
     load_terms()
     for idx, (fname, _t, _g) in enumerate(DOCS):
         LINK_MAP[fname] = "doc-%d" % idx
-    sections, nav_items, last_group = [], [], None
+    sections, nav_items = [], []
     for idx, (fname, title, group) in enumerate(DOCS):
         path = os.path.join(BASE, fname)
         if not os.path.exists(path):
@@ -392,9 +426,42 @@ def main():
         md = open(path, encoding="utf-8").read()
         slug = "doc-%d" % idx
         html_body = convert(md)
-        # 文档内 h1 已存在则不再重复标题块
+
+        # 给 h2 / h3 挂锚点，并抽成二级 / 三级目录
+        anchors = []          # [(level, id, 文本)]
+
+        def add_id(m, _slug=slug, _anchors=anchors):
+            level = int(m.group(1))
+            html_title = m.group(2)
+            plain = re.sub(r"<[^>]+>", "", html_title).replace("&amp;", "&").strip()
+            _anchors.append((level, "%s-h%d" % (_slug, len(_anchors) + 1), plain))
+            return '<h%d id="%s">%s</h%d>' % (level, _anchors[-1][1], html_title, level)
+
+        html_body = re.sub(r"<h([23])>(.*?)</h\1>", add_id, html_body, flags=re.S)
+
         sections.append('<section class="doc" data-slug="%s">\n%s\n</section>' % (slug, html_body))
-        nav_items.append('<a href="#%s" data-slug="%s">%s</a>' % (slug, slug, html.escape(title)))
+
+        # 分组大标题
+        if idx == 0:
+            nav_items.append('<div class="nav-cat">总览</div>')
+        elif idx == 1:
+            nav_items.append('<div class="nav-cat">01–04 · 认知：先建立地图</div>')
+        elif idx == 5:
+            nav_items.append('<div class="nav-cat">05–10 · 上手：干活要用的</div>')
+        elif idx == 11:
+            nav_items.append('<div class="nav-cat">11–15 · 深挖：实施作战</div>')
+        elif idx == 16:
+            nav_items.append('<div class="nav-cat">16 · 协作：缺什么找谁要</div>')
+
+        nav_items.append('<div class="nav-group" data-slug="%s">' % slug)
+        nav_items.append('<a class="nav-doc" href="#%s" data-slug="%s" title="%s">'
+                         '<span class="txt">%s</span><span class="chip">%s</span></a>'
+                         % (slug, slug, html.escape(title), html.escape(title), html.escape(group)))
+        for level, aid, label in anchors:
+            cls = "nav-sec" if level == 2 else "nav-sub3"
+            nav_items.append('<a class="%s" href="#%s" data-slug="%s" data-sec="%s" title="%s">%s</a>'
+                             % (cls, aid, slug, aid, html.escape(label), html.escape(label)))
+        nav_items.append('</div>')
 
     out = (TEMPLATE
            .replace("__NAV__", "\n".join(nav_items))
