@@ -30,5 +30,25 @@
   "cfg-permission-page": {
     "caption": "权限控制页：权限项（新增/编辑/删除/批量删除）+ 字段权限（数据权限）",
     "source_image_id": "8l3vEEmI1w0_OL7PeFL9xg"
+  },
+  "cfg-gl-setup-flow.png": {
+    "caption": "总账设置标准主流程（币种→汇率→会计日历→期间映射→科目表→法人→会计主体→账簿→凭证来源→凭证类别→编码规则→审批规则）",
+    "source_image_id": "Mj7Vked6qYz3oNM-nlHa4w",
+    "used_in": "11-实施配置作战手册"
+  },
+  "cfg-voucher-gen-flow.png": {
+    "caption": "生成凭证功能流程（主体+账簿+事件组合装配→抽取赋值→取汇率→摘要草稿→借贷平衡→拆票落库）",
+    "source_image_id": "eIAaDfaziR_NH7qIpNWKWw",
+    "used_in": "11-实施配置作战手册"
+  },
+  "flow-ap-pool.png": {
+    "caption": "应付池业务流程：报账单审批通过入池、池内发起付款进入付款申请单",
+    "source_image_id": "f0X3LkcJimn8U7b5Awnpkg",
+    "used_in": "13-单据链路与业务规则"
+  },
+  "flow-payment-apply.png": {
+    "caption": "付款申请流程：业务审批、财务审批（可预览凭证）与流程结束处理",
+    "source_image_id": "gf11lzvm-YCmQXyQsovDQw",
+    "used_in": "13-单据链路与业务规则"
   }
 }

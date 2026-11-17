@@ -24,10 +24,35 @@ DOCS = [
     ("08-财务名词表.md", "08 财务名词表", "速查"),
     ("09-新人30天上手路径.md", "09 新人 30 天上手路径", "成长"),
     ("10-前端接入与工程规范.md", "10 前端接入与工程规范", "开发"),
+    ("11-实施配置作战手册.md", "11 实施配置作战手册", "实施"),
+    ("12-资金计划与预算控制.md", "12 资金计划与预算控制", "实施"),
+    ("13-单据链路与业务规则.md", "13 单据链路与业务规则", "业务"),
+    ("14-接口清单与集成.md", "14 接口清单与集成", "集成"),
+    ("15-数据模型与报表取数.md", "15 数据模型与报表取数", "开发"),
+    ("16-线下索取清单.md", "16 线下索取清单", "协作"),
 ]
 
 
 LINK_MAP = {}
+TERMS = {}      # 术语 -> 一句话解释（取自 08 名词表）
+TERMS_USED = set()
+GLOSSARY_SRC = "08-财务名词表.md"
+
+
+def load_terms():
+    """从 08-财务名词表.md 的表格里抽「名词 -> 解释」。"""
+    path = os.path.join(BASE, GLOSSARY_SRC)
+    if not os.path.exists(path):
+        return
+    for line in open(path, encoding="utf-8"):
+        m = re.match(r"^\|\s*\*\*([^*|]{2,20})\*\*\s*\|\s*(.+?)\s*\|\s*$", line.strip())
+        if not m:
+            continue
+        term, desc = m.group(1).strip(), m.group(2).strip()
+        desc = re.sub(r"\s+", " ", desc).replace("**", "").replace("`", "")
+        if len(desc) > 110:
+            desc = desc[:110] + "…"
+        TERMS.setdefault(term, desc)
 
 
 def inline(text):
@@ -39,6 +64,22 @@ def inline(text):
         return "\x00%d\x00" % (len(stash) - 1)
 
     text = re.sub(r"`([^`]+)`", lambda m: keep("<code>%s</code>" % html.escape(m.group(1))), text)
+
+    # 允许 markdown 里少量原生 HTML：<br> 与 <small>…</small>
+    text = text.replace("<small>", keep('<small class="note">')).replace("</small>", keep("</small>"))
+    text = re.sub(r"<br\s*/?>", lambda m: keep("<br>"), text)
+
+    # 术语悬停释义：每个术语在每篇里只标注首次出现
+    for term in sorted(TERMS, key=len, reverse=True):
+        if term in TERMS_USED or len(term) < 2:
+            continue
+        idx = text.find(term)
+        if idx < 0:
+            continue
+        TERMS_USED.add(term)
+        text = (text[:idx]
+                + keep('<abbr class="term" title="%s">%s</abbr>' % (html.escape(TERMS[term]), html.escape(term)))
+                + text[idx + len(term):])
 
     def img(m):
         alt, src = m.group(1), m.group(2)
@@ -69,8 +110,9 @@ def inline(text):
 
     def unpack_img(m):
         src, alt = m.group(1).split("|", 1)
-        imgs.append('<figure><img src="%s" alt="%s" loading="lazy"><figcaption>%s</figcaption></figure>'
-                    % (src, html.escape(alt), html.escape(alt)))
+        imgs.append('<figure><a href="%s" target="_blank" rel="noopener" title="查看原图">'
+                    '<img src="%s" alt="%s" loading="lazy"></a><figcaption>%s</figcaption></figure>'
+                    % (src, src, html.escape(alt), html.escape(alt)))
         return "\x00I%d\x00" % (len(imgs) - 1)
 
     text = re.sub(r"\x00IMG:([^\x00]+)\x00", unpack_img, text)
@@ -79,6 +121,7 @@ def inline(text):
 
 
 def convert(md):
+    TERMS_USED.clear()
     lines = md.split("\n")
     out, i, n = [], 0, len(lines)
 
@@ -242,8 +285,8 @@ pre.code{background:var(--code-bg);border:1px solid var(--line);border-radius:10
 pre.code code{background:none;padding:0;font-size:12.5px;line-height:1.6}
 hr{border:none;border-top:1px dashed var(--line);margin:26px 0}
 .table-wrap{overflow:auto;margin:16px 0;border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;font-size:13.5px}
-th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;word-break:break-word;overflow-wrap:anywhere}
 th:last-child,td:last-child{border-right:none}
 thead th{background:var(--th);font-weight:600;white-space:nowrap}
 tbody tr:last-child td{border-bottom:none}
@@ -251,6 +294,8 @@ tbody tr:hover{background:var(--brand-soft)}
 figure{margin:18px 0;text-align:center}
 figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;background:#fff}
 figcaption{color:var(--muted);font-size:12.5px;margin-top:8px}
+abbr.term{border-bottom:1px dotted var(--brand);text-decoration:none;cursor:help}
+.note{display:block;margin:-4px 0 18px;color:var(--muted);font-size:12.3px;line-height:1.6}
 .mermaid{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:16px;
   margin:16px 0;font:12.5px/1.6 Consolas,monospace;white-space:pre;overflow:auto;color:var(--muted)}
 .mermaid.rendered{background:transparent;border:none;color:var(--text);white-space:normal;text-align:center}
@@ -323,6 +368,8 @@ figcaption{color:var(--muted);font-size:12.5px;margin-top:8px}
       try{
         const { svg } = await mermaid.render('mmd-' + i, src);
         el.innerHTML = svg; el.classList.add('rendered');
+        const nt = el.previousElementSibling;
+        if (nt && nt.classList.contains('mermaid-note')) nt.remove();
       }catch(err){ /* 保留源码展示 */ }
     }
   }catch(err){ console.warn('mermaid 未加载，保留源码视图', err); }
@@ -333,6 +380,7 @@ figcaption{color:var(--muted);font-size:12.5px;margin-top:8px}
 
 
 def main():
+    load_terms()
     for idx, (fname, _t, _g) in enumerate(DOCS):
         LINK_MAP[fname] = "doc-%d" % idx
     sections, nav_items, last_group = [], [], None
