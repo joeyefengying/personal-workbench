@@ -1,0 +1,34 @@
+{
+  "app-blueprint-l2": {
+    "caption": "应用架构总体蓝图（L2）——集团业务域与财务管控定位",
+    "source_image_id": "BHjHcI4FpNwaPmeqPt8Pkg"
+  },
+  "tech-arch-budget": {
+    "caption": "预算管控技术架构图（模块级 L3 设计文档口径）",
+    "source_image_id": "vV0zoRfSd-tHfbZ_hd7G2A"
+  },
+  "flow-finance-shared": {
+    "caption": "财务共享整体架构与业务流转：财务共享→共享运营→财务核算→资金结算→财务报表",
+    "source_image_id": "m_O7ye0uK5RQUNfvyoLUXw"
+  },
+  "flow-payable": {
+    "caption": "应付报账业务架构与数据流转：业务系统→报账单据→池→核算/总账/资金",
+    "source_image_id": "DN28N9EcW5kvwT7SWYCGxQ"
+  },
+  "cfg-accounting-engine-menu": {
+    "caption": "会计引擎菜单导航结构",
+    "source_image_id": "iTzd8KCPr4xfISoVghlAxA"
+  },
+  "cfg-accounting-engine-flow": {
+    "caption": "子模块会计引擎新增/编辑/删除/查询/复制的校验流程",
+    "source_image_id": "47IGzuq14JxgS9iWi3DQdA"
+  },
+  "cfg-data-permission": {
+    "caption": "数据权限配置：为业务角色的权限对象配置行级权限",
+    "source_image_id": "aFX4JAm7---g1apkWPNYOw"
+  },
+  "cfg-permission-page": {
+    "caption": "权限控制页：权限项（新增/编辑/删除/批量删除）+ 字段权限（数据权限）",
+    "source_image_id": "8l3vEEmI1w0_OL7PeFL9xg"
+  }
+}

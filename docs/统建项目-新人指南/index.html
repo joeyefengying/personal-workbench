@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>统建项目（财务管控）新人上岗手册</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#fff; --text:#1c2430; --muted:#5b6675; --line:#e3e7ee;
+  --brand:#b91c1c; --brand-soft:#fdf2f2; --code-bg:#f3f4f6; --th:#f8fafc;
+  --nav-bg:#fff; --shadow:0 1px 3px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.04);
+}
+[data-theme="dark"]{
+  --bg:#0b1220; --panel:#111a2b; --text:#e6edf6; --muted:#98a4b6; --line:#1f2c42;
+  --brand:#f87171; --brand-soft:#2a1215; --code-bg:#0f1826; --th:#16233a;
+  --nav-bg:#0e1727; --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif}
+a{color:#1d4ed8;text-decoration:none}
+[data-theme="dark"] a{color:#7dd3fc}
+a:hover{text-decoration:underline}
+.layout{display:flex;min-height:100vh}
+aside{width:272px;flex:0 0 272px;background:var(--nav-bg);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow:auto;padding:16px 12px 24px}
+aside .brand{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-weight:700;font-size:16px}
+aside .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--brand)}
+aside .sub{color:var(--muted);font-size:11.5px;margin:0 0 10px;line-height:1.5}
+.nav-group{margin:9px 0 3px;padding-left:10px;color:var(--muted);font-size:10.5px;letter-spacing:.08em}
+.nav a{display:block;padding:4px 10px;border-radius:7px;font-size:12.8px;color:var(--text);line-height:1.3}
+.nav a:hover{background:var(--brand-soft);text-decoration:none}
+.nav a.active{background:var(--brand);color:#fff}
+main{flex:1;min-width:0;padding:28px 40px 80px;max-width:1080px;margin:0 auto}
+.doc{display:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:30px 38px;box-shadow:var(--shadow)}
+.doc.active{display:block}
+h1{font-size:27px;margin:0 0 18px;padding-bottom:12px;border-bottom:2px solid var(--brand-soft)}
+h2{font-size:20px;margin:34px 0 12px;padding-left:10px;border-left:4px solid var(--brand)}
+h3{font-size:16.5px;margin:24px 0 8px;color:var(--text)}
+h4{font-size:15px;margin:18px 0 6px;color:var(--muted)}
+p{margin:10px 0}
+ul,ol{margin:10px 0;padding-left:24px}
+li{margin:5px 0}
+li.sub{margin-left:18px;list-style:circle}
+blockquote{margin:14px 0;padding:10px 16px;border-left:4px solid var(--brand);
+  background:var(--brand-soft);border-radius:0 8px 8px 0;color:var(--text)}
+blockquote p{margin:4px 0}
+code{background:var(--code-bg);padding:1.5px 5px;border-radius:5px;font-size:13px;
+  font-family:"JetBrains Mono",Consolas,Monaco,monospace}
+pre.code{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto}
+pre.code code{background:none;padding:0;font-size:12.5px;line-height:1.6}
+hr{border:none;border-top:1px dashed var(--line);margin:26px 0}
+.table-wrap{overflow:auto;margin:16px 0;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th:last-child,td:last-child{border-right:none}
+thead th{background:var(--th);font-weight:600;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--brand-soft)}
+figure{margin:18px 0;text-align:center}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;background:#fff}
+figcaption{color:var(--muted);font-size:12.5px;margin-top:8px}
+.mermaid{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:16px;
+  margin:16px 0;font:12.5px/1.6 Consolas,monospace;white-space:pre;overflow:auto;color:var(--muted)}
+.mermaid.rendered{background:transparent;border:none;color:var(--text);white-space:normal;text-align:center}
+.mermaid-note{color:var(--muted);font-size:11.5px;margin:14px 0 -8px}
+.cb{color:var(--brand);font-size:15px}
+.toolbar{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-bottom:14px}
+.btn{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--text);
+  border-radius:8px;padding:6px 12px;font-size:12.5px}
+.btn:hover{border-color:var(--brand);color:var(--brand)}
+.meta{color:var(--muted);font-size:12px;margin-right:auto}
+@media print{
+  aside,.toolbar{display:none}
+  main{max-width:none;padding:0}
+  .doc{display:block!important;border:none;box-shadow:none;padding:0;page-break-after:always}
+}
+@media (max-width:960px){
+  .layout{flex-direction:column}
+  aside{position:relative;width:100%;height:auto;flex:none;border-right:none;border-bottom:1px solid var(--line)}
+  main{padding:16px}
+  .doc{padding:20px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand"><span class="dot"></span>统建项目新人手册</div>
+    <p class="sub">财务管控平台 · 新人上岗必读<br>内容源自五矿统建知识库（知微）问答</p>
+    <div class="nav" id="nav"><a href="#doc-0" data-slug="doc-0">总览与阅读路径</a>
+<a href="#doc-1" data-slug="doc-1">01 平台全景与建设范围</a>
+<a href="#doc-2" data-slug="doc-2">02 应用架构与系统清单</a>
+<a href="#doc-3" data-slug="doc-3">03 业务数据流与系统定位</a>
+<a href="#doc-4" data-slug="doc-4">04 人员与组织分工</a>
+<a href="#doc-5" data-slug="doc-5">05 配置与实施注意事项</a>
+<a href="#doc-6" data-slug="doc-6">06 设计理念与池化模型</a>
+<a href="#doc-7" data-slug="doc-7">07 常见问题与踩坑</a>
+<a href="#doc-8" data-slug="doc-8">08 财务名词表</a>
+<a href="#doc-9" data-slug="doc-9">09 新人 30 天上手路径</a>
+<a href="#doc-10" data-slug="doc-10">10 前端接入与工程规范</a></div>
+  </aside>
+  <main>
+    <div class="toolbar">
+      <span class="meta">生成时间 2026-11-16 22:32 · 共 11 篇</span>
+      <button class="btn" id="themeBtn">切换主题</button>
+      <button class="btn" onclick="window.print()">打印 / 存 PDF</button>
+    </div>
+    <section class="doc" data-slug="doc-0">
+<h1>统建项目（财务管控）新人上岗手册</h1>
+<blockquote>目标读者：刚进入<strong>五矿集团统建系统建设项目—财务管控</strong>的前端开发、后端开发、实施顾问、测试同学。 目标：读完这一套文档，你能回答「这个平台在做什么」「我负责的模块在哪一层」「一张单据怎么变成账和钱」「哪些配置必须先做」「踩过哪些坑」。</blockquote>
+<h2>这套文档是怎么来的</h2>
+<p>全部内容来自<strong>五矿统建知识库（知微 · 财务管控库）</strong>的问答结果，共 15 组问题、约 7.6 万字原始答案，已人工复核摘要成下面 10 篇。原文（含引用来源、原件标题、页码/分块）保存在仓库 <code>.ekko-tmp/kb/kb-answers/</code>，可直接追溯。</p>
+<p>知识库不能回答、或文档本身自相矛盾的地方，我们<strong>没有编造</strong>，统一标注为「⚠️ 待核实」并写明该找谁确认。</p>
+<h2>阅读路径</h2>
+<div class="table-wrap"><table><thead><tr><th>你是</th><th>建议顺序</th><th>大概耗时</th></tr></thead><tbody><tr><td><strong>前端开发</strong></td><td>01 平台全景 → 02 架构清单 → 03 数据流 → 10 前端接入 → 09 上手路径</td><td>3 小时</td></tr><tr><td><strong>实施顾问</strong></td><td>01 平台全景 → 02 架构清单 → 05 配置注意事项 → 07 踩坑 → 09 上手路径</td><td>4 小时</td></tr><tr><td><strong>测试 / 业务关键用户</strong></td><td>03 数据流 → 06 设计理念 → 08 名词表 → 07 踩坑</td><td>2 小时</td></tr><tr><td><strong>只想先看懂业务</strong></td><td>03 数据流 → 06 设计理念 → 08 名词表</td><td>1.5 小时</td></tr></tbody></table></div>
+<h2>目录</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>文档</th><th>一句话说明</th></tr></thead><tbody><tr><td>01</td><td><a href="#doc-1">平台全景与建设范围</a></td><td>建什么、目标是什么、几套环境、技术上怎么分层</td></tr><tr><td>02</td><td><a href="#doc-2">应用架构与系统清单</a></td><td>L1→L5 分层、九大业务域、每个系统解决什么问题</td></tr><tr><td>03</td><td><a href="#doc-3">业务数据流与系统定位</a></td><td>五条主线：单据流、凭证流、主数据流、资金流、报表流</td></tr><tr><td>04</td><td><a href="#doc-4">人员与组织分工</a></td><td>谁负责哪个应用、角色职责、需求与缺陷怎么流转</td></tr><tr><td>05</td><td><a href="#doc-5">配置与实施注意事项</a></td><td>新增模块的 10 步、初始化依赖顺序、会计引擎与权限配置</td></tr><tr><td>06</td><td><a href="#doc-6">设计理念与池化模型</a></td><td>为什么长成这样：单据化、池化、规则化、预算前置</td></tr><tr><td>07</td><td><a href="#doc-7">常见问题与踩坑</a></td><td>配置/数据/接口/性能四大类高频坑与规避方法</td></tr><tr><td>08</td><td><a href="#doc-8">财务名词表</a></td><td>新人必须掌握的 60+ 个名词，一句话解释</td></tr><tr><td>09</td><td><a href="#doc-9">新人 30 天上手路径</a></td><td>按周拆解的必读、必会、自查清单</td></tr><tr><td>10</td><td><a href="#doc-10">前端接入与工程规范</a></td><td>门户/微前端接入、工程命名、共享依赖与排查</td></tr></tbody></table></div>
+<p>图例说明统一写在 <code>images/_index.json</code>，全部图片原件来自知识库文档原文（PPT/Word 截图）。</p>
+<h2>三条最容易走错的路（先记住）</h2>
+<ol><li><strong>别把 L4 模块当成「一个系统」</strong>。一个「应付报账」背后是前端工程、后端应用、池表结构、会计引擎规则、权限项、流程节点六件套。</li><li><strong>别把「单据状态」和「审批状态」混为一谈</strong>。单据状态只有草稿/审批中/已完成/已作废；审批状态有 10 种（含挂起、异常、退回至发起人）。前端做状态映射时两套必须分开。</li><li><strong>别在没配会计主体和账簿之前碰任何报账功能</strong>。单据一旦要记账，缺会计主体/账簿就是死路，且错误会带进期初和期末。</li></ol>
+<h2>维护方式</h2>
+<ul><li>内容有疑问：先查 <code>.ekko-tmp/kb/kb-answers/*.json</code> 的原始答案与引用，再看 §「待核实」条目。</li><li>需要补新问题：<code>python .ekko-tmp/kb/kb_run.py &lt;批次别名 a|b|c|d|e&gt;</code>，答案自动落盘后再人工摘要进本目录。</li></ul>
+</section>
+<section class="doc" data-slug="doc-1">
+<h1>01 平台全景与建设范围</h1>
+<h2>一、这是什么项目</h2>
+<p><strong>五矿集团统建系统建设项目—财务管控平台</strong>：全集团统一、国产化的财务管控平台。</p>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td>定位</td><td>落实国资委<strong>穿透式监管</strong>要求，构建「上下贯通、实时在线、自动预警」的智能化穿透式监管体系</td></tr><tr><td>目标</td><td><strong>标准统一、流程协同、数据贯通、管控有效</strong></td></tr><tr><td>手段</td><td>推动全集团财务管控系统<strong>大集中</strong>，以「财务一体化」支撑「业务一体化」</td></tr><tr><td>业务总纲</td><td>打通<strong>核算报告、成本管会、资金管理、预算控制、投资资产、商旅费用</strong>六大业财闭环</td></tr><tr><td>应用分组</td><td>财务核算应用组 / 财务管理应用组 / 财务报账应用组</td></tr></tbody></table></div>
+<p>下属单位解决方案里给了四条落地原则，看项目文档时可以拿来对照：</p>
+<ol><li><strong>集团统建优先</strong> —— 最大化复用标准功能，本地化以配置为主，不轻易改代码；</li><li><strong>业财一体贯通</strong> —— 业务单据驱动财务凭证，账实相符、业财一致；</li><li><strong>数据标准统一</strong> —— 物料、客商、科目、组织等主数据同源；</li><li><strong>安全合规可控</strong> —— 等保 2.0、信创、细粒度权限与审计日志。</li></ol>
+<p><figure><img src="./images/app-blueprint-l2.png" alt="应用架构总体蓝图（L2）" loading="lazy"><figcaption>应用架构总体蓝图（L2）</figcaption></figure></p>
+<p>上图是集团级应用蓝图：财务管控只是「集团大共性」里的一个域，右边与合同、供应链、商旅、投资、协同办公等域横向打通，下方由数据平台、技术平台、AI 平台和基础框架（统一认证、权限中心、消息中心等）托底。<strong>记住这张图的位置关系，比记住几十个模块名有用得多。</strong></p>
+<h2>二、技术架构分层</h2>
+<p>技术架构在详细设计文档中统一按六层组织：</p>
+<div class="table-wrap"><table><thead><tr><th>层</th><th>内容</th></tr></thead><tbody><tr><td>展现层</td><td>Web 端、移动应用（Vue3 + Pinia + Axios + Element-Plus + 五矿前端组件）</td></tr><tr><td>网关层</td><td>SLB、SpringCloud Gateway</td></tr><tr><td>业务服务层</td><td>主数据、预算模型、控制策略、预算执行分析等业务服务</td></tr><tr><td>基础服务层</td><td>认证、消息、任务、缓存、工作流、规则引擎、接口集成</td></tr><tr><td>数据访问层</td><td>Mybatis、JDBC</td></tr><tr><td>基础设施层</td><td>OceanBase、Redis、东方通消息；信创环境</td></tr></tbody></table></div>
+<p>DevOps 链路：<code>Git → Maven → Jenkins → Docker → Kubernetes</code>，部署由<strong>波塞冬 Poseidon</strong> 平台承载。</p>
+<p><figure><img src="./images/tech-arch-budget.png" alt="预算管控技术架构图" loading="lazy"><figcaption>预算管控技术架构图</figcaption></figure></p>
+<blockquote>⚠️ 上图取自《预算控制》模块的 L3 详细设计文档，属<strong>模块级</strong>技术架构表达。平台级「技术平台应用架构蓝图」在知识库中只检索到汇报材料的目录条目，正文未取到 —— 如果需要向平台架构组确认统一技术总纲，指这个缺口。</blockquote>
+<p>平台公共能力由基础服务统一提供，业务应用<strong>不重复建设</strong>：SSO、权限服务、用户/账号/组织服务、工作流管理、任务调度、规则引擎、接口集成。</p>
+<h2>三、环境矩阵（最容易搞混的部分）</h2>
+<div class="table-wrap"><table><thead><tr><th>环境</th><th>门户地址</th><th>用途</th></tr></thead><tbody><tr><td>DEV 开发</td><td>https://dsep-portal-dev.minmetals.com.cn</td><td>开发自测</td></tr><tr><td>TEST 测试</td><td>https://dsep-portal-test.minmetals.com.cn（登录页 <code>/portal/signin</code>，用「4a 账号」）</td><td>系统测试、集成测试、回归</td></tr><tr><td>IMPL 实施定制</td><td>https://dsep-portal-impl.minmetals.com.cn</td><td>按客户需求做配置、扩展、迁移准备</td></tr><tr><td>DEMO（UAT）</td><td>https://dsep-portal-demo.minmetals.com.cn</td><td>财务关键用户验收</td></tr><tr><td>STG 准生产</td><td>https://dsep-portal-stg.minmetals.com.cn</td><td>性能测试</td></tr><tr><td>NEW-STG 新准生产</td><td>https://dsep-portal-new-stg.minmetals.com.cn</td><td>上线前最终验证</td></tr><tr><td>PROTO 实施基线</td><td>https://dsep-portal-proto.minmetals.com.cn</td><td>实施基线环境</td></tr><tr><td>PROD 生产</td><td>https://portal.minmetals.com.cn</td><td>生产</td></tr><tr><td>DevOps</td><td>https://poseidon.minmetals.com.cn（需切到对应环境）</td><td>部署与运维</td></tr></tbody></table></div>
+<p>纪律三条：</p>
+<ul><li><strong>不要把 UAT 当联调环境</strong>，UAT 是给财务关键用户验收的；</li><li>测试环境统一用 <strong>4a 账号</strong>登录；</li><li><strong>生产不得手工发布</strong>，必须走 Poseidon 流水线。</li></ul>
+<blockquote>⚠️ PROTO（实施基线）与 IMPL（实施定制）的职责边界在文档中表述接近，以项目环境管理表为准。</blockquote>
+<h2>四、部署形态与门户接入</h2>
+<ol><li><strong>统一门户是唯一入口</strong>：所有环境都是「五矿个人门户 + 环境后缀」，应用不对外暴露独立域名。</li><li><strong>容器化 + 平台化发布</strong>：Poseidon 配置部署 YAML、探针；Docker/K8s 承载容器编排。</li><li><strong>前端走 nginx 网关</strong>：静态资源 + nginx 反向代理接入，与后端服务解耦（部署说明书里有专门的「前端配置—nginx-gateway.conf」章节）。</li><li><strong>门户侧四类注册</strong>（缺一个就出问题）：</li><li class="sub">能力中心 → <strong>应用管理</strong>（应用编号、名称、负责人、服务地址）</li><li class="sub">统一集成平台 → <strong>API 注册管理</strong></li><li class="sub">应用管理 → <strong>编号管理中心</strong></li><li class="sub">能力中心 → <strong>消息中心 / 文件中心</strong></li><li><strong>数据访问按环境分租户</strong>：开发库是 UAT 复制库、集中在 <code>data_migration</code> 租户，一个账号可访问全部 L2 业务库；正式环境各业务库分布在不同租户（约 10 个），需逐租户开账号。示例实例：开发 <code>10.202.160.141:9100</code>，正式 <code>10.202.160.141:9000</code>。</li></ol>
+<h2>五、前端开发必须先知道的平台约束</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>约束</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td><strong>技术栈基线</strong></td><td>Node 20.x、Vue 3.5.18、TS 5.x 为硬性基线；Vite 6.x、Vitest、ESLint 9.10.0、Scss（可选 UnoCSS）、Pinia 3.0.3</td></tr><tr><td>2</td><td><strong>微前端方案存在口径冲突</strong></td><td>多数 L3 文档写 <strong>QianKun</strong>；共享运营、应付核算文档写 <strong>wujie 1.x（标注「暂定」）</strong>。接入前必须与平台架构组确认最终主应用方案</td></tr><tr><td>3</td><td><strong>不要自建登录/权限/组织体系</strong></td><td>认证、权限、用户、组织、工作流、规则引擎全部由平台基础服务提供，业务前端通过 SSO 与平台权限模型取身份和菜单</td></tr><tr><td>4</td><td><strong>先注册、再联调</strong></td><td>应用要在门户能力中心注册，接口要在统一集成平台注册；同时接入编号中心/消息中心/文件中心，否则编码、消息、附件能力直接缺失</td></tr><tr><td>5</td><td><strong>环境纪律</strong></td><td>见上一节；生产发布只能走流水线</td></tr><tr><td>6</td><td><strong>历史文档有技术栈代差</strong></td><td>个别模块（如预算控制_控制引擎）L3 文档仍是 Vue Router 3.0.3 / Vuex / Vue CLI / Webpack 4 / Vant，属 Vue2 遗留口径，<strong>不能当新工程脚手架参考</strong></td></tr></tbody></table></div>
+<h2>六、本篇的证据缺口</h2>
+<ul><li>未取到「平台级统一技术架构总纲」正文，六层架构来自模块级 L3 文档 + 共享运营应用架构图。</li><li>UI 组件库清单、编码规范/分支模型、包管理与脚手架模板、门户菜单权限模型细则<strong>未检索到明确条款</strong>，需向平台架构组索取《平台前端接入规范》。</li><li>建议向平台管理员索取两样东西：<strong>Poseidon 应用清单</strong>（核对工程名/负责人）与<strong>门户能力中心注册目录</strong>（核对 API 与编号中心接入状态）。</li></ul>
+</section>
+<section class="doc" data-slug="doc-2">
+<h1>02 应用架构与系统清单</h1>
+<h2>一、先记住分层：L1 → L5</h2>
+<p>架构表（3A 架构表）把整个项目按五级铺开，这是所有讨论的共同语言：</p>
+<div class="table-wrap"><table><thead><tr><th>层级</th><th>含义</th><th>例子</th></tr></thead><tbody><tr><td><strong>L1 应用域</strong></td><td>集团级业务域</td><td>财务管控</td></tr><tr><td><strong>L2 应用组</strong></td><td>域内分组</td><td>财务核算应用组、财务管理应用组、财务报账应用组</td></tr><tr><td><strong>L3 应用</strong></td><td>一个可独立交付的系统</td><td>总账管理、应付报账、资金结算、预算控制</td></tr><tr><td><strong>L4 应用模块</strong></td><td>系统内的功能模块</td><td>总账管理下的「凭证管理」「科目余额表」</td></tr><tr><td><strong>L5 功能</strong></td><td>具体菜单/按钮级功能</td><td>「凭证管理」下的「新增凭证」「凭证打印」</td></tr></tbody></table></div>
+<blockquote>新人最常见的错位：<strong>把 L4 模块当成一个系统</strong>。判断依据很朴素 —— 有独立菜单树、独立权限项、独立应用编号的才是一个 L3。</blockquote>
+<h2>二、两套 L2 口径并存（动手汇总前务必确认）</h2>
+<div class="table-wrap"><table><thead><tr><th>口径</th><th>L2 怎么切</th><th>出处</th></tr></thead><tbody><tr><td>蓝图口径</td><td>财务核算应用组 / 财务管理应用组 / 财务报账应用组（三大组）</td><td>《平台级应用架构蓝图汇报材料》第 28 页</td></tr><tr><td>3A 表口径</td><td>财务核算、财务核算-总账、共享报账、预算管理、资金管理 等</td><td>各分册《3A架构表-应用架构L1-L5》行级数据</td></tr></tbody></table></div>
+<p>两套不是同一套切分。做汇总表、排负责人、写汇报材料时，<strong>必须先声明以哪套为准</strong>，否则同一模块会被算两次。</p>
+<h2>三、九大业务域的系统清单（新人版速查）</h2>
+<div class="table-wrap"><table><thead><tr><th>业务域</th><th>子系统 / 模块</th><th>一句话定位</th></tr></thead><tbody><tr><td><strong>共享报账</strong></td><td>费用报账</td><td>借款、差旅、业务招待、押金保证金等费用类事前申请与报销的统一入口，连接商旅、税务、资金、总账</td></tr><tr><td></td><td>应付报账</td><td>对公应付类报账：付款申请、押金保证金、预提/计提、商旅对公费用报账</td></tr><tr><td></td><td>应收报账</td><td>收入类报账：收款认领、暂估收入、通用销售、工程对上计价、收入成本结转，触发开票</td></tr><tr><td></td><td>资产报账</td><td>资产新增、验收、调拨、处置等资产变动事项的报账入口</td></tr><tr><td></td><td>总账报账</td><td>承接不经过业务单据、需直接入账的总账业务报账单与财务综合工单</td></tr><tr><td></td><td>关联交易报账</td><td>集团内部关联交易的报账单、对账与关联交易报表</td></tr><tr><td></td><td>共享报账基础应用</td><td>业务类型、单据字典等公共字典，供各类报账统一调用</td></tr><tr><td></td><td>报账核销引擎（数据分类中心）</td><td>支撑应收应付核销匹配：数据分类匹配、分类查询与手工更新</td></tr><tr><td><strong>共享运营</strong></td><td>共享运营</td><td>财务共享中心运作中枢：共享机构、工作组、岗位、流程、任务分配规则与任务池</td></tr><tr><td><strong>财务核算</strong></td><td>会计引擎</td><td>按事件模型与凭证分录规则把业务单据自动转成会计凭证并传总账 —— 业财转换核心</td></tr><tr><td></td><td>总账管理</td><td>会计主体、科目、账簿、币种汇率等基础设置 + 凭证、期末、月结、报表查询，形成「设置—业务—期末—查询—月结」闭环</td></tr><tr><td></td><td>应付核算</td><td>围绕应付单、付款单、核销单完成应付确认、核销、账龄、预付坏账及与总账对账</td></tr><tr><td></td><td>应收核算</td><td>应收单据确认、往来核销与应收余额查询，与应收报账、发票管理协同</td></tr><tr><td></td><td>资产核算</td><td>资产卡片、资产变动、折旧、盘点与资产报表，承接资产报账结果</td></tr><tr><td></td><td>合同台账</td><td>登记合同台账并控制结算，向应付、应收、资金计划提供合同依据</td></tr><tr><td></td><td>财务报告 / 报表管理</td><td>报表格式、计算公式与校验规则配置，出具财务报表、维护合并报表规则</td></tr><tr><td><strong>成本管理</strong></td><td>成本管理</td><td>成本核算、生产成本、库存计价与成本分析，承载金属采选/冶炼/冶金建设/商管物业等业态特色</td></tr><tr><td><strong>资金管理</strong></td><td>资金计划</td><td>计划编制、审批、调整与额度控制，为报账提供额度校验</td></tr><tr><td></td><td>资金结算</td><td>付款结算、资金池付款、银行对账、余额调节表、代付池、认领池等收付执行</td></tr><tr><td></td><td>付款管理 / 收款管理</td><td>结算池、委托付款、司库指令监听完成对外付款；认领池完成收款归集</td></tr><tr><td></td><td>账户管理</td><td>实体账户与内部账户、账户开销变及余额明细对账，是资金可视化基础</td></tr><tr><td></td><td>资金池</td><td>资金调拨、下拨、内部存款与内部利息结算，实现集团资金集中</td></tr><tr><td></td><td>票据管理</td><td>应付/应收票据开票、背书、质押、贴现及票据台账</td></tr><tr><td></td><td>供应链金融</td><td>供应链票据的开票、解付、转让、到期收款</td></tr><tr><td></td><td>发布管理</td><td>银行流水发布与票据签收，为认领与结算提供来款依据</td></tr><tr><td><strong>预算管控</strong></td><td>预算管控 / 预算控制</td><td>预算组织—科目—维度基础配置、预算类别与模型、控制策略与规则、预算承接，以及业务发生时的预算校验/占用/释放/实际数回写</td></tr><tr><td><strong>税务与发票</strong></td><td>税务管理</td><td>税费种管理、税企通道配置、跨区域涉税事项报告</td></tr><tr><td></td><td>发票管理</td><td>销项/进项发票统一管理，支持红冲、查验、归集</td></tr><tr><td></td><td>发票开具（蓝/红字申请）</td><td>由应收报账推动开票申请并回传结果，衔接发票管理与计税</td></tr><tr><td><strong>财务资产</strong></td><td>财务资产管理</td><td>资产全生命周期核算与管理：卡片、变动、折旧、盘点、资产报表</td></tr><tr><td><strong>平台横向</strong></td><td>会计主体、基础配置、值集管理、科目管理、科目映射规则、辅助核算映射规则、组织与人员关系、自定义报表设置</td><td>各域共用的配置底座，统一核算与管理口径</td></tr></tbody></table></div>
+<h3>两个闭环的口径说明</h3>
+<ul><li><strong>商旅费用</strong>：由费用报账承接 —— 对接商旅平台取申请与订单信息，在应付报账形成「商旅对公费用报账单」闭环。</li><li><strong>投资资产</strong>：资产侧由资产报账与资产核算落地；但「投资管理」在集团层面属<strong>业务统建系统</strong>（如投资管理系统），财务管控应用清单里未单列，其衔接边界 ⚠️ 待核实。</li></ul>
+<h2>四、按应用组看（蓝图口径）</h2>
+<ul><li><strong>财务报账应用组</strong>：总账报账、关联交易管理、总账报账业务与查询</li><li><strong>财务管理应用组</strong>：预算控制、资金计划、共享运营、管控配置、服务与流程配置、审核规则配置</li><li><strong>财务核算应用组</strong>：财务报告、总账管理、应付核算、会计主体、科目管理、期末管理、科目映射与辅助核算映射规则、自定义报表</li></ul>
+<h2>五、⚠️ 关于「完整 L1–L5 总表」</h2>
+<p>知识库中<strong>不存在一张全量 L1–L5 总表</strong>，原因是材料本身分两类：</p>
+<ul><li><strong>蓝图级</strong>：第 28 页只给 L1→L2→L3 框架与模块名，抽取后是扁平文本流，无法确定层级归属；</li><li><strong>行级</strong>：各分册 3A 表逐行给出 L1/L2/L3/L4/L5，但<strong>每份只覆盖自己那块</strong>，版本号还不同（V1.0/V1.1/V1.2/V1.3/V2.1）。</li></ul>
+<p>所以本手册只给到「已确证层级 + 可确认名称」的混合清单。要拿到全量表，正确做法是：向各应用负责人索取本应用最新的 3A 表分册，按 V2.x 版本对齐后合并，而不是让某个系统去汇总。</p>
+</section>
+<section class="doc" data-slug="doc-3">
+<h1>03 业务数据流与系统定位</h1>
+<blockquote>这一篇回答新人最痛的问题：<strong>几十个模块，数据到底怎么流？</strong></blockquote>
+<h2>一、先建立框架：财务管控域拆成「四层」</h2>
+<p>看起来杂乱，其实所有模块都落在这四层上，每层只做一件事：</p>
+<div class="table-wrap"><table><thead><tr><th>层级</th><th>干什么</th><th>典型模块</th><th>判断标准（开发视角）</th></tr></thead><tbody><tr><td><strong>① 业务/报账层</strong></td><td>把「发生的事情」变成<strong>内部可审批的单据</strong></td><td>费用报账、应付报账、应收报账、资产报账、总账报账、关联交易</td><td>有「报账单」页面、有审批流、有附件影像</td></tr><tr><td><strong>② 处理/池层</strong></td><td>单据暂存、核销、配对、待付</td><td>预付池、应付池、支付申请池、凭证池、共享运营派工</td><td>有「池 / 批次 / 认领」概念，状态会长期停留</td></tr><tr><td><strong>③ 核算层</strong></td><td>单据变成账（凭证 → 余额）</td><td>应付核算、应收核算、资产核算、会计引擎、总账管理</td><td>有会计主体 / 账簿 / 期间 / 科目字段</td></tr><tr><td><strong>④ 报告与资金层</strong></td><td>出报表、真金白银收付</td><td>报表、往来报表、资金管理/资金池、资金结算、司库</td><td>对接银行、有交易流水</td></tr></tbody></table></div>
+<p>系统骨架是：<strong>财务共享 → 共享运营 → 财务核算 → 资金结算 → 财务报表</strong>。报账在最前发起，会计引擎/核算/总账在中间做账，资金结算和报表在最后收口。</p>
+<p><figure><img src="./images/flow-finance-shared.png" alt="财务共享整体架构与业务流转" loading="lazy"><figcaption>财务共享整体架构与业务流转</figcaption></figure></p>
+<p>左侧各类报账（费用/应付/应收/资产/总账/关联交易）+ 预算、税务、合同台账；中间共享运营做派工；右上财务核算（会计引擎、三套核算、总账核算）；右下资金结算；最右报表出具。</p>
+<h2>二、五条主线（只需要记住这五条）</h2>
+<h3>主线 1：单据流（业务 → 报账 → 池）</h3>
+<p>前端业务系统（供应链、合同、项目、商旅、招投标、期现）把采购订单匹配单、合同台账、差旅结算、扣退款等信息推给<strong>应付报账</strong>；报账侧生成应付报账单/付款申请单/押金保证金单，进入<strong>预付池、应付池</strong>核销与记录，最终汇聚到<strong>支付申请池</strong>生成支付记账单。应收侧同理：收款认领 → 各类应收报账单（暂估收入、通用销售、工程对上计价）→ 开票申请。</p>
+<blockquote><strong>开发要抓的点</strong>：一条业务事实在系统里可能同时存在「外部单据、报账单、池记录、结算单」四份数据，通过单据编号与业务键关联，而不是一张表走到底。</blockquote>
+<h3>主线 2：凭证流（报账单 → 会计引擎 → 凭证池 → 总账）</h3>
+<p>整个项目最关键、也最容易出错的链路：</p>
+<ol><li>应收/应付/资产/费用报账等子模块的业务单据，<strong>通过会计引擎生成凭证</strong>；</li><li>凭证先落<strong>凭证池</strong>：单据生成会计事件时即向凭证池写记录（支持同步调用，也支持消息队列异步写入）；</li><li>凭证池内做<strong>草稿(D) → 正式(F)</strong> 状态转正，再「传送总账」；</li><li><strong>凭证池传输到总账</strong>，总账过账后生成凭证编号，并<strong>把凭证编号回传</strong>到会计引擎的凭证上。</li></ol>
+<p>完整状态机：子模块单据生成会计事件 → 初始化凭证池记录 → 创建凭证（草稿/正式）→ 传送总账 → 过账 → 需要时冲销生成新凭证，全程带成功/失败校验与重试。</p>
+<p>接口层面（<code>generate-formal</code>）的必填项很能说明边界：模块编码、会计主体编码、业务单据类型编码、会计日期、<strong>流程方向（F 正向 / R 逆向）</strong>、<strong>是否传总账（Y/N）</strong>；逆向时还必须填被冲销单据三件套。</p>
+<blockquote>会计引擎的设计定位值得前端记住一句：<strong>业务数据不变，规则独立配置迭代</strong>。所以「科目映射 / 辅助核算映射 / 校验规则」大多是配置项，不是写死的逻辑。</blockquote>
+<h3>主线 3：主数据与基础设置流（谁在记账、按什么规则记）</h3>
+<ul><li>币种、客商、合同、项目、银行账户、物料从<strong>基础资料</strong>同步获取，全模块共用一套；</li><li>反过来，<strong>科目表、会计科目、汇率以总账为核心管控端</strong>，先同步至基础资料，再由基础资料下发各模块；</li><li>法人、会计主体由<strong>组织管理</strong>统一搭建，总账通过集成获取主数据。</li></ul>
+<p>一句话记法：<strong>「身份类」主数据往外发，「规则类」配置从总账往外发。</strong></p>
+<h3>主线 4：资金流（要付钱的那条线）</h3>
+<p>业务报账（费用/应付/应收/关联交易）提交对公付款/对私报销申请 → <strong>资金计划校验</strong> → 进入<strong>资金管理</strong>（账户管理、流水清分、资金池、票据、付款管理、资金计划）→ 与<strong>司库系统</strong>交互做银行转账、票据开立/背书/签收、账户开销变 → 结果回流（付款结果、票据信息、交易流水、账户余额/明细）回到报账与核算侧。合同台账提供合同与台账结算控制，预算管控提供额度校验。</p>
+<blockquote>关键是<strong>结果回流</strong>：付款失败、部分支付、票据背书被拒，都会改变报账单据与池的状态 —— 前端不能只在提交时联动。</blockquote>
+<h3>主线 5：报表流（注意：它和凭证流不是一条路）</h3>
+<ul><li><strong>核算出数</strong>：总账把账簿、会计主体、期间、科目余额/辅助余额提供给报表管理，报表系统直接从总账取数，做到「数据同源」；</li><li><strong>管理报表出数</strong>：往来报表管理<strong>不走凭证流</strong>，走<strong>数据中台</strong>：①源系统取数 → ②中间层数据处理 → ③标准化报表生成 → ④手工数据调整 → ⑤融合数据校验 → ⑥报送审批 → ⑦输出查询。</li></ul>
+<p>判断口径：<strong>「核算类」看会计引擎和凭证，「报表/分析类」看数据中台和取数规则。</strong></p>
+<h3>主线汇总（依据上述证据整理，非原图）</h3>
+<div class="mermaid-note">流程图（Mermaid）：联网时自动渲染图形，否则显示源码</div><div class="mermaid">flowchart TD
+  MD[&quot;主数据与总账设置：会计主体、科目、汇率、账簿&quot;] --&gt; B
+  A[&quot;业务前端系统：供应链、合同、项目、商旅等&quot;] --&gt; B[&quot;报账层：应付/应收/费用/资产/总账报账&quot;]
+  BD[&quot;预算管控：校验、占用、释放&quot;] --&gt; B
+  B --&gt; C[&quot;单据池：预付池 / 应付池 / 支付申请池&quot;]
+  C --&gt; D[&quot;核算层：应付核算 / 应收核算 / 资产核算&quot;]
+  C --&gt; E[&quot;资金管理&quot;] --&gt; F[&quot;司库系统 / 银行&quot;]
+  F --&gt;|付款结果、交易流水| C
+  D --&gt; G[&quot;会计引擎：事件→来源→分录→凭证规则&quot;]
+  G --&gt; H[&quot;凭证池：草稿→正式&quot;]
+  H --&gt;|传送总账| I[&quot;总账管理：过账、科目余额/辅助余额&quot;]
+  I --&gt;|凭证编号回传| G
+  I --&gt; J[&quot;报表 / 往来报表&quot;]
+  MD --&gt; I</div>
+<h2>三、叠一张「实管道图」：以应付报账为例</h2>
+<p><figure><img src="./images/flow-payable.png" alt="应付报账业务架构与数据流转" loading="lazy"><figcaption>应付报账业务架构与数据流转</figcaption></figure></p>
+<p>这张图几乎覆盖所有典型要素：左侧外部业务系统（商旅、用工、成本管理、供应链、招投标、项目管理、期现一体、合同系统、主数据）；中部五类报账业务与三个池（预付池、应付池、支付申请池），输出支付记账单；右侧对接应付核算、总账管理、会计引擎、资金管理、税务管理；底部与应收核算、预算管控、应收报账、资产管理、费用管理双向交互。</p>
+<p><strong>看懂这一张，其它报账模块（费用、应收、资产、总账报账）都是同一套骨架的变体。</strong></p>
+<h3>读图技巧</h3>
+<p>这类产品图的图例有语义：<strong>本功能 / 财务管控域内数据交互 / 跨财务管控域（跨域）数据交互 / 第三方系统集成</strong>，箭头颜色和线型不同。同一张图里「域内」和「跨域」的接口，改造工作量完全不同 —— 先看图例再评估工作量。</p>
+<h2>四、各系统定位速查</h2>
+<div class="table-wrap"><table><thead><tr><th>系统 / 模块</th><th>一句话定位</th><th>上游给什么</th><th>下游拿什么</th></tr></thead><tbody><tr><td>主数据 / 基础资料</td><td>全域「身份字典」</td><td>组织、客商、合同、项目、银行账户、物料</td><td>全模块共用</td></tr><tr><td>总账设置</td><td>「坐标系 + 规则」</td><td>科目表、会计科目、币种/汇率、账簿、会计日历、辅助核算规则、凭证模板</td><td>核算、报账、资金按它建账</td></tr><tr><td>报账层（费用/应付/应收/资产/总账报账）</td><td>业务转财务的「入口」</td><td>外部单据、发票、合同</td><td>池、核算、会计引擎</td></tr><tr><td>报账池 / 支付申请池</td><td>未结清债权的「台账」</td><td>报账单、核销</td><td>付款申请、核算</td></tr><tr><td>核算层（应付/应收/资产核算）</td><td>单据记账的末端</td><td>报账单数据、单据状态</td><td>会计引擎、总账</td></tr><tr><td>会计引擎 + 凭证池</td><td>「翻译官」+ 凭证暂存站</td><td>业务事件、来源规则</td><td>总账</td></tr><tr><td>总账管理</td><td>账的主库（凭证、余额、期间）</td><td>凭证池推送</td><td>报表、对账</td></tr><tr><td>资金管理 / 结算</td><td>「钱」的出口</td><td>支付申请、资金计划</td><td>银行/司库、报账状态回写</td></tr><tr><td>预算管控</td><td>提交即校验的「闸门」</td><td>预算模型、控制策略</td><td>各业务系统的额度占用</td></tr><tr><td>报表 / 往来报表</td><td>出数与报送</td><td>总账余额、数据中台</td><td>监管报送、管理分析</td></tr></tbody></table></div>
+<h2>五、一句话总结本篇</h2>
+<p><strong>业务事实 → 报账单 → 池 → 核算 → 凭证 → 总账 → 报表；钱则走「支付申请池 → 资金管理 → 司库 → 结果回流」。</strong> 两条链路在「凭证池 / 支付记账单」处交汇，任何设计讨论都先问一句「这事属于哪条链路」。</p>
+</section>
+<section class="doc" data-slug="doc-4">
+<h1>04 人员与组织分工</h1>
+<blockquote>⚠️ 先说结论：<strong>知识库里没有一份正式的项目组织架构 / 人员通讯录 / RACI 表</strong>。下面把「文档能证明的」「能间接推断的」「完全查不到的」分开列，宁可空着也不编人名。</blockquote>
+<h2>一、有据可查：3A 架构表的「负责人」</h2>
+<p>《3A架构表-应用架构L1-L5》只有 <strong>「总账 &amp; 关联交易」这一系列（V2.1、V1.0）带「负责人」列</strong>，其余分册用的是「PRD / 技术设计 / 开发进度 / 功能测试结果 / 未关闭缺陷数」进度列，填的是产品经理、开发、测试角色，没有负责人列。</p>
+<p>所以能落地的负责人只有这一段应用链：</p>
+<div class="table-wrap"><table><thead><tr><th>应用组（L2）</th><th>应用（L3）</th><th>应用模块（L4）范围</th><th>负责人</th></tr></thead><tbody><tr><td>财务核算-总账</td><td>总账设置</td><td>币种、汇率、单据序列号分配、导入模板管理、辅助核算规则、会计科目、科目表、凭证编码/打印/审批/自动冲销/自动过账规则、凭证来源、凭证类别、会计日历、期间映射、业务日历、账簿、账簿集、段值、值集、法人、管理单元、管理口径、会计主体</td><td><strong>刘福</strong></td></tr><tr><td>财务核算-总账</td><td>总账管理</td><td>凭证管理、经常性凭证、辅助明细余额表、辅助余额表、科目明细余额表、科目余额表、凭证明细查询、试算平衡表、现金流量表、序时账查询、报告币折算、外币重估、账簿折算</td><td><strong>刘福</strong></td></tr><tr><td>财务核算-总账</td><td>结账管理</td><td>关账工作台、结账任务管理、年结处理、期间管理</td><td><strong>刘福</strong></td></tr><tr><td>财务核算-总账</td><td>报表管理</td><td>报表自定义管理（定义、计算、校验、封存、完成、审核、打印、数据删除、手工结转、查询、编辑、穿透、日志）</td><td><strong>葛琦</strong></td></tr><tr><td>共享报账-总账</td><td>总账报账</td><td>财务综合工单、业务类型、总账凭证报账单、总账业务报账单、报账明细汇总表、单据汇总表</td><td><strong>马玉松</strong></td></tr><tr><td>共享报账-总账</td><td>关联交易</td><td>关联方管理（主数据申请单查询/新增/编辑/查看、主数据查询、关联方详细定义、主数据变更查询）</td><td><strong>高玉磊</strong></td></tr></tbody></table></div>
+<p><strong>按人汇总：</strong></p>
+<ul><li><strong>刘福</strong> —— 总账基础配置 + 总账业务查询 + 结账管理（V1.0 版另含科目管理、组织管理）</li><li><strong>葛琦</strong> —— 报表管理 / 资产负债表等具体报表</li><li><strong>马玉松</strong> —— 总账报账整条应用</li><li><strong>高玉磊</strong> —— 关联交易 / 关联方管理</li></ul>
+<h3>应用级负责人（门户能力中心登记口径）</h3>
+<div class="table-wrap"><table><thead><tr><th>应用</th><th>应用编号</th><th>应用负责人</th></tr></thead><tbody><tr><td>应收报账</td><td><code>app-minmetals-fm-fis-ar</code></td><td><strong>赵伟</strong></td></tr><tr><td>应付报账</td><td><code>app-minmetals-fm-fis-ap</code></td><td><strong>王帅</strong></td></tr></tbody></table></div>
+<blockquote>注意：这是<strong>应用级</strong>负责人（按后端 <code>app-</code> 编号登记），文档没有单列「前端负责人」。同一应用的 <code>fe-</code> 工程与后端共用业务归属是合理推断，不是文档明示。 Poseidon 部署页上出现的姓名（如「田蜜」「乔海平」）是<strong>操作人</strong>，不能当负责人证据。</blockquote>
+<h3>测试阶段的分工人员（单模块口径）</h3>
+<p>《WKKY_财务应收_单模块测试_用例测试步骤》按「小组顾问 / 关键用户 / IT 支持」列了人：</p>
+<div class="table-wrap"><table><thead><tr><th>模块</th><th>小组顾问</th><th>关键用户</th><th>IT 支持</th></tr></thead><tbody><tr><td>合同管理</td><td>谭庆超</td><td>—</td><td>—</td></tr><tr><td>人力资源</td><td>毛艳梅</td><td>—</td><td>—</td></tr><tr><td>协同办公</td><td>范祺琪、章如静</td><td>焦俏红、赵鹏</td><td>高尚</td></tr><tr><td>生产管控</td><td>周荣海、王素莎</td><td>—</td><td>—</td></tr></tbody></table></div>
+<blockquote>这是<strong>测试阶段单模块分工</strong>，不代表项目组任命；「IT 支持」≠ 开发负责人。</blockquote>
+<h2>二、角色职责（文档明文定义）</h2>
+<div class="table-wrap"><table><thead><tr><th>角色</th><th>职责（文档表述）</th></tr></thead><tbody><tr><td><strong>实施顾问</strong></td><td>财务信息化项目的核心执行者与推动者，兼具财务业务知识、IT 认知与项目管理能力；负责实施全流程 —— 系统部署、配置、测试、上线、用户培训，使系统功能与企业实际业务场景适配</td></tr><tr><td><strong>系统管理员</strong></td><td>财务各模块（总账、应收应付、固定资产、供应链、费用报销、预算、合并报表等）的系统配置、基础档案维护、权限管理、流程配置、版本运维、问题处理与数据安全管控，<strong>不做日常账务</strong></td></tr><tr><td><strong>运维人员</strong></td><td>衔接财务业务与 IT，负责系统全生命周期运维，保障稳定安全高效运行，解决技术与业务适配问题</td></tr><tr><td><strong>共享管理员</strong></td><td>共享运营模块的系统配置与问题处理，同样不做日常账务</td></tr><tr><td><strong>业务关键用户</strong></td><td>测试组织中独立角色，与「小组顾问」「IT 支持」并列，参与单模块场景用例的确认与执行</td></tr><tr><td><strong>BRD 编制方</strong></td><td>《业务需求说明书》作者为「集团公司统建系统建设项目财务专班」（V2.0 征求意见稿）</td></tr></tbody></table></div>
+<h2>三、前后端分工：文档里没有，只有痕迹</h2>
+<ol><li>3A 架构表的研发进度列按填报角色拆分：PRD / 技术设计由<strong>产品经理</strong>填写，开发进度由<strong>开发人员</strong>填写，功能测试结果与未关闭缺陷数由<strong>测试人员</strong>填写 —— 只区分「开发人员」，未细分前后端。</li><li>概要设计（BRS）对每个 L4 功能按「功能实现、接口设计、<strong>后端插件设计</strong>、<strong>前端设计</strong>」四段描述 —— 说明设计工作事实上按接口/插件层与前端控件层分头编写。</li></ol>
+<p>由此可用的约定只有一条：<strong>开发者按 BRS 的「前端设计 / 后端插件设计」章节认领功能点</strong>。</p>
+<h2>四、需求 → 缺陷 → 发布 的流转</h2>
+<p>依据《CWGL_发布管理_PRD L4 流水发布池评审版》与《CWGL_电子会计档案PRD》流程页整理：</p>
+<div class="mermaid-note">流程图（Mermaid）：联网时自动渲染图形，否则显示源码</div><div class="mermaid">flowchart TD
+  A[&quot;需求提出（录入 / 关联项目 / 提交）&quot;] --&gt; B[&quot;按分发部门进入待办&quot;]
+  B --&gt; C[&quot;需求分析与评估&quot;]
+  C --&gt; D{&quot;需求评审是否通过&quot;}
+  D --&gt;|否| C
+  D --&gt;|是| E[&quot;纳入需求池 / 需求下发&quot;]
+  E --&gt; F[&quot;评估工作量并确定开发排期&quot;]
+  F --&gt; G[&quot;技术实现（前端 / 后端开发）&quot;]
+  G --&gt; H[&quot;提测 + 代码评审&quot;]
+  H --&gt; I{&quot;代码评审通过&quot;}
+  I --&gt;|否| G
+  I --&gt;|是| J[&quot;测试执行 + 缺陷管理&quot;]
+  J --&gt; K{&quot;测试通过&quot;}
+  K --&gt;|否| L[&quot;修复 BUG / 回归测试&quot;]
+  L --&gt; J
+  K --&gt;|是| M[&quot;验收&quot;]
+  M --&gt; N[&quot;合并主分支 → 发布上线&quot;]
+  N --&gt; O[&quot;归档 / 项目复盘&quot;]
+  J -.-&gt;|线上问题| P[&quot;需求变更&quot;]
+  P --&gt; C</div>
+<ul><li><strong>发布节点</strong>：需求提出 → 需求分析 → 技术实现 → 代码评审 → 测试 → 上线；含需求录入、需求分发中心（审核）、工作量评估、开发排期、代码评审、代码提交、测试、合并主分支、发布、归档。</li><li><strong>角色设置</strong>：项目组、产品经理、项目经理、技术总监、测试工程师。</li><li><strong>缺陷台账</strong>：3A 架构表逐功能点设「功能测试结果（通过/不通过）」与「未关闭缺陷数」，由测试人员维护；测试用例表设「维护人 / 冒烟用例 / 优先级 P1–P4」。</li><li><strong>线上问题</strong>走<strong>需求变更</strong>分支，不是缺陷分支。</li></ul>
+<h2>五、前端工程与归属（找工作找谁看这里）</h2>
+<blockquote>文档给出的是 <strong>Poseidon 应用名</strong>，不一定等于 Git 仓库名。命名规律：<code>fe-</code> = 前端（node），<code>app-</code> = 后端（java maven springboot）。</blockquote>
+<div class="table-wrap"><table><thead><tr><th>前端工程</th><th>对应业务系统</th><th>说明</th></tr></thead><tbody><tr><td><code>fe-minmetals-fm-fis-fs</code></td><td>共享运营</td><td>node 前端</td></tr><tr><td><code>fe-minmetals-fm-fis-rt</code></td><td>关联交易</td><td>node 前端</td></tr><tr><td><code>fe-minmetals-fm-fis-ar</code></td><td>应收报账</td><td>与 <code>app-minmetals-fm-fis-ar</code> 成对</td></tr><tr><td><code>fe-minmetals-fm-fia-ara</code></td><td>应收核算（应用计算引擎）</td><td>构建机 <code>node:12.21.0</code>、镜像 <code>nginx:1.19.8</code>、1 核 1G</td></tr><tr><td><code>fe-minmetals-fm-fia-apa</code></td><td>应付核算（应用计算引擎）</td><td>前端镜像，nginx 配置 <code>minmetals-fm-fia-apa</code></td></tr><tr><td><code>fe-minmetals-gu-fin-asset</code></td><td>资产核算</td><td>「资产核算-前端镜像」</td></tr><tr><td><code>fe-minmetals-business-base</code></td><td>采购管理（跨域示例）</td><td>「五矿前端微开」</td></tr></tbody></table></div>
+<p>前缀分组：<code>fm-fis-*</code> = 财务报账/共享报账域（fs 共享运营、ar 应收报账、ap 应付报账、fa 资产报账、rt 关联交易、base 财务报账基础应用）；<code>fm-fia-*</code> = 应用计算引擎产品线（ara 应收核算、apa 应付核算、base 基础应用）；<code>gu-fin-asset</code> = 资产核算（独立命名）。</p>
+<ul><li><strong>Git 归属</strong>：唯一给出地址的是应收核算前端 <code>https://git.cisdigital.cn/wk-financial-control/ace/fe/fe-minmetals-fm-fia-ara.git</code> —— 前端工程统一收在 <code>wk-financial-control</code> 下的 <code>ace/fe</code> 组。</li><li><strong>产品线</strong>：文档里划分前端负责团队的唯一组织维度是产品线 —— <strong>财务</strong> / <strong>应用计算引擎</strong>。</li></ul>
+<h3>关于 <code>fia-base</code> / <code>fia-sla</code></h3>
+<ul><li><code>fia-base</code> 确实存在，但只以「被调用的<strong>后端</strong>基础服务」出现（应付核算 <code>application.yml</code> 里的 http-exchange 客户端）；它与「财务报账基础应用」<code>app-minmetals-fm-fis-base</code> <strong>不是同一个东西</strong>。前端工程未见到。</li><li><code>fia-sla</code> 未直接检索到同名工程，只有配置键与消息主题 <code>sla-voucher-wb-rocketmq</code>、消费组 <code>finance_sla_vou_wb_apa_group</code>、topic <code>finance_sla_vou_wb</code>（凭证回写场景），更像「凭证回写服务」的中间件配置。⚠️ 需向平台管理员索取 Poseidon 应用清单核对。</li></ul>
+<h2>六、完全查不到的（别浪费时间翻文档）</h2>
+<ol><li>项目组织架构、项目经理、各组组长名单、各角色对接人通讯录；</li><li>前后端开发团队编制与人员归属、前端团队花名册；</li><li>版本节奏（迭代周期、灰度策略、发布窗口）、发布审批与回滚责任人；</li><li>缺陷分级标准、处理时限（SLA）与升级路径；</li><li>公共组件库与脚手架模板的仓库、版本与维护方。</li></ol>
+<p><strong>这五项建议直接找项目经理 / 平台架构组要，知识库补不齐。</strong></p>
+</section>
+<section class="doc" data-slug="doc-5">
+<h1>05 配置与实施注意事项</h1>
+<blockquote>这一篇是实施顾问的主战场，也是前端最容易「莫名其妙提测不过」的根因所在。</blockquote>
+<h2>一、通用原则（背下来）</h2>
+<ol><li><strong>先配没有内部依赖的基础配置，再配带前置依赖的业务规则、账户、风控、计划类配置。</strong></li><li>配置手册里每条配置都有六列：配置名称 / 配置类型 / 关联业务对象 / 配置要求（必选·可选）/ 依赖应用 / <strong>依赖配置</strong>。<strong>「依赖配置」列就是上线排序的直接依据。</strong></li><li>系统预置的<strong>参考数据</strong>（币种、汇率类型、关联方类型等）实施人员<strong>不需要新建，只需核验完整性</strong>；但实施账号本身必须先由系统管理员开通功能权限 + 匹配数据范围的<strong>数据权限</strong>。</li></ol>
+<h2>二、新增一个业务模块：从 0 到上线 10 步</h2>
+<div class="table-wrap"><table><thead><tr><th>顺序</th><th>事项</th><th>关键入口</th><th>主要产出</th></tr></thead><tbody><tr><td>0</td><td>应用服务在基础平台开放</td><td>系统管理 &gt; 应用管理 &gt; 服务管理 &gt; 【功能管理】</td><td>功能菜单树、操作权限标识、业务模型关联</td></tr><tr><td>1</td><td>组织（组织机构 / 公司 / 部门）</td><td>基础平台组织机构</td><td>组织维度可用（后续会计主体、单据、审批人、数据权限都按它挂）</td></tr><tr><td>2</td><td>会计主体 + 账簿</td><td>主数据平台、账簿管理</td><td>会计主体启用、账簿与主体绑定、辅助核算规则</td></tr><tr><td>3</td><td>单据类型、编号规则、值集</td><td>基础设置 &gt; 公共设置 / 基础应用 &gt; 单据类型</td><td>单据类型可查、编号规则生效</td></tr><tr><td>4</td><td>业务模型（低开）</td><td>应用开发 &gt; 对应服务 &gt; 低开模块 &gt; 【开发】</td><td>页面/实体模型、<strong>操作授权开启</strong>、权限项绑定业务操作</td></tr><tr><td>5</td><td>菜单注册</td><td>功能管理挂载菜单</td><td>导航可见</td></tr><tr><td>6</td><td>角色与权限</td><td>权限管理 &gt; 角色管理 &gt; 业务角色</td><td>标准角色 + 业务角色，功能权限 + 数据权限</td></tr><tr><td>7</td><td>审批流程</td><td>流程配置 + 绑定系统操作</td><td>三段式节点 + 通过/退回/拒绝回写</td></tr><tr><td>8</td><td>参数与业务规则</td><td>参数配置、业务规则</td><td>参数项、主表/子表规则</td></tr><tr><td>9</td><td>测试与上线验证</td><td>权限与流程回归</td><td>上线清单</td></tr></tbody></table></div>
+<h3>各步的关键细节</h3>
+<p><strong>第 0 步</strong>：<code>系统管理 &gt; 应用管理 &gt; 服务管理</code> 找到已开放的应用服务 →【功能管理】：左侧树是「应用开放的功能菜单」，右侧「操作列表」增删改查操作权限标识，右侧「业务模型」维护操作标识关联的业务模型（执行接口时操作到的表）。</p>
+<p><strong>第 2 步 会计主体与账簿（财务模块最关键的硬前置）</strong></p>
+<ul><li>会计主体属主数据管理平台维护的主数据，在会计主体管理菜单完成新增/查看/编辑/启停。</li><li>新增账簿必填：<strong>财务账簿、账簿类型、账簿编码、账簿名称、会计准则、科目表、会计日历、初始期间、本位币币种、使用状态、有效日期范围、备注</strong>；账簿与会计主体分别选择并关联，弹窗内「包含会计主体」后执行【启用】。</li><li>涉及辅助核算还要按「账簿 + 会计主体 + 辅助核算 + 默认值」配辅助核算规则。</li><li><strong>推荐顺序</strong>：会计主体 → 科目表 / 会计日历 / 期间 → 账簿 → 账簿与主体绑定启用 → 辅助核算规则。</li></ul>
+<p><strong>第 3 步 单据类型</strong>：编号由系统自动生成、全系统唯一、不可重复；名称手工输入并做去空格与重复性校验；<strong>编码新增时自动生成、禁止修改</strong>，且是关键查询条件。单据编号由「单据类型/业务类型」带出。</p>
+<p><strong>第 4 步 业务模型</strong>：模型内按页签核对 <code>业务模型 → 页面模型/实体模型 → 特征变量 → 权限控制 → 业务操作 → 业务规则 → 模板配置</code>；<strong>「权限控制 → 操作授权」开关必须启用</strong>；权限项先搜库中是否已存在，不存在再新增；在「业务操作」里给需要管控的操作（如 <code>new</code>、<code>newentry</code>、<code>saveandnew</code>）绑定权限项。</p>
+<p><strong>第 6 步 角色</strong>：先建<strong>标准角色</strong>（经办、业务审批人、财务审批人、系统管理员/运维），再建<strong>业务角色</strong>（可参考标准角色创建，支持导入导出）；业务角色默认集成标准角色的数据权限与功能权限，建好后点【配置权限】细化。</p>
+<p><strong>第 7 步 流程</strong>：财务类单据常规是「发起 → 业务审批 → 财务审批」三段式；在流程/业务模型侧「绑定系统操作」，勾选 <code>final_approve</code>（审批通过）、<code>final_return</code>（退回）、<code>final_reject</code>（拒绝）；单据表要具备 <code>process_instance_id</code>、<code>process_id</code>、<code>current_node_code</code>、<code>approval_status</code>、<code>biz_status</code> 承载流程状态；走共享作业的还要在共享中心新增子流程（子流程编码、名称、单据类型、共享中心）。</p>
+<p><strong>第 8 步 参数与规则</strong>：模块级参数按「参数名、参数名称、参数类型」新增（示例：<code>acctEntityList</code> 会计主体、<code>ledgerList</code> 账簿、<code>legalEntityList</code> 法人、<code>periodCode</code> 期间）；<strong>业务规则涉及主表、子表时每张表都要单独配规则</strong> —— 只配主表会导致分录层规则不生效，这是高频漏配点。</p>
+<h2>三、上线的初始化依赖顺序（五层）</h2>
+<div class="mermaid-note">流程图（Mermaid）：联网时自动渲染图形，否则显示源码</div><div class="mermaid">flowchart TD
+  A[&quot;环境与平台服务就绪（中间件/网络/认证/能力中心）&quot;] --&gt; B[&quot;组织数据（集团标准、已启用）&quot;]
+  B --&gt; C[&quot;人员、部门、角色与功能/数据权限项初始化&quot;]
+  B --&gt; D[&quot;会计基础：会计主体、会计科目、科目表、币种、汇率类型&quot;]
+  D --&gt; E[&quot;账簿、部门属性、会计日历/期间、辅助核算&quot;]
+  C --&gt; F[&quot;菜单发布、单据编号、全局业务模型、网关路由&quot;]
+  E --&gt; G[&quot;单据类型、业务类型、参考数据/值集&quot;]
+  F --&gt; G
+  G --&gt; H[&quot;页面模型推送&quot;]
+  H --&gt; I[&quot;工作流配置与流程节点绑定&quot;]
+  G --&gt; J[&quot;数据对象/选择器/参数/业务规则&quot;]
+  I --&gt; K[&quot;端到端联调与上线核验&quot;]
+  J --&gt; K</div>
+<h3>几条原文写明的关键依赖</h3>
+<ul><li><strong>组织数据</strong>依赖「主数据中组织数据已按集团标准维护并启用」；申请人依赖平台人员组件；所属部门从组织管理同步。</li><li><strong>业务类型是依赖最多的节点</strong>：依赖组织机构、账簿、部门属性、会计科目、资金计划类型、现金流量项、税收分类编码、单据类型、开票类型、税率。</li><li>「标准类型」依赖先在【系统管理-基础资料-数据对象】完成<strong>数据对象属性管理 + 数据对象定义</strong>。</li><li>会计科目必须挂在科目表下（所属科目表为必填外键）。</li><li>账户体系是三级链：<strong>账户类别（无依赖）→ 账户性质（依赖类别）→ 账户用途（依赖类别+性质）→ 是否推送司库（依赖三者）</strong>。</li><li>资金认领分类前置需要「单据类型、会计科目」；金融机构配置需先有「类别、国家、省份、城市」；管理组织认领规则依赖「管理组织、资金认领分类、款项性质、现金流量项、资金用途」；提醒规则又依赖认领规则。</li><li>挂账单科目配置需提前维护「管理组织、会计主体、会计科目、现金流量项、资金中心内部户、资金用途、金融机构、客商、银行账户」。</li><li><strong>页面模型推送是工作流的前置</strong> —— 先配工作流后推页面模型，工作流建不出来。</li></ul>
+<h3>配错会怎样（后果对照表）</h3>
+<div class="table-wrap"><table><thead><tr><th>配置项</th><th>配错的表现</th><th>后果</th></tr></thead><tbody><tr><td>实施账号数据权限</td><td>只授权了部分会计主体</td><td><strong>数据权限控制会计主体、企业会计科目、客商等帮助列表的可选范围</strong>，多主体集中配置时查不到、配不全</td></tr><tr><td>功能权限项/数据权限维度未初始化</td><td>只建角色不初始化权限项</td><td>按钮权限无承载对象：角色里看不到按钮、菜单能看到但操作不可用</td></tr><tr><td>页面模型推送 vs 工作流</td><td>顺序颠倒</td><td>工作流创建/绑定失败，单据提交后无流程实例</td></tr><tr><td>账户类别 → 性质 → 用途</td><td>跳过类别直接建性质</td><td>下拉无值，后续「是否推送司库」无从配置</td></tr><tr><td>业务类型</td><td>单据类型/税率为空</td><td>业务类型建不出来或性质定义不全，单据无法归类、记账取数异常</td></tr><tr><td>组织数据</td><td>未按集团标准维护或未启用</td><td>申请人、所属部门、数据权限全部连带缺失</td></tr><tr><td>会计科目/科目表</td><td>科目未挂科目表</td><td>账簿、凭证、科目配置类功能取不到科目</td></tr><tr><td>参考数据</td><td>只配业务、不核验参考数据</td><td>币种/汇率类型下拉取值缺失，引用字段为空</td></tr></tbody></table></div>
+<h2>四、上线检查清单（按阶段勾）</h2>
+<h3>阶段 A 环境与平台（所有模块共用）</h3>
+<ul><li><span class="cb">&#9744;</span> 目标环境（DEV/TEST/STG/PROD）就绪</li><li><span class="cb">&#9744;</span> 中间件（BCS/BES MQ/Kafka/DCS-Z/Datasearch/MinIO/OceanBase）部署可用</li><li><span class="cb">&#9744;</span> 应用服务器到中间件 IP/端口网络连通</li><li><span class="cb">&#9744;</span> 各环境认证信息（domain/key/secret/账号密码）已获取</li><li><span class="cb">&#9744;</span> 能力管理中心、编号中心、消息中心、统一集成平台可访问</li><li><span class="cb">&#9744;</span> dev/test 配置导出文件已备好（编号配置用）；参考代码已导入</li></ul>
+<h3>阶段 B 平台底座</h3>
+<ul><li><span class="cb">&#9744;</span> 组织数据按集团标准维护并<strong>启用</strong></li><li><span class="cb">&#9744;</span> 所属部门从组织管理同步完成；平台用户/申请人建立</li><li><span class="cb">&#9744;</span> 角色配置完成并<strong>分配用户</strong>；功能权限项与数据权限维度初始化完成</li><li><span class="cb">&#9744;</span> 应用菜单发布；全局业务模型创建；网关路由配置完成</li><li><span class="cb">&#9744;</span> 客商、地址（洲/国/省）等公共主数据完成</li></ul>
+<h3>阶段 C 会计基础</h3>
+<ul><li><span class="cb">&#9744;</span> 会计主体创建并启用</li><li><span class="cb">&#9744;</span> 会计科目按科目表维护（外键回填成功）</li><li><span class="cb">&#9744;</span> 币种、汇率类型核验（参考数据，只核验不新建）</li><li><span class="cb">&#9744;</span> 账簿创建（含会计准则、科目表、会计日历、初始期间、本位币、有效日期）</li><li><span class="cb">&#9744;</span> 账簿与会计主体绑定启用；部门属性维护完成</li><li><span class="cb">&#9744;</span> 现金流量项、资金计划类型、税收分类编码、开票类型、税率齐备</li></ul>
+<h3>阶段 D 单据与字典</h3>
+<ul><li><span class="cb">&#9744;</span> 单据类型、单据编号配置完成</li><li><span class="cb">&#9744;</span> 编码规则验证：新增单据能自动生成不重复编号</li><li><span class="cb">&#9744;</span> 业务类型配置完成（依赖项到位后再配）</li><li><span class="cb">&#9744;</span> 参考数据/全局下拉核验完整</li><li><span class="cb">&#9744;</span> 数据对象（属性管理 → 定义）→ 标准类型；选择器指向正确数据对象</li></ul>
+<h3>阶段 E 模型与流程</h3>
+<ul><li><span class="cb">&#9744;</span> 低开模型「操作授权」启用，权限项已绑定业务操作</li><li><span class="cb">&#9744;</span> <strong>页面模型推送完成</strong></li><li><span class="cb">&#9744;</span> 工作流节点（发起/业务审批/财务审批）与审批人规则正确</li><li><span class="cb">&#9744;</span> <code>final_approve / final_return / final_reject</code> 已绑定</li></ul>
+<h3>阶段 F 参数、规则与接口</h3>
+<ul><li><span class="cb">&#9744;</span> 参数管理配置并生效</li><li><span class="cb">&#9744;</span> 业务规则按主表<strong>和每张子表</strong>分别配置</li><li><span class="cb">&#9744;</span> 集成平台 API 检查、MQ 检查完成</li><li><span class="cb">&#9744;</span> 需迁移的基础数据脚本已验证</li></ul>
+<h3>阶段 G 部署后验证（每项都是上线门禁）</h3>
+<ul><li><span class="cb">&#9744;</span> Kafka 连接正常（流程引擎 bpm、cap 数据中心）</li><li><span class="cb">&#9744;</span> ipaas 认证成功（domain 可达、serviceId/secret 正确）</li><li><span class="cb">&#9744;</span> mdm 接收 ipass 数据配置正确（STG 环境无需配置）</li><li><span class="cb">&#9744;</span> 数据库、Redis/BCS 缓存、Kafka/BES MQ 连接正常</li></ul>
+<h2>五、会计引擎配置（七块规则库）</h2>
+<p>会计引擎是「规则库」架构，共七块：<strong>事件模型库、来源规则库、分录规则库、凭证行规则库、子模块会计引擎、多准则会计方法库、凭证池</strong>。</p>
+<p><figure><img src="./images/cfg-accounting-engine-menu.png" alt="会计引擎菜单导航结构" loading="lazy"><figcaption>会计引擎菜单导航结构</figcaption></figure></p>
+<p>具体菜单：</p>
+<ul><li><strong>事件模型库</strong>：事件模型定义、会计属性定义、会计属性分配、事件分类来源对象定义、事件分类与单据类型映射</li><li><strong>来源规则库</strong>：来源定义、来源分配</li><li><strong>分录规则库</strong>：会计分录类型定义（部分文档称「会计分类定义」）、凭证行类型、凭证头摘要规则、凭证行摘要规则、凭证推导规则、映射规则</li><li><strong>凭证行规则库</strong>：凭证行定义</li><li><strong>子模块会计引擎 / 多准则方法 / 凭证池</strong>（凭证传递规则、凭证池、子模块凭证列表）</li></ul>
+<blockquote>同一节点在不同版本文档里有两种命名（「会计分录类型定义」vs「会计分类定义」），落地以环境实际菜单为准。批量配置靠<strong>导入模板/复制</strong>，不要手工逐条点。</blockquote>
+<h3>配置顺序（依赖驱动）</h3>
+<div class="mermaid-note">流程图（Mermaid）：联网时自动渲染图形，否则显示源码</div><div class="mermaid">flowchart TD
+  A[&quot;前置：模块、单据类型、账簿/科目表/会计期间&quot;] --&gt; B[&quot;事件模型定义&quot;]
+  B --&gt; C[&quot;会计属性定义（适用推导规则=是）&quot;]
+  C --&gt; D[&quot;会计属性分配（按事件分类）&quot;]
+  D --&gt; E[&quot;事件分类来源对象定义&quot;]
+  E --&gt; F[&quot;事件分类与单据类型映射&quot;]
+  F --&gt; G[&quot;来源定义&quot;] --&gt; H[&quot;来源分配&quot;]
+  H --&gt; I[&quot;会计分类定义&quot;] --&gt; J[&quot;凭证行类型&quot;]
+  J --&gt; K[&quot;凭证头/凭证行摘要规则&quot;] --&gt; L[&quot;凭证推导规则（含优先级行）&quot;]
+  L --&gt; M[&quot;映射规则（跨准则科目+辅助核算维度）&quot;]
+  M --&gt; N[&quot;凭证行定义&quot;]
+  N --&gt; O[&quot;子模块会计引擎：分配事件分类+事件类型&quot;]
+  O --&gt; P[&quot;验证 verify → 有效&quot;]
+  P --&gt; Q[&quot;多准则方法 / 凭证传递规则&quot;]
+  Q --&gt; R[&quot;凭证池创建凭证并传总账&quot;]</div>
+<p><figure><img src="./images/cfg-accounting-engine-flow.png" alt="子模块会计引擎新增/编辑/删除/查询/复制的校验流程" loading="lazy"><figcaption>子模块会计引擎新增/编辑/删除/查询/复制的校验流程</figcaption></figure></p>
+<h3>高频配置错误（都是验证会拦下的硬约束）</h3>
+<div class="table-wrap"><table><thead><tr><th>环节</th><th>约束</th><th>后果</th></tr></thead><tbody><tr><td>事件模型定义</td><td>参考对象为「表」或「单基表视图」时，连接链末端头级业务对象也必须是表/单基表视图</td><td>子模块引擎验证不通过</td></tr><tr><td>会计属性定义</td><td>被启用推导规则引用的会计属性，「适用推导规则」必须为「是」</td><td>验证失败</td></tr><tr><td>会计属性分配</td><td>子模块引擎验证会检查「事件分类 + 事件类型」是否已分配</td><td>提示「请先完成分配后再验证」</td></tr><tr><td>事件分类与单据类型映射</td><td>被其他配置引用时<strong>不允许编辑/删除</strong></td><td>改不动，只能新增映射</td></tr><tr><td>凭证行类型</td><td>借贷方向为「损益」时，其下每条启用推导规则的「推导规则借贷方向」必须非空</td><td>验证失败</td></tr><tr><td>凭证推导规则</td><td>每条启用规则<strong>至少一个优先级行</strong>；生效条件表达式括号匹配、语法合法</td><td>验证失败；取值优先级错会导致取错科目</td></tr></tbody></table></div>
+<p><strong>映射规则</strong>（跨准则场景）：定义不同准则下科目与辅助核算维度值的一对一/多对一对应关系；主表含模块编码、规则编码（唯一）、5 组输入类型+输入科目表/值集、5 组输出类型+输出科目表/值集、生效/失效日期、状态；新增时<strong>必须同时维护映射规则、映射值集、映射值三者并建立关联</strong>。注意<strong>模块字段用于数据权限联动</strong>：模块为空 → 任何推导规则都能选；模块非空 → 推导规则不能选模块值不同的映射规则。</p>
+<h2>六、权限模型（RBAC 五层）</h2>
+<p><figure><img src="./images/cfg-permission-page.png" alt="权限控制页：权限项 + 字段权限（数据权限的管控维度来源）" loading="lazy"><figcaption>权限控制页：权限项 + 字段权限（数据权限的管控维度来源）</figcaption></figure></p>
+<h3>结构</h3>
+<p><strong>菜单（功能）→ 按钮（操作）→ 数据范围 → 行级 → 列级</strong>，自上而下金字塔。 人员不直接挂权限：<strong>用户 → 岗位（分配人员）→ 业务角色 BR →（引用）标准角色 SR → 功能权限 + 数据权限</strong>。多角色时权限<strong>取并集</strong>（不是覆盖），这点必须写进设计说明。</p>
+<h3>四类权限怎么配</h3>
+<p><strong>1）菜单权限</strong></p>
+<ul><li>授权对象是「L3 应用下的菜单节点」。</li><li>交付物是一张<strong>菜单权限清单</strong>：一级菜单 / 二级菜单 / 三级菜单 / 按钮功能 / 角色（落地 Excel 版还多「操作按钮 / 权限分配 √ / 备注 / 范围权限」）。</li><li>⚠️ 清单里菜单层级字段是<strong>稀疏填充</strong>的（只在分组首行有值），导入系统前必须向下填充，否则权限挂错层级。</li></ul>
+<p><strong>2）按钮权限（权限项）—— 新增页面最核心的一环</strong></p>
+<ul><li>链路固定：业务模型 → <strong>权限控制</strong> → 开启「操作需要授权」→ 维护权限项（名称 + 编码 + 适用范围「通用 / 当前模型」）→ 绑定业务操作。</li><li><strong>权限项编码必须等于页面模型中按钮的「操作代码」</strong>（选中按钮可查看，如 <code>delete</code>）；重名时按编码判断而不是按名称。</li><li>命名建议 <code>业务对象前缀 + 动作</code>，如 <code>PolicyDocument-add</code>、<code>PolicyDocument-batchDelete</code>、<code>LabelTemplateManagement-edit</code>。</li><li>按钮权限不只是显示/隐藏：还有按钮类型（主/次/文字/危险）、图标、过多折叠为「更多」、<strong>禁用态配置</strong>（不满足业务条件置灰）、高风险二次确认、成功后刷新列表。</li></ul>
+<p><strong>3）数据权限（三层）</strong></p>
+<ul><li><strong>范围权限</strong>：按组织、部门、项目、标段、参建方、合同等维度划分归属，四种通用模式：本节点 / 本节点及下级 / 指定节点 / 全部节点。<strong>多维之间取交集</strong> —— 例如组织=A、资产主体=A1、管理部门=B11（不属于 A1）→ 结果为空；只填管理部门=B11、其他留空 → 展示 B11 全部数据（<strong>空维度不参与过滤</strong>）。这是最容易配错的地方。</li><li><strong>行级权限</strong>：控制同一页面能看到哪些行，典型条件「管理部门 等于 当前用户所在机构」（见下图）。验收口径：A 组织管理员只能看 A 组织数据；资产报账按资产主体隔离，普通用户只看本人提交/待处理，本公司管理员可跨部门，上级单位可申请查看下级。</li><li><strong>列级权限（字段权限）</strong>：低开模型在「字段权限」里登记受控字段（如组织机构 <code>own_org_superior</code>、资产主体 <code>own_org</code>）；高开侧把字段属性类型设为「管控维度」。</li><li>⚠️ <strong>顺序很重要</strong>：先把字段配成管控维度，数据权限配置界面才会出现该维度，再到【产品管理】关联业务模型、给权限模型配属性。</li></ul>
+<p><figure><img src="./images/cfg-data-permission.png" alt="配置数据权限：行级权限条件「管理部门 等于 当前用户所在机构」" loading="lazy"><figcaption>配置数据权限：行级权限条件「管理部门 等于 当前用户所在机构」</figcaption></figure></p>
+<h3>新增功能页面的权限配置顺序</h3>
+<p>菜单注册 → 页面模型按钮操作代码确认 → 权限项（名称/编码/适用范围）→ 业务操作绑定 → 标准角色/业务角色授权 → 字段配管控维度 → 范围/行级/列级数据权限 → 按「菜单+按钮+角色」清单回归。</p>
+<h2>七、本篇的待确认项</h2>
+<ul><li><strong>数据字典/值集的独立维护入口与导入导出步骤</strong>：未检索到原文，按平台「基础设置 &gt; 基础数据/值集」实际菜单确认。</li><li><strong>上线发布（版本发布、灰度、生产参数同步）标准流程</strong>：未检索到原文，需向 DevOps/发布管理岗确认。</li></ul>
+</section>
+<section class="doc" data-slug="doc-6">
+<h1>06 设计理念与池化模型</h1>
+<blockquote>这一篇解释「为什么长成这样」。看懂后你会发现很多看似绕的设计其实是被业务逼出来的。</blockquote>
+<h2>一、顶层设计理念</h2>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td>建设目标</td><td>落实国资委穿透式监管，构建集团统一的国产化财务管控平台，实现<strong>标准统一、流程协同、数据贯通、管控有效</strong></td></tr><tr><td>总体思路</td><td>财务管控系统<strong>大集中</strong>，以「财务一体化」支撑「业务一体化」，形成<strong>六大业财闭环</strong></td></tr><tr><td>落地原则</td><td>集团统建优先（复用标准功能、本地化以配置为主）；业财一体贯通（<strong>业务单据驱动财务凭证</strong>，账实相符）；数据标准统一（物料、客商、科目、组织同源）；安全合规可控（等保 2.0、信创、细粒度权限与审计日志）</td></tr><tr><td>架构骨架</td><td>前台应用（PC/移动）→ 核心报账业务 → 内部协同（资金/总账/共享运营/会计引擎/税务/预算/核算）→ 外部协同（供应链/商旅/项目/成本/合同）→ 基础服务（SSO/权限/用户/组织/工作流/规则引擎）</td></tr></tbody></table></div>
+<h3>五个共性业务模式（记这五个词）</h3>
+<ol><li><strong>单据化</strong> —— 一张业务单据承载全部业务要素，而不是散落在多张表；</li><li><strong>池化管理</strong> —— 预付池、应付池、支付申请池、发票池、凭证池、结算池、认领池……；</li><li><strong>预算前置校验</strong> —— 提交即校验额度，不是月底算账；</li><li><strong>任务化</strong> —— 共享运营用任务池调度，把单据变成「谁的待办」；</li><li><strong>主数据统一</strong> —— 组织、客商、科目、物料一套到底。</li></ol>
+<h2>二、各子系统的核心设计理念</h2>
+<h3>费用报账</h3>
+<ul><li><strong>理念</strong>：以「费控前置 + 预算校验」控风险，以「事前申请—报销—付款」联动贯通业财；覆盖境内外差旅、通用事前申请、业务招待、一般费用报销、员工借还款、押金保证金退款，配套综合查询与敏感词监控。</li><li><strong>业务模型</strong>：</li><li class="sub">事前申请链：以「通用事前申请」为主表（申请ID、组织、申请人、申请总金额），一对多挂「业务明细」「取消通知人」，按业务类型一对一关联具体报销单。</li><li class="sub">报销链：报销单为主表，一对多关联「关联申请单、发票明细、报销明细、费用分摊、借款核销、收款信息」；<strong>「收款信息」再通过 ID 关联后端「付款申请池」</strong> —— 这就是报账到支付的数据闭环。</li><li><strong>流程</strong>：经办人发起（填报时预算控制校验）→ 业务审批 → 财务审批 → 进入支付申请池 → 结束。</li></ul>
+<h3>应付报账</h3>
+<ul><li><strong>理念</strong>：以「池化 + 单据族」覆盖采购到付款全链路 —— 应付单据<strong>先进池、再清算</strong>，最终以支付记账单收口。</li><li><strong>单据族</strong>：付款申请单、退票单、对公费用报销单、预付款单、押金保证金单据、三方抵账等；资金侧预付池/应付池/支付申请池，池内处理与核销后生成<strong>支付记账单</strong>。</li><li><strong>流程</strong>：发起报账单并业务审批 → 财务审批并汇入应付池 → 判断是否含质保金、退货、扣款、是否立即支付 → 推送支付指令 → 出纳执行 → 支付成功生成支付记账单。</li></ul>
+<h3>应收报账</h3>
+<ul><li><strong>建设目标（五项）</strong>：覆盖「应收单创建—审核—对账—核销—开票」标准化全流程；构建统一应收数据中心（口径规范、实时同步）；核心环节数字化自动化；全周期风险管控（信用额度、账期监控、逾期预警、坏账量化）；多维统计分析。</li><li><strong>定位</strong>：集团应收业务核心环节与「业务端—财务端」的关键枢纽，为应收核算、资金回收与风险管控提供基础数据。</li><li><strong>单据族</strong>：暂估收入报账/冲销、通用销售收入报账、通用销售退回、分期确认收入、冶金建设-建造合同收入成本结转，外加收款核销单与发票业务、收入成本结转配置。</li></ul>
+<h3>预算管控</h3>
+<ul><li><strong>理念</strong>：把管控规则与业务单据<strong>解耦</strong> —— 用「预算类别 → 预算模型 → 控制策略 → 控制规则」四层配置表达管控意图，由预算引擎在业务单据提交时执行额度校验（控制执行接口）。</li><li><strong>模型</strong>：预算组织、预算模型、控制策略、预算调整申请、预算控制事务处理明细、控制匹配规则；引用主数据与外部系统的预算数据。</li><li><strong>功能域</strong>：预算编制、预算调整、预算模型、预算台账（作为合同/资金计划的管控底座）。</li></ul>
+<h3>资金管理</h3>
+<ul><li><strong>理念</strong>：集中化资金平台 —— 前端对接业务报账，后端对接司库、总账、会计引擎与基础数据中心，形成「报账—结算—核算」闭环。</li><li><strong>功能域</strong>：资金计划、票据管理、资金池、供应链金融、账户管理、付款管理（结算池、资金结算单、委托付款、司库指令监听）、收款管理（认领池、委托收款）、发布管理（流水发布、票据签收）。</li><li><strong>配置化模型</strong>：计划类型/模型配置、内外部账户关系、结算方式字典、预警规则（入池超期、疑似重复支付）、黑白名单、内部存款基准利率。</li></ul>
+<h3>共享运营</h3>
+<ul><li><strong>理念</strong>：报账作业集中化 + 任务池调度 —— 以组织/岗位/任务分配规则驱动单据自动分派，支撑共享中心流水线作业。</li></ul>
+<h3>会计引擎（业财翻译官）</h3>
+<ul><li><strong>理念</strong>：<strong>业务数据不变，规则独立配置迭代</strong> —— 财务通过零代码配置成为「规则设计师」，事件模型、来源规则、分录规则、凭证规则是可复用资产。</li><li><strong>架构</strong>：七块规则库（见 <a href="#doc-5">05 篇</a>），核心收敛点是「事件分类与单据类型映射」：业务改造升级时只需重定义映射关系，对引擎冲击小。</li></ul>
+<h2>三、为什么设计这么多「池」</h2>
+<p>池的本质：<strong>把一条跨系统、跨角色、跨时点的长流程，切成若干「状态承接层」</strong>，每层只做一件确定性的事，并对外提供可查询、可批量处理的稳定台账。</p>
+<p>文档对三个核心池的定性非常直接：</p>
+<ul><li><strong>预付池</strong> = 「已支付、但尚未核销的预付款（或保证金）记录的集合或台账」；</li><li><strong>应付池</strong> = 「已确认入账、待支付的应付账款记录的集合或台账」，且<strong>充当应付报账流程与付款申请之间的桥梁</strong>；</li><li><strong>支付申请池</strong> = 「已完成业务审批、等待提交或发送给资金模块支付的申请记录的集合」。</li></ul>
+<p>它们不是重复设计，而是<strong>三本不同的账</strong>：一本记「钱已付但我还欠着核销动作」，一本记「账已认但我还没付」，一本记「审批完了、等着出纳执行」。池之间靠「源单编号 / 支付申请编码 / 资金结算单编号」串成链路。</p>
+<h3>多池设计解决的四类问题</h3>
+<div class="table-wrap"><table><thead><tr><th>设计动因</th><th>文档证据</th></tr></thead><tbody><tr><td><strong>阶段解耦</strong></td><td>报账、付款申请、结算、出账分别由业务、财务、出纳推进，需要各自可停留的状态位</td></tr><tr><td><strong>票据统一</strong></td><td>应付池来源含应付报账单、应付退货单、应付扣款单、质保金转换单；支付申请池来源含收款退回申请单、押金保证金付款/退款</td></tr><tr><td><strong>多轴状态管理</strong></td><td>支付申请池同时有推送状态（已推送/未推送）与支付状态（未支付/付款成功/付款取消/付款终止）；物理表另有 <code>approval_status</code>、<code>post_status_code</code>、<code>pay_status_code</code></td></tr><tr><td><strong>可追溯与占用核算</strong></td><td>池记录要反查源单、占用资金计划、记录已认领/未认领金额</td></tr></tbody></table></div>
+<h3>各池速查</h3>
+<div class="table-wrap"><table><thead><tr><th>池</th><th>作用</th><th>关键点</th></tr></thead><tbody><tr><td><strong>预付池</strong></td><td>已支付未核销的预付款/保证金台账，用于后续核销、冲销</td><td>入口是预付申请单审批完成；围绕「预付申请单 → 支付指令 → 支付申请基本信息」以及<strong>撤销预付核销申请单</strong>组织</td></tr><tr><td><strong>应付池</strong></td><td>归集已审批应付账款（合同、项目、订单、供应商、金额、到期日），作为付款申请的数据源</td><td>流程：报账单审批通过 → 入池 → 池内「发起付款」→ 生成付款申请单。物理表 <code>payment_ledger</code>。特殊规则：贸易物资类采购先到票发票报账产生的应付记录<strong>不得发起付款申请</strong>；退货单/扣款单选中应付记录且金额小于剩余金额则更新剩余金额，大于则生成<strong>负数记录行</strong></td></tr><tr><td><strong>支付申请池</strong></td><td>承接已通过财务审批、等待推送资金模块支付的记录</td><td>源单联动：财务审核通过 → 源单「已完成」且池中有记录；任一驳回 → 源单回「草稿」且池中<strong>无记录</strong>。物理表 <code>fin_ap_pay_pool</code>，关键字段含 <code>pay_amt</code>、<code>remain_amt</code>、<code>base_remain_amt</code>、<code>currency_code</code>、<code>pay_method</code>、<code>est_pay_date/pay_date</code>、<code>pay_status_code</code>、<code>post_status_code</code>、<code>approval_status</code>、<code>belong_fund_code</code>、<code>payable_id_code</code>、<code>accounting_entity_code</code>、<code>cost_ctr_code</code>、<code>src_sys</code>…</td></tr><tr><td><strong>凭证池</strong></td><td>会计事件 → 凭证（草稿/正式）暂存，传送总账</td><td>单据生成会计事件即写池；草稿(D)→正式(F)；传送总账后过账，凭证编号<strong>回传</strong>会计引擎</td></tr><tr><td><strong>结算池 / 代付池 / 认领池</strong></td><td>资金侧收付执行</td><td>认领池区分「已认领金额 / 未认领金额 / 认领状态」；委托付款与司库指令监听完成对外付款</td></tr></tbody></table></div>
+<h3>三个设计要点，值得抄进自己的模块</h3>
+<ol><li><strong>池 = 主表 + 占用明细两层</strong>。付款时是「占用」应付记录而不是直接改单据 —— 这才能支持一张应付单分多次付款、多单合并付款。 &gt; 应付池不是「一张单据一行」，而是「应付记录 + 占用明细」。物理上另有 <code>fin_ap_pay_pool_plan_dtl</code>（占用金额、占用日期、占用状态）承接资金计划占用。</li><li><strong>双轴状态字段</strong>。审批状态、过账状态、支付状态、推送状态各自独立 —— 一个字段承载不了多套生命周期。</li><li><strong>驳回必须同步回滚池</strong>。池记录与源单状态是对偶关系，漏写一侧就会出现「单据驳回了池里还占着额度」的虚占。</li></ol>
+<h2>四、这一篇给你的判断力</h2>
+<p>以后听到「这个功能放哪个模块」的讨论，先问三句：</p>
+<ol><li>它是<strong>业务事实</strong>（→ 报账层）、<strong>状态承接</strong>（→ 池层）、<strong>账务表达</strong>（→ 核算/引擎层），还是<strong>对外收付/报送</strong>（→ 资金/报表层）？</li><li>它改变的是单据、池记录，还是凭证？三者生命周期完全不同。</li><li>它是同步链路还是「结果回流」异步链路？（资金、票据、付款结果是异步回写的，前端不能只在提交时联动。）</li></ol>
+</section>
+<section class="doc" data-slug="doc-7">
+<h1>07 常见问题与踩坑</h1>
+<blockquote>来源：知识库中配置手册、详细设计、测试方案的实证 + 明确标注的「经验判断」。凡标 ⚠️经验 的，是本知识库未记载、由通用工程经验补充的，上会讨论前请自行确认。</blockquote>
+<h2>一、配置类</h2>
+<div class="table-wrap"><table><thead><tr><th>现象</th><th>原因</th><th>规避方法</th></tr></thead><tbody><tr><td>预算「该控的不控、不该控的拦住了」</td><td>预算类别—预算模型—控制策略—控制规则是四层配置，任一层未发布或版本错位，引擎取不到匹配规则</td><td>上线前做「策略—规则—业务单据类型」三向对照表，逐条验证命中路径；规则配置后走发布流程，别直接改库</td></tr><tr><td>想改规则改不了</td><td>系统对<strong>状态为「有效」的规则</strong>直接拦截编辑（提示「选中规则状态为有效，不允许！」）</td><td>变更 SOP 固定为：先停用 → 再改 → 再启用；把「停用」写进配置变更流程</td></tr><tr><td>导入失败但不知道为什么</td><td>模板导入仅支持 xls/xlsx；失败时系统要求人工填写「导入失败原因」</td><td>前端上传前做扩展名/列头/必填列三重预校验；后端保留逐行错误落表，不要只回一个总失败</td></tr><tr><td>大规模数据导不进去</td><td>单次导入硬限制：<strong>不超过 500 条、文件 ≤ 5M</strong>；大数据量提示等待久，可选「后台导入」</td><td>期初/批量场景默认走后台导入 + 进度查询，别把前台同步导入当迁移工具</td></tr></tbody></table></div>
+<h2>二、数据类</h2>
+<div class="table-wrap"><table><thead><tr><th>现象</th><th>原因</th><th>规避方法</th></tr></thead><tbody><tr><td>池里出现「虚占」：单据驳回了池还占着额度</td><td>池是「主表 + 占用明细」两层，驳回/终止/改额时必须同步回写剩余金额并释放占用，漏写一侧就永久悬挂</td><td>把「入池、出池、改额、驳回」做成 4 个幂等事务接口；用对账 SQL 定期校验「池余额 = 记录金额 − 占用明细累计」</td></tr><tr><td>期初数据导完账不平</td><td>初始化导入按<strong>会计主体 / 成本核算方法 / 成本期间</strong>三维组织，维度错一格就串期、串主体</td><td>迁移前冻结维度字典；导入后按三键分组对账；明确「迁移 ≠ 重算」</td></tr><tr><td>校验形同虚设</td><td>数据链路是「表单录入 / 批量导入 → 数据校验 → 不通过打回」，若校验只在前端做，接口直连就绕过</td><td>校验规则下沉服务端，前端只做提示；批量导入与单条录入共用同一套校验</td></tr><tr><td>金额、汇率反复对不上</td><td>一张单据同时有支付金额、剩余原币、剩余本币、汇率类型，跨币种结算还有独立开关</td><td>写清「哪一层折本位币、按哪个汇率类型、按哪一天」的字段级口径表，并做四舍五入一致性测试</td></tr><tr><td>误删配置无法回滚</td><td>删除类操作明确提示「删除后无法恢复」</td><td>生产禁止物理删除，统一改停用/失效；删除按钮按角色收紧</td></tr></tbody></table></div>
+<h2>三、接口类</h2>
+<div class="table-wrap"><table><thead><tr><th>现象</th><th>原因</th><th>规避方法</th></tr></thead><tbody><tr><td>同一笔付款重复入池 / 重复出账</td><td>上游重推、超时重试、人工「重新生成单据」都缺幂等键</td><td>以「来源系统 + 源单类型 + 源单编码 + 明细行号」建唯一约束；重推走幂等更新而非追加</td></tr><tr><td>接口失败了，业务方只能靠人找</td><td>系统设计了「标记失败」入口，需要人工填写意见 + 上传附件，失败回执不是全自动闭环</td><td>建失败消息治理台：自动重试 N 次 → 落异常池 → 认领处理</td></tr><tr><td>页面显示「未支付」，实际银行已付</td><td>付款结果、票据信息跨系统<strong>异步回写</strong>，查询时点与回写时点错开</td><td>前端对「处理中」显式呈现，不要默认成「未支付」；提供主动刷新/对账入口</td></tr><tr><td>对账对不上</td><td>池记录缺「来源系统 / 源单类型 / 源单编码」统一四件套，事后无法反查</td><td>所有跨系统落库强制带四件套 + 接收时间，缺一不可入库</td></tr></tbody></table></div>
+<h2>四、性能类（文档口径可直接当验收基线）</h2>
+<ul><li>前端首屏 ≤ 2 秒、完整页面 ≤ 3 秒、核心功能页响应 ≤ 3 秒</li><li><strong>1000 QPS</strong> 并发下整体性能无显著下降</li><li>普通查询 1000 并发下 ≤ 1 秒；复杂操作（统计、批量导入）≤ 5 秒，特殊 ≤ 10 秒</li><li>RESTful 接口平均 ≤ 300ms、95 分位 ≤ 500ms；在线用户 ≥ 5000；<strong>单次批量处理 10000 条 ≤ 5 分钟</strong></li><li>资源：CPU 平均 ≤ 70% / 峰值 ≤ 85%（持续高占用不超 5 分钟）；内存平均 ≤ 75% / 峰值 ≤ 90% 且无泄漏；磁盘 I/O 平均 ≤ 60% / 峰值 ≤ 80%，读写响应 ≤ 50ms</li></ul>
+<div class="table-wrap"><table><thead><tr><th>现象</th><th>原因</th><th>规避方法</th></tr></thead><tbody><tr><td>池/列表页首屏超 2 秒</td><td>池页面普遍是「查询项配置 + 高级查询 + 列配置 + 多来源混排」，首屏一次拉全量字段</td><td>首屏只取摘要列，详情走抽屉按需加载；默认带时间范围与主体默认值，禁止无条件全表查询</td></tr><tr><td>导出把服务压垮</td><td>大结果集同步导出，且导出与查询共用同一接口</td><td>导出独立接口 + 独立限流；超阈值转后台任务给下载链接</td></tr><tr><td>批量处理超时</td><td>批量动作（付款推送、凭证传送总账、批量导入）在一个事务里跑完</td><td>分批提交 + 断点续跑 + 批次号可追溯；单批上限对齐 500 条/5M</td></tr><tr><td>压测过了但生产卡</td><td>只压了查询，没压「挂起/取消挂起」等状态变更链路</td><td>压测覆盖写链路与跨系统回写</td></tr></tbody></table></div>
+<h2>五、状态与流程类（新人最容易错）</h2>
+<div class="table-wrap"><table><thead><tr><th>坑</th><th>正确认知</th></tr></thead><tbody><tr><td>混用单据状态与审批状态</td><td><strong>单据状态</strong>只有：草稿 / 审批中 / 已完成 / 已作废（另有已冲销）；<strong>审批状态</strong>有 10 种：草稿、进行中、已完成、已退回、已拒绝、异常、挂起、已撤回、已终止、退回至发起人。前端状态映射必须两套分开</td></tr><tr><td>以为「驳回」只有一种</td><td>驳回分「驳回至制单人」与「驳回至中间审批人」两条回退路径，页面上可回退的节点不同</td></tr><tr><td>把「作废」和「冲销」当同一件事</td><td>作废 = 终止<strong>未生效</strong>单据，不产生凭证、不影响账务；冲销 = 对<strong>已生效/已过账</strong>单据做红字更正，会生成红字凭证、影响发生额。两者终态不同</td></tr><tr><td>忽略「挂起」</td><td>「挂起」属于<strong>审批状态</strong>，单据状态可能仍是「审批中」；业务上它是可恢复的暂停，不是终态</td></tr><tr><td>以为池在驳回后会自动清空</td><td>源单驳回时池必须同步回滚（无记录），这依赖实现正确；验证时专门看这条</td></tr></tbody></table></div>
+<h2>六、权限与接入类</h2>
+<div class="table-wrap"><table><thead><tr><th>现象</th><th>原因</th><th>处理</th></tr></thead><tbody><tr><td>菜单能看到、按钮点不了 / 所有人可点</td><td>低开模型「操作授权」未开启，或按钮未绑权限项 → 角色配置里根本没有该按钮可选</td><td>开启「操作需要授权」；权限项<strong>编码 = 页面模型按钮操作代码</strong>；业务操作绑定权限项</td></tr><tr><td>数据权限配了却没生效</td><td>多维度<strong>取交集</strong>；某个维度填了不相交的值导致结果为空；或字段未先配成「管控维度」</td><td>逐维度核对交集关系；先把字段属性类型设为管控维度，再配数据权限</td></tr><tr><td>菜单权限导入后挂错层级</td><td>权限清单里菜单层级是<strong>稀疏填充</strong>（只在分组首行有值）</td><td>导入前向下填充；导入后抽查三级菜单归属</td></tr><tr><td>共享依赖（CommonBundle）重复加载</td><td>宿主 wujie 没有配置 <code>plugins</code>，子应用用了自己的 importmap</td><td>在 <code>startApp</code> 增加 <code>plugins</code> 替换 importmap；Network 面板确认重复请求来源域名</td></tr><tr><td>共享资源改了不生效（304）</td><td>协商缓存命中</td><td>nginx 对 <code>/fe-shared-deps</code> 设置 <code>etag off; if_modified_since off;</code> + <code>Cache-Control: no-store</code></td></tr><tr><td>子应用内跳转后刷新 404 / 白屏</td><td>SPA 路由没回退到 index.html</td><td><code>try_files $uri $uri/ /micro/&lt;appCode&gt;/index.html</code>；构建 <code>publicPath</code> 与路由 base 必须等于 <code>/micro/&lt;appCode&gt;/</code></td></tr></tbody></table></div>
+<h2>七、一句话总结</h2>
+<p><strong>80% 的线上问题不是代码 bug，而是「配置顺序错」「状态没回滚」「幂等没做」「异步当同步用」。</strong> 提测前把这四条过一遍，能省掉一半返工。</p>
+</section>
+<section class="doc" data-slug="doc-8">
+<h1>08 财务名词表</h1>
+<blockquote>规则：一句话解释，来自产品说明书、详细设计的「术语定义」章节或系统界面字段原文。文档没有定义条款、只能从科目或字段反推的，标注「反推」；完全没证据的标注「⚠️ 未取证」。</blockquote>
+<h2>一、核算基础（先懂这 10 个）</h2>
+<div class="table-wrap"><table><thead><tr><th>名词</th><th>一句话解释</th></tr></thead><tbody><tr><td><strong>账簿</strong></td><td>一个独立的会计核算体系，决定科目表、辅助核算表、核算规则、币种、日历、会计主体等基本设置，是账务数据的边界</td></tr><tr><td><strong>主账簿</strong></td><td>遵循主体会计准则（如 CAS）做日常核算的主要账簿</td></tr><tr><td><strong>副账簿 / 辅助账簿</strong></td><td>为满足其他报告准则（如 US GAAP）设置的并行账簿，通过差异化规则与主账簿区分</td></tr><tr><td><strong>会计主体</strong></td><td>会计确认、计量和报告的空间范围；独立开展经济活动、单独核算、独立编制报表的单位，并与法人关联</td></tr><tr><td><strong>会计科目</strong></td><td>分类记录经济业务的科目，具备编码、名称、属性、层级等基本属性</td></tr><tr><td><strong>期间 / 会计期间</strong></td><td>为核算划出的等长时间区间（月、季），状态含未打开、打开、关闭、永久关闭（部分文档另有「未来期」）</td></tr><tr><td><strong>会计日历</strong></td><td>支持按不同核算主体或业务场景设置专属会计周期规则的日历体系</td></tr><tr><td><strong>辅助核算</strong></td><td>会计科目之外的多维度明细核算字段，如客商、款项性质、项目、内部往来、成本中心、合同、银行账户</td></tr><tr><td><strong>核算规则</strong></td><td>定义在何种条件下<strong>必须、禁止或可选</strong>录入哪些辅助核算维度的规则集合</td></tr><tr><td><strong>动态辅助核算维度</strong></td><td>根据科目和账簿配置动态显示的核算字段，显隐与必输由系统预置的核算规则控制</td></tr></tbody></table></div>
+<blockquote>⚠️ 资产核算模块有平行口径：「账簿」在那里指「独立的资产核算体系，决定资产折旧方法」，「会计主体」对应「资产主体」。概念同构但域不同，跨模块看文档时别混用。</blockquote>
+<h2>二、凭证与账务处理</h2>
+<div class="table-wrap"><table><thead><tr><th>名词</th><th>一句话解释</th></tr></thead><tbody><tr><td><strong>凭证管理</strong></td><td>记账凭证的全生命周期管理：制单、审核、过账、查询、冲销、打印、归档</td></tr><tr><td><strong>凭证草稿</strong></td><td>凭证已创建并保存，但<strong>尚未提交为正式凭证</strong>，可编辑、可删除</td></tr><tr><td><strong>正式凭证</strong></td><td>由草稿提交后进入审核（或无需审核）流程的凭证；会计引擎创建凭证时类型就是「草稿 / 正式」二选一</td></tr><tr><td><strong>凭证类别</strong></td><td>凭证的业务分类，如记账凭证、收款凭证</td></tr><tr><td><strong>凭证过账</strong></td><td>将<strong>已审核</strong>凭证数据正式更新至总账科目余额的操作；过账后凭证通常锁定，无法直接修改</td></tr><tr><td><strong>已过账</strong></td><td>过账成功终态，金额已更新到相应科目余额、辅助余额</td></tr><tr><td><strong>凭证冲销</strong></td><td>对<strong>已过账的错误凭证</strong>做更正，主要方法为红字冲销（金额取反）与借贷冲销（科目互换）</td></tr><tr><td><strong>冲销（应收语境）</strong></td><td>对已记账的错误或需调整的应收/收款凭证，做一笔反向分录（红字/负数）来更正，消除错误影响但保留完整审计线索，会产生更正性红蓝字凭证、影响科目发生额</td></tr><tr><td><strong>作废</strong></td><td>在记账或形成正式应收凭证<strong>之前</strong>，对信息错误、重复提交或业务取消的无效单据标记失效、停止后续处理；<strong>不产生凭证、不影响账务</strong></td></tr><tr><td><strong>已冲销</strong></td><td>该凭证已被冲销，系统生成一笔冲销凭证</td></tr><tr><td><strong>凭证状态</strong></td><td>审批链路中的状态：草稿、审核中、已驳回、需要重新审核、已审核、无需审核；「已驳回」「需要重新审核」都会从正式凭证<strong>退回草稿</strong></td></tr><tr><td><strong>过账状态</strong></td><td>记账链路中的状态：未过账、过账中、过账失败、已过账</td></tr><tr><td><strong>冲销状态</strong></td><td>凭证冲销标记：空（默认，须「过账状态=已过账」才可冲销）、已冲销等</td></tr></tbody></table></div>
+<h2>三、往来与清算</h2>
+<div class="table-wrap"><table><thead><tr><th>名词</th><th>一句话解释</th></tr></thead><tbody><tr><td><strong>核销</strong></td><td>把收到的客户付款与对应应收账款<strong>匹配、勾对、清零</strong>的过程（收款单核销应收单、预付款抵减应收款，或用票据/信用证/债权转让清算）；产生往来清算记录，<strong>不影响期间损益</strong></td></tr><tr><td><strong>已清 / 未清</strong></td><td>判断规则是「剩余未清金额 = 0」：等于 0 时相关报账与核销冲减单据标识「已清」，否则为空</td></tr><tr><td><strong>账龄</strong></td><td>按每笔未清款项的起算点与报表日/基准日/核销日之间的<strong>自然日天数</strong>归入区间；本系统分五段：6 个月以内、7 个月至 1 年、1–2 年、2–3 年、3 年以上。起算点按业务特色锚定</td></tr><tr><td><strong>数据分类（账龄报表）</strong></td><td>标识每笔经营性资产及对应坏账准备的凭证行在报表中的归属区域：基准日存量、基准日压降、基准日后新增、新增余额</td></tr></tbody></table></div>
+<h2>四、应付、预提与预付</h2>
+<div class="table-wrap"><table><thead><tr><th>名词</th><th>一句话解释</th></tr></thead><tbody><tr><td><strong>预提计提申请单</strong></td><td>计提、预提业务的申请单据，编码规则 <code>YTJT + 日期 + 序号</code>，含计提结算类型（JTJT）与冲销方式（CXFS）</td></tr><tr><td><strong>预提（会计表现）</strong></td><td>典型分录：借 6602 管理费用 / 贷 220202 应付账款-暂估应付 —— 费用先入账、应付以暂估形式挂账</td></tr><tr><td><strong>暂估应付</strong></td><td>尚未取得正式发票或结算但已确认的应付，通过「应付账款-暂估应付」科目挂账（反推：文档只给科目名称与分录证据）</td></tr><tr><td><strong>预付（预付池）</strong></td><td>已预先支付、尚未核销的款项，在预付池中按单据编号、单据类型、所属组织/部门、业态、<strong>核销标志</strong>、使用状态管理</td></tr><tr><td><strong>预付申请单</strong></td><td>发起预付款的业务单据，与「合同付款明细」通过「预付申请单主键编号」一对多关联</td></tr><tr><td><strong>预付核销行</strong></td><td>应付报账单/付款申请单里用于抵扣既有预付记录的行；选择预付记录后自动带出业务类型、单据类型，且禁止修改</td></tr></tbody></table></div>
+<h2>五、单据与状态</h2>
+<div class="table-wrap"><table><thead><tr><th>名词</th><th>一句话解释</th></tr></thead><tbody><tr><td><strong>单据类型</strong></td><td>标识单据所属业务类型的分类字段，有编码（Document Type Code）与名称两列；预付行场景专指「预付记录的<strong>入账单类型</strong>」</td></tr><tr><td><strong>源单编码</strong></td><td>记录该条数据的来源单据编码，用于追溯上游业务</td></tr><tr><td><strong>款项性质</strong></td><td>用款/收款场景对应的性质分类，<strong>主要用于确定应付/应收科目</strong></td></tr><tr><td><strong>单据状态</strong></td><td>草稿 → 审批中 → 已完成 →（已冲销）；另可草稿直接作废为「已作废」</td></tr><tr><td><strong>审批状态</strong></td><td>10 种：草稿、进行中、已完成、已退回、已拒绝、异常、挂起、已撤回、已终止、退回至发起人</td></tr><tr><td><strong>池记录</strong></td><td>单据在某处理阶段的台账行，如应付池记录、支付申请池记录；与源单通过编号关联</td></tr><tr><td><strong>占用明细</strong></td><td>池记录对资金计划/应付记录的占用行，支撑「一张单分多次付款」「多单合并付款」</td></tr><tr><td><strong>业务类型</strong></td><td>报账类单据的业务分类，决定单据类型、税率、会计科目等取值（是配置依赖最多的节点之一）</td></tr></tbody></table></div>
+<h2>六、名词地图（怎么用这些词）</h2>
+<div class="mermaid-note">流程图（Mermaid）：联网时自动渲染图形，否则显示源码</div><div class="mermaid">flowchart LR
+  A[&quot;业务事实&quot;] --&gt; B[&quot;单据（单据类型/业务类型）&quot;]
+  B --&gt; C[&quot;池记录（预付池/应付池/支付申请池）&quot;]
+  C --&gt; D[&quot;会计事件&quot;]
+  D --&gt; E[&quot;凭证（草稿→正式）&quot;]
+  E --&gt; F[&quot;过账 → 科目余额/辅助余额&quot;]
+  F --&gt; G[&quot;报表（核算类：取自总账）&quot;]
+  C --&gt; H[&quot;支付 → 司库 → 结果回流&quot;]
+  B -.-&gt; I[&quot;核销 → 已清/未清 → 账龄&quot;]</div>
+<h2>七、⚠️ 未取证</h2>
+<ul><li><strong>合并报表 / 对账</strong>：本轮检索未找到定义条款。合并报表规则在「财务报告/报表管理」里维护，但具体术语定义缺口存在。</li><li><strong>成本管理域</strong>（成本核算、生产成本、库存计价、成本分析）：只在架构清单里出现，产品定位细节未深入检索。</li><li>若需要补全，指定模块名再问知识库，或直接找对应应用负责人（总账/报表 → 刘福、葛琦）。</li></ul>
+</section>
+<section class="doc" data-slug="doc-9">
+<h1>09 新人 30 天上手路径</h1>
+<blockquote>设计依据：知识库里与本任务直接相关的文档有四类 —— 操作手册（检出 93 篇）、配置手册（62 篇）、详细设计（515 篇）、培训课件（10 篇）。下面的必读清单是<strong>最小充分集</strong>，不是全集。 另有一条元规则决定了学习顺序：配置手册要求「优先完成无内部依赖的基础配置，再开展有前置依赖的规则、账户、风控、计划类配置」，且任何 L3 应用都以「前序依赖应用」已部署实施为前提。<strong>所以学习顺序只能按依赖排，不能按模块排。</strong></blockquote>
+<h2>时间表总览</h2>
+<div class="table-wrap"><table><thead><tr><th>阶段</th><th>天数</th><th>主题</th><th>核心产出</th><th>判定标准</th></tr></thead><tbody><tr><td>第 1 周</td><td>D1–D5</td><td>平台认知与术语对齐</td><td>架构定位笔记</td><td>能把任意菜单定位到 L1–L5</td></tr><tr><td>第 2 周</td><td>D6–D12</td><td>业务主干与状态机</td><td>端到端走查记录</td><td>能解释每个停留点</td></tr><tr><td>第 3 周</td><td>D13–D19</td><td>配置与实施</td><td>配置依赖图 + 验证记录</td><td>能独立完成一个必选配置</td></tr><tr><td>第 4 周</td><td>D20–D26</td><td>开发实操</td><td>可运行列表页</td><td>用 CurdPage 而非手写</td></tr><tr><td>收尾</td><td>D27–D30</td><td>独立交付与验收</td><td>三项交付物 + 答辩</td><td>六问全答</td></tr></tbody></table></div>
+<p><strong>每日节奏</strong>：上午 1 小时只读当周清单内的文档，其余时间在环境里操作；下班前用 3 句话写「今天验证了什么 / 卡在哪 / 明天问谁」。30 天后这份日志就是最好的一手材料。</p>
+<hr>
+<h2>第 1 周（D1–D5）：平台认知与术语对齐</h2>
+<p><strong>目标</strong>：能看懂一张菜单、一个单据、一条任务分别属于架构的哪一层。</p>
+<h3>必读</h3>
+<div class="table-wrap"><table><thead><tr><th>文档</th><th>读法</th></tr></thead><tbody><tr><td>《3A架构表-应用架构L1-L5》</td><td>只看表头与示例行，理解列含义，<strong>不背内容</strong></td></tr><tr><td>《配置手册_共享运营_V2.0》/《产品配置手册_共享运营_V3.0》</td><td>读「应用配置概览」「配置任务清单」两节</td></tr><tr><td>《产品操作手册_共享运营》</td><td>通读目录 + 任选 3 个功能细读</td></tr><tr><td>《资金认领_用户操作手册培训》</td><td>看业务流程与权限划分</td></tr></tbody></table></div>
+<h3>必会</h3>
+<ol><li>登录、按菜单名搜索、进入列表页完成一次「查询 → 重置 → 列配置」；</li><li>切换「待办 / 已办」，说清两者数据来源差异；</li><li>导出一条记录，并在下载中心找到文件。</li></ol>
+<h3>关键概念</h3>
+<ul><li><strong>L1 应用域 / L2 应用组 / L3 应用 / L4 模块 / L5 功能</strong> —— 架构表按这个维度铺开；新人最常错位的是把 L4 模块当成「一个系统」。</li><li><strong>前序依赖应用</strong> —— 任何 L3 配置之前必须先完成的部署实施项（如数智化管控平台、组织/编码中心/影像中心/工作流/权限中心）。</li><li><strong>配置类型五分法</strong> —— 平台基础数据、工作流、应用基础数据、API 接口、消息队列；每项还要区分「必须/可选」并登记「依赖任务」。</li><li><strong>单据 / 流程 / 任务</strong> 是三个不同对象：单据是业务凭证，流程是审批链，任务是共享中心的办理单元。</li></ul>
+<h3>自查</h3>
+<ul><li><span class="cb">&#9744;</span> 能把「应付报账单」定位到 L1→L5 完整路径</li><li><span class="cb">&#9744;</span> 能说出至少 4 个前序依赖应用，并解释为什么必须先配</li><li><span class="cb">&#9744;</span> 能解释「必须」与「可选」配置任务的区别、漏配「必须」的后果</li><li><span class="cb">&#9744;</span> 能区分待办、已办、挂起三个视图</li><li><span class="cb">&#9744;</span> 知道导出文件去哪下载</li></ul>
+<hr>
+<h2>第 2 周（D6–D12）：业务主干与状态机</h2>
+<p><strong>目标</strong>：能把一条业务从「制单」走到「出账」，并解释每一步单据停在哪、为什么。</p>
+<h3>必读</h3>
+<div class="table-wrap"><table><thead><tr><th>文档</th><th>用途</th></tr></thead><tbody><tr><td>《WKKY-应付报账单管理-用户操作手册》</td><td>主干单据的完整生命周期</td></tr><tr><td>《WKKY-预付池 / 应付池 / 支付申请池管理》</td><td>三个核心池的查询与发起动作</td></tr><tr><td>《WKKY-支付记账单管理》</td><td>资金回写与凭证推送的收口</td></tr><tr><td>《WKKY-对公费用报账单管理》《WKKY-应付退货单管理》</td><td>负向单据如何抵消正向单据</td></tr><tr><td>《应收报账-通用销售收入报账》相关说明书</td><td>对照应收侧，理解「双向对称」</td></tr></tbody></table></div>
+<h3>必会</h3>
+<ol><li>独立完成一次：制单 → 提交 → 业务审批 → 财务审批 → 入池 → 发起付款 → 推送资金 → 查看支付结果；</li><li>制造一次驳回，观察单据回到哪个状态、池里发生了什么变化；</li><li>对一张已完成单据执行冲销，观察生成红字单据的差异。</li></ol>
+<h3>关键概念</h3>
+<ul><li><strong>单据状态机</strong>：草稿 → 审批中 → 已完成 → 已冲销；另有草稿直接作废。驳回分「驳回至制单人」「驳回至中间审批人」两条回退路径。</li><li><strong>单据状态 ≠ 审批状态</strong>：单据状态 4 种；审批状态 10 种（含挂起、异常、退回至发起人）。前端状态映射必须分开处理。</li><li><strong>冲销 ≠ 作废</strong>：作废终止未生效单据；冲销是对已生效单据的红字更正。</li><li><strong>池是状态承接层</strong>：单据在池之间流转，不是直接跳转。</li></ul>
+<h3>自查</h3>
+<ul><li><span class="cb">&#9744;</span> 能画出应付报账单从草稿到已冲销的完整状态图，标出两条驳回路径</li><li><span class="cb">&#9744;</span> 能说出「挂起」属于单据状态还是审批状态</li><li><span class="cb">&#9744;</span> 能解释为什么驳回后池记录必须同步回滚</li><li><span class="cb">&#9744;</span> 能区分作废、冲销、退回的适用前提</li><li><span class="cb">&#9744;</span> 能独立定位一张卡住的单据卡在哪一步</li></ul>
+<hr>
+<h2>第 3 周（D13–D19）：配置与实施视角</h2>
+<p><strong>目标</strong>：第一次能独立完成一个可验证的配置任务，并知道验证方法。</p>
+<h3>必读</h3>
+<div class="table-wrap"><table><thead><tr><th>文档</th><th>用途</th></tr></thead><tbody><tr><td>《产品配置手册_共享运营_V3.0》</td><td>分层配置思路：产品预制 / 全局性 / 组织级通用 / 组织级个性</td></tr><tr><td>《应付报账_应收应付设置配置_V1.0》</td><td>六个基础配置项的标准写法</td></tr><tr><td>《应付报账_应付设置配置_V1.7》</td><td>二十一项配置项的依赖关系</td></tr><tr><td>《费用报账_产品配置手册_V1.8（合并版）》</td><td>规模最大的一套配置，看结构即可</td></tr><tr><td>《应收报账_合并开票规则_V1.3》《应收核算_账龄时段规则_V1.0》</td><td>学「单主体仅一条有效记录」「时段连续不重叠」这类约束</td></tr><tr><td>《总账报账配置手册_v1.0》</td><td>最短的一篇，适合第一次完整精读</td></tr></tbody></table></div>
+<h3>必会</h3>
+<ol><li>按「前序依赖 → 基础数据 → 业务规则」顺序完成一个模块的全部必选配置；</li><li>完成一次<strong>配置验证</strong>（按手册的验证方法确认生效，不是「保存成功就算完」）；</li><li>找到配置任务清单里的「依赖任务」列，画出该模块的配置依赖图；</li><li>明确责任边界：部署包导入、数据库创建、应用菜单发布归产研组，实施侧只做验证。</li></ol>
+<h3>关键概念</h3>
+<ul><li><strong>配置有先后</strong>：某配置项的选项数据来自另一项配置任务，那个来源就是「依赖任务」。</li><li><strong>保存成功 ≠ 配置生效</strong>：每份手册都有独立的「配置任务验证说明」章节，验证是配置任务的组成部分。</li><li><strong>两种颗粒度</strong>：全局性配置（全集团一套）vs 组织级通用/个性配置（按会计主体或组织区分），选错颗粒度会导致部分主体取不到值。</li><li><strong>同一会计主体仅允许一条有效记录</strong>、<strong>账龄时段连续不重叠</strong> 这类约束，是配置验证的高频考点。</li></ul>
+<h3>自查</h3>
+<ul><li><span class="cb">&#9744;</span> 不看手册能说出一个模块从零到可用的配置顺序</li><li><span class="cb">&#9744;</span> 能列出某配置项的全部依赖任务</li><li><span class="cb">&#9744;</span> 知道「单主体仅一条有效记录」出现在哪些配置上，以及为什么</li><li><span class="cb">&#9744;</span> 能独立执行一次配置验证并留下验证记录</li><li><span class="cb">&#9744;</span> 能说清哪些动作必须找产研组，哪些可以自己动</li></ul>
+<hr>
+<h2>第 4 周（D20–D26）：开发实操与前端落地</h2>
+<p><strong>目标</strong>：用平台既有能力搭出一个符合规范的列表页，而不是从零写一套。</p>
+<h3>必读</h3>
+<div class="table-wrap"><table><thead><tr><th>文档</th><th>用途</th></tr></thead><tbody><tr><td>任一 L3 详细设计（如《应收报账_分期确认收入报账》）</td><td>先读章节骨架：系统架构 → 数据架构 → 技术架构 → 功能设计(L4) → 集成设计 → 安全/部署</td></tr><tr><td>《共享运营_个人任务_详细设计文档_v1.3》</td><td>CurdPage 实际用法（进入页面自动查询、默认排序等前端规则）</td></tr><tr><td>《应付报账业务_L4_..._v1.3》</td><td>看「前端使用低代码平台」这一口径</td></tr><tr><td>《资产报账_L3_v1.1》《资金结算_资金计划_L3》</td><td>技术栈与组件版本约束</td></tr></tbody></table></div>
+<h3>必会</h3>
+<ol><li>本地跑起前端工程，Node 与组件版本严格对齐脚手架，<strong>不自行升级</strong>；</li><li>用 <strong>CurdPage</strong> 搭一个列表页：普通查询 + 高级查询 + 列配置 + 行操作按钮 + 分页；</li><li>对接一个查询接口，处理空数据、超时、业务错误码三种返回；</li><li>按行内字段状态控制操作按钮可用性（如非草稿不可编辑）；</li><li>微前端子应用接入，确认路由与样式隔离方式（QianKun 或 wujie，以所在应用为准）。</li></ol>
+<h3>关键概念</h3>
+<ul><li><strong>技术栈是锁定的</strong>：Node 20.x、Vue 3.5.18、TS 5.x，组件须严格遵循五矿脚手架 <code>package.json</code> 版本。</li><li><strong>CurdPage 是主战场</strong>：集查询、表格、分页、增删改按钮配置于一体，支持普通查询 / QueryCard 卡片模式 / 高级查询、条件折叠、查询方案保存复用、行选择批量操作、按行内字段状态控权限。<strong>自己从零写列表页 = 返工。</strong></li><li><strong>两套状态分开渲染</strong>：单据状态与审批状态是两套枚举，标签与按钮启用条件分别判断。</li><li><strong>错误码有统一规范</strong>：详细设计的「技术架构」章节含「错误码规范」一节，定义新码前先查。</li></ul>
+<h3>自查</h3>
+<ul><li><span class="cb">&#9744;</span> 本地工程版本与脚手架完全一致</li><li><span class="cb">&#9744;</span> 列表页用 CurdPage 实现，没有手写查询区</li><li><span class="cb">&#9744;</span> 按钮权限是「行内状态 + 角色」双重判断</li><li><span class="cb">&#9744;</span> 处理了空数据、超时、业务错误码</li><li><span class="cb">&#9744;</span> 知道自己这个子应用用 QianKun 还是 wujie</li><li><span class="cb">&#9744;</span> 单据状态与审批状态用两套独立映射</li></ul>
+<hr>
+<h2>D27–D30：独立交付与验收</h2>
+<h3>三项交付物（缺一不算完成）</h3>
+<ol><li><strong>端到端业务走查记录</strong>：制单到出账，每步截屏 + 状态说明；</li><li><strong>一个可运行页面</strong>：CurdPage 列表页 + 接口对接 + 按钮权限；</li><li><strong>一份配置说明</strong>：任选一个模块，写清配置顺序、依赖任务、必选项、验证方法。</li></ol>
+<h3>验收答辩六问（30 分钟，导师提问）</h3>
+<ol><li>这个功能属于 L1~L5 的哪一层？上游依赖哪些应用？</li><li>这张单据从草稿到已冲销经过哪些状态？两条驳回路径分别回哪？</li><li>单据状态和审批状态分别几种？页面上怎么区分？</li><li>这笔业务经过哪几个池？池记录什么时候生成、什么时候失效？</li><li>这个配置项的依赖任务是什么？怎么证明它生效了？</li><li>这个按钮为什么在这个状态下不可点？判断依据写在哪一行逻辑里？</li></ol>
+<hr>
+<h2>按方向替换第 4 周</h2>
+<div class="table-wrap"><table><thead><tr><th>方向</th><th>第 4 周替换为</th></tr></thead><tbody><tr><td>实施 / 配置</td><td>完整做一遍《应付设置配置_V1.7》二十一项配置 + 验证</td></tr><tr><td>后端开发</td><td>读详细设计的「数据架构」与「集成设计」，跑通一个接口的出入参</td></tr><tr><td>测试</td><td>以《结账任务管理_测试用例》为范本，写一个模块的用例并执行</td></tr></tbody></table></div>
+<h2>证据边界</h2>
+<ul><li><strong>已核实</strong>：架构分层与定义、前序依赖应用机制、配置类型五分法与依赖任务、配置责任边界、单据状态机与两套状态枚举、前端技术栈与组件版本、CurdPage 能力、技术架构分层、详细设计章节骨架（含错误码规范）。</li><li><strong>未完成</strong>：错误码规范正文、共享运营初始化顺序的具体内容未取得；<strong>权限矩阵（菜单权限/数据权限/角色）本轮未有直接材料</strong> —— 权限部分请直接看本手册 <a href="#doc-5">05 篇第六节</a>。</li></ul>
+</section>
+<section class="doc" data-slug="doc-10">
+<h1>10 前端接入与工程规范</h1>
+<blockquote>面向：前端开发 / 联调同学。核心结论是「平台的接入项都是注册制，不能自建」。</blockquote>
+<h2>一、接入分三层</h2>
+<div class="table-wrap"><table><thead><tr><th>层</th><th>承担方</th><th>作用</th></tr></thead><tbody><tr><td><strong>门户注册层</strong></td><td>五矿个人门户「能力中心 &gt; 应用管理」</td><td>登记应用编号、名称、负责人、服务地址，建立应用与门户的对应关系</td></tr><tr><td><strong>宿主（主应用）层</strong></td><td>门户前端宿主平台，用 <code>wujie</code> 的 <code>startApp</code> 加载子应用</td><td>登记子应用 <code>name</code>、<code>url</code>、<code>plugins</code>（共享依赖替换）</td></tr><tr><td><strong>部署与网关层</strong></td><td>子应用 nginx</td><td><code>/micro/&lt;appCode&gt;/</code> 提供静态资源、<code>/biz-gateway</code> 代理业务网关、<code>/fe-shared-deps</code> 提供共享依赖</td></tr></tbody></table></div>
+<p>门户侧入口统一是「能力中心 &gt; 应用管理」（左侧「基础平台」菜单下），这是所有配置说明书的统一起点。</p>
+<h2>二、必须准备的注册项</h2>
+<p><strong>1）应用注册（门户）</strong></p>
+<ul><li>必填：<strong>应用编号、应用名称、负责人、服务地址</strong>。</li><li>编号示例：<code>app-minmetals-fm-fis-base</code>、<code>app-minmetals-fm-fis-apa</code>；配置说明书示例里「应用名称」与「应用编号」填同一个值。</li><li>命名规律参考 <code>app-&lt;组织&gt;-fm-fis-&lt;模块&gt;</code>，<strong>先与门户管理员确认命名规则再固定使用</strong> —— 后续路由、部署目录、宿主 <code>name</code> 都依赖它。</li></ul>
+<p><strong>2）宿主侧微应用注册（wujie）</strong></p>
+<ul><li>文件位置示例：<code>src/micro/index.js</code>。</li><li>关键项：<code>name</code>（子应用唯一标识）、<code>url</code>（子应用完整部署地址，如 <code>https://financial-test.minmetals.com.cn/micro/minmetals-fm-fim-fus-lc/</code>）、<code>plugins</code>（替换子应用 importmap，复用宿主共享依赖）。</li><li>若接 QianKun，对应的是 <code>name</code>、<code>entry</code>、<code>container</code>、<code>activeRule</code>；但检索到的材料只把 QianKun 登记为「微前端工具库」，<strong>没有 QianKun 主应用的具体配置代码</strong>。</li></ul>
+<p><strong>3）路由与 base</strong></p>
+<ul><li>部署路径决定 base：nginx 中 <code>location /micro/fin-ast</code> 用 <code>alias /home/app</code> 指向产物，并 <code>try_files $uri $uri/ /micro/fin-ast/index.html</code> 做 SPA 回退。</li><li>因此子应用构建 <code>publicPath</code>、路由 base（history 模式）<strong>都必须是 <code>/micro/&lt;appCode&gt;/</code></strong>，与部署目录严格一致。</li></ul>
+<p><strong>4）API 与网关</strong></p>
+<ul><li>统一前缀 <code>/biz-gateway</code> 反代到门户域（示例 <code>https://dsep-portal-test.minmetals.com.cn</code>），并透传 <code>Host</code>、<code>X-Real-IP</code>、<code>X-Forwarded-For</code>。</li><li>业务接口走网关前缀，<strong>不要直连后端域名</strong>；后端服务自身在能力中心登记（如 <code>app-minmetals-business-base</code>），前端作为 <code>fe-minmetals-*</code> 与后端应用成对登记。</li></ul>
+<p><strong>5）静态资源与共享依赖</strong></p>
+<ul><li><code>/fe-shared-deps</code> 独立反代到门户域，作为前端共享资源目录。</li><li>宿主通过 wujie <code>plugins</code> 注入共享依赖，让子应用用宿主已加载的依赖，而不是自己再拉一份。</li></ul>
+<h2>三、常见接入问题排查</h2>
+<div class="table-wrap"><table><thead><tr><th>现象</th><th>原因</th><th>处理</th></tr></thead><tbody><tr><td>共享依赖（CommonBundle 等）重复加载，从子应用域名又拉一遍</td><td>宿主 wujie 没配 <code>plugins</code>，子应用用自己的 importmap</td><td>在 <code>startApp</code> 增加 <code>plugins</code>；Network 面板确认重复请求的来源域名</td></tr><tr><td>共享资源版本不一致、改了不生效</td><td>协商缓存返回 304</td><td>nginx 对 <code>/fe-shared-deps</code> 设置 <code>etag off; if_modified_since off;</code> + <code>Cache-Control: no-store, no-cache, must-revalidate, max-age=0</code></td></tr><tr><td>子应用内跳转后刷新 404 / 白屏</td><td>SPA 路由没回退 index.html</td><td><code>try_files $uri $uri/ /micro/&lt;appCode&gt;/index.html</code></td></tr><tr><td>挂载到门户后样式错乱</td><td>子应用 base 与部署目录不一致 / 样式未隔离</td><td>对齐 <code>publicPath</code> 与 base；确认隔离方式（shadow DOM 或 scoped）</td></tr></tbody></table></div>
+<h2>四、工程命名与业务对应</h2>
+<p><code>fe-</code> = 前端（node），<code>app-</code> = 后端（java maven springboot）：</p>
+<div class="table-wrap"><table><thead><tr><th>前缀</th><th>归属</th></tr></thead><tbody><tr><td><code>fm-fis-*</code></td><td>财务报账 / 共享报账域（fs 共享运营、ar 应收报账、ap 应付报账、fa 资产报账、rt 关联交易、base 财务报账基础应用）</td></tr><tr><td><code>fm-fia-*</code></td><td>应用计算引擎产品线（ara 应收核算、apa 应付核算、base 基础应用）</td></tr><tr><td><code>gu-fin-asset</code></td><td>资产核算（独立命名）</td></tr></tbody></table></div>
+<p>前端工程统一收在 Git <code>wk-financial-control</code> 下的 <code>ace/fe</code> 组（唯一给出地址的是应收核算前端 <code>fe-minmetals-fm-fia-ara</code>）。文档里划分前端负责团队的唯一组织维度是<strong>产品线</strong>：财务 / 应用计算引擎。</p>
+<blockquote>⚠️ <code>fia-base</code> 只以「被调用的<strong>后端</strong>基础服务」出现；<code>fia-sla</code> 未检索到同名工程，只有凭证回写相关的 MQ 配置（<code>sla-voucher-wb-rocketmq</code>、topic <code>finance_sla_vou_wb</code>）。这两个的准确定位请向平台管理员索取 Poseidon 应用清单核对。</blockquote>
+<h2>五、公共组件库的定位（证据有限，别当规范引用）</h2>
+<p>知识库中<strong>没有 <code>fe-minmetals-fm-packages</code> 的任何专门文档</strong>（包名、私服、版本、贡献指南、共享依赖对齐方式全部检索为空）。能确认的只有三条事实：</p>
+<ol><li><code>fe-minmetals-*</code> 已是平台上前端应用的命名空间，组件库属于其中的<strong>跨业务共享包</strong>，没有独立业务菜单；</li><li>集团应用架构蓝图（L2）在「平台公共域 &gt; 技术平台」下明确列有「开发体系、集成体系、运维体系、<strong>通用组件</strong>」，即官方把通用组件定位为<strong>平台横向能力</strong>；</li><li>L3 详细设计的技术选型表只登记三方库（QianKun、Pinia、Vue Router、Lodash-es、Scss、Vitest、ESLint），<strong>未把公共组件库列为依赖项</strong>；但设计文档里有 <code>dynamicEditableForm</code>、<code>dynamicEditableTable</code>、<code>pagination</code> 等「前端控件」设计章节 —— 说明「可复用控件沉淀成统一组件」在设计层面是既有做法。</li></ol>
+<p><strong>推断（非文档原话）</strong>：它是财务管控平台「通用组件」能力下的跨业务前端共享包，服务 <code>fe-minmetals-fm-fis-*</code> 与 <code>fe-minmetals-business-base</code> 等多条业务前端，统一基础控件与交互规范，并与微前端宿主形态配合。</p>
+<p>要拿到可执行规范，必须索取：组件库 README 与子包清单、npm 私服地址与 <code>.npmrc</code>、版本规范（语义化版本/发版权限）、组件贡献指南（分支模型/CR/单测覆盖率/视觉走查）、与微前端共享依赖的注入约定。</p>
+<h2>六、接口规范（现行做法）</h2>
+<p>知识库里没有一本《统一接口规范》，下面是从《高开代码规范》+ 各 L3/L4 详细设计「错误码规范」章节 + 统一集成平台配置界面拼合出来的现行做法。</p>
+<h3>1）接口分类与鉴权（最硬的规范）</h3>
+<div class="table-wrap"><table><thead><tr><th>接口类型</th><th>定位</th><th>鉴权要求</th></tr></thead><tbody><tr><td><code>api</code></td><td>给前端使用</td><td><strong>必须在 API 网关统一鉴权</strong></td></tr><tr><td><code>openapi</code></td><td>对外开放能力</td><td><strong>必须在开放平台网关统一鉴权</strong>；需二次封装保证向下兼容</td></tr><tr><td><code>innerapi</code></td><td>内部系统互调</td><td>与 client 模块结合</td></tr></tbody></table></div>
+<p>内部互调用声明式 HTTP 客户端，返回体统一 <code>ResVo&lt;T&gt;</code>：</p>
+<pre class="code"><code>@HttpExchangeClient(name = &quot;app-cisdigital-base-foundation&quot;, path = &quot;/base/foundation/inner-api&quot;)
+public interface FirstTestClient {
+    @GetExchange(&quot;/xxx&quot;)
+    ResVo&lt;String&gt; getXXX(@RequestParam(&quot;name&quot;) String name);
+}</code></pre>
+<p>两条禁止项：</p>
+<ul><li><strong>禁用 <code>context-path</code></strong>（防融合部署 URL 冲突）—— 直接影响网关路由/前缀注册；</li><li>禁止 <code>RestTemplate</code>，改用 Spring 6 的 <code>RestClient</code> 或 <code>WebClient</code>。</li></ul>
+<h3>2）网关 API 注册</h3>
+<p>入口：统一集成平台 / 门户「能力中心 &gt; 业务网关」。</p>
+<ul><li><strong>API 条目注册</strong>：所属应用、请求方式、路径（如 <code>/api/v1/user/login</code>）、描述、发布状态；分类含平台/应用/系统/业务/数据库/第三方/用户中心/消息中心/文件中心/支付中心。</li><li><strong>配套治理</strong>：API 分组、API 策略、API 日志、API 统计。</li><li><strong>参数配置</strong>：<code>Params / Body / Headers</code> 三类，登记类型、是否必填、备注、<strong>是否开放</strong>；并提供「查看认证参数」入口 —— 即<strong>鉴权参数由平台统一下发，业务侧不自定义鉴权字段</strong>。</li><li><strong>状态码与响应明细</strong>：逐个配置每个状态码对应的响应参数明细。</li><li><strong>异步/调度型接口</strong>单独注册：能力中心 &gt; 调度中心 &gt; 调度接口（编号、名称、所属应用、路径、请求方式、<strong>接口类型同步/异步</strong>、使用状态、返回码）。</li></ul>
+<h3>3）统一响应结构</h3>
+<p>现行骨架是 <strong>5 个顶层字段 + error 嵌套对象</strong>：</p>
+<pre class="code"><code>{
+  &quot;code&quot;: &quot;string&quot;,
+  &quot;message&quot;: &quot;string&quot;,
+  &quot;data&quot;: {},
+  &quot;requestId&quot;: &quot;string&quot;,
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;string&quot;,
+    &quot;traceId&quot;: &quot;string&quot;,
+    &quot;path&quot;: &quot;string&quot;,
+    &quot;timestamp&quot;: 0,
+    &quot;details&quot;: &quot;string&quot;
+  }
+}</code></pre>
+<p><code>requestId</code> 与 <code>error.traceId</code> 是链路追踪关键字段，出错时务必回传。</p>
+<blockquote>⚠️ <strong>存在老口径，需要对齐</strong>：应收报账「分期确认收入报账」接口输出是 <code>code / message / error / success / data</code>（<code>code</code> 为 String，0 成功）；进项发票红冲返回 <code>{code:0, message:&quot;&quot;, error:&quot;&quot;, success:true}</code>。这两份是旧版四/五字段口径（含 <code>success</code>），新接口请以 5 字段骨架为准，跨模块对接时先确认对端口径。</blockquote>
+<h3>4）本轮未取到</h3>
+<ul><li><strong>跨域（CORS）规范条款</strong>：未检索到；</li><li><strong>MQ 消息体格式规范</strong>：未检索到；</li><li>鉴权凭据类型（Token / AK-SK / OAuth）、密钥申请流程、策略模板细则：文档只到「界面能力与字段名」这一层。</li></ul>
+<h2>七、前端开发的红线</h2>
+<ol><li><strong>不自建登录、权限、组织体系</strong> —— 全部走平台 SSO 与权限模型。</li><li><strong>不自行升级依赖</strong> —— Node 20.x / Vue 3.5.18 / TS 5.x / Vite 6.x，组件严格遵循五矿脚手架 <code>package.json</code>。</li><li><strong>不手写列表页</strong> —— 用 CurdPage（普通查询 / QueryCard / 高级查询 / 列配置 / 批量操作 / 按行内状态控权限）。</li><li><strong>单据状态与审批状态分开映射</strong> —— 两套枚举，别混。</li><li><strong>异步结果不假设为同步</strong> —— 付款、票据、凭证编号回传都是异步回写，页面要有「处理中」态。</li></ol>
+</section>
+  </main>
+</div>
+<script type="module">
+  const navLinks = [...document.querySelectorAll('#nav a')];
+  const docs = [...document.querySelectorAll('.doc')];
+  function show(slug, push){
+    docs.forEach(d => d.classList.toggle('active', d.dataset.slug === slug));
+    navLinks.forEach(a => a.classList.toggle('active', a.dataset.slug === slug));
+    if (push) history.replaceState(null, '', '#' + slug);
+    window.scrollTo({top:0, behavior:'instant'});
+    document.querySelector('main').scrollIntoView({block:'start'});
+  }
+  navLinks.forEach(a => a.addEventListener('click', e => { e.preventDefault(); show(a.dataset.slug, true); }));
+  const initial = location.hash.slice(1);
+  show(docs.some(d => d.dataset.slug === initial) ? initial : docs[0].dataset.slug, false);
+  // 主题
+  const tBtn = document.getElementById('themeBtn');
+  const saved = localStorage.getItem('tz-theme');
+  if (saved) document.documentElement.dataset.theme = saved;
+  tBtn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('tz-theme', next);
+  });
+  // Mermaid 尽量渲染，失败则保留源码
+  try{
+    const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+    mermaid.initialize({ startOnLoad:false, theme: document.documentElement.dataset.theme === 'dark' ? 'dark':'default',
+      securityLevel:'loose', flowchart:{htmlLabels:true, curve:'basis'} });
+    const nodes = [...document.querySelectorAll('.mermaid')];
+    for (const [i, el] of nodes.entries()){
+      const src = el.textContent;
+      try{
+        const { svg } = await mermaid.render('mmd-' + i, src);
+        el.innerHTML = svg; el.classList.add('rendered');
+      }catch(err){ /* 保留源码展示 */ }
+    }
+  }catch(err){ console.warn('mermaid 未加载，保留源码视图', err); }
+</script>
+</body>
+</html>
